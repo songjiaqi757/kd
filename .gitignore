@@ -1,0 +1,41 @@
+# Large local assets: never commit datasets, model weights, caches, or run outputs.
+/dataset/
+/model/
+/outputs/
+
+# Python-generated files.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and editor/OS state.
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
+# Common ML artifacts if generated outside outputs/.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.parquet
+wandb/
+runs/
+
+# Logs and temporary files.
+*.log
+*.tmp
+*.bak
+

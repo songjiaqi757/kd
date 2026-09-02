@@ -1,0 +1,24 @@
+workspace_root: /home/wy/sjq/kd
+project_root: /home/wy/sjq/kd/project
+plan: /home/wy/sjq/kd/docs/RDID-MSA_多模态情感交互蒸馏完整方案.md
+conda_environment:
+  name: kd
+  prefix: /home/wy/sjq/miniconda3/envs/kd
+dataset:
+  aligned: /home/wy/sjq/kd/dataset/cmu_mosei
+  source: /home/wy/sjq/kd/dataset/cmu_mosei_source
+  train_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/train.jsonl
+  valid_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/valid.jsonl
+  test_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/test.jsonl
+  teacher_benchmark_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+teacher_model: /home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct
+student_models:
+  text: /home/wy/sjq/kd/model/Qwen3-0.6B-Base
+  audio: /home/wy/sjq/kd/model/WavLM-Base-Plus
+  video: /home/wy/sjq/kd/model/VideoMAE-Base
+outputs:
+  teacher_benchmark: /home/wy/sjq/kd/outputs/teacher_benchmark
+  teacher_cache: /home/wy/sjq/kd/outputs/teacher_cache
+  probe: /home/wy/sjq/kd/outputs/probe
+  checkpoints: /home/wy/sjq/kd/outputs/checkpoints
+  logs: /home/wy/sjq/kd/outputs/logs

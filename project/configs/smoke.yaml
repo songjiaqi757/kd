@@ -1,0 +1,10 @@
+project_root: /home/wy/sjq/kd/project
+dataset_root: /home/wy/sjq/kd/dataset/cmu_mosei
+model_id: Qwen/Qwen3-Omni-30B-A3B-Instruct
+model_dir: /home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct
+manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+subsets: [t, a, v, ta, tv, av, tav]
+use_audio_in_video: false
+video_frames: 16
+video_reader: decord
+seed: 2026

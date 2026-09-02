@@ -1,0 +1,60 @@
+{
+  "manifest_version": "benchmark500-v1",
+  "seed": 2026,
+  "sha256": "e42aec6ab69fe3cf4998701b8c33eb0c777172f80f348893ae81503f2d8663c5",
+  "eligible_candidates": 14686,
+  "selected_samples": 500,
+  "unique_video_ids": 500,
+  "official_video_counts": {
+    "test": 676,
+    "train": 2249,
+    "valid": 300
+  },
+  "split": {
+    "train": 450,
+    "valid": 50
+  },
+  "duration": {
+    "5to15": 250,
+    "15to30": 110,
+    "lt5": 124,
+    "gt30": 16
+  },
+  "sentiment": {
+    "negative": 167,
+    "neutral": 167,
+    "positive": 166
+  },
+  "strata": {
+    "train|15to30|negative": 33,
+    "train|15to30|neutral": 33,
+    "train|15to30|positive": 33,
+    "train|5to15|negative": 75,
+    "train|5to15|neutral": 75,
+    "train|5to15|positive": 75,
+    "train|gt30|negative": 5,
+    "train|gt30|neutral": 5,
+    "train|gt30|positive": 4,
+    "train|lt5|negative": 37,
+    "train|lt5|neutral": 38,
+    "train|lt5|positive": 37,
+    "valid|15to30|negative": 4,
+    "valid|15to30|neutral": 3,
+    "valid|15to30|positive": 4,
+    "valid|5to15|negative": 9,
+    "valid|5to15|neutral": 8,
+    "valid|5to15|positive": 8,
+    "valid|gt30|neutral": 1,
+    "valid|gt30|positive": 1,
+    "valid|lt5|negative": 4,
+    "valid|lt5|neutral": 4,
+    "valid|lt5|positive": 4
+  },
+  "duration_seconds": {
+    "total": 5433.092,
+    "min": 1.341,
+    "max": 91.684
+  },
+  "output": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl",
+  "checksum_file": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl.sha256"
+}

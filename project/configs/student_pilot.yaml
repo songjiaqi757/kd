@@ -1,0 +1,69 @@
+seed: 2026
+
+models:
+  text: /home/wy/sjq/kd/model/Qwen3-0.6B-Base
+  audio: /home/wy/sjq/kd/model/WavLM-Base-Plus
+  video: /home/wy/sjq/kd/model/VideoMAE-Base
+
+data:
+  train_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+  teacher_targets: /home/wy/sjq/kd/outputs/probe/benchmark500/predictions.jsonl
+  max_text_tokens: 256
+  audio_sample_rate: 16000
+  video_frames: 16
+
+student:
+  hidden_size: 512
+  tokens_per_modality: 4
+  qformer_layers: 2
+  fusion_layers: 4
+  heads: 8
+  ffn_size: 2048
+  dropout: 0.1
+  vib_enabled: false
+  freeze_encoders: true
+
+training:
+  stage: benchmark500_b0
+  precision: bf16
+  subsets: [t, a, v, ta, tv, av, tav]
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  lr_new_modules: 1.0e-4
+  weight_decay: 0.01
+  grad_clip: 1.0
+  alpha_ce: 0.5
+  epochs: 30
+  early_stopping_patience: 7
+
+cache:
+  encoder_features: /home/wy/sjq/kd/outputs/student/features/benchmark500
+  dtype: bf16
+
+output:
+  baseline: /home/wy/sjq/kd/outputs/student/baseline_benchmark500_seed2026
+  full_kd: /home/wy/sjq/kd/outputs/student/full_kd_benchmark500_seed2026
+  subset_value: /home/wy/sjq/kd/outputs/student/subset_value_benchmark500_seed2026
+  mobius_full: /home/wy/sjq/kd/outputs/student/mobius_full_benchmark500_seed2026
+  high_order_interaction: /home/wy/sjq/kd/outputs/student/high_order_interaction_benchmark500_seed2026
+  subset_value_4: /home/wy/sjq/kd/outputs/student/subset_value_4_benchmark500_seed2026
+
+full_kd:
+  lambda_full: 1.0
+  regression_weight: 1.0
+  classification_weight: 1.0
+  temperature: 2.0
+  teacher_calibration_temperature: 0.9259549975395203
+
+subset_value:
+  lambda_subset: 1.0
+  subsets: [t, a, v, ta, tv, av, tav]
+  aggregation: mean
+  loss: smooth_l1
+
+coordinates:
+  lambda_coordinate: 1.0
+  full_mobius_dimensions: [t, a, v, ta, tv, av, tav]
+  high_order_dimensions: [ta, tv, av, tav]
+  aggregation: mean
+  loss: smooth_l1

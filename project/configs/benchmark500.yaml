@@ -1,0 +1,20 @@
+project_root: /home/wy/sjq/kd/project
+dataset_root: /home/wy/sjq/kd/dataset/cmu_mosei
+model_dir: /home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct
+source_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl
+prepared_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl
+teacher_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+subsets: [t, a, v, ta, tv, av, tav]
+split_counts: {train: 450, valid: 50}
+duration_counts: {lt5: 124, 5to15: 250, 15to30: 110, gt30: 16}
+sentiment_counts: {negative: 167, neutral: 167, positive: 166}
+long_sample_policy:
+  max_duration_seconds: 30
+  overlap_seconds: 5
+  aggregation: overlap_corrected_weighted_mean
+use_audio_in_video: false
+video_reader: decord
+attention_backend: pytorch_sdpa
+dtype: bfloat16
+device_map: balanced
+seed: 2026
