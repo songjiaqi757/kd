@@ -1,0 +1,1589 @@
+{
+  "protocol": "v2 deterministic; validation interaction-strength and uncertainty tertiles",
+  "interaction_strength_definition": "sum(abs(teacher mean interaction)) over ta,tv,av,tav",
+  "interaction_strength_tertile_cuts": [
+    1.0777576565742493,
+    2.0276821752389274
+  ],
+  "uncertainty_definition": "mean teacher interaction variance over ta,tv,av,tav",
+  "uncertainty_tertile_cuts": [
+    0.010210719037180144,
+    0.02076679898891598
+  ],
+  "runs": [
+    {
+      "method": "inverse_variance_interaction4",
+      "display_name": "inverse-variance interaction4",
+      "seed": 42,
+      "best_epoch": 6,
+      "train_loss_mean": 2.6743395171369744,
+      "train_loss_sample_standard_deviation": 2.8654019148831313,
+      "gradient_norm_mean": 46.38050314096304,
+      "gradient_norm_sample_standard_deviation": 25.747171461440338,
+      "mae": 0.6547119104862213,
+      "pearson": 0.6425169239126751,
+      "acc2_nonzero": 0.8571428571428571,
+      "f1_weighted_nonzero": 0.8574675324675325,
+      "acc7": 0.46,
+      "E_pair": 0.3997755540730461,
+      "E_triple": 0.26796274178172075,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3461578961680917
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.542948404327035
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0684551070718205
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.3460334258921006
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5781453531235456
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0354530373040367
+          }
+        }
+      }
+    },
+    {
+      "method": "pair_raw",
+      "display_name": "pair-only",
+      "seed": 42,
+      "best_epoch": 11,
+      "train_loss_mean": 2.178128189274106,
+      "train_loss_sample_standard_deviation": 2.7086525355528193,
+      "gradient_norm_mean": 46.31846804089017,
+      "gradient_norm_sample_standard_deviation": 39.81775540570853,
+      "mae": 0.6434322344896904,
+      "pearson": 0.6497333924929896,
+      "acc2_nonzero": 0.8095238095238095,
+      "f1_weighted_nonzero": 0.8099567099567101,
+      "acc7": 0.5,
+      "E_pair": 0.387408572908045,
+      "E_triple": 0.3107041574766274,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3833390877527349
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.572896322235465
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9699121221717993
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4168485788738026
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5894266869872808
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9208446406960815
+          }
+        }
+      }
+    },
+    {
+      "method": "pair_snr",
+      "display_name": "SNR pair-only",
+      "seed": 13,
+      "best_epoch": 17,
+      "train_loss_mean": 2.264061541206991,
+      "train_loss_sample_standard_deviation": 3.032080745736026,
+      "gradient_norm_mean": 40.92308874924978,
+      "gradient_norm_sample_standard_deviation": 28.713542473550184,
+      "mae": 0.6142673885642346,
+      "pearson": 0.6960591338199327,
+      "acc2_nonzero": 0.7857142857142857,
+      "f1_weighted_nonzero": 0.7831501831501833,
+      "acc7": 0.54,
+      "E_pair": 0.44301176232743544,
+      "E_triple": 0.47838113179256786,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.39087872470126434
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5107498224824667
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9350843499159276
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4082940887002384
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5459569413214922
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.8845328740684589
+          }
+        }
+      }
+    },
+    {
+      "method": "pair_snr",
+      "display_name": "SNR pair-only",
+      "seed": 2026,
+      "best_epoch": 16,
+      "train_loss_mean": 1.7454874005856362,
+      "train_loss_sample_standard_deviation": 2.171207301327487,
+      "gradient_norm_mean": 48.5034413130387,
+      "gradient_norm_sample_standard_deviation": 36.204717513651204,
+      "mae": 0.6249702323878458,
+      "pearson": 0.6771216556412863,
+      "acc2_nonzero": 0.8333333333333334,
+      "f1_weighted_nonzero": 0.833616940820571,
+      "acc7": 0.52,
+      "E_pair": 0.4789754446530642,
+      "E_triple": 0.5241131920700522,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.371548535192714
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.528060918673873
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9696006954314226
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.432004451751709
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.48018393106758595
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9542054730901095
+          }
+        }
+      }
+    },
+    {
+      "method": "pair_snr",
+      "display_name": "SNR pair-only",
+      "seed": 42,
+      "best_epoch": 18,
+      "train_loss_mean": 1.847340033247152,
+      "train_loss_sample_standard_deviation": 2.4439524159306356,
+      "gradient_norm_mean": 37.54894950866699,
+      "gradient_norm_sample_standard_deviation": 26.584424668019164,
+      "mae": 0.6269145317887101,
+      "pearson": 0.6659352035022224,
+      "acc2_nonzero": 0.8095238095238095,
+      "f1_weighted_nonzero": 0.8099567099567101,
+      "acc7": 0.52,
+      "E_pair": 0.3761704180116819,
+      "E_triple": 0.40298904591816187,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.43372301319066214
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5004011783748865
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9391774418350627
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.40890682795468497
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5866540390998125
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.8828144640358153
+          }
+        }
+      }
+    },
+    {
+      "method": "random_nonorthogonal",
+      "display_name": "random non-orthogonal",
+      "seed": 42,
+      "best_epoch": 13,
+      "train_loss_mean": 3.910120225434073,
+      "train_loss_sample_standard_deviation": 2.650618526929416,
+      "gradient_norm_mean": 125.59478483200073,
+      "gradient_norm_sample_standard_deviation": 84.131570616909,
+      "mae": 0.6878206408023835,
+      "pearson": 0.6475489703518068,
+      "acc2_nonzero": 0.8333333333333334,
+      "f1_weighted_nonzero": 0.8336182336182336,
+      "acc7": 0.52,
+      "E_pair": 0.6642668926661919,
+      "E_triple": 0.26760015540097276,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.38044290858156543
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5227661225944757
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.1505438019247616
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.3355162459261277
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.607259126380086
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.1159476374878603
+          }
+        }
+      }
+    },
+    {
+      "method": "random_orthogonal",
+      "display_name": "random orthogonal",
+      "seed": 42,
+      "best_epoch": 8,
+      "train_loss_mean": 2.636071948598338,
+      "train_loss_sample_standard_deviation": 2.919248108812314,
+      "gradient_norm_mean": 60.097391255696614,
+      "gradient_norm_sample_standard_deviation": 33.81852202356473,
+      "mae": 0.7152841210365295,
+      "pearson": 0.5580819199851027,
+      "acc2_nonzero": 0.7857142857142857,
+      "f1_weighted_nonzero": 0.7860805860805862,
+      "acc7": 0.48,
+      "E_pair": 0.5186863422083096,
+      "E_triple": 0.31560222240741037,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.4002221910392537
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.6269531305879354
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.1134811008677763
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.48809605836868286
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5703989770263433
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0788346721845514
+          }
+        }
+      }
+    },
+    {
+      "method": "raw_interaction4",
+      "display_name": "raw interaction4",
+      "seed": 13,
+      "best_epoch": 5,
+      "train_loss_mean": 3.629292885536725,
+      "train_loss_sample_standard_deviation": 3.7236797033202436,
+      "gradient_norm_mean": 50.07923976580302,
+      "gradient_norm_sample_standard_deviation": 33.11566149271816,
+      "mae": 0.6715200396393571,
+      "pearson": 0.6521852940224541,
+      "acc2_nonzero": 0.7380952380952381,
+      "f1_weighted_nonzero": 0.734961334961335,
+      "acc7": 0.58,
+      "E_pair": 0.46402183132590774,
+      "E_triple": 0.40327109179936976,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.5811863418887643
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5362548846751451
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.8891621185327375
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.3713390932363622
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.6440645959228277
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.997541403657909
+          }
+        }
+      }
+    },
+    {
+      "method": "raw_interaction4",
+      "display_name": "raw interaction4",
+      "seed": 2026,
+      "best_epoch": 10,
+      "train_loss_mean": 2.126640820062573,
+      "train_loss_sample_standard_deviation": 2.4112519144164426,
+      "gradient_norm_mean": 63.94293353136848,
+      "gradient_norm_sample_standard_deviation": 43.92857972383499,
+      "mae": 0.6385059551787332,
+      "pearson": 0.6861383747541614,
+      "acc2_nonzero": 0.7857142857142857,
+      "f1_weighted_nonzero": 0.7830903790087465,
+      "acc7": 0.48,
+      "E_pair": 0.3990282570970335,
+      "E_triple": 0.30759776211316037,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3991938706706552
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5431722048670053
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9675439223331431
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.38296569445553946
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.511647554114461
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0134423580800653
+          }
+        }
+      }
+    },
+    {
+      "method": "raw_interaction4",
+      "display_name": "raw interaction4",
+      "seed": 42,
+      "best_epoch": 19,
+      "train_loss_mean": 1.6191701416309903,
+      "train_loss_sample_standard_deviation": 2.045772252880327,
+      "gradient_norm_mean": 42.20513879335844,
+      "gradient_norm_sample_standard_deviation": 23.59512104479072,
+      "mae": 0.6167775287851708,
+      "pearson": 0.6941293845190553,
+      "acc2_nonzero": 0.7619047619047619,
+      "f1_weighted_nonzero": 0.7602513227513228,
+      "acc7": 0.52,
+      "E_pair": 0.3831501269490642,
+      "E_triple": 0.29431211899049103,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3887101850088905
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.47374979592859745
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9794592093676376
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.3287568968885085
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5632985550910234
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9551313123939716
+          }
+        }
+      }
+    },
+    {
+      "method": "selective50_interaction4",
+      "display_name": "selective top50",
+      "seed": 13,
+      "best_epoch": 14,
+      "train_loss_mean": 2.30437216258102,
+      "train_loss_sample_standard_deviation": 2.9010320686529276,
+      "gradient_norm_mean": 33.61553196679978,
+      "gradient_norm_sample_standard_deviation": 26.18955257069943,
+      "mae": 0.6109364114212411,
+      "pearson": 0.6835509000535838,
+      "acc2_nonzero": 0.8095238095238095,
+      "f1_weighted_nonzero": 0.8095238095238095,
+      "acc7": 0.52,
+      "E_pair": 0.38497158666785225,
+      "E_triple": 0.3907466326276398,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.41622207971180186
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.44987996481359005
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9572332811143518
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.29852474787655997
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5417302567511797
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.988483279361274
+          }
+        }
+      }
+    },
+    {
+      "method": "selective50_interaction4",
+      "display_name": "selective top50",
+      "seed": 2026,
+      "best_epoch": 13,
+      "train_loss_mean": 1.802430119192684,
+      "train_loss_sample_standard_deviation": 2.1601208667012926,
+      "gradient_norm_mean": 47.44650440216064,
+      "gradient_norm_sample_standard_deviation": 32.26379336819822,
+      "mae": 0.6570027685165405,
+      "pearson": 0.6639332621439211,
+      "acc2_nonzero": 0.7619047619047619,
+      "f1_weighted_nonzero": 0.7619047619047619,
+      "acc7": 0.5,
+      "E_pair": 0.37361432425704266,
+      "E_triple": 0.34542501522559355,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.4377034639610964
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.49355061911046505
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0301393901600557
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.38061045197879567
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.548421235755086
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.035589468829772
+          }
+        }
+      }
+    },
+    {
+      "method": "selective50_interaction4",
+      "display_name": "selective top50",
+      "seed": 42,
+      "best_epoch": 13,
+      "train_loss_mean": 1.6720494367805232,
+      "train_loss_sample_standard_deviation": 1.3476808442518204,
+      "gradient_norm_mean": 56.727368116378784,
+      "gradient_norm_sample_standard_deviation": 43.656434201448654,
+      "mae": 0.5983246898651123,
+      "pearson": 0.702982134800058,
+      "acc2_nonzero": 0.7619047619047619,
+      "f1_weighted_nonzero": 0.7602813852813853,
+      "acc7": 0.56,
+      "E_pair": 0.39290134509830704,
+      "E_triple": 0.3822536197908507,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.4196346630068386
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.4204797763377428
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9443981647491455
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.37797756405437694
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5872380044311285
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.8291063431431266
+          }
+        }
+      }
+    },
+    {
+      "method": "snr_interaction4",
+      "display_name": "SNR interaction4",
+      "seed": 42,
+      "best_epoch": 5,
+      "train_loss_mean": 2.9246873525641037,
+      "train_loss_sample_standard_deviation": 3.1519257400531524,
+      "gradient_norm_mean": 36.858133474985756,
+      "gradient_norm_sample_standard_deviation": 10.869367854736378,
+      "mae": 0.699022421836853,
+      "pearson": 0.6202037489498462,
+      "acc2_nonzero": 0.7380952380952381,
+      "f1_weighted_nonzero": 0.7348882410106901,
+      "acc7": 0.46,
+      "E_pair": 0.41229012768256534,
+      "E_triple": 0.3220911144430874,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.39151540749213276
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5866260547190905
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.1123142522924088
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4019129206152523
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5687122438102961
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.1187767964952133
+          }
+        }
+      }
+    },
+    {
+      "method": "subset4",
+      "display_name": "subset4",
+      "seed": 13,
+      "best_epoch": 21,
+      "train_loss_mean": 2.141093472186362,
+      "train_loss_sample_standard_deviation": 2.948067237089902,
+      "gradient_norm_mean": 34.978245394570486,
+      "gradient_norm_sample_standard_deviation": 27.28864448599333,
+      "mae": 0.6404674599575418,
+      "pearson": 0.6621803425491395,
+      "acc2_nonzero": 0.8333333333333334,
+      "f1_weighted_nonzero": 0.833616940820571,
+      "acc7": 0.52,
+      "E_pair": 0.5207478217430425,
+      "E_triple": 0.3222465052151404,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.47002337434712577
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.46649170480668545
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9746534327687635
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4018746263840619
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.549397798255086
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9647729163098033
+          }
+        }
+      }
+    },
+    {
+      "method": "subset4",
+      "display_name": "subset4",
+      "seed": 2026,
+      "best_epoch": 9,
+      "train_loss_mean": 2.632937972216796,
+      "train_loss_sample_standard_deviation": 2.924326044077396,
+      "gradient_norm_mean": 52.62899553775787,
+      "gradient_norm_sample_standard_deviation": 24.71409915866489,
+      "mae": 0.5934521484375,
+      "pearson": 0.6993594086919065,
+      "acc2_nonzero": 0.8333333333333334,
+      "f1_weighted_nonzero": 0.8328606541879373,
+      "acc7": 0.56,
+      "E_pair": 0.5119683595408824,
+      "E_triple": 0.3361524916355011,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3410261676591985
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5110778789967299
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.9234068533953499
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4096440357320449
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5021769311279058
+          },
+          "high": {
+            "count": 17,
+            "mae": 0.8631663480225731
+          }
+        }
+      }
+    },
+    {
+      "method": "subset4",
+      "display_name": "subset4",
+      "seed": 42,
+      "best_epoch": 9,
+      "train_loss_mean": 2.55980926554841,
+      "train_loss_sample_standard_deviation": 3.0036486382650467,
+      "gradient_norm_mean": 60.23900353908539,
+      "gradient_norm_sample_standard_deviation": 37.00743295209768,
+      "mae": 0.6747509789466858,
+      "pearson": 0.602903495469563,
+      "acc2_nonzero": 0.8095238095238095,
+      "f1_weighted_nonzero": 0.8099567099567101,
+      "acc7": 0.48,
+      "E_pair": 0.7501939052751675,
+      "E_triple": 0.6515069782973848,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3923483578597798
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5979970339685678
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0293926070718205
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.4527659766814288
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.560902925208211
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0038870906128603
+          }
+        }
+      }
+    },
+    {
+      "method": "triple_raw",
+      "display_name": "triple-only",
+      "seed": 42,
+      "best_epoch": 15,
+      "train_loss_mean": 1.4992354040610958,
+      "train_loss_sample_standard_deviation": 1.2836613945949522,
+      "gradient_norm_mean": 51.203779220581055,
+      "gradient_norm_sample_standard_deviation": 31.552453772692353,
+      "mae": 0.6360746276378632,
+      "pearson": 0.6839410899676308,
+      "acc2_nonzero": 0.7857142857142857,
+      "f1_weighted_nonzero": 0.7850981680768915,
+      "acc7": 0.5,
+      "E_pair": 0.791452176191944,
+      "E_triple": 0.26412632410446085,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.4328146664535298
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.42928568832576275
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.033959472880644
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.33813955853967104
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.531545015051961
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0323905085816103
+          }
+        }
+      }
+    },
+    {
+      "method": "zscore_interaction4",
+      "display_name": "z-score interaction4",
+      "seed": 42,
+      "best_epoch": 7,
+      "train_loss_mean": 3.060016838150449,
+      "train_loss_sample_standard_deviation": 3.200503003212189,
+      "gradient_norm_mean": 76.01951571873256,
+      "gradient_norm_sample_standard_deviation": 54.16242468268482,
+      "mae": 0.6524691973317226,
+      "pearson": 0.637393110808141,
+      "acc2_nonzero": 0.8095238095238095,
+      "f1_weighted_nonzero": 0.8099567099567101,
+      "acc7": 0.5,
+      "E_pair": 0.3868131583546272,
+      "E_triple": 0.2598879644687295,
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 17,
+            "mae": 0.3859205193379346
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5570271853357553
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0088456513217152
+          }
+        },
+        "uncertainty": {
+          "low": {
+            "count": 17,
+            "mae": 0.3495040676173042
+          },
+          "middle": {
+            "count": 16,
+            "mae": 0.5888837296515703
+          },
+          "high": {
+            "count": 17,
+            "mae": 1.0152794730980492
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "inverse_variance_interaction4": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6547119104862213,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.6425169239126751,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.8571428571428571,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8574675324675325,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.46,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.3997755540730461,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.26796274178172075,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.3461578961680917,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.542948404327035,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.0684551070718205,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.3460334258921006,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5781453531235456,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.0354530373040367,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "pair_raw": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6434322344896904,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.6497333924929896,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.8095238095238095,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8099567099567101,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.5,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.387408572908045,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.3107041574766274,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.3833390877527349,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.572896322235465,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 0.9699121221717993,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.4168485788738026,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5894266869872808,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 0.9208446406960815,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "pair_snr": {
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6220507175802635,
+          "sample_standard_deviation": 0.006810303441761515
+        },
+        "pearson": {
+          "mean": 0.6797053309878138,
+          "sample_standard_deviation": 0.015227256094541692
+        },
+        "acc2_nonzero": {
+          "mean": 0.8095238095238095,
+          "sample_standard_deviation": 0.023809523809523836
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8089079446424882,
+          "sample_standard_deviation": 0.02524971958168342
+        },
+        "acc7": {
+          "mean": 0.5266666666666667,
+          "sample_standard_deviation": 0.011547005383792526
+        },
+        "E_pair": {
+          "mean": 0.4327192083307272,
+          "sample_standard_deviation": 0.05216963557966643
+        },
+        "E_triple": {
+          "mean": 0.468494456593594,
+          "sample_standard_deviation": 0.06116432338482646
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.3987167576948802,
+          "sample_standard_deviation": 0.031819687293970875
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.513070639843742,
+          "sample_standard_deviation": 0.013975154856749938
+        },
+        "interaction_strength_high_mae": {
+          "mean": 0.9479541623941377,
+          "sample_standard_deviation": 0.01885782714856948
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.41640178946887746,
+          "sample_standard_deviation": 0.01351577467563569
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5375983038296303,
+          "sample_standard_deviation": 0.053724957809557834
+        },
+        "uncertainty_high_mae": {
+          "mean": 0.9071842703981279,
+          "sample_standard_deviation": 0.04073061944299871
+        }
+      }
+    },
+    "random_nonorthogonal": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6878206408023835,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.6475489703518068,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.8333333333333334,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8336182336182336,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.52,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.6642668926661919,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.26760015540097276,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.38044290858156543,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.5227661225944757,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.1505438019247616,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.3355162459261277,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.607259126380086,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.1159476374878603,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "random_orthogonal": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.7152841210365295,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.5580819199851027,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.7857142857142857,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.7860805860805862,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.48,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.5186863422083096,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.31560222240741037,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.4002221910392537,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.6269531305879354,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.1134811008677763,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.48809605836868286,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5703989770263433,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.0788346721845514,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "raw_interaction4": {
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.642267841201087,
+          "sample_standard_deviation": 0.027564460152324107
+        },
+        "pearson": {
+          "mean": 0.6774843510985569,
+          "sample_standard_deviation": 0.02227096261885842
+        },
+        "acc2_nonzero": {
+          "mean": 0.7619047619047619,
+          "sample_standard_deviation": 0.02380952380952378
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.7594343455738014,
+          "sample_standard_deviation": 0.024074920747758684
+        },
+        "acc7": {
+          "mean": 0.5266666666666666,
+          "sample_standard_deviation": 0.05033222956847165
+        },
+        "E_pair": {
+          "mean": 0.41540007179066846,
+          "sample_standard_deviation": 0.0428495668528392
+        },
+        "E_triple": {
+          "mean": 0.3350603243010071,
+          "sample_standard_deviation": 0.05944458495382488
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.4563634658561033,
+          "sample_standard_deviation": 0.10822679752289845
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.5177256284902493,
+          "sample_standard_deviation": 0.038240916787872774
+        },
+        "interaction_strength_high_mae": {
+          "mean": 0.9453884167445061,
+          "sample_standard_deviation": 0.04905650797017298
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.3610205615268034,
+          "sample_standard_deviation": 0.028539490287962634
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.573003568376104,
+          "sample_standard_deviation": 0.06673985842408854
+        },
+        "uncertainty_high_mae": {
+          "mean": 0.9887050247106487,
+          "sample_standard_deviation": 0.030143087216244386
+        }
+      }
+    },
+    "selective50_interaction4": {
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6220879566009646,
+          "sample_standard_deviation": 0.030887650420149453
+        },
+        "pearson": {
+          "mean": 0.6834887656658543,
+          "sample_standard_deviation": 0.019524510478893
+        },
+        "acc2_nonzero": {
+          "mean": 0.7777777777777778,
+          "sample_standard_deviation": 0.02749286996141078
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.7772366522366523,
+          "sample_standard_deviation": 0.027973277108332462
+        },
+        "acc7": {
+          "mean": 0.5266666666666667,
+          "sample_standard_deviation": 0.03055050463303896
+        },
+        "E_pair": {
+          "mean": 0.3838290853410673,
+          "sample_standard_deviation": 0.009694136124179433
+        },
+        "E_triple": {
+          "mean": 0.37280842254802804,
+          "sample_standard_deviation": 0.02409192944123062
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.4245200688932456,
+          "sample_standard_deviation": 0.011543953409584817
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.45463678675393265,
+          "sample_standard_deviation": 0.03676693531024944
+        },
+        "interaction_strength_high_mae": {
+          "mean": 0.9772569453411843,
+          "sample_standard_deviation": 0.046244997356933965
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.3523709213032442,
+          "sample_standard_deviation": 0.04665073224750125
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5591298323124647,
+          "sample_standard_deviation": 0.024571208861124433
+        },
+        "uncertainty_high_mae": {
+          "mean": 0.9510596971113908,
+          "sample_standard_deviation": 0.1082091201315401
+        }
+      }
+    },
+    "snr_interaction4": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.699022421836853,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.6202037489498462,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.7380952380952381,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.7348882410106901,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.46,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.41229012768256534,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.3220911144430874,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.39151540749213276,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.5866260547190905,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.1123142522924088,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.4019129206152523,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5687122438102961,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.1187767964952133,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "subset4": {
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6362235291139092,
+          "sample_standard_deviation": 0.040815232111241016
+        },
+        "pearson": {
+          "mean": 0.654814415570203,
+          "sample_standard_deviation": 0.04864800570509887
+        },
+        "acc2_nonzero": {
+          "mean": 0.8253968253968255,
+          "sample_standard_deviation": 0.01374643498070539
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8254781016550728,
+          "sample_standard_deviation": 0.013447237357843334
+        },
+        "acc7": {
+          "mean": 0.52,
+          "sample_standard_deviation": 0.040000000000000036
+        },
+        "E_pair": {
+          "mean": 0.5943033621863641,
+          "sample_standard_deviation": 0.1350765183424985
+        },
+        "E_triple": {
+          "mean": 0.4366353250493421,
+          "sample_standard_deviation": 0.18621416337577854
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.40113263328870136,
+          "sample_standard_deviation": 0.06494568849762332
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.525188872590661,
+          "sample_standard_deviation": 0.06687864386072534
+        },
+        "interaction_strength_high_mae": {
+          "mean": 0.9758176310786446,
+          "sample_standard_deviation": 0.053002467054571345
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.42142821293251187,
+          "sample_standard_deviation": 0.02741591705545031
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5374925515304009,
+          "sample_standard_deviation": 0.03112052007698016
+        },
+        "uncertainty_high_mae": {
+          "mean": 0.9439421183150789,
+          "sample_standard_deviation": 0.07263624066272449
+        }
+      }
+    },
+    "triple_raw": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6360746276378632,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.6839410899676308,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.7857142857142857,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.7850981680768915,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.5,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.791452176191944,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.26412632410446085,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.4328146664535298,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.42928568832576275,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.033959472880644,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.33813955853967104,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.531545015051961,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.0323905085816103,
+          "sample_standard_deviation": null
+        }
+      }
+    },
+    "zscore_interaction4": {
+      "seeds": [
+        42
+      ],
+      "summary": {
+        "mae": {
+          "mean": 0.6524691973317226,
+          "sample_standard_deviation": null
+        },
+        "pearson": {
+          "mean": 0.637393110808141,
+          "sample_standard_deviation": null
+        },
+        "acc2_nonzero": {
+          "mean": 0.8095238095238095,
+          "sample_standard_deviation": null
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8099567099567101,
+          "sample_standard_deviation": null
+        },
+        "acc7": {
+          "mean": 0.5,
+          "sample_standard_deviation": null
+        },
+        "E_pair": {
+          "mean": 0.3868131583546272,
+          "sample_standard_deviation": null
+        },
+        "E_triple": {
+          "mean": 0.2598879644687295,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_low_mae": {
+          "mean": 0.3859205193379346,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_middle_mae": {
+          "mean": 0.5570271853357553,
+          "sample_standard_deviation": null
+        },
+        "interaction_strength_high_mae": {
+          "mean": 1.0088456513217152,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_low_mae": {
+          "mean": 0.3495040676173042,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_middle_mae": {
+          "mean": 0.5888837296515703,
+          "sample_standard_deviation": null
+        },
+        "uncertainty_high_mae": {
+          "mean": 1.0152794730980492,
+          "sample_standard_deviation": null
+        }
+      }
+    }
+  },
+  "gate": {
+    "evaluated": true,
+    "go": true,
+    "conditions": {
+      "selective50_interaction4": {
+        "G1_overall_mae": true,
+        "G2_high_interaction_mae": false,
+        "G3_pair_interaction_error": true,
+        "mae_seed_wins": 2,
+        "high_interaction_seed_wins": 2,
+        "E_pair_seed_wins": 3
+      },
+      "pair_snr": {
+        "G1_overall_mae": true,
+        "G2_high_interaction_mae": true,
+        "G3_pair_interaction_error": true,
+        "mae_seed_wins": 2,
+        "high_interaction_seed_wins": 2,
+        "E_pair_seed_wins": 3
+      }
+    }
+  }
+}

@@ -21,13 +21,14 @@ Conda 环境名为 `kd`，由 Conda 管理在 `/home/wy/sjq/miniconda3/envs/kd`�
 ## 当前状态
 
 已完成数据整理、教师 benchmark500 七子集推理、教师 Probe、学生网络与特征缓存，
-以及 B0–B4、三种子高阶交互对照、权重搜索和 Stage A 可靠性交互诊断。当前单元测试 35/35 通过。
+以及 B0–B4、三种子高阶交互对照、权重搜索和 Stage A v2 确定性可靠性交互诊断。当前单元测试 35/35 通过。
 
-主要结论是：完整知识蒸馏 B1 明显优于仅任务监督 B0；raw interaction4 没有优于
-等维 subset4，但 z-score interaction4 在三种子筛选中取得更低的平均 MAE，Stage A
-工程 gate 通过。当前尚未进行官方 16,326 条训练集的全量学生训练。
+主要结论是：完整知识蒸馏 B1 明显优于仅任务监督 B0；Stage A v2 中 SNR pair-only
+和 selective top50 的三种子平均 MAE 均约为 0.6221，优于 subset4 的 0.6362，工程
+gate 为 Go。当前尚未进行官方 16,326 条训练集的全量学生训练。
 
-完整进展、指标、限制和下一步见 [`docs/实验汇总报告.md`](docs/实验汇总报告.md)。
+完整进展、指标、限制和下一步见 [`docs/实验汇总报告.md`](docs/实验汇总报告.md)，
+正式 19-run 表见 [`project/reports/stage_a_v2_results.md`](project/reports/stage_a_v2_results.md)。
 
 ## GitHub 内容边界
 

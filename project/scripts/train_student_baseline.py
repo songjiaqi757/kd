@@ -68,15 +68,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--reliability-w-max", type=float, default=4.0)
     parser.add_argument("--selective-keep-fraction", type=float, choices=(0.25, 0.5, 0.75), default=0.5)
     parser.add_argument("--coordinate-seed", type=int, default=100)
+    parser.add_argument(
+        "--deterministic",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Use deterministic CUDA algorithms for seed-comparable experiments",
+    )
     return parser.parse_args()
 
 
-def seed_everything(seed: int) -> None:
+def seed_everything(seed: int, deterministic: bool = True) -> None:
+    if deterministic:
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = deterministic
+    torch.use_deterministic_algorithms(deterministic, warn_only=False)
 
 
 class FeatureDataset(Dataset[dict[str, Any]]):
@@ -321,6 +332,19 @@ def aggregate_windows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "prediction": prediction,
                 "classification_logits": logits.tolist(),
                 "window_count": len(items),
+                **(
+                    {
+                        "subset_predictions": {
+                            subset: sum(
+                                float(item["subset_predictions"][subset]) * float(item["aggregation_weight"])
+                                for item in items
+                            ) / denominator
+                            for subset in ("t", "a", "v", "ta", "tv", "av", "tav")
+                        }
+                    }
+                    if "subset_predictions" in items[0]
+                    else {}
+                ),
             }
         )
     return aggregated
@@ -350,7 +374,15 @@ def evaluate(
         weight_sum += batch_weight
         predictions = output["regression"].float().cpu().tolist()
         logits = output["classification_logits"].float().cpu().tolist()
-        for row, prediction, class_logits in zip(batch["rows"], predictions, logits):
+        subset_predictions = (
+            {
+                subset: outputs[subset]["regression"].float().cpu().tolist()
+                for subset in ("t", "a", "v", "ta", "tv", "av", "tav")
+            }
+            if args.method in MULTI_SUBSET_METHODS
+            else None
+        )
+        for item_index, (row, prediction, class_logits) in enumerate(zip(batch["rows"], predictions, logits)):
             records.append(
                 {
                     "sample_id": row["sample_id"],
@@ -361,6 +393,15 @@ def evaluate(
                     "aggregation_weight": float(row["aggregation_weight"]),
                     "prediction": float(prediction),
                     "classification_logits": class_logits,
+                    **(
+                        {
+                            "subset_predictions": {
+                                subset: float(values[item_index]) for subset, values in subset_predictions.items()
+                            }
+                        }
+                        if subset_predictions is not None
+                        else {}
+                    ),
                 }
             )
     utterances = aggregate_windows(records)
@@ -426,7 +467,7 @@ def atomic_save(value: object, path: Path) -> None:
 
 def main() -> int:
     args = parse_args()
-    seed_everything(args.seed)
+    seed_everything(args.seed, args.deterministic)
     device = torch.device(args.device)
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA unavailable")
@@ -576,6 +617,7 @@ def main() -> int:
         "total_parameters": sum(parameter.numel() for parameter in model.parameters()),
         "peak_gpu_memory_gib": round(torch.cuda.max_memory_allocated(device) / 1024**3, 3) if device.type == "cuda" else None,
         "elapsed_seconds": round(time.time() - started, 1),
+        "deterministic_algorithms": args.deterministic,
         "distillation": {
             "enabled": args.method != "student",
             "lambda_full": args.lambda_full,
