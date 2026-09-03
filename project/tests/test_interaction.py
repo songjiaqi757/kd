@@ -7,7 +7,13 @@ import torch
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from rdid_mosei.interaction import inverse_mobius, mobius_transform, random_orthogonal_matrix
+from rdid_mosei.interaction import (
+    inverse_mobius,
+    mobius_matrix,
+    mobius_transform,
+    random_conditioned_matrix,
+    random_orthogonal_matrix,
+)
 
 
 def test_mobius_round_trip_batched() -> None:
@@ -34,3 +40,11 @@ def test_random_coordinate_is_deterministic_and_orthogonal() -> None:
 def test_mobius_rejects_wrong_dimension() -> None:
     with pytest.raises(ValueError, match="seven"):
         mobius_transform(torch.zeros(2, 6), 0.0)
+
+
+def test_random_conditioned_matrix_matches_mobius_condition_number() -> None:
+    matrix = random_conditioned_matrix(seed=100)
+    assert torch.linalg.matrix_rank(matrix).item() == 7
+    assert torch.allclose(
+        torch.linalg.cond(matrix), torch.linalg.cond(mobius_matrix()), rtol=1e-10, atol=1e-10
+    )

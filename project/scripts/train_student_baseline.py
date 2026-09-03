@@ -22,10 +22,18 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.metrics import sentiment_metrics
-from rdid_mosei.interaction import mobius_transform
+from rdid_mosei.interaction import mobius_transform, random_conditioned_matrix, random_orthogonal_matrix
 from rdid_mosei.student import CachedStudentCore
 
-MULTI_SUBSET_METHODS = ("subset_value", "subset_value_4", "mobius_full", "high_order_interaction")
+RELIABILITY_METHODS = (
+    "inverse_variance_interaction4", "snr_interaction4", "selective_interaction4", "pair_snr"
+)
+COORDINATE_METHODS = (
+    "mobius_full", "high_order_interaction", "zscore_interaction4",
+    "inverse_variance_interaction4", "snr_interaction4", "selective_interaction4",
+    "pair_raw", "pair_snr", "triple_raw", "random_orthogonal", "random_nonorthogonal",
+)
+MULTI_SUBSET_METHODS = ("subset_value", "subset_value_4") + COORDINATE_METHODS
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,10 +51,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-workers", type=int, default=2)
     parser.add_argument(
         "--method",
-        choices=("student", "full_kd", "subset_value", "subset_value_4", "mobius_full", "high_order_interaction"),
+        choices=("student", "full_kd", "subset_value", "subset_value_4") + COORDINATE_METHODS,
         default="student",
     )
     parser.add_argument("--teacher-targets", type=Path, default=Path("/home/wy/sjq/kd/outputs/probe/benchmark500/predictions.jsonl"))
+    parser.add_argument("--teacher-targets-ensemble", type=Path, nargs="+", default=None)
     parser.add_argument("--lambda-full", type=float, default=1.0)
     parser.add_argument("--lambda-subset", type=float, default=1.0)
     parser.add_argument("--lambda-coordinate", type=float, default=1.0)
@@ -54,6 +63,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lambda-kd-classification", type=float, default=1.0)
     parser.add_argument("--kd-temperature", type=float, default=2.0)
     parser.add_argument("--teacher-calibration-temperature", type=float, default=0.9259549975395203)
+    parser.add_argument("--reliability-epsilon", type=float, default=1e-4)
+    parser.add_argument("--reliability-w-min", type=float, default=0.25)
+    parser.add_argument("--reliability-w-max", type=float, default=4.0)
+    parser.add_argument("--selective-keep-fraction", type=float, choices=(0.25, 0.5, 0.75), default=0.5)
+    parser.add_argument("--coordinate-seed", type=int, default=100)
     return parser.parse_args()
 
 
@@ -100,6 +114,12 @@ def collate_features(items: list[dict[str, Any]]) -> dict[str, Any]:
         ),
         "teacher_subset_scores": torch.tensor(
             [row.get("teacher_subset_scores", [math.nan] * 7) for row in rows], dtype=torch.float32
+        ),
+        "teacher_interaction_mean": torch.tensor(
+            [row.get("teacher_interaction_mean", [math.nan] * 7) for row in rows], dtype=torch.float32
+        ),
+        "teacher_interaction_var": torch.tensor(
+            [row.get("teacher_interaction_var", [math.nan] * 7) for row in rows], dtype=torch.float32
         ),
         "rows": rows,
     }
@@ -207,7 +227,7 @@ def combined_loss(
             per_subset.append((per_sample * weights).sum() / weights.sum().clamp_min(1e-8))
         subset_value = torch.stack(per_subset).mean()
     coordinate = task.new_zeros(())
-    if args.method in ("mobius_full", "high_order_interaction"):
+    if args.method in COORDINATE_METHODS:
         teacher_subset_scores = batch["teacher_subset_scores"].to(device, non_blocking=True)
         if not torch.isfinite(teacher_subset_scores).all():
             raise ValueError("coordinate batch has missing teacher targets")
@@ -215,14 +235,44 @@ def combined_loss(
             [outputs[subset]["regression"].float() for subset in ("t", "a", "v", "ta", "tv", "av", "tav")],
             dim=-1,
         )
-        student_coordinates = mobius_transform(student_subset_scores, 0.0)
-        teacher_coordinates = mobius_transform(teacher_subset_scores, 0.0)
-        coordinate_indices = slice(None) if args.method == "mobius_full" else slice(3, 7)
-        per_sample_coordinate = F.smooth_l1_loss(
-            student_coordinates[:, coordinate_indices],
-            teacher_coordinates[:, coordinate_indices],
-            reduction="none",
-        ).mean(dim=-1)
+        if args.method in ("random_orthogonal", "random_nonorthogonal"):
+            matrix_builder = random_orthogonal_matrix if args.method == "random_orthogonal" else random_conditioned_matrix
+            matrix = matrix_builder(seed=args.coordinate_seed, dtype=torch.float32).to(device)
+            center = torch.as_tensor(args.coordinate_center, dtype=torch.float32, device=device)
+            student_coordinates = (student_subset_scores - center) @ matrix.T
+            teacher_coordinates = (teacher_subset_scores - center) @ matrix.T
+            coordinate_indices = slice(None)
+        else:
+            student_coordinates = mobius_transform(student_subset_scores, 0.0)
+            teacher_coordinates = mobius_transform(teacher_subset_scores, 0.0)
+            coordinate_indices = {
+                "mobius_full": slice(None), "triple_raw": slice(6, 7),
+                "pair_raw": slice(3, 6), "pair_snr": slice(3, 6),
+            }.get(args.method, slice(3, 7))
+        teacher_target = teacher_coordinates[:, coordinate_indices]
+        if args.method in RELIABILITY_METHODS:
+            teacher_target = batch["teacher_interaction_mean"].to(device, non_blocking=True)[:, coordinate_indices]
+        student_target = student_coordinates[:, coordinate_indices]
+        if args.method == "zscore_interaction4":
+            scale = torch.as_tensor(args.coordinate_scale, dtype=torch.float32, device=device)[coordinate_indices]
+            student_target = student_target / scale
+            teacher_target = teacher_target / scale
+        per_dimension = F.smooth_l1_loss(student_target, teacher_target, reduction="none")
+        if args.method in RELIABILITY_METHODS:
+            variance = batch["teacher_interaction_var"].to(device, non_blocking=True)[:, coordinate_indices]
+            if args.method == "inverse_variance_interaction4":
+                reliability = 1.0 / (variance + args.reliability_epsilon)
+            else:
+                reliability = teacher_target.abs() / (variance.sqrt() + args.reliability_epsilon)
+            if args.method == "selective_interaction4":
+                reliability = (reliability > args.selective_threshold).to(per_dimension.dtype)
+                per_sample_coordinate = (per_dimension * reliability).sum(dim=-1) / reliability.sum(dim=-1).clamp_min(1.0)
+            else:
+                reliability = reliability / reliability.mean(dim=-1, keepdim=True).clamp_min(args.reliability_epsilon)
+                reliability = reliability.clamp(args.reliability_w_min, args.reliability_w_max)
+                per_sample_coordinate = (per_dimension * reliability).mean(dim=-1)
+        else:
+            per_sample_coordinate = per_dimension.mean(dim=-1)
         coordinate = (per_sample_coordinate * weights).sum() / weights.sum().clamp_min(1e-8)
     total = (
         task
@@ -324,13 +374,19 @@ def evaluate(
     return metrics, weighted_loss_sum / weight_sum, records
 
 
-def attach_teacher_targets(rows: list[dict[str, Any]], path: Path) -> None:
+def load_teacher_targets(path: Path) -> dict[str, dict[str, dict]]:
     targets: dict[str, dict[str, dict]] = defaultdict(dict)
     for line in path.read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue
         item = json.loads(line)
         targets[str(item["parent_sample_id"])][str(item["subset"])] = item
+    return targets
+
+
+def attach_teacher_targets(rows: list[dict[str, Any]], path: Path, ensemble_paths: list[Path] | None = None) -> None:
+    targets = load_teacher_targets(path)
+    ensembles = [load_teacher_targets(item) for item in (ensemble_paths or [])]
     missing = []
     for row in rows:
         items = targets.get(str(row["parent_sample_id"]))
@@ -345,6 +401,19 @@ def attach_teacher_targets(rows: list[dict[str, Any]], path: Path) -> None:
         row["teacher_subset_scores"] = [
             float(items[subset]["probe_score"]) for subset in ("t", "a", "v", "ta", "tv", "av", "tav")
         ]
+        if ensembles:
+            probe_subset_scores = []
+            for ensemble in ensembles:
+                ensemble_items = ensemble.get(str(row["parent_sample_id"]))
+                if ensemble_items is None or set(ensemble_items) != {"t", "a", "v", "ta", "tv", "av", "tav"}:
+                    raise RuntimeError(f"incomplete ensemble targets for {row['parent_sample_id']}")
+                probe_subset_scores.append(torch.tensor([
+                    float(ensemble_items[subset]["probe_score"])
+                    for subset in ("t", "a", "v", "ta", "tv", "av", "tav")
+                ]))
+            interactions = mobius_transform(torch.stack(probe_subset_scores), 0.0)
+            row["teacher_interaction_mean"] = interactions.mean(dim=0).tolist()
+            row["teacher_interaction_var"] = interactions.var(dim=0, unbiased=True).tolist()
     if missing:
         raise RuntimeError(f"missing complete teacher subset targets for {len(set(missing))} utterances")
 
@@ -370,11 +439,27 @@ def main() -> int:
         raise RuntimeError(f"missing {len(missing)} cached feature files")
     add_window_weights(rows)
     if args.method != "student":
-        attach_teacher_targets(rows, args.teacher_targets)
+        attach_teacher_targets(rows, args.teacher_targets, args.teacher_targets_ensemble)
     train_rows = [row for row in rows if row["split"] == "train"]
     valid_rows = [row for row in rows if row["split"] == "valid"]
     if not train_rows or not valid_rows:
         raise RuntimeError("official train and validation splits are both required")
+    if args.method != "student":
+        teacher_train_subsets = torch.tensor([row["teacher_subset_scores"] for row in train_rows], dtype=torch.float32)
+        args.coordinate_center = teacher_train_subsets.mean(dim=0).tolist()
+        args.coordinate_scale = mobius_transform(teacher_train_subsets, 0.0).std(dim=0, unbiased=True).clamp_min(1e-6).tolist()
+    else:
+        args.coordinate_center = [0.0] * 7
+        args.coordinate_scale = [1.0] * 7
+    if args.method in RELIABILITY_METHODS:
+        if not args.teacher_targets_ensemble or len(args.teacher_targets_ensemble) < 2:
+            raise ValueError(f"{args.method} requires at least two --teacher-targets-ensemble files")
+        means = torch.tensor([row["teacher_interaction_mean"] for row in train_rows])[:, 3:7]
+        variances = torch.tensor([row["teacher_interaction_var"] for row in train_rows])[:, 3:7]
+        snr = means.abs() / (variances.sqrt() + args.reliability_epsilon)
+        args.selective_threshold = float(torch.quantile(snr.flatten(), 1.0 - args.selective_keep_fraction))
+    else:
+        args.selective_threshold = None
 
     generator = torch.Generator().manual_seed(args.seed)
     loader_kwargs = {
@@ -467,6 +552,15 @@ def main() -> int:
             "subset_value_4": "C_subset_4_equal_dimension",
             "mobius_full": "B3_full_mobius_7",
             "high_order_interaction": "B4_high_order_interaction",
+            "zscore_interaction4": "A3_zscore_interaction4",
+            "inverse_variance_interaction4": "A4_inverse_variance_interaction4",
+            "snr_interaction4": "A5_snr_interaction4",
+            "selective_interaction4": "A6_selective_interaction4",
+            "pair_raw": "A7_pair_only_raw",
+            "pair_snr": "A7_pair_only_snr",
+            "triple_raw": "A8_triple_only_raw",
+            "random_orthogonal": "A9_random_orthogonal",
+            "random_nonorthogonal": "A10_random_nonorthogonal",
         }[args.method],
         "seed": args.seed,
         "best_epoch": best_epoch,
@@ -492,8 +586,12 @@ def main() -> int:
             "teacher_targets": str(args.teacher_targets) if args.method != "student" else None,
             "lambda_subset": args.lambda_subset if args.method in ("subset_value", "subset_value_4") else 0.0,
             "subset_dimensions": 7 if args.method == "subset_value" else (4 if args.method == "subset_value_4" else 0),
-            "lambda_coordinate": args.lambda_coordinate if args.method in ("mobius_full", "high_order_interaction") else 0.0,
-            "coordinate_dimensions": 7 if args.method == "mobius_full" else (4 if args.method == "high_order_interaction" else 0),
+            "lambda_coordinate": args.lambda_coordinate if args.method in COORDINATE_METHODS else 0.0,
+            "coordinate_dimensions": 7 if args.method in ("mobius_full", "random_orthogonal", "random_nonorthogonal") else (3 if args.method in ("pair_raw", "pair_snr") else (1 if args.method == "triple_raw" else (4 if args.method in COORDINATE_METHODS else 0))),
+            "coordinate_seed": args.coordinate_seed if args.method in ("random_orthogonal", "random_nonorthogonal") else None,
+            "selective_keep_fraction": args.selective_keep_fraction if args.method == "selective_interaction4" else None,
+            "selective_threshold": args.selective_threshold,
+            "teacher_targets_ensemble": [str(path) for path in args.teacher_targets_ensemble] if args.teacher_targets_ensemble else None,
         },
     }
     (args.output / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
