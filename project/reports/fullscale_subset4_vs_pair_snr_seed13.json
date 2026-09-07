@@ -1,0 +1,94 @@
+{
+  "comparison": "SNR pair-only minus subset4; negative MAE delta favors SNR pair-only",
+  "run_seed": 13,
+  "split": "official valid",
+  "samples": 1871,
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 2026,
+  "paired_absolute_error": {
+    "samples": 1871,
+    "baseline_mae": 0.5140501869348084,
+    "candidate_mae": 0.5090449742251064,
+    "candidate_minus_baseline_mae": -0.0050052127097019875,
+    "delta_ci95": {
+      "low": -0.016003869865323993,
+      "high": 0.006122529830141694
+    },
+    "two_sided_centered_bootstrap_p_value": 0.3668633136686331,
+    "paired_effect_size_dz": -0.020764266035609307,
+    "bootstrap_probability_candidate_better": 0.8108
+  },
+  "interaction_strength": {
+    "definition": "sum(abs(teacher interaction mean)) over ta,tv,av,tav",
+    "tertile_cuts": [
+      1.3766553550958633,
+      2.2509849717219663
+    ],
+    "groups": {
+      "low": {
+        "count": 624,
+        "baseline_mae": 0.45743013894519746,
+        "candidate_mae": 0.47434324269684464,
+        "candidate_minus_baseline_mae": 0.016913103751647167
+      },
+      "middle": {
+        "count": 623,
+        "baseline_mae": 0.4791790271121082,
+        "candidate_mae": 0.4739915564249645,
+        "candidate_minus_baseline_mae": -0.005187470687143681
+      },
+      "high": {
+        "count": 624,
+        "baseline_mae": 0.605485511478173,
+        "candidate_mae": 0.5787439482044715,
+        "candidate_minus_baseline_mae": -0.0267415632737015
+      }
+    }
+  },
+  "teacher_uncertainty": {
+    "definition": "mean teacher interaction variance over ta,tv,av,tav",
+    "tertile_cuts": [
+      0.010704789853965243,
+      0.021232500206679106
+    ],
+    "groups": {
+      "low": {
+        "count": 624,
+        "baseline_mae": 0.46066342787073905,
+        "candidate_mae": 0.4656805108364624,
+        "candidate_minus_baseline_mae": 0.005017082965723394
+      },
+      "middle": {
+        "count": 623,
+        "baseline_mae": 0.5103151195743876,
+        "candidate_mae": 0.511390365743905,
+        "candidate_minus_baseline_mae": 0.0010752461695173593
+      },
+      "high": {
+        "count": 624,
+        "baseline_mae": 0.5711660276744261,
+        "candidate_mae": 0.5500678047352064,
+        "candidate_minus_baseline_mae": -0.021098222939219757
+      }
+    }
+  },
+  "interaction_reconstruction_mae": {
+    "subset4": {
+      "ta": 0.5992204619040193,
+      "tv": 0.31166526495645425,
+      "av": 0.3140350857428586,
+      "tav": 0.3271026561222613
+    },
+    "snr_pair_only": {
+      "ta": 0.3232365084917622,
+      "tv": 0.22481658577543276,
+      "av": 0.2305000437323199,
+      "tav": 0.5193666816698495
+    }
+  },
+  "inputs": {
+    "baseline": "outputs/student/fullscale_subset4_seed13/predictions.jsonl",
+    "candidate": "outputs/student/fullscale_pair_snr_seed13/predictions.jsonl",
+    "teacher_reliability": "outputs/probe/official_train_valid_interaction_reliability.jsonl"
+  }
+}

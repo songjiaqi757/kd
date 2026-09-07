@@ -1,0 +1,60 @@
+{
+  "split": "valid",
+  "samples": 1871,
+  "repetitions": 10000,
+  "seed": 2026,
+  "baseline": "outputs/student/fullscale_subset4_seed42/predictions.jsonl",
+  "candidate": "outputs/student/fullscale_pair_snr_seed42/predictions.jsonl",
+  "comparison": {
+    "mae": {
+      "baseline": 0.5063345929937886,
+      "candidate": 0.5070105012669073,
+      "candidate_minus_baseline": 0.0006759082731186972,
+      "delta_ci95": {
+        "low": -0.010547421767668805,
+        "high": 0.01202314895229007
+      },
+      "bootstrap_probability_candidate_better": 0.4575
+    },
+    "pearson": {
+      "baseline": 0.7407987288756488,
+      "candidate": 0.7404624843591571,
+      "candidate_minus_baseline": -0.0003362445164917238,
+      "delta_ci95": {
+        "low": -0.014884632061492018,
+        "high": 0.014149883982387725
+      },
+      "bootstrap_probability_candidate_better": 0.489
+    },
+    "acc2_nonzero": {
+      "baseline": 0.8560500695410292,
+      "candidate": 0.8435326842837274,
+      "candidate_minus_baseline": -0.012517385257301838,
+      "delta_ci95": {
+        "low": -0.026779894261935795,
+        "high": 0.0014154532277175665
+      },
+      "bootstrap_probability_candidate_better": 0.0389
+    },
+    "f1_weighted_nonzero": {
+      "baseline": 0.8547195923246155,
+      "candidate": 0.8436378012549219,
+      "candidate_minus_baseline": -0.011081791069693536,
+      "delta_ci95": {
+        "low": -0.025402664462486204,
+        "high": 0.0032786455550068492
+      },
+      "bootstrap_probability_candidate_better": 0.0637
+    },
+    "acc7": {
+      "baseline": 0.5483698556921432,
+      "candidate": 0.5542490646712988,
+      "candidate_minus_baseline": 0.0058792089791555036,
+      "delta_ci95": {
+        "low": -0.011758417958311007,
+        "high": 0.023516835916622125
+      },
+      "bootstrap_probability_candidate_better": 0.7385
+    }
+  }
+}

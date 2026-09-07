@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import shutil
@@ -32,6 +33,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-duration", type=float, default=30.0)
     parser.add_argument("--overlap", type=float, default=5.0)
+    parser.add_argument(
+        "--splits",
+        nargs="+",
+        choices=("train", "valid", "test"),
+        help="Optionally retain only these official splits before windowing",
+    )
     parser.add_argument("--force", action="store_true")
     return parser.parse_args()
 
@@ -114,6 +121,9 @@ def write_video_window(source: Path, target: Path, start: float, end: float) -> 
 def main() -> int:
     args = parse_args()
     rows = [json.loads(line) for line in args.manifest.read_text(encoding="utf-8").splitlines() if line]
+    if args.splits:
+        selected_splits = set(args.splits)
+        rows = [row for row in rows if row["split"] in selected_splits]
     args.media_dir.mkdir(parents=True, exist_ok=True)
     output_rows: list[dict[str, object]] = []
     long_samples = 0
@@ -143,7 +153,10 @@ def main() -> int:
             item["duration"] = end - start
             if is_windowed:
                 item["sample_id"] = f"{row['sample_id']}::w{index:02d}"
-                stem = f"{row['video_id']}__{row['label_clip_index']}__w{index:02d}"
+                clip_index = row.get("label_clip_index", row.get("clip_index"))
+                if clip_index is None:
+                    raise KeyError("windowed manifest row requires label_clip_index or clip_index")
+                stem = f"{row['video_id']}__{clip_index}__w{index:02d}"
                 video_target = args.media_dir / f"{stem}.silent.mp4"
                 audio_target = args.media_dir / f"{stem}.wav"
                 if args.force or not video_target.is_file():
@@ -158,12 +171,18 @@ def main() -> int:
     with args.output_manifest.open("w", encoding="utf-8") as handle:
         for row in output_rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+    digest = hashlib.sha256(args.output_manifest.read_bytes()).hexdigest()
+    args.output_manifest.with_suffix(args.output_manifest.suffix + ".sha256").write_text(
+        f"{digest}  {args.output_manifest.name}\n", encoding="utf-8"
+    )
     print(
         json.dumps(
             {
                 "input_samples": len(rows),
                 "long_samples": long_samples,
                 "output_units": len(output_rows),
+                "splits": sorted({str(row["split"]) for row in output_rows}),
+                "sha256": digest,
                 "output_manifest": str(args.output_manifest),
             },
             ensure_ascii=False,

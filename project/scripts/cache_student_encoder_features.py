@@ -115,7 +115,7 @@ def main() -> int:
     )
     shapes = torch.load(index_rows[0]["feature_path"], map_location="cpu", weights_only=True)
     config = {
-        "status": "complete" if len(rows) == 521 else "limited",
+        "status": "complete" if args.limit is None else "limited",
         "manifest": str(args.manifest),
         "manifest_sha256": sha256(args.manifest),
         "count": len(rows),

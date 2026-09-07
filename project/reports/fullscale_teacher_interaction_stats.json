@@ -1,0 +1,58 @@
+{
+  "samples": 18197,
+  "probe_count": 3,
+  "split_counts": {
+    "train": 16326,
+    "valid": 1871
+  },
+  "pair_mean_probe_variance": 0.022968731219354742,
+  "triple_mean_probe_variance": 0.031639703286914574,
+  "triple_to_pair_variance_ratio": 1.3775120177405875,
+  "triple_variance_higher_than_each_pair": true,
+  "interactions": {
+    "ta": {
+      "mean": -0.1789358479639757,
+      "std": 0.923549480777155,
+      "median": -0.3281780729691188,
+      "mean_absolute_interaction": 0.7401299598892698,
+      "mean_probe_variance": 0.01863262121395019,
+      "p90_probe_variance": 0.04248919751158126,
+      "sign_agreement": 0.918503049953289,
+      "mean_snr": 9.187532158033484,
+      "median_snr": 5.547220237218276
+    },
+    "tv": {
+      "mean": -0.13535363239633114,
+      "std": 0.4712557931866341,
+      "median": -0.2481815218925476,
+      "mean_absolute_interaction": 0.4201449856139774,
+      "mean_probe_variance": 0.02591902170077675,
+      "p90_probe_variance": 0.061571806093561075,
+      "sign_agreement": 0.8687695774028686,
+      "mean_snr": 5.315120595941449,
+      "median_snr": 3.2381406996285156
+    },
+    "av": {
+      "mean": -0.18873228524097843,
+      "std": 0.44703434522594426,
+      "median": -0.29608843723932904,
+      "mean_absolute_interaction": 0.4234059525323601,
+      "mean_probe_variance": 0.024354550743337273,
+      "p90_probe_variance": 0.056023225658114954,
+      "sign_agreement": 0.8730559982414684,
+      "mean_snr": 5.615948212561322,
+      "median_snr": 3.4896483718870632
+    },
+    "tav": {
+      "mean": 0.16717989555804072,
+      "std": 0.4875287955341076,
+      "median": 0.2564973433812459,
+      "mean_absolute_interaction": 0.43613108739162,
+      "mean_probe_variance": 0.031639703286914574,
+      "p90_probe_variance": 0.0771274426953281,
+      "sign_agreement": 0.8470077485299775,
+      "mean_snr": 4.915674966165743,
+      "median_snr": 3.0178454793374887
+    }
+  }
+}

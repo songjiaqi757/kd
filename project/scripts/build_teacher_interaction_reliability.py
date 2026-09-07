@@ -19,6 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Aggregate probe-seed interaction means and variances")
     parser.add_argument("inputs", type=Path, nargs="+")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--epsilon", type=float, default=1e-4)
     return parser.parse_args()
 
 
@@ -50,12 +51,15 @@ def main() -> int:
         stacked = torch.stack(interactions)
         mean = stacked.mean(dim=0)
         variance = stacked.var(dim=0, unbiased=True)
+        snr = mean.abs() / (variance.sqrt() + args.epsilon)
         output_rows.append({
             "sample_id": sample_id,
             "split": probes[0][sample_id]["tav"]["split"],
             "probe_seeds": [path.parent.name for path in args.inputs],
             "interaction_mean": {name: float(value) for name, value in zip(SUBSET_NAMES, mean)},
             "interaction_var": {name: float(value) for name, value in zip(SUBSET_NAMES, variance)},
+            "interaction_snr": {name: float(value) for name, value in zip(SUBSET_NAMES, snr)},
+            "snr_epsilon": args.epsilon,
         })
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:
