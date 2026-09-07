@@ -4,9 +4,15 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
+
+from rdid_mosei.metrics import sentiment_metrics
 
 
 INTERACTIONS = ("ta", "tv", "av", "tav")
@@ -85,20 +91,35 @@ def paired_error_test(
 
 
 def subgroup_rows(
-    baseline_error: dict[str, float],
-    candidate_error: dict[str, float],
+    baseline: dict[str, dict],
+    candidate: dict[str, dict],
     labels: dict[str, str],
 ) -> dict[str, dict]:
     result = {}
     for level in LEVELS:
-        selected = [sample_id for sample_id in baseline_error if labels[sample_id] == level]
-        left = np.asarray([baseline_error[sample_id] for sample_id in selected])
-        right = np.asarray([candidate_error[sample_id] for sample_id in selected])
+        selected = [sample_id for sample_id in baseline if labels[sample_id] == level]
+        targets = [float(baseline[sample_id]["target_sentiment"]) for sample_id in selected]
+        baseline_metrics = sentiment_metrics(
+            targets, [float(baseline[sample_id]["prediction"]) for sample_id in selected]
+        )
+        candidate_metrics = sentiment_metrics(
+            targets, [float(candidate[sample_id]["prediction"]) for sample_id in selected]
+        )
         result[level] = {
             "count": len(selected),
-            "baseline_mae": float(left.mean()),
-            "candidate_mae": float(right.mean()),
-            "candidate_minus_baseline_mae": float((right - left).mean()),
+            **{
+                f"baseline_{name}": float(baseline_metrics[name])
+                for name in ("mae", "pearson", "acc2_nonzero")
+            },
+            **{
+                f"candidate_{name}": float(candidate_metrics[name])
+                for name in ("mae", "pearson", "acc2_nonzero")
+            },
+            **{
+                f"candidate_minus_baseline_{name}":
+                float(candidate_metrics[name]) - float(baseline_metrics[name])
+                for name in ("mae", "pearson", "acc2_nonzero")
+            },
         }
     return result
 
@@ -170,12 +191,12 @@ def main() -> int:
         "interaction_strength": {
             "definition": "sum(abs(teacher interaction mean)) over ta,tv,av,tav",
             "tertile_cuts": strength_cuts,
-            "groups": subgroup_rows(baseline_error, candidate_error, strength_labels),
+            "groups": subgroup_rows(baseline, candidate, strength_labels),
         },
         "teacher_uncertainty": {
             "definition": "mean teacher interaction variance over ta,tv,av,tav",
             "tertile_cuts": uncertainty_cuts,
-            "groups": subgroup_rows(baseline_error, candidate_error, uncertainty_labels),
+            "groups": subgroup_rows(baseline, candidate, uncertainty_labels),
         },
         "interaction_reconstruction_mae": {
             "subset4": interaction_errors(baseline, teacher),
@@ -208,14 +229,16 @@ def main() -> int:
         lines += [
             f"## {title}", "",
             f"tertile 切点：{item['tertile_cuts'][0]:.6f}、{item['tertile_cuts'][1]:.6f}。", "",
-            "| 分组 | N | subset4 MAE | SNR pair-only MAE | 差值 |",
-            "|---|---:|---:|---:|---:|",
+            "| 分组 | N | subset4 MAE | SNR MAE | ΔMAE | subset4 Pearson | SNR Pearson | subset4 Acc-2 | SNR Acc-2 |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
         ]
         for level in LEVELS:
             row = item["groups"][level]
             lines.append(
                 f"| {level} | {row['count']} | {row['baseline_mae']:.6f} | "
-                f"{row['candidate_mae']:.6f} | {row['candidate_minus_baseline_mae']:+.6f} |"
+                f"{row['candidate_mae']:.6f} | {row['candidate_minus_baseline_mae']:+.6f} | "
+                f"{row['baseline_pearson']:.6f} | {row['candidate_pearson']:.6f} | "
+                f"{row['baseline_acc2_nonzero']:.6f} | {row['candidate_acc2_nonzero']:.6f} |"
             )
         lines.append("")
     lines += [
@@ -227,7 +250,7 @@ def main() -> int:
         lines.append(f"| {title} | {row['ta']:.6f} | {row['tv']:.6f} | {row['av']:.6f} | {row['tav']:.6f} |")
     lines += [
         "", "## 解释", "",
-        "该报告仅基于 seed 42。置信区间或 p 值不能替代跨训练随机种子的稳定性检验。", "",
+        f"该报告仅基于训练 seed {args.run_seed}。置信区间或 p 值不能替代跨训练随机种子的稳定性检验。", "",
     ]
     args.output_markdown.write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps({"json": str(args.output_json), "markdown": str(args.output_markdown)}, ensure_ascii=False))

@@ -66,6 +66,16 @@ def main() -> int:
             ] for row in per_seed
         ])
         aggregate[method]["E_pair"] = mean_std([row["E_pair"][method] for row in per_seed])
+        group_key = "baseline" if method == "subset4" else "candidate"
+        for axis, source in (
+            ("interaction_strength", "interaction_strength_groups"),
+            ("uncertainty", "teacher_uncertainty_groups"),
+        ):
+            for level in ("low", "middle", "high"):
+                for metric in ("mae", "pearson", "acc2_nonzero"):
+                    aggregate[method][f"{axis}_{level}_{metric}"] = mean_std([
+                        row[source][level][f"{group_key}_{metric}"] for row in per_seed
+                    ])
 
     delta_summary = {
         metric: mean_std([row["delta_snr_minus_subset4"][metric] for row in per_seed])
@@ -137,6 +147,19 @@ def main() -> int:
             f"{pm(item['f1_weighted_nonzero'])} | {pm(item['acc7'])} | "
             f"{pm(item['interaction_strength_high_mae'])} | {pm(item['uncertainty_high_mae'])} | {pm(item['E_pair'])} |"
         )
+    for axis, title in (("interaction_strength", "教师交互强度 tertile"), ("uncertainty", "教师不确定性 tertile")):
+        lines += [
+            "", f"## {title}（三 seed mean ± sample std）", "",
+            "| 分组 | 方法 | MAE | Pearson | Acc-2 |",
+            "|---|---|---:|---:|---:|",
+        ]
+        for level in ("low", "middle", "high"):
+            for method, method_title in (("subset4", "subset4"), ("snr_pair_only", "SNR pair-only")):
+                item = aggregate[method]
+                lines.append(
+                    f"| {level} | {method_title} | {pm(item[f'{axis}_{level}_mae'])} | "
+                    f"{pm(item[f'{axis}_{level}_pearson'])} | {pm(item[f'{axis}_{level}_acc2_nonzero'])} |"
+                )
     lines += [
         "", "## 判定", "",
         f"- 总体 MAE：SNR pair-only 获胜 {mae_wins}/3 seeds，G1 = `{str(gates['G1_overall_mae']).lower()}`。",

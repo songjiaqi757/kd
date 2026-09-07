@@ -43,40 +43,76 @@
         "low": {
           "count": 624,
           "baseline_mae": 0.45743013894519746,
+          "baseline_pearson": 0.4715598710715834,
+          "baseline_acc2_nonzero": 0.7383863080684596,
           "candidate_mae": 0.47434324269684464,
-          "candidate_minus_baseline_mae": 0.016913103751647167
+          "candidate_pearson": 0.4617619024735126,
+          "candidate_acc2_nonzero": 0.7237163814180929,
+          "candidate_minus_baseline_mae": 0.016913103751647174,
+          "candidate_minus_baseline_pearson": -0.009797968598070805,
+          "candidate_minus_baseline_acc2_nonzero": -0.014669926650366705
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.4791790271121082,
+          "baseline_pearson": 0.677793954992898,
+          "baseline_acc2_nonzero": 0.8402625820568927,
           "candidate_mae": 0.4739915564249645,
-          "candidate_minus_baseline_mae": -0.005187470687143681
+          "candidate_pearson": 0.6799924669185585,
+          "candidate_acc2_nonzero": 0.8533916849015317,
+          "candidate_minus_baseline_mae": -0.005187470687143703,
+          "candidate_minus_baseline_pearson": 0.0021985119256605623,
+          "candidate_minus_baseline_acc2_nonzero": 0.013129102844638973
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.605485511478173,
+          "baseline_pearson": 0.8177396756242671,
+          "baseline_acc2_nonzero": 0.951048951048951,
           "candidate_mae": 0.5787439482044715,
-          "candidate_minus_baseline_mae": -0.0267415632737015
+          "candidate_pearson": 0.8238221520633132,
+          "candidate_acc2_nonzero": 0.9493006993006993,
+          "candidate_minus_baseline_mae": -0.026741563273701474,
+          "candidate_minus_baseline_pearson": 0.006082476439046136,
+          "candidate_minus_baseline_acc2_nonzero": -0.0017482517482517723
         }
       },
       "teacher_uncertainty_groups": {
         "low": {
           "count": 624,
           "baseline_mae": 0.46066342787073905,
+          "baseline_pearson": 0.6355012748726204,
+          "baseline_acc2_nonzero": 0.832258064516129,
           "candidate_mae": 0.4656805108364624,
-          "candidate_minus_baseline_mae": 0.005017082965723394
+          "candidate_pearson": 0.6384822456409387,
+          "candidate_acc2_nonzero": 0.8279569892473119,
+          "candidate_minus_baseline_mae": 0.005017082965723341,
+          "candidate_minus_baseline_pearson": 0.0029809707683182696,
+          "candidate_minus_baseline_acc2_nonzero": -0.004301075268817178
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.5103151195743876,
+          "baseline_pearson": 0.6570803100994032,
+          "baseline_acc2_nonzero": 0.832258064516129,
           "candidate_mae": 0.511390365743905,
-          "candidate_minus_baseline_mae": 0.0010752461695173593
+          "candidate_pearson": 0.6584327933184543,
+          "candidate_acc2_nonzero": 0.8365591397849462,
+          "candidate_minus_baseline_mae": 0.0010752461695173743,
+          "candidate_minus_baseline_pearson": 0.001352483219051126,
+          "candidate_minus_baseline_acc2_nonzero": 0.004301075268817178
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.5711660276744261,
+          "baseline_pearson": 0.8140401613728667,
+          "baseline_acc2_nonzero": 0.8976377952755905,
           "candidate_mae": 0.5500678047352064,
-          "candidate_minus_baseline_mae": -0.021098222939219757
+          "candidate_pearson": 0.8200999287279501,
+          "candidate_acc2_nonzero": 0.8956692913385826,
+          "candidate_minus_baseline_mae": -0.021098222939219702,
+          "candidate_minus_baseline_pearson": 0.006059767355083401,
+          "candidate_minus_baseline_acc2_nonzero": -0.0019685039370078705
         }
       },
       "interaction_reconstruction_mae": {
@@ -135,40 +171,76 @@
         "low": {
           "count": 624,
           "baseline_mae": 0.4539318540826058,
+          "baseline_pearson": 0.42905363359495546,
+          "baseline_acc2_nonzero": 0.7163814180929096,
           "candidate_mae": 0.45882954376821333,
-          "candidate_minus_baseline_mae": 0.0048976896856075675
+          "candidate_pearson": 0.4533554354831267,
+          "candidate_acc2_nonzero": 0.6968215158924206,
+          "candidate_minus_baseline_mae": 0.004897689685607554,
+          "candidate_minus_baseline_pearson": 0.024301801888171215,
+          "candidate_minus_baseline_acc2_nonzero": -0.019559902200488977
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.4900473870253295,
+          "baseline_pearson": 0.6539153939347585,
+          "baseline_acc2_nonzero": 0.8599562363238512,
           "candidate_mae": 0.48443678937505563,
-          "candidate_minus_baseline_mae": -0.005610597650273844
+          "candidate_pearson": 0.6640998227646903,
+          "candidate_acc2_nonzero": 0.849015317286652,
+          "candidate_minus_baseline_mae": -0.005610597650273885,
+          "candidate_minus_baseline_pearson": 0.010184428829931758,
+          "candidate_minus_baseline_acc2_nonzero": -0.010940919037199182
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.5749984365818145,
+          "baseline_pearson": 0.8216402702490427,
+          "baseline_acc2_nonzero": 0.9527972027972028,
           "candidate_mae": 0.5777289948371134,
-          "candidate_minus_baseline_mae": 0.0027305582552989583
+          "candidate_pearson": 0.8173302547130585,
+          "candidate_acc2_nonzero": 0.9440559440559441,
+          "candidate_minus_baseline_mae": 0.002730558255298887,
+          "candidate_minus_baseline_pearson": -0.004310015535984202,
+          "candidate_minus_baseline_acc2_nonzero": -0.00874125874125875
         }
       },
       "teacher_uncertainty_groups": {
         "low": {
           "count": 624,
           "baseline_mae": 0.45671921175158997,
+          "baseline_pearson": 0.6242317205148867,
+          "baseline_acc2_nonzero": 0.8301075268817204,
           "candidate_mae": 0.4517865141157081,
-          "candidate_minus_baseline_mae": -0.004932697635881866
+          "candidate_pearson": 0.6295325707916225,
+          "candidate_acc2_nonzero": 0.832258064516129,
+          "candidate_minus_baseline_mae": -0.004932697635881889,
+          "candidate_minus_baseline_pearson": 0.005300850276735769,
+          "candidate_minus_baseline_acc2_nonzero": 0.0021505376344086446
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.49878785155271066,
+          "baseline_pearson": 0.6497315432191438,
+          "baseline_acc2_nonzero": 0.8408602150537634,
           "candidate_mae": 0.520072771855189,
-          "candidate_minus_baseline_mae": 0.021284920302478305
+          "candidate_pearson": 0.6425744299772367,
+          "candidate_acc2_nonzero": 0.8129032258064516,
+          "candidate_minus_baseline_mae": 0.021284920302478305,
+          "candidate_minus_baseline_pearson": -0.007157113241907154,
+          "candidate_minus_baseline_acc2_nonzero": -0.027956989247311825
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.5634846215401403,
+          "baseline_pearson": 0.8128086713992826,
+          "baseline_acc2_nonzero": 0.8937007874015748,
           "candidate_mae": 0.5491931509557676,
-          "candidate_minus_baseline_mae": -0.014291470584372811
+          "candidate_pearson": 0.812153884100452,
+          "candidate_acc2_nonzero": 0.8818897637795275,
+          "candidate_minus_baseline_mae": -0.014291470584372745,
+          "candidate_minus_baseline_pearson": -0.0006547872988306169,
+          "candidate_minus_baseline_acc2_nonzero": -0.011811023622047223
         }
       },
       "interaction_reconstruction_mae": {
@@ -227,40 +299,76 @@
         "low": {
           "count": 624,
           "baseline_mae": 0.4714758431968781,
+          "baseline_pearson": 0.46004301972945744,
+          "baseline_acc2_nonzero": 0.7432762836185819,
           "candidate_mae": 0.45452957786619663,
-          "candidate_minus_baseline_mae": -0.016946265330681436
+          "candidate_pearson": 0.47553220046898886,
+          "candidate_acc2_nonzero": 0.7432762836185819,
+          "candidate_minus_baseline_mae": -0.016946265330681443,
+          "candidate_minus_baseline_pearson": 0.015489180739531427,
+          "candidate_minus_baseline_acc2_nonzero": 0.0
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.4623624742939996,
+          "baseline_pearson": 0.7007068056625333,
+          "baseline_acc2_nonzero": 0.8577680525164114,
           "candidate_mae": 0.474097597010637,
-          "candidate_minus_baseline_mae": 0.011735122716637332
+          "candidate_pearson": 0.6597367949392264,
+          "candidate_acc2_nonzero": 0.8665207877461707,
+          "candidate_minus_baseline_mae": 0.011735122716637347,
+          "candidate_minus_baseline_pearson": -0.04097001072330686,
+          "candidate_minus_baseline_acc2_nonzero": 0.008752735229759279
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.5803839343292279,
+          "baseline_pearson": 0.8280939402627011,
+          "baseline_acc2_nonzero": 0.951048951048951,
           "candidate_mae": 0.5996082467900451,
-          "candidate_minus_baseline_mae": 0.0192243124608172
+          "candidate_pearson": 0.8061123281254376,
+          "candidate_acc2_nonzero": 0.9405594405594405,
+          "candidate_minus_baseline_mae": 0.01922431246081724,
+          "candidate_minus_baseline_pearson": -0.021981612137263462,
+          "candidate_minus_baseline_acc2_nonzero": -0.010489510489510523
         }
       },
       "teacher_uncertainty_groups": {
         "low": {
           "count": 624,
           "baseline_mae": 0.45585259859858657,
+          "baseline_pearson": 0.6410480716626498,
+          "baseline_acc2_nonzero": 0.8408602150537634,
           "candidate_mae": 0.4612099593672791,
-          "candidate_minus_baseline_mae": 0.00535736076869259
+          "candidate_pearson": 0.6016142135214282,
+          "candidate_acc2_nonzero": 0.8494623655913979,
+          "candidate_minus_baseline_mae": 0.005357360768692532,
+          "candidate_minus_baseline_pearson": -0.03943385814122158,
+          "candidate_minus_baseline_acc2_nonzero": 0.008602150537634468
         },
         "middle": {
           "count": 623,
           "baseline_mae": 0.51607295198674,
+          "baseline_pearson": 0.6588143122515762,
+          "baseline_acc2_nonzero": 0.832258064516129,
           "candidate_mae": 0.5030923885910699,
-          "candidate_minus_baseline_mae": -0.0129805633956701
+          "candidate_pearson": 0.6494386874345123,
+          "candidate_acc2_nonzero": 0.832258064516129,
+          "candidate_minus_baseline_mae": -0.012980563395670108,
+          "candidate_minus_baseline_pearson": -0.009375624817063888,
+          "candidate_minus_baseline_acc2_nonzero": 0.0
         },
         "high": {
           "count": 624,
           "baseline_mae": 0.542382775718261,
+          "baseline_pearson": 0.8276689715899527,
+          "baseline_acc2_nonzero": 0.9094488188976378,
           "candidate_mae": 0.5639795397206777,
-          "candidate_minus_baseline_mae": 0.02159676400241678
+          "candidate_pearson": 0.8055384962360085,
+          "candidate_acc2_nonzero": 0.8976377952755905,
+          "candidate_minus_baseline_mae": 0.021596764002416724,
+          "candidate_minus_baseline_pearson": -0.02213047535394419,
+          "candidate_minus_baseline_acc2_nonzero": -0.011811023622047334
         }
       },
       "interaction_reconstruction_mae": {
@@ -316,6 +424,70 @@
       "E_pair": {
         "mean": 0.39052885804515836,
         "sample_standard_deviation": 0.017141570323688664
+      },
+      "interaction_strength_low_mae": {
+        "mean": 0.4609459454082271,
+        "sample_standard_deviation": 0.00928539497407283
+      },
+      "interaction_strength_low_pearson": {
+        "mean": 0.45355217479866544,
+        "sample_standard_deviation": 0.021983934066530583
+      },
+      "interaction_strength_low_acc2_nonzero": {
+        "mean": 0.732681336593317,
+        "sample_standard_deviation": 0.014326320970861377
+      },
+      "interaction_strength_middle_mae": {
+        "mean": 0.4771962961438124,
+        "sample_standard_deviation": 0.013948548842256575
+      },
+      "interaction_strength_middle_pearson": {
+        "mean": 0.6774720515300633,
+        "sample_standard_deviation": 0.023397366716130123
+      },
+      "interaction_strength_middle_acc2_nonzero": {
+        "mean": 0.8526622902990518,
+        "sample_standard_deviation": 0.010794054403317856
+      },
+      "interaction_strength_high_pearson": {
+        "mean": 0.8224912953786703,
+        "sample_standard_deviation": 0.005229329008498563
+      },
+      "interaction_strength_high_acc2_nonzero": {
+        "mean": 0.9516317016317016,
+        "sample_standard_deviation": 0.0010093536174643947
+      },
+      "uncertainty_low_mae": {
+        "mean": 0.45774507940697184,
+        "sample_standard_deviation": 0.002564239245121027
+      },
+      "uncertainty_low_pearson": {
+        "mean": 0.633593689016719,
+        "sample_standard_deviation": 0.00856893104940425
+      },
+      "uncertainty_low_acc2_nonzero": {
+        "mean": 0.8344086021505376,
+        "sample_standard_deviation": 0.005689787765730289
+      },
+      "uncertainty_middle_mae": {
+        "mean": 0.5083919743712794,
+        "sample_standard_deviation": 0.008801564625553718
+      },
+      "uncertainty_middle_pearson": {
+        "mean": 0.6552087218567078,
+        "sample_standard_deviation": 0.004821960725345526
+      },
+      "uncertainty_middle_acc2_nonzero": {
+        "mean": 0.8351254480286738,
+        "sample_standard_deviation": 0.0049664539285128794
+      },
+      "uncertainty_high_pearson": {
+        "mean": 0.818172601454034,
+        "sample_standard_deviation": 0.008247116235844846
+      },
+      "uncertainty_high_acc2_nonzero": {
+        "mean": 0.9002624671916011,
+        "sample_standard_deviation": 0.008195535430969075
       }
     },
     "snr_pair_only": {
@@ -350,6 +522,70 @@
       "E_pair": {
         "mean": 0.2519414051931968,
         "sample_standard_deviation": 0.006562313964521656
+      },
+      "interaction_strength_low_mae": {
+        "mean": 0.4625674547770849,
+        "sample_standard_deviation": 0.010422298812545947
+      },
+      "interaction_strength_low_pearson": {
+        "mean": 0.46354984614187605,
+        "sample_standard_deviation": 0.011195971741232264
+      },
+      "interaction_strength_low_acc2_nonzero": {
+        "mean": 0.7212713936430318,
+        "sample_standard_deviation": 0.02332369685616001
+      },
+      "interaction_strength_middle_mae": {
+        "mean": 0.4775086476035524,
+        "sample_standard_deviation": 0.0060001810352679165
+      },
+      "interaction_strength_middle_pearson": {
+        "mean": 0.6679430282074917,
+        "sample_standard_deviation": 0.010660709774225119
+      },
+      "interaction_strength_middle_acc2_nonzero": {
+        "mean": 0.8563092633114515,
+        "sample_standard_deviation": 0.009110135665059693
+      },
+      "interaction_strength_high_pearson": {
+        "mean": 0.8157549116339364,
+        "sample_standard_deviation": 0.00895939425074826
+      },
+      "interaction_strength_high_acc2_nonzero": {
+        "mean": 0.9446386946386947,
+        "sample_standard_deviation": 0.004399670416824448
+      },
+      "uncertainty_low_mae": {
+        "mean": 0.4595589947731499,
+        "sample_standard_deviation": 0.007092605253881265
+      },
+      "uncertainty_low_pearson": {
+        "mean": 0.6232096766513298,
+        "sample_standard_deviation": 0.019230111565545466
+      },
+      "uncertainty_low_acc2_nonzero": {
+        "mean": 0.8365591397849462,
+        "sample_standard_deviation": 0.011379575531460599
+      },
+      "uncertainty_middle_mae": {
+        "mean": 0.5115185087300546,
+        "sample_standard_deviation": 0.008490916877332421
+      },
+      "uncertainty_middle_pearson": {
+        "mean": 0.6501486369100677,
+        "sample_standard_deviation": 0.007952983286723269
+      },
+      "uncertainty_middle_acc2_nonzero": {
+        "mean": 0.8272401433691756,
+        "sample_standard_deviation": 0.012601000595875966
+      },
+      "uncertainty_high_pearson": {
+        "mean": 0.8125974363548035,
+        "sample_standard_deviation": 0.007290842407163845
+      },
+      "uncertainty_high_acc2_nonzero": {
+        "mean": 0.8917322834645669,
+        "sample_standard_deviation": 0.008580509731379263
       }
     }
   },
