@@ -1,0 +1,814 @@
+{
+  "scope": "official train/valid only; official test not used",
+  "comparison": "pair-SNR minus B1 Full KD; negative error delta is better",
+  "train_only_global_utility": {
+    "ta": 0.8200080919532123,
+    "tv": 0.5189973109001143,
+    "av": 0.5177720805985542
+  },
+  "train_only_global_utility_normalized": {
+    "ta": 1.3248891144922104,
+    "tv": 0.8385452465773038,
+    "av": 0.8365656389304861
+  },
+  "subgroup_definitions": {
+    "interaction_strength": {
+      "tertile_cuts": [
+        1.3766553550958633,
+        2.2509849717219663
+      ]
+    },
+    "teacher_uncertainty": {
+      "tertile_cuts": [
+        0.010704789853965243,
+        0.021232500206679106
+      ]
+    },
+    "modality_conflict": {
+      "tertile_cuts": [
+        0.27563894457287264,
+        0.5655381251816396
+      ]
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 13,
+      "mean_delta_task_mae": -0.0033361546535391035,
+      "unconditional_task_improvement_rate": 0.4820951362907536,
+      "diagnostics": {
+        "ta": {
+          "teacher_mean_snr": 9.30793035511594,
+          "full_kd_interaction_mae": 0.9913135906671826,
+          "pair_snr_interaction_mae": 0.3232365084917622,
+          "delta_interaction_mae": -0.6680770821754205,
+          "corr_delta_interaction_delta_task": 0.03450478016323958,
+          "interaction_improved_count": 1599,
+          "interaction_improved_rate": 0.8546231961517905,
+          "task_useful_rate": 0.48655409631019386,
+          "mean_delta_task_when_interaction_improved": -0.007980583253495587
+        },
+        "tv": {
+          "teacher_mean_snr": 4.9227195986238454,
+          "full_kd_interaction_mae": 0.5330600234388259,
+          "pair_snr_interaction_mae": 0.22481658577543276,
+          "delta_interaction_mae": -0.308243437663393,
+          "corr_delta_interaction_delta_task": 0.0545086148443077,
+          "interaction_improved_count": 1412,
+          "interaction_improved_rate": 0.7546766435061465,
+          "task_useful_rate": 0.4985835694050991,
+          "mean_delta_task_when_interaction_improved": -0.010584428294807387
+        },
+        "av": {
+          "teacher_mean_snr": 6.1271511068152495,
+          "full_kd_interaction_mae": 0.7820738851282567,
+          "pair_snr_interaction_mae": 0.2305000437323199,
+          "delta_interaction_mae": -0.5515738413959368,
+          "corr_delta_interaction_delta_task": 0.04662874172413833,
+          "interaction_improved_count": 1671,
+          "interaction_improved_rate": 0.8931052912880812,
+          "task_useful_rate": 0.4841412327947337,
+          "mean_delta_task_when_interaction_improved": -0.00607044806671599
+        },
+        "tav": {
+          "teacher_mean_snr": 5.078047033857787,
+          "full_kd_interaction_mae": 0.7746690563221318,
+          "pair_snr_interaction_mae": 0.5193666816698495,
+          "delta_interaction_mae": -0.2553023746522823,
+          "corr_delta_interaction_delta_task": -0.010938755724832492,
+          "interaction_improved_count": 1342,
+          "interaction_improved_rate": 0.7172634954569749,
+          "task_useful_rate": 0.47540983606557374,
+          "mean_delta_task_when_interaction_improved": -0.0015520000128316429
+        }
+      },
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.4687444919672532,
+              "pearson": 0.45150499696010044,
+              "acc2_nonzero": 0.726161369193154
+            },
+            "pair_snr": {
+              "mae": 0.47434324269684464,
+              "pearson": 0.4617619024735126,
+              "acc2_nonzero": 0.7237163814180929
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.4799314265888346,
+              "pearson": 0.6649118338038231,
+              "acc2_nonzero": 0.8446389496717724
+            },
+            "pair_snr": {
+              "mae": 0.4739915564249645,
+              "pearson": 0.6799924669185585,
+              "acc2_nonzero": 0.8533916849015317
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5884154653518203,
+              "pearson": 0.8118994317194188,
+              "acc2_nonzero": 0.9475524475524476
+            },
+            "pair_snr": {
+              "mae": 0.5787439482044715,
+              "pearson": 0.8238221520633132,
+              "acc2_nonzero": 0.9493006993006993
+            }
+          }
+        },
+        "teacher_uncertainty": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.4570061497705009,
+              "pearson": 0.6344570559029216,
+              "acc2_nonzero": 0.8344086021505376
+            },
+            "pair_snr": {
+              "mae": 0.4656805108364624,
+              "pearson": 0.6384822456409387,
+              "acc2_nonzero": 0.8279569892473119
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.5165139425480155,
+              "pearson": 0.6508904325667588,
+              "acc2_nonzero": 0.8344086021505376
+            },
+            "pair_snr": {
+              "mae": 0.511390365743905,
+              "pearson": 0.6584327933184543,
+              "acc2_nonzero": 0.8365591397849462
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5636299174162493,
+              "pearson": 0.8030758900749589,
+              "acc2_nonzero": 0.8838582677165354
+            },
+            "pair_snr": {
+              "mae": 0.5500678047352064,
+              "pearson": 0.8200999287279501,
+              "acc2_nonzero": 0.8956692913385826
+            }
+          }
+        },
+        "modality_conflict": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.41821318148420406,
+              "pearson": 0.6132739158376062,
+              "acc2_nonzero": 0.8264840182648402
+            },
+            "pair_snr": {
+              "mae": 0.4246047336894732,
+              "pearson": 0.6033784459279602,
+              "acc2_nonzero": 0.8447488584474886
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.4743103244331446,
+              "pearson": 0.66390138354258,
+              "acc2_nonzero": 0.8555798687089715
+            },
+            "pair_snr": {
+              "mae": 0.47284521872886304,
+              "pearson": 0.6828529555537854,
+              "acc2_nonzero": 0.8336980306345733
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.6445588698140279,
+              "pearson": 0.784588267803212,
+              "acc2_nonzero": 0.8692449355432781
+            },
+            "pair_snr": {
+              "mae": 0.6296269578283031,
+              "pearson": 0.7985516998448002,
+              "acc2_nonzero": 0.8802946593001841
+            }
+          }
+        }
+      },
+      "paired_bootstrap": {
+        "mae": {
+          "baseline": 0.5123811288786455,
+          "candidate": 0.5090449742251064,
+          "candidate_minus_baseline": -0.003336154653539092,
+          "delta_ci95": {
+            "low": -0.014890921197046719,
+            "high": 0.008026525650042363
+          },
+          "bootstrap_probability_candidate_better": 0.7147
+        },
+        "pearson": {
+          "baseline": 0.7357775816257756,
+          "candidate": 0.7478575596204012,
+          "candidate_minus_baseline": 0.012079977994625679,
+          "delta_ci95": {
+            "low": -0.0018126615752687284,
+            "high": 0.026111069220021724
+          },
+          "bootstrap_probability_candidate_better": 0.9556
+        },
+        "acc2_nonzero": {
+          "baseline": 0.8518776077885952,
+          "candidate": 0.8546592489568846,
+          "candidate_minus_baseline": 0.002781641168289384,
+          "delta_ci95": {
+            "low": -0.012526096033402934,
+            "high": 0.0176683252806423
+          },
+          "bootstrap_probability_candidate_better": 0.6228
+        },
+        "f1_weighted_nonzero": {
+          "baseline": 0.8517080064717482,
+          "candidate": 0.856626754185973,
+          "candidate_minus_baseline": 0.004918747714224847,
+          "delta_ci95": {
+            "low": -0.010132385663747606,
+            "high": 0.019682295555029795
+          },
+          "bootstrap_probability_candidate_better": 0.737
+        },
+        "acc7": {
+          "baseline": 0.5456974879743453,
+          "candidate": 0.5489043292357029,
+          "candidate_minus_baseline": 0.003206841261357618,
+          "delta_ci95": {
+            "low": -0.014430785676109115,
+            "high": 0.02084446819882413
+          },
+          "bootstrap_probability_candidate_better": 0.6349
+        }
+      }
+    },
+    {
+      "seed": 42,
+      "mean_delta_task_mae": 0.0032401105183633835,
+      "unconditional_task_improvement_rate": 0.4890432923570283,
+      "diagnostics": {
+        "ta": {
+          "teacher_mean_snr": 9.30793035511594,
+          "full_kd_interaction_mae": 1.1053608756874458,
+          "pair_snr_interaction_mae": 0.3202063993721031,
+          "delta_interaction_mae": -0.7851544763153429,
+          "corr_delta_interaction_delta_task": 0.024402654026436033,
+          "interaction_improved_count": 1611,
+          "interaction_improved_rate": 0.8610368786745056,
+          "task_useful_rate": 0.4903786468032278,
+          "mean_delta_task_when_interaction_improved": 0.0005689081851099871
+        },
+        "tv": {
+          "teacher_mean_snr": 4.9227195986238454,
+          "full_kd_interaction_mae": 0.4740872531723601,
+          "pair_snr_interaction_mae": 0.212531356748418,
+          "delta_interaction_mae": -0.26155589642394217,
+          "corr_delta_interaction_delta_task": -0.029861160410815137,
+          "interaction_improved_count": 1393,
+          "interaction_improved_rate": 0.7445216461785141,
+          "task_useful_rate": 0.4809763101220388,
+          "mean_delta_task_when_interaction_improved": 0.008522998605069729
+        },
+        "av": {
+          "teacher_mean_snr": 6.1271511068152495,
+          "full_kd_interaction_mae": 0.9582115895182415,
+          "pair_snr_interaction_mae": 0.21137164793528992,
+          "delta_interaction_mae": -0.7468399415829515,
+          "corr_delta_interaction_delta_task": -0.02664459660337171,
+          "interaction_improved_count": 1761,
+          "interaction_improved_rate": 0.9412079102084446,
+          "task_useful_rate": 0.48779102782509937,
+          "mean_delta_task_when_interaction_improved": 0.005136237291745598
+        },
+        "tav": {
+          "teacher_mean_snr": 5.078047033857787,
+          "full_kd_interaction_mae": 0.9378559599920724,
+          "pair_snr_interaction_mae": 0.50349373183755,
+          "delta_interaction_mae": -0.43436222815452247,
+          "corr_delta_interaction_delta_task": -0.0009901234430047155,
+          "interaction_improved_count": 1473,
+          "interaction_improved_rate": 0.7872795296632816,
+          "task_useful_rate": 0.4908350305498982,
+          "mean_delta_task_when_interaction_improved": 0.0021554517932109744
+        }
+      },
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.46383662507511103,
+              "pearson": 0.43930654076432757,
+              "acc2_nonzero": 0.7188264058679706
+            },
+            "pair_snr": {
+              "mae": 0.45882954376821333,
+              "pearson": 0.4533554354831267,
+              "acc2_nonzero": 0.6968215158924206
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.46260769928343604,
+              "pearson": 0.7031593871067012,
+              "acc2_nonzero": 0.8665207877461707
+            },
+            "pair_snr": {
+              "mae": 0.48443678937505563,
+              "pearson": 0.6640998227646903,
+              "acc2_nonzero": 0.849015317286652
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5848008820353778,
+              "pearson": 0.8199057024858246,
+              "acc2_nonzero": 0.9545454545454546
+            },
+            "pair_snr": {
+              "mae": 0.5777289948371134,
+              "pearson": 0.8173302547130585,
+              "acc2_nonzero": 0.9440559440559441
+            }
+          }
+        },
+        "teacher_uncertainty": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.44091694335042647,
+              "pearson": 0.6487139802077917,
+              "acc2_nonzero": 0.853763440860215
+            },
+            "pair_snr": {
+              "mae": 0.4517865141157081,
+              "pearson": 0.6295325707916225,
+              "acc2_nonzero": 0.832258064516129
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.5133153810786206,
+              "pearson": 0.6455364394596658,
+              "acc2_nonzero": 0.8193548387096774
+            },
+            "pair_snr": {
+              "mae": 0.520072771855189,
+              "pearson": 0.6425744299772367,
+              "acc2_nonzero": 0.8129032258064516
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5570941442754471,
+              "pearson": 0.8200303672799354,
+              "acc2_nonzero": 0.9015748031496063
+            },
+            "pair_snr": {
+              "mae": 0.5491931509557676,
+              "pearson": 0.812153884100452,
+              "acc2_nonzero": 0.8818897637795275
+            }
+          }
+        },
+        "modality_conflict": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.4177260957658291,
+              "pearson": 0.6109916292527005,
+              "acc2_nonzero": 0.8333333333333334
+            },
+            "pair_snr": {
+              "mae": 0.42532173162087417,
+              "pearson": 0.590525047909268,
+              "acc2_nonzero": 0.821917808219178
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.4577218157330447,
+              "pearson": 0.6860257652958175,
+              "acc2_nonzero": 0.8599562363238512
+            },
+            "pair_snr": {
+              "mae": 0.46079025361358067,
+              "pearson": 0.6859775195710194,
+              "acc2_nonzero": 0.838074398249453
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.6357894649534639,
+              "pearson": 0.7958849173263866,
+              "acc2_nonzero": 0.8802946593001841
+            },
+            "pair_snr": {
+              "mae": 0.6348454476565661,
+              "pearson": 0.7864178774818904,
+              "acc2_nonzero": 0.8655616942909761
+            }
+          }
+        }
+      },
+      "paired_bootstrap": {
+        "mae": {
+          "baseline": 0.5037703907485439,
+          "candidate": 0.5070105012669073,
+          "candidate_minus_baseline": 0.0032401105183633705,
+          "delta_ci95": {
+            "low": -0.008017863937179463,
+            "high": 0.014613263227310087
+          },
+          "bootstrap_probability_candidate_better": 0.291
+        },
+        "pearson": {
+          "baseline": 0.7486616037908665,
+          "candidate": 0.7404624843591571,
+          "candidate_minus_baseline": -0.008199119431709478,
+          "delta_ci95": {
+            "low": -0.021417311507198375,
+            "high": 0.004933814492752352
+          },
+          "bootstrap_probability_candidate_better": 0.1109
+        },
+        "acc2_nonzero": {
+          "baseline": 0.8595271210013908,
+          "candidate": 0.8435326842837274,
+          "candidate_minus_baseline": -0.01599443671766343,
+          "delta_ci95": {
+            "low": -0.030576789437109068,
+            "high": -0.0014104372355430161
+          },
+          "bootstrap_probability_candidate_better": 0.0131
+        },
+        "f1_weighted_nonzero": {
+          "baseline": 0.8582672283549797,
+          "candidate": 0.8436378012549219,
+          "candidate_minus_baseline": -0.014629427100057768,
+          "delta_ci95": {
+            "low": -0.029309588651189506,
+            "high": -0.00017866241648935316
+          },
+          "bootstrap_probability_candidate_better": 0.0237
+        },
+        "acc7": {
+          "baseline": 0.5531801175841796,
+          "candidate": 0.5542490646712988,
+          "candidate_minus_baseline": 0.001068947087119132,
+          "delta_ci95": {
+            "low": -0.01763762693746662,
+            "high": 0.019775521111704886
+          },
+          "bootstrap_probability_candidate_better": 0.5272
+        }
+      }
+    },
+    {
+      "seed": 2026,
+      "mean_delta_task_mae": 0.003912162681863298,
+      "unconditional_task_improvement_rate": 0.4911811865312667,
+      "diagnostics": {
+        "ta": {
+          "teacher_mean_snr": 9.30793035511594,
+          "full_kd_interaction_mae": 0.6862932404077136,
+          "pair_snr_interaction_mae": 0.33098370176657865,
+          "delta_interaction_mae": -0.3553095386411349,
+          "corr_delta_interaction_delta_task": 0.043318123142139286,
+          "interaction_improved_count": 1352,
+          "interaction_improved_rate": 0.7226082308925709,
+          "task_useful_rate": 0.507396449704142,
+          "mean_delta_task_when_interaction_improved": -0.004881676083857773
+        },
+        "tv": {
+          "teacher_mean_snr": 4.9227195986238454,
+          "full_kd_interaction_mae": 0.46518582015774795,
+          "pair_snr_interaction_mae": 0.21423696693442618,
+          "delta_interaction_mae": -0.2509488532233218,
+          "corr_delta_interaction_delta_task": -0.09199919805501974,
+          "interaction_improved_count": 1420,
+          "interaction_improved_rate": 0.7589524318546232,
+          "task_useful_rate": 0.4915492957746479,
+          "mean_delta_task_when_interaction_improved": 0.00660891603634997
+        },
+        "av": {
+          "teacher_mean_snr": 6.1271511068152495,
+          "full_kd_interaction_mae": 0.4858088623374679,
+          "pair_snr_interaction_mae": 0.19958943598244033,
+          "delta_interaction_mae": -0.2862194263550276,
+          "corr_delta_interaction_delta_task": -0.042827341740698785,
+          "interaction_improved_count": 1462,
+          "interaction_improved_rate": 0.7814003206841261,
+          "task_useful_rate": 0.48768809849521205,
+          "mean_delta_task_when_interaction_improved": 0.00295078868968549
+        },
+        "tav": {
+          "teacher_mean_snr": 5.078047033857787,
+          "full_kd_interaction_mae": 0.5439824645255708,
+          "pair_snr_interaction_mae": 0.44194306614648504,
+          "delta_interaction_mae": -0.10203939837908571,
+          "corr_delta_interaction_delta_task": 0.031379152561310124,
+          "interaction_improved_count": 1184,
+          "interaction_improved_rate": 0.632816675574559,
+          "task_useful_rate": 0.504222972972973,
+          "mean_delta_task_when_interaction_improved": -0.00440696978812878
+        }
+      },
+      "subgroups": {
+        "interaction_strength": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.45246748296687234,
+              "pearson": 0.44733596456015984,
+              "acc2_nonzero": 0.7114914425427873
+            },
+            "pair_snr": {
+              "mae": 0.45452957786619663,
+              "pearson": 0.47553220046898886,
+              "acc2_nonzero": 0.7432762836185819
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.4663068966201565,
+              "pearson": 0.6931034780809096,
+              "acc2_nonzero": 0.8533916849015317
+            },
+            "pair_snr": {
+              "mae": 0.474097597010637,
+              "pearson": 0.6597367949392264,
+              "acc2_nonzero": 0.8665207877461707
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5977183384289577,
+              "pearson": 0.8111428601735114,
+              "acc2_nonzero": 0.9405594405594405
+            },
+            "pair_snr": {
+              "mae": 0.5996082467900451,
+              "pearson": 0.8061123281254376,
+              "acc2_nonzero": 0.9405594405594405
+            }
+          }
+        },
+        "teacher_uncertainty": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.4575271341446539,
+              "pearson": 0.6326488792878323,
+              "acc2_nonzero": 0.832258064516129
+            },
+            "pair_snr": {
+              "mae": 0.4612099593672791,
+              "pearson": 0.6016142135214282,
+              "acc2_nonzero": 0.8494623655913979
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.5068259395383908,
+              "pearson": 0.6382995263563197,
+              "acc2_nonzero": 0.8193548387096774
+            },
+            "pair_snr": {
+              "mae": 0.5030923885910699,
+              "pearson": 0.6494386874345123,
+              "acc2_nonzero": 0.832258064516129
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.5522045786965928,
+              "pearson": 0.8195239557101929,
+              "acc2_nonzero": 0.8877952755905512
+            },
+            "pair_snr": {
+              "mae": 0.5639795397206777,
+              "pearson": 0.8055384962360085,
+              "acc2_nonzero": 0.8976377952755905
+            }
+          }
+        },
+        "modality_conflict": {
+          "low": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.42238424661067814,
+              "pearson": 0.5916920057039796,
+              "acc2_nonzero": 0.8242009132420092
+            },
+            "pair_snr": {
+              "mae": 0.4352122339873742,
+              "pearson": 0.5639565136466008,
+              "acc2_nonzero": 0.821917808219178
+            }
+          },
+          "middle": {
+            "count": 623,
+            "full_kd": {
+              "mae": 0.46459696046039345,
+              "pearson": 0.6763898311261302,
+              "acc2_nonzero": 0.8402625820568927
+            },
+            "pair_snr": {
+              "mae": 0.46211557126160036,
+              "pearson": 0.6702119217895267,
+              "acc2_nonzero": 0.8599562363238512
+            }
+          },
+          "high": {
+            "count": 624,
+            "full_kd": {
+              "mae": 0.6295087706626077,
+              "pearson": 0.7922155153344564,
+              "acc2_nonzero": 0.8729281767955801
+            },
+            "pair_snr": {
+              "mae": 0.6308884144535627,
+              "pearson": 0.7876449931012866,
+              "acc2_nonzero": 0.8931860036832413
+            }
+          }
+        }
+      },
+      "paired_bootstrap": {
+        "mae": {
+          "baseline": 0.5055185190514995,
+          "candidate": 0.5094306817333627,
+          "candidate_minus_baseline": 0.003912162681863229,
+          "delta_ci95": {
+            "low": -0.007002157771780868,
+            "high": 0.015301444503771695
+          },
+          "bootstrap_probability_candidate_better": 0.2382
+        },
+        "pearson": {
+          "baseline": 0.7423137157755422,
+          "candidate": 0.7339696917850073,
+          "candidate_minus_baseline": -0.00834402399053491,
+          "delta_ci95": {
+            "low": -0.02644194816964371,
+            "high": 0.007155829689863737
+          },
+          "bootstrap_probability_candidate_better": 0.1567
+        },
+        "acc2_nonzero": {
+          "baseline": 0.8477051460361613,
+          "candidate": 0.8609179415855355,
+          "candidate_minus_baseline": 0.013212795549374157,
+          "delta_ci95": {
+            "low": -0.002749140893470783,
+            "high": 0.028691811116951963
+          },
+          "bootstrap_probability_candidate_better": 0.9485
+        },
+        "f1_weighted_nonzero": {
+          "baseline": 0.8486805785885041,
+          "candidate": 0.8610421745646459,
+          "candidate_minus_baseline": 0.012361595976141837,
+          "delta_ci95": {
+            "low": -0.0032118681412327955,
+            "high": 0.02770963257052333
+          },
+          "bootstrap_probability_candidate_better": 0.9428
+        },
+        "acc7": {
+          "baseline": 0.5531801175841796,
+          "candidate": 0.5440940673436665,
+          "candidate_minus_baseline": -0.009086050240513122,
+          "delta_ci95": {
+            "low": -0.02512025654730088,
+            "high": 0.006948156066274747
+          },
+          "bootstrap_probability_candidate_better": 0.1262
+        }
+      }
+    }
+  ],
+  "aggregate_diagnostics": {
+    "ta": {
+      "delta_interaction_mae": {
+        "mean": -0.6028470323772994,
+        "sample_standard_deviation": 0.22222260721748124
+      },
+      "corr_delta_interaction_delta_task": {
+        "mean": 0.03407518577727163,
+        "sample_standard_deviation": 0.009465049205847917
+      },
+      "interaction_improved_rate": {
+        "mean": 0.812756101906289,
+        "sample_standard_deviation": 0.0781361812293448
+      },
+      "task_useful_rate": {
+        "mean": 0.49477639760585457,
+        "sample_standard_deviation": 0.0110953180594816
+      },
+      "mean_delta_task_when_interaction_improved": {
+        "mean": -0.0040977837174144575,
+        "sample_standard_deviation": 0.004328315653498897
+      },
+      "teacher_mean_snr": 9.30793035511594
+    },
+    "tv": {
+      "delta_interaction_mae": {
+        "mean": -0.2735827291035523,
+        "sample_standard_deviation": 0.03048197631006916
+      },
+      "corr_delta_interaction_delta_task": {
+        "mean": -0.02245058120717573,
+        "sample_standard_deviation": 0.07353449750447842
+      },
+      "interaction_improved_rate": {
+        "mean": 0.7527169071797613,
+        "sample_standard_deviation": 0.007412308591738766
+      },
+      "task_useful_rate": {
+        "mean": 0.4903697251005953,
+        "sample_standard_deviation": 0.008862699086426343
+      },
+      "mean_delta_task_when_interaction_improved": {
+        "mean": 0.001515828782204104,
+        "sample_standard_deviation": 0.010522741753806096
+      },
+      "teacher_mean_snr": 4.9227195986238454
+    },
+    "av": {
+      "delta_interaction_mae": {
+        "mean": -0.5282110697779719,
+        "sample_standard_deviation": 0.23119727309262195
+      },
+      "corr_delta_interaction_delta_task": {
+        "mean": -0.007614398873310723,
+        "sample_standard_deviation": 0.04766769384447804
+      },
+      "interaction_improved_rate": {
+        "mean": 0.8719045073935506,
+        "sample_standard_deviation": 0.08198610458913272
+      },
+      "task_useful_rate": {
+        "mean": 0.48654011970501504,
+        "sample_standard_deviation": 0.0020781343599433426
+      },
+      "mean_delta_task_when_interaction_improved": {
+        "mean": 0.000672192638238366,
+        "sample_standard_deviation": 0.0059406606665540285
+      },
+      "teacher_mean_snr": 6.1271511068152495
+    },
+    "tav": {
+      "delta_interaction_mae": {
+        "mean": -0.26390133372863017,
+        "sample_standard_deviation": 0.1663282067792051
+      },
+      "corr_delta_interaction_delta_task": {
+        "mean": 0.006483424464490972,
+        "sample_standard_deviation": 0.022126720931326886
+      },
+      "interaction_improved_rate": {
+        "mean": 0.7124532335649385,
+        "sample_standard_deviation": 0.07734369585112277
+      },
+      "task_useful_rate": {
+        "mean": 0.49015594652948163,
+        "sample_standard_deviation": 0.014418567229139742
+      },
+      "mean_delta_task_when_interaction_improved": {
+        "mean": -0.001267839335916483,
+        "sample_standard_deviation": 0.0032904262217130936
+      },
+      "teacher_mean_snr": 5.078047033857787
+    }
+  }
+}

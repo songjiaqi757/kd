@@ -26,12 +26,16 @@ from rdid_mosei.interaction import mobius_transform, random_conditioned_matrix, 
 from rdid_mosei.student import CachedStudentCore
 
 RELIABILITY_METHODS = (
-    "inverse_variance_interaction4", "snr_interaction4", "selective_interaction4", "pair_snr"
+    "inverse_variance_interaction4", "snr_interaction4", "selective_interaction4", "pair_snr",
+    "reliability_utility_pair",
 )
+ENSEMBLE_TARGET_METHODS = RELIABILITY_METHODS + ("ensemble_pair", "utility_pair")
+UTILITY_METHODS = ("utility_pair", "reliability_utility_pair")
 COORDINATE_METHODS = (
     "mobius_full", "high_order_interaction", "zscore_interaction4",
     "inverse_variance_interaction4", "snr_interaction4", "selective_interaction4",
-    "pair_raw", "pair_snr", "triple_raw", "random_orthogonal", "random_nonorthogonal",
+    "pair_raw", "pair_snr", "ensemble_pair", "utility_pair", "reliability_utility_pair",
+    "triple_raw", "random_orthogonal", "random_nonorthogonal",
 )
 MULTI_SUBSET_METHODS = ("subset_value", "subset_value_4") + COORDINATE_METHODS
 
@@ -259,9 +263,11 @@ def combined_loss(
             coordinate_indices = {
                 "mobius_full": slice(None), "triple_raw": slice(6, 7),
                 "pair_raw": slice(3, 6), "pair_snr": slice(3, 6),
+                "ensemble_pair": slice(3, 6), "utility_pair": slice(3, 6),
+                "reliability_utility_pair": slice(3, 6),
             }.get(args.method, slice(3, 7))
         teacher_target = teacher_coordinates[:, coordinate_indices]
-        if args.method in RELIABILITY_METHODS:
+        if args.method in ENSEMBLE_TARGET_METHODS:
             teacher_target = batch["teacher_interaction_mean"].to(device, non_blocking=True)[:, coordinate_indices]
         student_target = student_coordinates[:, coordinate_indices]
         if args.method == "zscore_interaction4":
@@ -281,7 +287,20 @@ def combined_loss(
             else:
                 reliability = reliability / reliability.mean(dim=-1, keepdim=True).clamp_min(args.reliability_epsilon)
                 reliability = reliability.clamp(args.reliability_w_min, args.reliability_w_max)
+                if args.method == "reliability_utility_pair":
+                    utility = torch.as_tensor(
+                        args.interaction_utility_normalized, dtype=per_dimension.dtype, device=device
+                    )
+                    reliability = reliability * utility
+                    reliability = reliability / reliability.mean(dim=-1, keepdim=True).clamp_min(
+                        args.reliability_epsilon
+                    )
                 per_sample_coordinate = (per_dimension * reliability).mean(dim=-1)
+        elif args.method == "utility_pair":
+            utility = torch.as_tensor(
+                args.interaction_utility_normalized, dtype=per_dimension.dtype, device=device
+            )
+            per_sample_coordinate = (per_dimension * utility).mean(dim=-1)
         else:
             per_sample_coordinate = per_dimension.mean(dim=-1)
         coordinate = (per_sample_coordinate * weights).sum() / weights.sum().clamp_min(1e-8)
@@ -492,9 +511,29 @@ def main() -> int:
     else:
         args.coordinate_center = [0.0] * 7
         args.coordinate_scale = [1.0] * 7
-    if args.method in RELIABILITY_METHODS:
+    if args.method in ENSEMBLE_TARGET_METHODS:
         if not args.teacher_targets_ensemble or len(args.teacher_targets_ensemble) < 2:
             raise ValueError(f"{args.method} requires at least two --teacher-targets-ensemble files")
+    if args.method in UTILITY_METHODS:
+        parent_rows = {}
+        for row in train_rows:
+            parent_rows.setdefault(str(row["parent_sample_id"]), row)
+        targets = np.asarray([float(row["sentiment"]) for row in parent_rows.values()], dtype=np.float64)
+        interaction_values = np.asarray([
+            [float(row["teacher_interaction_mean"][index]) for index in range(3, 6)]
+            for row in parent_rows.values()
+        ], dtype=np.float64)
+        utilities = np.asarray([
+            abs(float(np.corrcoef(interaction_values[:, index], targets)[0, 1])) for index in range(3)
+        ])
+        if not np.all(np.isfinite(utilities)) or float(utilities.mean()) <= 0:
+            raise RuntimeError(f"invalid train-only interaction utilities: {utilities.tolist()}")
+        args.interaction_utility = utilities.tolist()
+        args.interaction_utility_normalized = (utilities / utilities.mean()).tolist()
+    else:
+        args.interaction_utility = None
+        args.interaction_utility_normalized = [1.0, 1.0, 1.0]
+    if args.method in RELIABILITY_METHODS:
         means = torch.tensor([row["teacher_interaction_mean"] for row in train_rows])[:, 3:7]
         variances = torch.tensor([row["teacher_interaction_var"] for row in train_rows])[:, 3:7]
         snr = means.abs() / (variances.sqrt() + args.reliability_epsilon)
@@ -599,6 +638,9 @@ def main() -> int:
             "selective_interaction4": "A6_selective_interaction4",
             "pair_raw": "A7_pair_only_raw",
             "pair_snr": "A7_pair_only_snr",
+            "ensemble_pair": "C1_full_kd_uniform_ensemble_pair",
+            "utility_pair": "C3_full_kd_utility_pair",
+            "reliability_utility_pair": "C4_full_kd_reliability_utility_pair",
             "triple_raw": "A8_triple_only_raw",
             "random_orthogonal": "A9_random_orthogonal",
             "random_nonorthogonal": "A10_random_nonorthogonal",
@@ -629,11 +671,13 @@ def main() -> int:
             "lambda_subset": args.lambda_subset if args.method in ("subset_value", "subset_value_4") else 0.0,
             "subset_dimensions": 7 if args.method == "subset_value" else (4 if args.method == "subset_value_4" else 0),
             "lambda_coordinate": args.lambda_coordinate if args.method in COORDINATE_METHODS else 0.0,
-            "coordinate_dimensions": 7 if args.method in ("mobius_full", "random_orthogonal", "random_nonorthogonal") else (3 if args.method in ("pair_raw", "pair_snr") else (1 if args.method == "triple_raw" else (4 if args.method in COORDINATE_METHODS else 0))),
+            "coordinate_dimensions": 7 if args.method in ("mobius_full", "random_orthogonal", "random_nonorthogonal") else (3 if args.method in ("pair_raw", "pair_snr", "ensemble_pair", "utility_pair", "reliability_utility_pair") else (1 if args.method == "triple_raw" else (4 if args.method in COORDINATE_METHODS else 0))),
             "coordinate_seed": args.coordinate_seed if args.method in ("random_orthogonal", "random_nonorthogonal") else None,
             "selective_keep_fraction": args.selective_keep_fraction if args.method == "selective_interaction4" else None,
             "selective_threshold": args.selective_threshold,
             "teacher_targets_ensemble": [str(path) for path in args.teacher_targets_ensemble] if args.teacher_targets_ensemble else None,
+            "interaction_utility_train_only": args.interaction_utility,
+            "interaction_utility_normalized": args.interaction_utility_normalized,
         },
     }
     (args.output / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
