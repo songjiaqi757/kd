@@ -2,13 +2,13 @@
 set -euo pipefail
 
 if [[ $# -ne 3 ]]; then
-  echo "usage: $0 {primary|uniform} CUDA_DEVICE MAX_WAIT_MINUTES" >&2
+  echo "usage: $0 {primary|uniform} CUDA_DEVICE {MAX_WAIT_MINUTES|force}" >&2
   exit 2
 fi
 
 queue="$1"
 device="$2"
-max_wait_minutes="$3"
+wait_policy="$3"
 root="/home/wy/sjq/kd"
 python_bin="/home/wy/sjq/miniconda3/envs/kd/bin/python"
 trainer="$root/project/scripts/train_student_baseline.py"
@@ -26,18 +26,27 @@ case "$queue" in
   *) echo "unknown queue: $queue" >&2; exit 2 ;;
 esac
 
-for ((minute = 0; minute <= max_wait_minutes; minute++)); do
-  used_mib=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -i "$device" | tr -d ' ')
-  if [[ "$used_mib" =~ ^[0-9]+$ ]] && ((used_mib < 1000)); then
-    echo "GPU $device available after $minute minute(s); starting $queue queue"
-    break
+if [[ "$wait_policy" == "force" ]]; then
+  echo "Starting $queue queue immediately on GPU $device by explicit user request"
+else
+  max_wait_minutes="$wait_policy"
+  if ! [[ "$max_wait_minutes" =~ ^[0-9]+$ ]]; then
+    echo "MAX_WAIT_MINUTES must be a non-negative integer or force" >&2
+    exit 2
   fi
-  if ((minute == max_wait_minutes)); then
-    echo "GPU $device remained occupied for $max_wait_minutes minutes; exiting without training" >&2
-    exit 75
-  fi
-  sleep 60
-done
+  for ((minute = 0; minute <= max_wait_minutes; minute++)); do
+    used_mib=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -i "$device" | tr -d ' ')
+    if [[ "$used_mib" =~ ^[0-9]+$ ]] && ((used_mib < 1000)); then
+      echo "GPU $device available after $minute minute(s); starting $queue queue"
+      break
+    fi
+    if ((minute == max_wait_minutes)); then
+      echo "GPU $device remained occupied for $max_wait_minutes minutes; exiting without training" >&2
+      exit 75
+    fi
+    sleep 60
+  done
+fi
 
 cd "$root"
 for method in "${methods[@]}"; do

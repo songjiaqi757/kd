@@ -29,6 +29,10 @@ pair interaction reconstruction error 相对降低约 35.5%，但没有稳定提
 sentiment MAE。当前研究重点已转向 task-utility-aware interaction distillation。
 Official test 尚未使用。
 
+后续 Stage C 三种子复验中，Reliability × Utility 的 official-valid MAE 为
+0.5055 ± 0.0023，比 B1 平均低 0.0017，但未达到预注册建议效果量 0.005，且逐 seed
+bootstrap 区间均跨 0。当前停止继续叠加 conflict gate；B1 仍作为统计上最可靠的主基线。
+
 完整进展、指标、限制和下一步见 [`docs/实验汇总报告.md`](docs/实验汇总报告.md)，
 Stage B 主表见 [`project/reports/stage_b_baselines_three_seed.md`](project/reports/stage_b_baselines_three_seed.md)，
 正式 19-run 诊断表见 [`project/reports/stage_a_v2_results.md`](project/reports/stage_a_v2_results.md)。
