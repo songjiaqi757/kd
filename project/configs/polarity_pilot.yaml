@@ -1,0 +1,36 @@
+protocol: polarity_pilot_v1
+official_test_evaluated: false
+seeds: [13, 42]
+
+data:
+  features: /home/wy/sjq/kd/outputs/student/features/official_train_valid
+  teacher_targets: /home/wy/sjq/kd/outputs/probe/official_train_valid_seed2026/predictions.jsonl
+  zero_label_policy: exclude_from_binary_task_kd_and_metrics
+
+student:
+  binary_head: linear_512_to_2
+  checkpoint_selection: valid_binary_nll
+
+loss:
+  regression_weight: 1.0
+  seven_class_weight: 0.5
+  binary_task_weight: 1.0
+  legacy_full_kd_weight: 1.0
+  binary_full_kd_weight: 1.0
+  binary_subset_kd_weight: 1.0
+  kd_temperature: 2.0
+  teacher_calibration_temperature: 0.9259549975395203
+
+experiments:
+  E1:
+    method: binary_full_kd
+    subsets: [tav]
+  E2:
+    method: binary_subset4
+    subsets: [ta, tv, av, tav]
+
+paused:
+  - reliability_weighting
+  - boundary_weighting
+  - lora
+  - binary_loss_weight_search

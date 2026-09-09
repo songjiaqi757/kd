@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
 from pathlib import Path
+from types import MethodType
 
 import torch
 from torch import nn
@@ -10,6 +11,121 @@ from torch.nn import functional as F
 
 MODALITIES = ("t", "a", "v")
 SUBSETS = ("t", "a", "v", "ta", "tv", "av", "tav")
+
+
+class LoRALinear(nn.Module):
+    """A frozen linear layer with a trainable low-rank residual."""
+
+    def __init__(
+        self,
+        base: nn.Linear,
+        rank: int = 8,
+        alpha: float = 16.0,
+        dropout: float = 0.05,
+    ) -> None:
+        super().__init__()
+        if rank <= 0:
+            raise ValueError("LoRA rank must be positive")
+        self.base = base
+        self.base.requires_grad_(False)
+        self.rank = rank
+        self.alpha = float(alpha)
+        self.scaling = self.alpha / rank
+        self.dropout = nn.Dropout(dropout)
+        self.lora_A = nn.Linear(base.in_features, rank, bias=False)
+        self.lora_B = nn.Linear(rank, base.out_features, bias=False)
+        nn.init.kaiming_uniform_(self.lora_A.weight, a=5**0.5)
+        nn.init.zeros_(self.lora_B.weight)
+
+    @property
+    def weight(self) -> torch.Tensor:
+        return self.base.weight
+
+    @property
+    def bias(self) -> torch.Tensor | None:
+        return self.base.bias
+
+    @property
+    def in_features(self) -> int:
+        return self.base.in_features
+
+    @property
+    def out_features(self) -> int:
+        return self.base.out_features
+
+    def forward(self, inputs: torch.Tensor) -> torch.Tensor:
+        return self.base(inputs) + self.lora_B(self.lora_A(self.dropout(inputs))) * self.scaling
+
+
+def inject_lora(
+    model: nn.Module,
+    target_suffixes: Iterable[str],
+    *,
+    rank: int = 8,
+    alpha: float = 16.0,
+    dropout: float = 0.05,
+) -> list[str]:
+    """Replace matching linear modules and return their original qualified names."""
+
+    suffixes = tuple(target_suffixes)
+    replacements: list[tuple[str, nn.Module, str, nn.Linear]] = []
+    for name, module in model.named_modules():
+        if not isinstance(module, nn.Linear) or not name.endswith(suffixes):
+            continue
+        parent_name, _, child_name = name.rpartition(".")
+        parent = model.get_submodule(parent_name) if parent_name else model
+        replacements.append((name, parent, child_name, module))
+    for _, parent, child_name, module in replacements:
+        setattr(parent, child_name, LoRALinear(module, rank=rank, alpha=alpha, dropout=dropout))
+    if not replacements:
+        raise ValueError(f"no linear modules matched LoRA suffixes {suffixes}")
+    return [name for name, _, _, _ in replacements]
+
+
+def _wavlm_lora_attention(
+    self: nn.Module,
+    hidden_states: torch.Tensor,
+    attention_mask: torch.Tensor | None,
+    gated_position_bias: torch.Tensor,
+    output_attentions: bool,
+) -> tuple[torch.Tensor, torch.Tensor | None]:
+    """WavLM attention path that calls LoRA modules instead of reading base weights."""
+
+    batch, length, embed_dim = hidden_states.shape
+    head_dim = embed_dim // self.num_heads
+    query = self.q_proj(hidden_states) * (head_dim ** -0.5)
+    key = self.k_proj(hidden_states)
+    value = self.v_proj(hidden_states)
+    query = query.view(batch, length, self.num_heads, head_dim).transpose(1, 2).reshape(-1, length, head_dim)
+    key = key.view(batch, length, self.num_heads, head_dim).transpose(1, 2).reshape(-1, length, head_dim)
+    value = value.view(batch, length, self.num_heads, head_dim).transpose(1, 2).reshape(-1, length, head_dim)
+    scores = torch.bmm(query, key.transpose(1, 2)) + gated_position_bias.to(query.dtype)
+    if attention_mask is not None:
+        invalid = ~attention_mask.to(torch.bool)
+        invalid = invalid[:, None, None, :].expand(batch, self.num_heads, length, length)
+        scores = scores.view(batch, self.num_heads, length, length).masked_fill(
+            invalid, torch.finfo(scores.dtype).min
+        ).view(-1, length, length)
+    probabilities = F.softmax(scores.float(), dim=-1).to(scores.dtype)
+    probabilities = F.dropout(probabilities, p=self.dropout, training=self.training)
+    output = torch.bmm(probabilities, value)
+    output = output.view(batch, self.num_heads, length, head_dim).transpose(1, 2).reshape(batch, length, embed_dim)
+    output = self.out_proj(output)
+    weights = probabilities.view(batch, self.num_heads, length, length) if output_attentions else None
+    return output, weights
+
+
+def enable_wavlm_lora_attention(model: nn.Module) -> int:
+    """Switch WavLM's fused weight-reading path to module calls required by LoRA."""
+
+    count = 0
+    for module in model.modules():
+        if all(isinstance(getattr(module, name, None), LoRALinear) for name in ("q_proj", "k_proj", "v_proj", "out_proj")):
+            module.torch_multi_head_self_attention = MethodType(_wavlm_lora_attention, module)
+            count += 1
+    if count == 0:
+        raise ValueError("no WavLM attention blocks were patched for LoRA")
+    return count
 
 
 def student_task_loss(
@@ -25,6 +141,28 @@ def student_task_loss(
         "regression_loss": regression,
         "classification_loss": classification,
     }
+
+
+def project_seven_class_logits_to_binary(
+    logits: torch.Tensor,
+    *,
+    calibration_temperature: float = 1.0,
+    distillation_temperature: float = 1.0,
+) -> torch.Tensor:
+    """Collapse ordered [-3, ..., +3] logits into negative/positive logits.
+
+    The neutral class is intentionally excluded to match the MOSEI non-zero
+    Acc-2 protocol. The returned values are logits suitable for softmax/KL.
+    """
+
+    if logits.shape[-1] != 7:
+        raise ValueError("seven-class logits must have size 7 on the last dimension")
+    if calibration_temperature <= 0 or distillation_temperature <= 0:
+        raise ValueError("temperatures must be positive")
+    scaled = logits.float() / (calibration_temperature * distillation_temperature)
+    negative = torch.logsumexp(scaled[..., :3], dim=-1)
+    positive = torch.logsumexp(scaled[..., 4:], dim=-1)
+    return torch.stack((negative, positive), dim=-1)
 
 
 class QFormerPool(nn.Module):
@@ -88,6 +226,7 @@ class SubsetFusion(nn.Module):
         ffn_size: int = 2048,
         dropout: float = 0.1,
         classes: int = 7,
+        binary_classes: int | None = None,
     ) -> None:
         super().__init__()
         self.hidden_size = hidden_size
@@ -111,6 +250,9 @@ class SubsetFusion(nn.Module):
         self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=layers)
         self.final_norm = nn.LayerNorm(hidden_size)
         self.classifier = nn.Linear(hidden_size, classes)
+        self.binary_classifier = (
+            nn.Linear(hidden_size, binary_classes) if binary_classes is not None else None
+        )
         self.regressor = nn.Linear(hidden_size, 1)
         self.reset_parameters()
 
@@ -141,11 +283,14 @@ class SubsetFusion(nn.Module):
             pieces.append(tokens)
         sequence = torch.cat(pieces, dim=1) + self.position_embedding
         fused = self.final_norm(self.encoder(sequence)[:, 0])
-        return {
+        output = {
             "regression": 3.0 * torch.tanh(self.regressor(fused).squeeze(-1)),
             "classification_logits": self.classifier(fused),
             "fused": fused,
         }
+        if self.binary_classifier is not None:
+            output["binary_logits"] = self.binary_classifier(fused)
+        return output
 
     def forward_subsets(
         self,
@@ -170,6 +315,7 @@ class CachedStudentCore(nn.Module):
         heads: int = 8,
         ffn_size: int = 2048,
         dropout: float = 0.1,
+        binary_classes: int | None = None,
     ) -> None:
         super().__init__()
         self.pools = nn.ModuleDict(
@@ -195,6 +341,7 @@ class CachedStudentCore(nn.Module):
             heads=heads,
             ffn_size=ffn_size,
             dropout=dropout,
+            binary_classes=binary_classes,
         )
 
     def forward(
@@ -208,6 +355,100 @@ class CachedStudentCore(nn.Module):
                 encoder_hidden_states[modality], encoder_attention_masks[modality]
             )
             for modality in MODALITIES
+        }
+        return self.fusion.forward_subsets(encoded, subsets)
+
+
+class LoRATextAudioCachedVideoStudent(nn.Module):
+    """Online LoRA text/audio encoders with frozen cached VideoMAE sequences."""
+
+    def __init__(
+        self,
+        text_encoder: nn.Module,
+        audio_encoder: nn.Module,
+        *,
+        video_hidden_size: int = 768,
+        hidden_size: int = 512,
+        tokens_per_modality: int = 4,
+        lora_rank: int = 8,
+        lora_alpha: float = 16.0,
+        lora_dropout: float = 0.05,
+        binary_classes: int | None = None,
+    ) -> None:
+        super().__init__()
+        self.text_encoder = text_encoder.requires_grad_(False)
+        self.audio_encoder = audio_encoder.requires_grad_(False)
+        self.text_lora_modules = inject_lora(
+            self.text_encoder,
+            ("q_proj", "k_proj", "v_proj", "o_proj"),
+            rank=lora_rank,
+            alpha=lora_alpha,
+            dropout=lora_dropout,
+        )
+        # Hugging Face WavLM calls the attention output projection `out_proj`.
+        self.audio_lora_modules = inject_lora(
+            self.audio_encoder,
+            ("q_proj", "k_proj", "v_proj", "out_proj"),
+            rank=lora_rank,
+            alpha=lora_alpha,
+            dropout=lora_dropout,
+        )
+        self.audio_lora_attention_blocks = enable_wavlm_lora_attention(self.audio_encoder)
+        self.pools = nn.ModuleDict(
+            {
+                "t": QFormerPool(int(text_encoder.config.hidden_size), hidden_size, tokens_per_modality),
+                "a": QFormerPool(int(audio_encoder.config.hidden_size), hidden_size, tokens_per_modality),
+                "v": QFormerPool(video_hidden_size, hidden_size, tokens_per_modality),
+            }
+        )
+        self.fusion = SubsetFusion(
+            hidden_size=hidden_size,
+            tokens_per_modality=tokens_per_modality,
+            binary_classes=binary_classes,
+        )
+
+    def train(self, mode: bool = True) -> "LoRATextAudioCachedVideoStudent":
+        super().train(mode)
+        # Keep the frozen backbone deterministic while retaining LoRA dropout.
+        self.text_encoder.eval()
+        self.audio_encoder.eval()
+        for encoder in (self.text_encoder, self.audio_encoder):
+            for module in encoder.modules():
+                if isinstance(module, LoRALinear):
+                    module.train(mode)
+                    module.base.eval()
+        return self
+
+    def forward(
+        self,
+        *,
+        input_ids: torch.Tensor,
+        text_attention_mask: torch.Tensor,
+        input_values: torch.Tensor,
+        audio_attention_mask: torch.Tensor | None,
+        video_hidden_states: torch.Tensor,
+        video_attention_mask: torch.Tensor,
+        subsets: Iterable[str] = SUBSETS,
+    ) -> dict[str, dict[str, torch.Tensor]]:
+        text = self.text_encoder(
+            input_ids=input_ids,
+            attention_mask=text_attention_mask,
+            return_dict=True,
+        ).last_hidden_state
+        audio = self.audio_encoder(
+            input_values=input_values,
+            attention_mask=audio_attention_mask,
+            return_dict=True,
+        ).last_hidden_state
+        audio_mask = None
+        if audio_attention_mask is not None:
+            audio_mask = self.audio_encoder._get_feature_vector_attention_mask(
+                audio.shape[1], audio_attention_mask
+            )
+        encoded = {
+            "t": self.pools["t"](text, text_attention_mask),
+            "a": self.pools["a"](audio, audio_mask),
+            "v": self.pools["v"](video_hidden_states, video_attention_mask),
         }
         return self.fusion.forward_subsets(encoded, subsets)
 
@@ -226,6 +467,7 @@ class RDIDStudent(nn.Module):
         hidden_size: int = 512,
         tokens_per_modality: int = 4,
         freeze_encoders: bool = True,
+        binary_classes: int | None = None,
     ) -> None:
         super().__init__()
         self.text_encoder = text_encoder
@@ -239,7 +481,11 @@ class RDIDStudent(nn.Module):
                 "v": QFormerPool(video_hidden_size, hidden_size, tokens_per_modality),
             }
         )
-        self.fusion = SubsetFusion(hidden_size=hidden_size, tokens_per_modality=tokens_per_modality)
+        self.fusion = SubsetFusion(
+            hidden_size=hidden_size,
+            tokens_per_modality=tokens_per_modality,
+            binary_classes=binary_classes,
+        )
         if freeze_encoders:
             for encoder in (self.text_encoder, self.audio_encoder, self.video_encoder):
                 encoder.requires_grad_(False)

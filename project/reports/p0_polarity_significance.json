@@ -1,0 +1,331 @@
+{
+  "schema_version": "rdid-p0-polarity-significance-v1",
+  "split": "official-valid",
+  "zero_label_policy": "exclude_true_zero",
+  "prediction_policy": "regression_score_greater_than_or_equal_to_zero_is_positive",
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 2026,
+  "official_test_evaluated": false,
+  "comparisons": [
+    {
+      "baseline": "B0",
+      "candidate": "B1",
+      "seeds": {
+        "13": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8435326842837274,
+            "candidate": 0.8518776077885952,
+            "candidate_minus_baseline": 0.008344923504867818,
+            "delta_ci95": {
+              "low": -0.009735744089012455,
+              "high": 0.026425591098748202
+            },
+            "bootstrap_probability_candidate_better": 0.8081
+          },
+          "f1_weighted": {
+            "baseline": 0.8375513033796322,
+            "candidate": 0.8517080064717482,
+            "candidate_minus_baseline": 0.014156703092115919,
+            "delta_ci95": {
+              "low": -0.004226879234058609,
+              "high": 0.0326607111373615
+            },
+            "bootstrap_probability_candidate_better": 0.9301
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 82,
+            "baseline_wrong_candidate_correct_c": 94,
+            "discordant": 176,
+            "exact_two_sided_p": 0.4070872345039555
+          }
+        },
+        "42": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8428372739916551,
+            "candidate": 0.8595271210013908,
+            "candidate_minus_baseline": 0.016689847009735748,
+            "delta_ci95": {
+              "low": -0.0006954102920723182,
+              "high": 0.034075104311543813
+            },
+            "bootstrap_probability_candidate_better": 0.9683
+          },
+          "f1_weighted": {
+            "baseline": 0.8357107160931738,
+            "candidate": 0.8582672283549797,
+            "candidate_minus_baseline": 0.022556512261805883,
+            "delta_ci95": {
+              "low": 0.004713162765908091,
+              "high": 0.04106235932645772
+            },
+            "bootstrap_probability_candidate_better": 0.9929
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 70,
+            "baseline_wrong_candidate_correct_c": 94,
+            "discordant": 164,
+            "exact_two_sided_p": 0.07217098590572868
+          }
+        },
+        "2026": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8574408901251739,
+            "candidate": 0.8477051460361613,
+            "candidate_minus_baseline": -0.009735744089012566,
+            "delta_ci95": {
+              "low": -0.02712100139082063,
+              "high": 0.0069541029207231845
+            },
+            "bootstrap_probability_candidate_better": 0.1195
+          },
+          "f1_weighted": {
+            "baseline": 0.8550393134523187,
+            "candidate": 0.8486805785885041,
+            "candidate_minus_baseline": -0.0063587348638145524,
+            "delta_ci95": {
+              "low": -0.023651043643016213,
+              "high": 0.01051903305898065
+            },
+            "bootstrap_probability_candidate_better": 0.2348
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 85,
+            "baseline_wrong_candidate_correct_c": 71,
+            "discordant": 156,
+            "exact_two_sided_p": 0.29793364454191906
+          }
+        }
+      },
+      "aggregate": {
+        "acc2_delta": {
+          "mean": 0.005099675475197,
+          "sample_std": 0.013508393402256364
+        },
+        "f1_delta": {
+          "mean": 0.010118160163369083,
+          "sample_std": 0.014874651284128428
+        },
+        "acc2_seed_wins": 2,
+        "f1_seed_wins": 2
+      }
+    },
+    {
+      "baseline": "B1",
+      "candidate": "B2",
+      "seeds": {
+        "13": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8518776077885952,
+            "candidate": 0.8553546592489569,
+            "candidate_minus_baseline": 0.003477051460361702,
+            "delta_ci95": {
+              "low": -0.01182197496522952,
+              "high": 0.01947148817802502
+            },
+            "bootstrap_probability_candidate_better": 0.6483
+          },
+          "f1_weighted": {
+            "baseline": 0.8517080064717482,
+            "candidate": 0.8567180356633172,
+            "candidate_minus_baseline": 0.00501002919156901,
+            "delta_ci95": {
+              "low": -0.010403585750779043,
+              "high": 0.020753646882582095
+            },
+            "bootstrap_probability_candidate_better": 0.7276
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 65,
+            "baseline_wrong_candidate_correct_c": 70,
+            "discordant": 135,
+            "exact_two_sided_p": 0.7307894394358098
+          }
+        },
+        "42": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8595271210013908,
+            "candidate": 0.8560500695410292,
+            "candidate_minus_baseline": -0.003477051460361591,
+            "delta_ci95": {
+              "low": -0.017385257301808066,
+              "high": 0.010431154381084884
+            },
+            "bootstrap_probability_candidate_better": 0.3007
+          },
+          "f1_weighted": {
+            "baseline": 0.8582672283549797,
+            "candidate": 0.8547195923246155,
+            "candidate_minus_baseline": -0.003547636030364232,
+            "delta_ci95": {
+              "low": -0.017616677909165126,
+              "high": 0.010635432964301068
+            },
+            "bootstrap_probability_candidate_better": 0.3158
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 54,
+            "baseline_wrong_candidate_correct_c": 49,
+            "discordant": 103,
+            "exact_two_sided_p": 0.6936859650244837
+          }
+        },
+        "2026": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8477051460361613,
+            "candidate": 0.8623087621696801,
+            "candidate_minus_baseline": 0.014603616133518793,
+            "delta_ci95": {
+              "low": -0.0006954102920723182,
+              "high": 0.029902642559109904
+            },
+            "bootstrap_probability_candidate_better": 0.965
+          },
+          "f1_weighted": {
+            "baseline": 0.8486805785885041,
+            "candidate": 0.8624922103285114,
+            "candidate_minus_baseline": 0.013811631740007324,
+            "delta_ci95": {
+              "low": -0.0013348165332078494,
+              "high": 0.02894851806025588
+            },
+            "bootstrap_probability_candidate_better": 0.9628
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 53,
+            "baseline_wrong_candidate_correct_c": 74,
+            "discordant": 127,
+            "exact_two_sided_p": 0.0755305592306964
+          }
+        }
+      },
+      "aggregate": {
+        "acc2_delta": {
+          "mean": 0.004867872044506301,
+          "sample_std": 0.009120220478862302
+        },
+        "f1_delta": {
+          "mean": 0.005091341633737367,
+          "sample_std": 0.00867991953682773
+        },
+        "acc2_seed_wins": 2,
+        "f1_seed_wins": 2
+      }
+    },
+    {
+      "baseline": "RU",
+      "candidate": "B2",
+      "seeds": {
+        "13": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8511821974965229,
+            "candidate": 0.8553546592489569,
+            "candidate_minus_baseline": 0.00417246175243402,
+            "delta_ci95": {
+              "low": -0.013212795549374157,
+              "high": 0.021557719054241975
+            },
+            "bootstrap_probability_candidate_better": 0.6578
+          },
+          "f1_weighted": {
+            "baseline": 0.8499283157702229,
+            "candidate": 0.8567180356633172,
+            "candidate_minus_baseline": 0.006789719893094293,
+            "delta_ci95": {
+              "low": -0.010740040454313949,
+              "high": 0.024241624580479407
+            },
+            "bootstrap_probability_candidate_better": 0.7751
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 79,
+            "baseline_wrong_candidate_correct_c": 85,
+            "discordant": 164,
+            "exact_two_sided_p": 0.6963409692892948
+          }
+        },
+        "42": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8442280945757997,
+            "candidate": 0.8560500695410292,
+            "candidate_minus_baseline": 0.01182197496522952,
+            "delta_ci95": {
+              "low": -0.004172461752433909,
+              "high": 0.02781641168289284
+            },
+            "bootstrap_probability_candidate_better": 0.915
+          },
+          "f1_weighted": {
+            "baseline": 0.8459486292159785,
+            "candidate": 0.8547195923246155,
+            "candidate_minus_baseline": 0.008770963108637009,
+            "delta_ci95": {
+              "low": -0.007204133451824229,
+              "high": 0.024552911431615834
+            },
+            "bootstrap_probability_candidate_better": 0.8541
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 60,
+            "baseline_wrong_candidate_correct_c": 77,
+            "discordant": 137,
+            "exact_two_sided_p": 0.17140890326024488
+          }
+        },
+        "2026": {
+          "samples": 1438,
+          "acc2": {
+            "baseline": 0.8588317107093185,
+            "candidate": 0.8623087621696801,
+            "candidate_minus_baseline": 0.003477051460361591,
+            "delta_ci95": {
+              "low": -0.01182197496522952,
+              "high": 0.018776077885952702
+            },
+            "bootstrap_probability_candidate_better": 0.651
+          },
+          "f1_weighted": {
+            "baseline": 0.8581223306754479,
+            "candidate": 0.8624922103285114,
+            "candidate_minus_baseline": 0.004369879653063569,
+            "delta_ci95": {
+              "low": -0.01120908039747097,
+              "high": 0.019650020776167666
+            },
+            "bootstrap_probability_candidate_better": 0.7061
+          },
+          "mcnemar": {
+            "baseline_correct_candidate_wrong_b": 62,
+            "baseline_wrong_candidate_correct_c": 67,
+            "discordant": 129,
+            "exact_two_sided_p": 0.724854366971759
+          }
+        }
+      },
+      "aggregate": {
+        "acc2_delta": {
+          "mean": 0.0064904960593417105,
+          "sample_std": 0.004630269901585119
+        },
+        "f1_delta": {
+          "mean": 0.006643520884931624,
+          "sample_std": 0.0022041811423341266
+        },
+        "acc2_seed_wins": 3,
+        "f1_seed_wins": 3
+      }
+    }
+  ]
+}

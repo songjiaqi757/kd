@@ -1,0 +1,53 @@
+{
+  "schema_version": "stage-d-interim-v1",
+  "snapshot_time": "2026-09-09T10:02:33+08:00",
+  "evaluation_scope": "official_train_valid_only",
+  "official_test_evaluated": false,
+  "experiments": {
+    "D1": {
+      "method": "Full KD + LoRA(T+A)",
+      "completed_seeds": [13, 42],
+      "running_seeds": [2026],
+      "two_seed_summary": {
+        "mae": {"mean": 0.47516180733917673, "sample_std": 0.005577631374679705},
+        "pearson": {"mean": 0.7897443868534642, "sample_std": 0.002856867258804591},
+        "acc2_nonzero": {"mean": 0.8710013908205841, "sample_std": 0.015243609330168946},
+        "f1_weighted_nonzero": {"mean": 0.8713380263280635, "sample_std": 0.015413291320414352},
+        "acc7": {"mean": 0.5729556386958845, "sample_std": 0.007558597340315847}
+      },
+      "mae_delta_vs_same_seed_B1": {"13": -0.04116330250746364, "42": -0.024664602441372308},
+      "gate": "pass"
+    },
+    "D2": {
+      "method": "Reliability x Utility + LoRA(T+A)",
+      "completed_seeds": [42],
+      "running_seeds": [13],
+      "queued_seeds": [2026],
+      "seed42": {
+        "mae": 0.4638121314218858,
+        "pearson": 0.7995258579419049,
+        "acc2_nonzero": 0.8762169680111266,
+        "f1_weighted_nonzero": 0.8770329514574553,
+        "acc7": 0.5793693212185996,
+        "best_epoch": 13,
+        "mae_delta_vs_D1": -0.015293656885285778
+      },
+      "seed13_interim": {"epoch": 12, "best_epoch": 9, "best_mae": 0.46810540583318844},
+      "gate": "pending_multiseed_completion"
+    },
+    "D3": {
+      "method": "Full KD + cosine Hidden KD",
+      "completed_seeds": [13, 42],
+      "two_seed_summary": {
+        "mae": {"mean": 0.5113688794596327, "sample_std": 0.0055311066787193585},
+        "pearson": {"mean": 0.7425503933732733, "sample_std": 0.005505370205227301},
+        "acc2_nonzero": {"mean": 0.8546592489568845, "sample_std": 0.007867669331700139},
+        "f1_weighted_nonzero": {"mean": 0.8528346951811014, "sample_std": 0.006359762733538663},
+        "acc7": {"mean": 0.5435595938001069, "sample_std": 0.0022675792020947147}
+      },
+      "mean_mae_delta_vs_same_seed_B1": 0.003293119646038012,
+      "gate": "fail",
+      "stopped_followups": ["D3_seed2026", "D4", "D5"]
+    }
+  }
+}
