@@ -1,28 +1,36 @@
 {
   "schema_version": "stage-d-interim-v1",
-  "snapshot_time": "2026-09-09T10:02:33+08:00",
+  "snapshot_time": "2026-09-09T14:46:24+08:00",
   "evaluation_scope": "official_train_valid_only",
   "official_test_evaluated": false,
   "experiments": {
     "D1": {
       "method": "Full KD + LoRA(T+A)",
-      "completed_seeds": [13, 42],
-      "running_seeds": [2026],
-      "two_seed_summary": {
-        "mae": {"mean": 0.47516180733917673, "sample_std": 0.005577631374679705},
-        "pearson": {"mean": 0.7897443868534642, "sample_std": 0.002856867258804591},
-        "acc2_nonzero": {"mean": 0.8710013908205841, "sample_std": 0.015243609330168946},
-        "f1_weighted_nonzero": {"mean": 0.8713380263280635, "sample_std": 0.015413291320414352},
-        "acc7": {"mean": 0.5729556386958845, "sample_std": 0.007558597340315847}
+      "completed_seeds": [13, 42, 2026],
+      "running_seeds": [],
+      "three_seed_summary": {
+        "mae": {"mean": 0.47281281133774694, "sample_std": 0.005666421491568105},
+        "pearson": {"mean": 0.7906513250880118, "sample_std": 0.002558995144791746},
+        "acc2_nonzero": {"mean": 0.8738989337042188, "sample_std": 0.011889956980280154},
+        "f1_weighted_nonzero": {"mean": 0.8739420230568158, "sample_std": 0.011795218164749594},
+        "acc7": {"mean": 0.5743809014787101, "sample_std": 0.005887301493624895}
       },
-      "mae_delta_vs_same_seed_B1": {"13": -0.04116330250746364, "42": -0.024664602441372308},
+      "mae_delta_vs_same_seed_B1": {"13": -0.04116330250746364, "42": -0.024664602441372308, "2026": -0.03740369971661206},
       "gate": "pass"
     },
     "D2": {
       "method": "Reliability x Utility + LoRA(T+A)",
-      "completed_seeds": [42],
-      "running_seeds": [13],
-      "queued_seeds": [2026],
+      "completed_seeds": [13, 42],
+      "running_seeds": [2026],
+      "queued_seeds": [],
+      "two_seed_summary": {
+        "mae": {"mean": 0.46414428270216757, "sample_std": 0.0004697328453339917},
+        "pearson": {"mean": 0.7962247768437295, "sample_std": 0.004668433659533115},
+        "acc2_nonzero": {"mean": 0.8755215577190543, "sample_std": 0.0009834586664625076},
+        "f1_weighted_nonzero": {"mean": 0.8757238475880711, "sample_std": 0.0018513524466382458},
+        "acc7": {"mean": 0.5844468198824158, "sample_std": 0.0071806674733001135}
+      },
+      "mae_delta_vs_same_seed_D1": {"13": -0.006741392388732614, "42": -0.015293656885285778},
       "seed42": {
         "mae": 0.4638121314218858,
         "pearson": 0.7995258579419049,
@@ -32,7 +40,7 @@
         "best_epoch": 13,
         "mae_delta_vs_D1": -0.015293656885285778
       },
-      "seed13_interim": {"epoch": 12, "best_epoch": 9, "best_mae": 0.46810540583318844},
+      "seed2026_interim": {"epoch": 3, "best_epoch": 1, "best_mae": 0.5062338125318421},
       "gate": "pending_multiseed_completion"
     },
     "D3": {

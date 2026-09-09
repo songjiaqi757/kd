@@ -39,9 +39,10 @@ subset4 KD 的 seeds 13、42 小规模验证。E2 相对 B2 的 Acc-2 在 2/2 se
 MAE 退化 0.0249，未通过 regression safety gate。按预注册停止 Reliability、
 Boundary、LoRA 和 binary 权重搜索；Official test 仍未使用。
 
-Stage D 的 LoRA(T+A) 已完成 seeds 13、42：Full KD + LoRA 的两 seed 平均
-MAE 为 0.4752，相同 seed 的冻结 B1 为 0.5081。RU + LoRA 的已完成 seed 42
-进一步达到 0.4638；其余 seed 正在运行。第一版 cosine Hidden KD 未通过 Gate。
+Stage D 的 Full KD + LoRA(T+A) 已完成三 seed，平均 MAE 为 0.4728 ± 0.0057，
+相比冻结 B1 的 0.5072 ± 0.0046 在 3/3 seeds 上改善。RU + LoRA 的已完成
+seeds 13、42 平均 MAE 为 0.4641，分别优于对应 D1 0.0067、0.0153；seed
+2026 仍在运行。第一版 cosine Hidden KD 未通过 Gate。
 阶段性结果见 [`project/reports/stage_d_interim_results.md`](project/reports/stage_d_interim_results.md)。
 
 完整进展、指标、限制和下一步见 [`docs/实验汇总报告.md`](docs/实验汇总报告.md)，
