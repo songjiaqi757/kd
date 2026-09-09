@@ -1,0 +1,355 @@
+{
+  "selection": "One targeted sample followed by 24 train utterances sampled without replacement, numpy RNG seed 2026. Descriptive spotcheck; not a dataset-wide defect rate.",
+  "samples": [
+    {
+      "sample_id": "-NFrJFQijFE[0]",
+      "duration": 4.581859410428,
+      "source": {
+        "fps": 25.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 14250
+      },
+      "prepared_fps": 25.0,
+      "decoded_frames": 115,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 10
+    },
+    {
+      "sample_id": "CbQxC1iPyS8[0]",
+      "duration": 17.195,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 3786
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 516,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "_26JmJnPKfM[20]",
+      "duration": 12.5337868481,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 5650
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 376,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "74101[4]",
+      "duration": 4.552,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 2458
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 137,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "208416[16]",
+      "duration": 3.1159999999999997,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 2990
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 94,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "U4-u5NZLA_w[0]",
+      "duration": 6.258,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 1772
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 188,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "m8tzdtrgFUA[6]",
+      "duration": 9.271201813999998,
+      "source": {
+        "fps": 29.97002997002997,
+        "width": 1280,
+        "height": 720,
+        "frames": 13685
+      },
+      "prepared_fps": 29.97002997002997,
+      "decoded_frames": 278,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "247382[5]",
+      "duration": 5.798999999999992,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 3617
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 174,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "wrQVnClcNPM[5]",
+      "duration": 4.820999999999998,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 2188
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 145,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "3GyEnzE1NTQ[3]",
+      "duration": 4.6910000000000025,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 3553
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 141,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "UtuTyW9pUN8[7]",
+      "duration": 7.724716553299999,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 1649
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 232,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "TWf0XFpXwfs[2]",
+      "duration": 4.772000000000002,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 2258
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 144,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "255338[10]",
+      "duration": 4.381999999999998,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 2362
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 132,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "72017[1]",
+      "duration": 2.816,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 1879
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 85,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "mgpoY1-110U[5]",
+      "duration": 9.660000000000004,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 4534
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 290,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "rz4Ax6xfZHQ[3]",
+      "duration": 7.036000000000001,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 4024
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 212,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "kY64gXOapYk[3]",
+      "duration": 4.711564625800001,
+      "source": {
+        "fps": 29.97292978050292,
+        "width": 1280,
+        "height": 720,
+        "frames": 10109
+      },
+      "prepared_fps": 29.97002997002997,
+      "decoded_frames": 142,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "bEXCrGIOoWU[0]",
+      "duration": 13.422000000000002,
+      "source": {
+        "fps": 30.0,
+        "width": 540,
+        "height": 360,
+        "frames": 3070
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 403,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "gvrfI9e5xHQ[0]",
+      "duration": 16.355000000000004,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 2153
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 491,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "6G8JJ69aN6o[2]",
+      "duration": 4.262585034000001,
+      "source": {
+        "fps": 25.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 10420
+      },
+      "prepared_fps": 25.0,
+      "decoded_frames": 107,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "106514[16]",
+      "duration": 6.037999999999997,
+      "source": {
+        "fps": 30.0,
+        "width": 480,
+        "height": 360,
+        "frames": 3347
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 182,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "255226[3]",
+      "duration": 5.161000000000001,
+      "source": {
+        "fps": 30.0,
+        "width": 792,
+        "height": 360,
+        "frames": 3885
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 155,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "qFppeQvdfxI[5]",
+      "duration": 7.534999999999997,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 1691
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 227,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "aiUq5xksJy0[7]",
+      "duration": 4.332000000000001,
+      "source": {
+        "fps": 30.0,
+        "width": 1280,
+        "height": 720,
+        "frames": 1767
+      },
+      "prepared_fps": 30.0,
+      "decoded_frames": 130,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    },
+    {
+      "sample_id": "1ESU5ONMMxs[7]",
+      "duration": 5.848979591800001,
+      "source": {
+        "fps": 23.976023976023978,
+        "width": 1280,
+        "height": 720,
+        "frames": 15480
+      },
+      "prepared_fps": 23.976023976023978,
+      "decoded_frames": 141,
+      "sampled_unique_indices": 16,
+      "sampled_unique_rgb_frames": 16
+    }
+  ]
+}

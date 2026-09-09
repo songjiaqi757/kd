@@ -1,0 +1,265 @@
+{
+  "audit_date": "2026-09-09",
+  "scope": "Core code review, CPU reproductions, existing train/valid artifacts; no new training or official-test evaluation.",
+  "environment": {
+    "python": "3.13.13",
+    "torch": "2.12.1+cu130"
+  },
+  "validation": {
+    "pytest_passed": 44,
+    "pytest_warnings": 4,
+    "python_ast_files": 64,
+    "train_windows": 16399,
+    "train_utterances": 16326,
+    "train_videos": 2249,
+    "valid_windows": 1879,
+    "valid_utterances": 1871,
+    "valid_videos": 300,
+    "train_valid_video_overlap": 0,
+    "current_teacher_student_manifest_hash_matches": true
+  },
+  "calibration": {
+    "recorded_student_temperature": 0.9259549975395203,
+    "teacher_fullscale_temperatures": {
+      "2026": 1.014997959136963,
+      "2027": 1.0186201333999634,
+      "2028": 1.0033042430877686
+    }
+  },
+  "cpu_reproductions": {
+    "gradient_checkpointing": {
+      "enabled_modules": 8,
+      "enabled_and_training_modules": 0,
+      "modules": [
+        {
+          "name": "text_encoder",
+          "training": false
+        },
+        {
+          "name": "text_encoder.layers.0",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.feature_extractor",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.feature_extractor.conv_layers.0",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.feature_extractor.conv_layers.1",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.feature_extractor.conv_layers.2",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.encoder",
+          "training": false
+        },
+        {
+          "name": "audio_encoder.encoder.layers.0",
+          "training": false
+        }
+      ]
+    },
+    "wavlm_zero_adapter_parity_float32": 1.4901161193847656e-08,
+    "pretrained_wavlm_padding": {
+      "valid_tokens": 24,
+      "max_abs_difference": 0.4762343168258667,
+      "mean_abs_difference": 0.03822765126824379,
+      "relative_l2": 0.314032644033432
+    },
+    "weighted_accumulation": {
+      "logical_batch_grad": [
+        0.1600000113248825,
+        0.12000000476837158
+      ],
+      "microbatch_grad": [
+        0.10000000149011612,
+        0.30000001192092896
+      ]
+    },
+    "stale_cache_reuse": {
+      "status": "complete",
+      "sample_id": "B",
+      "old_A_feature_assigned_to_B": 10.0
+    }
+  },
+  "real_train_audio_padding": {
+    "short_train_sample": "0YdYFtVdlWE[9]",
+    "long_train_sample": "-NFrJFQijFE[0]",
+    "seconds": [
+      1.618625,
+      4.581875
+    ],
+    "max_abs_difference": 1.3025729656219482,
+    "mean_abs_difference": 0.01762174442410469,
+    "relative_l2": 0.15315696597099304,
+    "note": "Actual local pretrained WavLM, CPU float32, train audio only; encoder-level difference, not estimated metric degradation."
+  },
+  "empty_baseline_sensitivity": {
+    "train_utterance_mean": 0.14626975591646665,
+    "train_utterances": 16326,
+    "train_only_top50_selection_changed_fraction": 0.143727796153375,
+    "mean_snr_zero_baseline": {
+      "ta": 9.173734212651611,
+      "tv": 5.360090715678917,
+      "av": 5.5573630934580995,
+      "tav": 4.897066723287864
+    },
+    "mean_snr_train_mean_baseline": {
+      "ta": 8.44325208391683,
+      "tv": 4.686471055942367,
+      "av": 4.656458866044035,
+      "tav": 4.3174061597713065
+    },
+    "note": "Uniform unique-utterance diagnostic; production threshold is computed over window rows, so this is a sensitivity estimate, not a rerun."
+  },
+  "paired_mae_statistics": {
+    "repetitions": 10000,
+    "rng_seed": 2026,
+    "utterances": 1871,
+    "video_clusters": 300,
+    "note": "Conditional on completed checkpoints; does not account for model-selection or seed uncertainty. Cluster resampling preserves each video and weights its utterances equally.",
+    "results": [
+      {
+        "baseline": "fullscale_student_seed13",
+        "candidate": "fullscale_full_kd_seed13",
+        "baseline_mae": 0.5335212829742437,
+        "candidate_mae": 0.5123811288786455,
+        "delta": -0.021140154095598225,
+        "cluster_ci95": [
+          -0.039907463094810566,
+          -0.0023850557837464892
+        ],
+        "iid_ci95": [
+          -0.035858045732129654,
+          -0.006435529017330042
+        ]
+      },
+      {
+        "baseline": "fullscale_full_kd_seed13",
+        "candidate": "fullscale_reliability_utility_pair_seed13",
+        "baseline_mae": 0.5123811288786455,
+        "candidate_mae": 0.5062012975994833,
+        "delta": -0.006179831279162232,
+        "cluster_ci95": [
+          -0.02117547584683983,
+          0.008237550000416602
+        ],
+        "iid_ci95": [
+          -0.019279069337466346,
+          0.007151236109010214
+        ]
+      },
+      {
+        "baseline": "fullscale_student_seed42",
+        "candidate": "fullscale_full_kd_seed42",
+        "baseline_mae": 0.5395743460348941,
+        "candidate_mae": 0.5037703907485439,
+        "delta": -0.03580395528635013,
+        "cluster_ci95": [
+          -0.05094642855312281,
+          -0.02059233490147577
+        ],
+        "iid_ci95": [
+          -0.04894715780314574,
+          -0.022467588736533328
+        ]
+      },
+      {
+        "baseline": "fullscale_full_kd_seed42",
+        "candidate": "fullscale_reliability_utility_pair_seed42",
+        "baseline_mae": 0.5037703907485439,
+        "candidate_mae": 0.5073168141739288,
+        "delta": 0.0035464234253849165,
+        "cluster_ci95": [
+          -0.009822528767205511,
+          0.016637898583294966
+        ],
+        "iid_ci95": [
+          -0.008464410540101053,
+          0.015896153862425006
+        ]
+      },
+      {
+        "baseline": "fullscale_student_seed2026",
+        "candidate": "fullscale_full_kd_seed2026",
+        "baseline_mae": 0.5237936333428614,
+        "candidate_mae": 0.5055185190514995,
+        "delta": -0.01827511429136201,
+        "cluster_ci95": [
+          -0.031556251465367044,
+          -0.005559966154919337
+        ],
+        "iid_ci95": [
+          -0.03085751334002777,
+          -0.0056740427771449975
+        ]
+      },
+      {
+        "baseline": "fullscale_full_kd_seed2026",
+        "candidate": "fullscale_reliability_utility_pair_seed2026",
+        "baseline_mae": 0.5055185190514995,
+        "candidate_mae": 0.5029769590815323,
+        "delta": -0.0025415599699671835,
+        "cluster_ci95": [
+          -0.012738173122980865,
+          0.007852532304532015
+        ],
+        "iid_ci95": [
+          -0.013854690552943303,
+          0.00897925697471667
+        ]
+      },
+      {
+        "baseline": "fullscale_full_kd_seed13",
+        "candidate": "stage_d_d1_full_kd_lora_seed13",
+        "baseline_mae": 0.5123811288786455,
+        "candidate_mae": 0.47121782637118187,
+        "delta": -0.0411633025074637,
+        "cluster_ci95": [
+          -0.060981679533287474,
+          -0.022206642874562775
+        ],
+        "iid_ci95": [
+          -0.05683645422009539,
+          -0.02531695501852016
+        ]
+      },
+      {
+        "baseline": "fullscale_full_kd_seed42",
+        "candidate": "stage_d_d1_full_kd_lora_seed42",
+        "baseline_mae": 0.5037703907485439,
+        "candidate_mae": 0.4791057883071716,
+        "delta": -0.024664602441372353,
+        "cluster_ci95": [
+          -0.04562678642268067,
+          -0.005468750686181373
+        ],
+        "iid_ci95": [
+          -0.04036468172809835,
+          -0.008884232161287198
+        ]
+      },
+      {
+        "baseline": "stage_d_d1_full_kd_lora_seed42",
+        "candidate": "stage_d_d2_ru_lora_seed42",
+        "baseline_mae": 0.4791057883071716,
+        "candidate_mae": 0.4638121314218858,
+        "delta": -0.015293656885285731,
+        "cluster_ci95": [
+          -0.02537764750167134,
+          -0.004927771117832744
+        ],
+        "iid_ci95": [
+          -0.025384841197286026,
+          -0.004956896125407942
+        ]
+      }
+    ]
+  }
+}

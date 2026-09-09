@@ -1,0 +1,282 @@
+{
+  "scope": "Existing train/valid artifacts. No teacher or student inference, no test evaluation. Within-model subset comparisons are not independently trained TA-only controls.",
+  "sampling": {
+    "windows": 18278,
+    "duration_quantiles_seconds": {
+      "min": 0.11972789120000016,
+      "p25": 4.392290249094999,
+      "p50": 6.468000000000011,
+      "p75": 9.500999999999998,
+      "p90": 13.621000000000004,
+      "p95": 16.958499999999937,
+      "max": 30.000000000000004
+    },
+    "fraction_windows_over_7_5_seconds": 0.3955575008206587,
+    "fraction_windows_over_15_seconds": 0.07528175949228581,
+    "note": "For 16 endpoint-inclusive uniform frames, temporal step approximately duration/15 seconds."
+  },
+  "teacher_valid_three_seed_mean": {
+    "t": {
+      "mae": 0.48129004096826294,
+      "pearson": 0.8062340173144247,
+      "acc2_nonzero": 0.8903569772832638
+    },
+    "a": {
+      "mae": 0.46069060111914034,
+      "pearson": 0.8171004645137214,
+      "acc2_nonzero": 0.885952712100139
+    },
+    "v": {
+      "mae": 0.7256761853526207,
+      "pearson": 0.4252588546306191,
+      "acc2_nonzero": 0.7185906351414001
+    },
+    "ta": {
+      "mae": 0.4561647269501729,
+      "pearson": 0.8276071251408141,
+      "acc2_nonzero": 0.8924432081594807
+    },
+    "tv": {
+      "mae": 0.460476355684814,
+      "pearson": 0.823424760149335,
+      "acc2_nonzero": 0.8917477978674084
+    },
+    "av": {
+      "mae": 0.4443613654291426,
+      "pearson": 0.8221166883185478,
+      "acc2_nonzero": 0.8776077885952712
+    },
+    "tav": {
+      "mae": 0.43776828340736584,
+      "pearson": 0.8366426951799891,
+      "acc2_nonzero": 0.8936022253129347
+    }
+  },
+  "teacher_tav_vs_ta": [
+    {
+      "seed": 2026,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.44522809757417714,
+        "pearson": 0.8295394819569842,
+        "acc2_nonzero": 0.894297635605007,
+        "f1_weighted_nonzero": 0.893520173308526,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8588989845002672,
+        "f1_weighted_has_zero": 0.8620023269910125,
+        "acc7": 0.5889898450026724
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.4323160749081815,
+        "pearson": 0.8400146356815363,
+        "acc2_nonzero": 0.8866481223922114,
+        "f1_weighted_nonzero": 0.8864654071384274,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8391234633885623,
+        "f1_weighted_has_zero": 0.8442881369081101,
+        "acc7": 0.5996793158738642
+      },
+      "delta_mae_tav_minus_ta": -0.012912022665995589,
+      "cluster_ci95": [
+        -0.021235540051323373,
+        -0.00488323444664012
+      ],
+      "fraction_utterances_improved": 0.5243185462319615
+    },
+    {
+      "seed": 2027,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.45547998741934664,
+        "pearson": 0.8290574909891913,
+        "acc2_nonzero": 0.8929068150208623,
+        "f1_weighted_nonzero": 0.8917077060790815,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8701229289150187,
+        "f1_weighted_has_zero": 0.8717992226714049,
+        "acc7": 0.5702832709780866
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.4395426779339888,
+        "pearson": 0.8351029779946401,
+        "acc2_nonzero": 0.8949930458970793,
+        "f1_weighted_nonzero": 0.8948237820730216,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8514163548904329,
+        "f1_weighted_has_zero": 0.8558760971322578,
+        "acc7": 0.589524318546232
+      },
+      "delta_mae_tav_minus_ta": -0.015937309485357848,
+      "cluster_ci95": [
+        -0.02430652425150706,
+        -0.007966267353044818
+      ],
+      "fraction_utterances_improved": 0.5430251202565473
+    },
+    {
+      "seed": 2028,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.4677860958569949,
+        "pearson": 0.8242244024762669,
+        "acc2_nonzero": 0.8901251738525731,
+        "f1_weighted_nonzero": 0.8873697259290867,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8813468733297701,
+        "f1_weighted_has_zero": 0.8804227493244972,
+        "acc7": 0.5446285408872261
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.4414460973799271,
+        "pearson": 0.834810471863791,
+        "acc2_nonzero": 0.8991655076495132,
+        "f1_weighted_nonzero": 0.8977730571055891,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8834847675040085,
+        "f1_weighted_has_zero": 0.8841838455673408,
+        "acc7": 0.5831106360235169
+      },
+      "delta_mae_tav_minus_ta": -0.02633999847706776,
+      "cluster_ci95": [
+        -0.03577944928322194,
+        -0.01693053139420273
+      ],
+      "fraction_utterances_improved": 0.5649385355424906
+    }
+  ],
+  "student_b2_tav_vs_ta": [
+    {
+      "method": "B2_subset4",
+      "seed": 13,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.5163121786996365,
+        "pearson": 0.7423982521451029,
+        "acc2_nonzero": 0.8511821974965229,
+        "f1_weighted_nonzero": 0.8530064832868995,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8075895243185462,
+        "f1_weighted_has_zero": 0.816152638032606,
+        "acc7": 0.5456974879743453
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.5140501869348084,
+        "pearson": 0.7447814093546903,
+        "acc2_nonzero": 0.8553546592489569,
+        "f1_weighted_nonzero": 0.8567180356633172,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8172100481026189,
+        "f1_weighted_has_zero": 0.8246130630245216,
+        "acc7": 0.5435595938001069
+      },
+      "delta_mae_tav_minus_ta": -0.002261991764828132,
+      "cluster_ci95": [
+        -0.007623397412940241,
+        0.003135203637075712
+      ],
+      "fraction_utterances_improved": 0.501336183858899
+    },
+    {
+      "method": "B2_subset4",
+      "seed": 42,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.505641350445237,
+        "pearson": 0.7400558826561852,
+        "acc2_nonzero": 0.8546592489568846,
+        "f1_weighted_nonzero": 0.8521200306403646,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8295029396044896,
+        "f1_weighted_has_zero": 0.8317035063052598,
+        "acc7": 0.5569214323890967
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.5063345929937886,
+        "pearson": 0.7407987288756488,
+        "acc2_nonzero": 0.8560500695410292,
+        "f1_weighted_nonzero": 0.8547195923246155,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8097274184927846,
+        "f1_weighted_has_zero": 0.8151371894934464,
+        "acc7": 0.5483698556921432
+      },
+      "delta_mae_tav_minus_ta": 0.0006932425485515928,
+      "cluster_ci95": [
+        -0.0057853496996740665,
+        0.007346258614256923
+      ],
+      "fraction_utterances_improved": 0.4804917156600748
+    },
+    {
+      "method": "B2_subset4",
+      "seed": 2026,
+      "ta_metrics": {
+        "count": 1871,
+        "mae": 0.5135634650950023,
+        "pearson": 0.7462243284763576,
+        "acc2_nonzero": 0.8560500695410292,
+        "f1_weighted_nonzero": 0.8560174701608567,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8214858364510956,
+        "f1_weighted_has_zero": 0.8270495396888649,
+        "acc7": 0.5633351149118119
+      },
+      "tav_metrics": {
+        "count": 1871,
+        "mae": 0.5047634006742127,
+        "pearson": 0.7540405891999035,
+        "acc2_nonzero": 0.8623087621696801,
+        "f1_weighted_nonzero": 0.8624922103285114,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8182789951897381,
+        "f1_weighted_has_zero": 0.8246634264960544,
+        "acc7": 0.5595938001068947
+      },
+      "delta_mae_tav_minus_ta": -0.008800064420789658,
+      "cluster_ci95": [
+        -0.018434275401414586,
+        0.0011087127247717673
+      ],
+      "fraction_utterances_improved": 0.5008017103153394
+    }
+  ],
+  "bootstrap": {
+    "repetitions": 10000,
+    "rng_seed": 2026,
+    "clusters": 300,
+    "utterances": 1871,
+    "unit": "video_id"
+  },
+  "input_spotcheck": {
+    "sample_id": "-NFrJFQijFE[0]",
+    "raw_shape": [
+      720,
+      1280,
+      3
+    ],
+    "raw_dtype": "uint8_rgb24",
+    "processor_shape": [
+      1,
+      16,
+      3,
+      224,
+      224
+    ],
+    "processor_finite": true,
+    "do_rescale": true,
+    "rescale_factor": 0.00392156862745098,
+    "resize_shortest_edge": 224,
+    "crop_size": [
+      224,
+      224
+    ],
+    "sampled_unique_rgb_frames": 10,
+    "note": "One train sample only; no dataset-wide correctness claim."
+  },
+  "frame_spotcheck_file": "video_frame_spotcheck_20260909.json"
+}

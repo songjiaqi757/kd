@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-09",
+  "cpu_tests": {
+    "command": "python -m pytest project/tests -q",
+    "passed": 57,
+    "warnings": 11
+  },
+  "gpu_smokes": {
+    "frozen_video": {
+      "mode": "frozen_video",
+      "epochs_run": 2,
+      "train_windows": 2,
+      "valid_windows": 2,
+      "video_trainable_parameters": 0,
+      "peak_gpu_memory_gib": 4.327284812927246,
+      "status": "complete"
+    },
+    "video_lora": {
+      "mode": "video_lora",
+      "epochs_run": 2,
+      "train_windows": 2,
+      "valid_windows": 2,
+      "video_trainable_parameters": 98304,
+      "peak_gpu_memory_gib": 4.330761432647705,
+      "status": "complete"
+    },
+    "ta_only": {
+      "mode": "ta_only",
+      "epochs_run": 2,
+      "train_windows": 2,
+      "valid_windows": 2,
+      "video_trainable_parameters": 0,
+      "peak_gpu_memory_gib": 4.056790351867676,
+      "status": "complete"
+    },
+    "video_lora_resume": {
+      "mode": "video_lora",
+      "epochs_run": 2,
+      "train_windows": 2,
+      "valid_windows": 2,
+      "video_trainable_parameters": 98304,
+      "peak_gpu_memory_gib": 4.332587718963623,
+      "status": "complete"
+    }
+  },
+  "gpu_smoke_scope": "Two train and two valid parent samples, batch size 2, two epochs; diagnostics disabled. These are execution checks, not evidence of accuracy improvement.",
+  "visual_lora_B_first_step": {
+    "all_8_nonzero_finite": true,
+    "min_norm": 4.055867248098366e-05,
+    "max_norm": 0.0005649499944411218,
+    "artifact": "/home/wy/sjq/kd/outputs/student/video_adaptation_smoke_v2/video_lora/video_gradient_audit.json"
+  },
+  "resume_vs_continuous": {
+    "trainable_parameters_bitwise_equal": true,
+    "max_absolute_difference": 0.0,
+    "epochs": 2,
+    "train_loss_equal": true
+  },
+  "official_test_evaluated": false,
+  "full_experiment_status": "pending resource availability; see outputs/student/video_adaptation_v1/queue_status.json",
+  "queue_registration": {
+    "unit": "rdid-video-adaptation-v1.service",
+    "active_state": "active",
+    "sub_state": "running",
+    "status_at_verification": {
+      "status": "waiting_for_gpu",
+      "next_mode": "frozen_video",
+      "next_seed": 13,
+      "gpu": 1,
+      "checked_at": 1788936557.029134,
+      "memory_mib": 30092,
+      "utilization": 99,
+      "old_units": [
+        "rdid-stage-d-d2-seed2026-queue.service"
+      ]
+    },
+    "log": "/home/wy/sjq/kd/outputs/logs/video_adaptation_v1_queue.log"
+  }
+}
