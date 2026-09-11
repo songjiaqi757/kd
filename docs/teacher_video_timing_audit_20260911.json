@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-09-11T08:47:45.126416+00:00",
+  "scope": "CPU preprocessing and position-index computation only; first train windows; no teacher inference or test access.",
+  "manifest_sha256": "21779839489bb1c9e14baa2e287399e4fadfefe95db7499efa45dbadd97a9380",
+  "samples": [
+    {
+      "sample_id": "-3g5yACwYnA[0]",
+      "split": "train",
+      "duration": 17.802000000000007,
+      "sampled_frames": 34,
+      "pixels_equal": true,
+      "input_ids_equal": true,
+      "legacy": {
+        "sampled_fps": null,
+        "video_second_per_grid": [
+          2.0
+        ],
+        "video_grid_thw": [
+          [
+            17,
+            36,
+            64
+          ]
+        ]
+      },
+      "corrected": {
+        "sampled_fps": 1.9065420560747663,
+        "video_second_per_grid": [
+          1.0490195751190186
+        ],
+        "video_grid_thw": [
+          [
+            17,
+            36,
+            64
+          ]
+        ]
+      },
+      "temporal_position_ids_changed": true,
+      "max_position_id_difference": 197.80392456054688
+    },
+    {
+      "sample_id": "-3g5yACwYnA[1]",
+      "split": "train",
+      "duration": 5.38000000000001,
+      "sampled_frames": 10,
+      "pixels_equal": true,
+      "input_ids_equal": true,
+      "legacy": {
+        "sampled_fps": null,
+        "video_second_per_grid": [
+          2.0
+        ],
+        "video_grid_thw": [
+          [
+            5,
+            36,
+            64
+          ]
+        ]
+      },
+      "corrected": {
+        "sampled_fps": 1.8518518518518516,
+        "video_second_per_grid": [
+          1.0800000429153442
+        ],
+        "video_grid_thw": [
+          [
+            5,
+            36,
+            64
+          ]
+        ]
+      },
+      "temporal_position_ids_changed": true,
+      "max_position_id_difference": 47.839996337890625
+    },
+    {
+      "sample_id": "-3g5yACwYnA[2]",
+      "split": "train",
+      "duration": 9.212,
+      "sampled_frames": 18,
+      "pixels_equal": true,
+      "input_ids_equal": true,
+      "legacy": {
+        "sampled_fps": null,
+        "video_second_per_grid": [
+          2.0
+        ],
+        "video_grid_thw": [
+          [
+            9,
+            36,
+            64
+          ]
+        ]
+      },
+      "corrected": {
+        "sampled_fps": 1.9494584837545124,
+        "video_second_per_grid": [
+          1.025925874710083
+        ],
+        "video_grid_thw": [
+          [
+            9,
+            36,
+            64
+          ]
+        ]
+      },
+      "temporal_position_ids_changed": true,
+      "max_position_id_difference": 101.3037109375
+    }
+  ]
+}

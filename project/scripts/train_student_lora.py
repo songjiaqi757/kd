@@ -35,7 +35,7 @@ from train_student_baseline import (
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Stage D Full-KD/RU with LoRA on text and audio")
+    parser = argparse.ArgumentParser(description="Stage D attribution methods with LoRA on text and audio")
     parser.add_argument("--features", type=Path, default=Path("outputs/student/features/official_train_valid"))
     parser.add_argument("--manifest", type=Path, default=Path("dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl"))
     parser.add_argument("--output", type=Path, required=True)
@@ -43,7 +43,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--audio-model", type=Path, default=Path("model/WavLM-Base-Plus"))
     parser.add_argument("--teacher-targets", type=Path, default=Path("outputs/probe/official_train_valid_seed2026/predictions.jsonl"))
     parser.add_argument("--teacher-targets-ensemble", type=Path, nargs="+", default=None)
-    parser.add_argument("--method", choices=("full_kd", "reliability_utility_pair"), default="full_kd")
+    parser.add_argument(
+        "--method",
+        choices=("student", "full_kd", "ensemble_pair", "reliability_utility_pair"),
+        default="full_kd",
+    )
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--seed", type=int, default=13)
     parser.add_argument("--batch-size", type=int, default=1, help="Physical batch size")
@@ -75,6 +79,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--selective-keep-fraction", type=float, default=0.5)
     parser.add_argument("--limit-per-split", type=int, help="Smoke/throughput runs only")
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument(
+        "--freeze-text-audio",
+        action="store_true",
+        help="Keep the zero-initialized T/A adapters frozen for the online-path control",
+    )
     parser.add_argument("--deterministic", action=argparse.BooleanOptionalAction, default=True)
     return parser.parse_args()
 
@@ -159,9 +168,10 @@ def configure_method(args: argparse.Namespace, train_rows: list[dict[str, Any]])
     args.selective_threshold = None
     args.interaction_utility = None
     args.interaction_utility_normalized = [1.0, 1.0, 1.0]
-    if args.method == "reliability_utility_pair":
+    if args.method in ("ensemble_pair", "reliability_utility_pair"):
         if not args.teacher_targets_ensemble or len(args.teacher_targets_ensemble) < 2:
-            raise ValueError("RU requires at least two ensemble teacher target files")
+            raise ValueError(f"{args.method} requires at least two ensemble teacher target files")
+    if args.method == "reliability_utility_pair":
         parents = {}
         for row in train_rows:
             parents.setdefault(str(row["parent_sample_id"]), row)
@@ -236,7 +246,7 @@ def main() -> int:
     dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
     text_encoder = AutoModel.from_pretrained(args.text_model, local_files_only=True, dtype=dtype)
     audio_encoder = AutoModel.from_pretrained(args.audio_model, local_files_only=True, dtype=dtype)
-    if args.gradient_checkpointing:
+    if args.gradient_checkpointing and not args.freeze_text_audio:
         for encoder in (text_encoder, audio_encoder):
             encoder.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
             if hasattr(encoder.config, "use_cache"):
@@ -245,6 +255,9 @@ def main() -> int:
         text_encoder, audio_encoder, video_hidden_size=int(config["hidden_sizes"]["v"]),
         lora_rank=args.lora_rank, lora_alpha=args.lora_alpha, lora_dropout=args.lora_dropout,
     ).to(device)
+    if args.freeze_text_audio:
+        model.text_encoder.requires_grad_(False)
+        model.audio_encoder.requires_grad_(False)
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total = sum(p.numel() for p in model.parameters())
     optimizer = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=args.learning_rate, weight_decay=args.weight_decay)
@@ -300,7 +313,18 @@ def main() -> int:
     with (args.output / "predictions.jsonl").open("w") as handle:
         for item in aggregate_windows(train_records + valid_records):
             handle.write(json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n")
-    report = {"experiment": "D1_full_kd_lora_ta" if args.method == "full_kd" else "D2_ru_lora_ta", "seed": args.seed, "best_epoch": best_epoch, "epochs_run": len(history), "train_metrics": train_metrics, "valid_metrics": valid_metrics, "train_loss": train_loss, "valid_loss": valid_loss, "train_windows": len(train_rows), "valid_windows": len(valid_rows), "base_parameters": total - trainable, "trainable_parameters": trainable, "lora": {"rank": args.lora_rank, "alpha": args.lora_alpha, "dropout": args.lora_dropout, "text_targets": ["q_proj", "k_proj", "v_proj", "o_proj"], "audio_targets": ["q_proj", "k_proj", "v_proj", "out_proj"], "video": "frozen_cached"}, "peak_gpu_memory_gib": round(torch.cuda.max_memory_allocated(device) / 1024**3, 3) if device.type == "cuda" else None, "elapsed_seconds": round(time.time() - started, 1), "official_test_evaluated": False}
+    experiment_names = {
+        "student": "C0_task_only_lora_ta",
+        "full_kd": "D1_full_kd_lora_ta",
+        "ensemble_pair": "C2_uniform_ensemble_pair_lora_ta",
+        "reliability_utility_pair": "D2_ru_lora_ta",
+    }
+    experiment = (
+        "C_minus1_online_frozen_full_kd"
+        if args.freeze_text_audio and args.method == "full_kd"
+        else experiment_names[args.method]
+    )
+    report = {"experiment": experiment, "method": args.method, "freeze_text_audio": args.freeze_text_audio, "seed": args.seed, "best_epoch": best_epoch, "epochs_run": len(history), "train_metrics": train_metrics, "valid_metrics": valid_metrics, "train_loss": train_loss, "valid_loss": valid_loss, "train_windows": len(train_rows), "valid_windows": len(valid_rows), "base_parameters": total - trainable, "trainable_parameters": trainable, "lora": {"rank": args.lora_rank, "alpha": args.lora_alpha, "dropout": args.lora_dropout, "trainable": not args.freeze_text_audio, "text_targets": ["q_proj", "k_proj", "v_proj", "o_proj"], "audio_targets": ["q_proj", "k_proj", "v_proj", "out_proj"], "video": "frozen_cached"}, "peak_gpu_memory_gib": round(torch.cuda.max_memory_allocated(device) / 1024**3, 3) if device.type == "cuda" else None, "elapsed_seconds": round(time.time() - started, 1), "official_test_evaluated": False}
     (args.output / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
     return 0

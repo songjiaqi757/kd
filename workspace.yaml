@@ -1,6 +1,6 @@
 workspace_root: /home/wy/sjq/kd
 project_root: /home/wy/sjq/kd/project
-plan: /home/wy/sjq/kd/docs/RDID-MSA_多模态情感交互蒸馏完整方案.md
+plan: /home/wy/sjq/kd/docs/RDID-MSA_统一实验方案与论文收敛路线_20260909.md
 conda_environment:
   name: kd
   prefix: /home/wy/sjq/miniconda3/envs/kd

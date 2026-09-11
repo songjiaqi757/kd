@@ -1,0 +1,30 @@
+{
+  "status": "pass_with_v2_gaps",
+  "manifest": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl",
+  "manifest_sha256": "21779839489bb1c9e14baa2e287399e4fadfefe95db7499efa45dbadd97a9380",
+  "counts": {
+    "manifest_windows": 18278,
+    "manifest_utterances": 18197,
+    "manifest_videos": 2549,
+    "splits": {
+      "valid": 1879,
+      "train": 16399
+    },
+    "student_index_rows": 18278,
+    "student_feature_files": 18278,
+    "teacher_index_rows": 127946
+  },
+  "teacher_feature_shape": [
+    127946,
+    2048
+  ],
+  "errors": [],
+  "warnings": [
+    "student index lacks v2 identity/fingerprint fields: feature_sha256, manifest_sha256, video_id, window_end, window_index, window_start",
+    "teacher index lacks v2 identity/fingerprint fields: feature_sha256, manifest_sha256, window_end, window_start",
+    "model paths are recorded, but immutable model revision/file hashes are not recorded in the legacy cache config"
+  ],
+  "legacy_cache_safe_to_read": true,
+  "v2_rebuild_or_index_upgrade_required": true,
+  "official_test_evaluated": false
+}

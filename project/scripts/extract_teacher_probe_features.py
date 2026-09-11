@@ -15,17 +15,19 @@ from pathlib import Path
 import numpy as np
 import torch
 import transformers
-from qwen_omni_utils import process_mm_info
 from transformers import Qwen3OmniMoeConfig, Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
-OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/probe/features/benchmark500")
+OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/probe/features/benchmark500_timing_v2")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.benchmark import append_jsonl  # noqa: E402
 from rdid_mosei.probe import extract_thinker_last_input_state  # noqa: E402
 from rdid_mosei.subsets import PROMPT_VERSIONS, SUBSETS, build_conversation  # noqa: E402
+from rdid_mosei.teacher_video import (  # noqa: E402
+    VIDEO_TIMING_POLICIES, assert_timing_compatible, read_teacher_media, video_preprocessing_audit,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -42,6 +44,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device-map", default="balanced")
     parser.add_argument("--prompt-version", choices=PROMPT_VERSIONS, default="v1")
     parser.add_argument("--video-fps", type=float)
+    parser.add_argument("--video-timing-policy", choices=VIDEO_TIMING_POLICIES, default="sampled_fps_v2")
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
@@ -93,12 +96,16 @@ def main() -> int:
         "pooling": "last_valid_input_token",
         "prompt_version": args.prompt_version,
         "video_fps": args.video_fps,
+        "video_timing_policy": args.video_timing_policy,
         "seed": args.seed,
         "transformers_version": transformers.__version__,
         "torch_version": torch.__version__,
         "python_version": platform.python_version(),
     }
     print(json.dumps(run_config, ensure_ascii=False, indent=2), flush=True)
+    existing_config = args.output_dir / "run_config.json"
+    if existing_config.exists():
+        assert_timing_compatible(json.loads(existing_config.read_text()), args.video_timing_policy)
     if args.dry_run:
         return 0
     if not torch.cuda.is_available() or torch.cuda.device_count() < 2:
@@ -162,6 +169,7 @@ def main() -> int:
     cached_audios = None
     cached_images = None
     cached_videos = None
+    cached_video_kwargs = {}
     for progress, job_index in enumerate(pending, start=1):
         sample, subset = jobs[job_index]
         started = time.perf_counter()
@@ -175,11 +183,12 @@ def main() -> int:
                         prompt_version=args.prompt_version,
                         video_fps=args.video_fps,
                     )
-                    cached_audios, cached_images, cached_videos = process_mm_info(
-                        media_conversation, use_audio_in_video=False
+                    cached_audios, cached_images, cached_videos, cached_video_kwargs = read_teacher_media(
+                        media_conversation, args.video_timing_policy
                     )
                 else:
                     cached_audios = cached_images = cached_videos = None
+                    cached_video_kwargs = {}
                 cached_sample_id = sample_id
             conversation = build_conversation(
                 sample, subset, prompt_version=args.prompt_version, video_fps=args.video_fps
@@ -188,6 +197,7 @@ def main() -> int:
             audios = cached_audios if "a" in subset else None
             images = cached_images if "v" in subset else None
             videos = cached_videos if "v" in subset else None
+            video_kwargs = cached_video_kwargs if "v" in subset else {}
             inputs = processor(
                 text=prompt,
                 audio=audios,
@@ -196,7 +206,9 @@ def main() -> int:
                 return_tensors="pt",
                 padding=True,
                 use_audio_in_video=False,
+                **video_kwargs,
             )
+            video_audit = video_preprocessing_audit(inputs, processor, video_kwargs)
             inputs = inputs.to(model.device).to(model.dtype)
             with torch.inference_mode():
                 hidden = extract_thinker_last_input_state(model, inputs)
@@ -205,6 +217,11 @@ def main() -> int:
                 raise ValueError(f"invalid feature vector shape/values: {vector.shape}")
             features[job_index] = vector
             features.flush()
+            if video_audit:
+                append_jsonl(args.output_dir / "video_preprocessing.jsonl", {
+                    "job_index": job_index, "sample_id": sample_id, "subset": subset,
+                    "video_timing_policy": args.video_timing_policy, **video_audit,
+                })
             completed[job_index] = True
             completed.flush()
         except Exception as exc:
