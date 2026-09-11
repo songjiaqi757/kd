@@ -126,6 +126,9 @@ def prepare(base):
             'jobs':len(rows)*7,'policy':'sampled_fps_v2','recompute_all_subsets':True},
         'probe_seeds':list(PROBE_SEEDS),'student_teacher_seed':2026,'student_seeds':list(SEEDS),
         'student_modes':list(MODES),'student_teacher_subset':'tav',
+        'student_schedule':{'priority_modes':['video_lora'],
+            'deferred_modes':['frozen_video','ta_only'],'complete_priority_before_controls':True,
+            'controls_enabled':False},
         'student':{'video_layers':12,'rank':8,'alpha':16,'dropout':.05,'batch_size':8,
             'gradient_accumulation':1,'epochs':30,'patience':7,'learning_rate':1e-4,
             'diagnostic_video_swaps':5,'seeds_are_not_gated_on_pilot':True},
@@ -233,9 +236,18 @@ def student_command(base,mode,seed,output):
 
 
 def run_students(base,plan):
+    # Both GPUs serve the primary experiment until every priority seed finishes.
+    # Separate groups also preserve this barrier when resuming completed runs.
+    schedule=plan['student_schedule']
+    run_student_group(base,plan,schedule['priority_modes'],'priority_video_lora')
+    if schedule['controls_enabled']:
+        run_student_group(base,plan,schedule['deferred_modes'],'deferred_controls')
+
+
+def run_student_group(base,plan,modes,phase):
     pending=[]
     for seed in SEEDS:
-        for mode in MODES:
+        for mode in modes:
             output=base/'students'/f'{mode}_seed{seed}'
             if (output/'status.json').exists() and json.loads((output/'status.json').read_text()).get('status')=='complete':
                 validate_student(output,mode)
@@ -266,6 +278,7 @@ def run_students(base,plan):
                 active[gpu]={'child':child,'log':log,'output':output,'mode':mode,'name':name,'log_path':log_path}
                 idle[gpu]=0
             status(base,status='running',stage='students',pending_runs=len(pending),
+                scheduling_phase=phase,
                 active=[{'gpu':gpu,'run':j['name'],'pid':j['child'].pid,'log':str(j['log_path']),
                          'progress':progress(j['output'],'student')} for gpu,j in active.items()])
             if active or pending:time.sleep(15)
@@ -277,10 +290,10 @@ def run_students(base,plan):
             finally:job['log'].close()
 
 
-def summarize(base):
+def summarize(base,modes=MODES):
     runs={};comparisons={};perturbations={}
     for seed in SEEDS:
-        for mode in MODES:
+        for mode in modes:
             directory=base/'students'/f'{mode}_seed{seed}'
             runs[f'{mode}_seed{seed}']=validate_student(directory,mode)
             for diagnostic in runs[f'{mode}_seed{seed}']['diagnostics']:
@@ -292,14 +305,18 @@ def summarize(base):
                 perturbations[f'{mode}_seed{seed}_{diagnostic}']=compare(directory/'predictions.jsonl',path)
         candidate=base/'students'/f'video_lora_seed{seed}'/'predictions.jsonl'
         for mode in ['frozen_video','ta_only']:
+            if mode not in modes:continue
             comparisons[f'video_lora_minus_{mode}_seed{seed}']=compare(
                 base/'students'/f'{mode}_seed{seed}'/'predictions.jsonl',candidate)
     result={'runs':runs,'comparisons':comparisons,'perturbation_comparisons':perturbations,
-        'mean_mae':{m:float(np.mean([runs[f'{m}_seed{s}']['valid_metrics']['mae'] for s in SEEDS])) for m in MODES},
-        'sample_sd_mae':{m:float(np.std([runs[f'{m}_seed{s}']['valid_metrics']['mae'] for s in SEEDS],ddof=1)) for m in MODES},
+        'completed_modes':list(modes),'deferred_modes':[m for m in MODES if m not in modes],
+        'full_matrix_complete':set(modes)==set(MODES),
+        'mean_mae':{m:float(np.mean([runs[f'{m}_seed{s}']['valid_metrics']['mae'] for s in SEEDS])) for m in modes},
+        'sample_sd_mae':{m:float(np.std([runs[f'{m}_seed{s}']['valid_metrics']['mae'] for s in SEEDS],ddof=1)) for m in modes},
         'official_test_evaluated':False,'ta_only_is_diagnostic':True,'scope':'Validation-selected checkpoints; seed-wise cluster CIs, not a guarantee for unseen seeds.'}
     atomic_json(result,base/'summary.json')
-    lines=['**Video source v2 — completed results**','',
+    title='completed results' if result['full_matrix_complete'] else 'primary T/A/V LoRA results; controls deferred by user'
+    lines=[f'**Video source v2 — {title}**','',
         'All student modes use the same corrected TAV Probe seed2026 targets and its recorded temperature.',
         'TA-only is a diagnostic control; the final model requirement remains TAV. Official test was not evaluated.','',
         '| Mode | Seed | MAE | Pearson | Acc-2 |','|---|---:|---:|---:|---:|']
@@ -350,6 +367,14 @@ def main():
             run_step(base,plan,'student_smoke',command,smoke,'student',[1],lambda:validate_student(smoke,'video_lora',True))
             run_students(base,plan)
             status(base,status='running',stage='summarizing')
+            if not plan['student_schedule']['controls_enabled']:
+                summarize(base,modes=plan['student_schedule']['priority_modes'])
+                status(base,status='paused',stage='controls_deferred',
+                    completed_modes=plan['student_schedule']['priority_modes'],
+                    deferred_modes=plan['student_schedule']['deferred_modes'],
+                    reason='Controls deferred by user; no automatic launch.',
+                    summary=str(base/'summary.json'),report=str(ROOT/'docs/video_source_v2_results.md'),c2_rerun=False)
+                return
             summarize(base)
             status(base,status='complete',stage='complete',summary=str(base/'summary.json'),
                 report=str(ROOT/'docs/video_source_v2_results.md'),c2_rerun=False)

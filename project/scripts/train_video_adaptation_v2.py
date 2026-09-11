@@ -51,8 +51,6 @@ def parse_args():
     p.add_argument("--video-alpha", type=float, default=16)
     p.add_argument("--video-dropout", type=float, default=0.05)
     p.add_argument("--video-checkpointing", action=argparse.BooleanOptionalAction, default=True)
-    p.add_argument("--teacher-calibration-temperature", type=float, default=0.9259549975395203,
-                   help="Compatibility flag; actual value is read from --teacher-probe-report")
     p.add_argument("--limit-per-split", type=int, help="Smoke only: retain this many whole parent utterances per split")
     p.add_argument("--teacher-probe-report", type=Path, required=True)
     p.add_argument("--teacher-subset", choices=("ta", "tav"), default="tav")

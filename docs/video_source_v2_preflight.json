@@ -1,0 +1,40 @@
+{
+  "teacher_pair_real_gpu": "passed; one train sample, V/TA/TAV, old/new timing",
+  "teacher_features_real_gpu": {
+    "completed": 28,
+    "total": 28
+  },
+  "probe_tiny_training": "passed",
+  "v2_student_tiny_training": "passed",
+  "v2_diagnostics_completed": 7,
+  "v2_teacher_temperature_matches_probe": true,
+  "v2_temperature": 4.360219955444336,
+  "all_12_video_layers_trainable_parameters": 589824,
+  "batch8_real_model_smoke_peak_gpu_gib": 10.637818336486816,
+  "tests": {
+    "related_suite_passed": 33,
+    "new_pipeline_tests": 7
+  },
+  "source_plan_guard": "passed",
+  "official_test_evaluated": false,
+  "scope": "Preflight execution validation only. Tiny data metrics are not evidence of improved accuracy.",
+  "background_service": {
+    "unit": "rdid-video-source-v2.service",
+    "active": "active/running",
+    "enabled": true,
+    "linger": true,
+    "status_snapshot": {
+      "updated_at": 1789126894.4574873,
+      "official_test_evaluated": false,
+      "status": "running",
+      "stage": "teacher_pair",
+      "pid": 31762,
+      "current_log": "/home/wy/sjq/kd/outputs/experiments/video_source_v2/logs/teacher_pair.log",
+      "elapsed_seconds": 15,
+      "progress": {
+        "completed": 0,
+        "total": 192
+      }
+    }
+  }
+}
