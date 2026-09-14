@@ -40,7 +40,18 @@ def main():
             if p.exists() and json.loads(p.read_text()).get('status')=='complete':completed.append(f'{mode}_seed{seed}')
     print(f'本轮学生实验完成：{len(completed)}/{len(seeds)*len(modes)}')
     if completed:print('已完成：',', '.join(completed))
-    print('C2：已按用户要求停止，不重跑。')
+    c2_path=ROOT/'outputs/student/cv2_c2_gpu1_status.json'
+    if c2_path.exists():
+        c2=json.loads(c2_path.read_text())
+        print(f"C2：{c2['status']}（physical GPU{c2.get('physical_gpu', 1)}，seed{c2.get('seed', 42)}）")
+        c2_history=ROOT/'outputs/student/stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean_seed42/history.json'
+        if c2_history.exists():
+            history=json.loads(c2_history.read_text())
+            if history:
+                last=history[-1]
+                print(f"  已完成 epoch {last['epoch']}，valid MAE={last['valid_mae']:.6f}")
+    else:
+        print('C2：未运行。')
     if s['status']=='complete' or s['stage']=='controls_deferred':
         print('结果：',ROOT/'docs/video_source_v2_results.md')
 

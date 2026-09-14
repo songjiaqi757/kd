@@ -12,6 +12,10 @@
 
 2026-09-11 用户调整执行范围：本轮只运行 `video_lora` 的全部三个种子，两张 GPU 先分别运行 seed13、seed42，空闲后启动 seed2026。`frozen_video` 和 `ta_only` 六组对照暂缓，**不自动启动**。主实验及其视频扰动诊断完成后生成仅含主实验的报告，队列状态为 `paused / controls_deferred` 并退出，等待用户后续安排；普通服务重启不会解除暂缓。教师特征、Probe 与小检查仍为前置阶段；训练配置和数据保持原方案。调度变更前的方案和入口源码保存在 `outputs/experiments/video_source_v2/schedule_revisions/`。
 
+2026-09-13 用户重新授权 C2 与 Video source v2 并行。C2 seed13 已完成，仅在物理 GPU1 从 epoch 1 重跑未完成的 seed42；停止时保存的 checkpoint 不含 optimizer/RNG，不能作严格续训，因此旧单 epoch 目录先归档再重跑。C2 仍使用原 corrected-temperature、empty-mean、uniform ensemble-pair 配置和旧冻结资产，不读取本轮新教师特征，也不改变 Video source v2 的数据、超参数或选模规则。两项并行仅影响墙钟耗时。
+
+2026-09-14 执行状态：C2 seed42 与三个 `video_lora` seeds 均正常完成；Video source v2 按授权范围停在 `paused / controls_deferred`，`frozen_video` 与 `ta_only` 六组未自动启动。两张 GPU 已释放，official test 未评估。
+
 | 模式 | 学生输入 | T/A LoRA | V | 教师目标 |
 |---|---|---|---|---|
 | frozen_video | TAV | 全部 attention 层 | 冻结 | 新 Probe TAV |
@@ -29,7 +33,7 @@
 - 服务：`rdid-video-source-v2.service`，用户 systemd 服务，随用户服务管理器启动。
 - 用户 linger 已启用，退出登录/关闭会话后仍可运行。
 - 教师阶段独占两张 GPU；Probe 依次训练；学生阶段最多同时两组，每张 GPU 一组，每次分配前确认空闲。
-- C2 服务已停止，本队列没有 C2 重跑步骤。
+- C2 不属于本队列；其 seed42 已于 2026-09-13 作为独立服务固定到物理 GPU1 并行重跑。
 - 代码、manifest 指纹及模型文件 size/mtime 身份保存在 plan.json。学生入口另保存其模型权重 SHA-256。不要在队列运行期间修改已冻结源码/资产。
 - 教师配对任务逐项保存；全量特征按 completed.npy 续提；学生按 epoch 保存模型、optimizer 和 RNG 并恢复。第一轮尚未完成而中断的学生目录自动改名保留，从第一轮重跑。
 - Probe 在中断后从该 seed 重新训练；已完成阶段通过 done 标记和产物核验后跳过。
