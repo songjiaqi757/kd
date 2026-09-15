@@ -1,0 +1,573 @@
+{
+  "snapshot_at": "2026-09-15T19:37:42+08:00",
+  "scope": "CMU-MOSEI official valid; in-progress P0 snapshot",
+  "selection": "minimum completed-epoch valid MAE; all other metrics from that same epoch",
+  "counts": {
+    "complete": 3,
+    "running": 5,
+    "pending": 7
+  },
+  "expected_runs": 15,
+  "runs": [
+    {
+      "name": "M0_seed13",
+      "method": "M0",
+      "seed": 13,
+      "state": "running",
+      "gpu": 0,
+      "completed_epochs": 18,
+      "progress": {
+        "status": "training",
+        "epoch": 19,
+        "step": 900,
+        "steps": 2050,
+        "loss": 0.4849782884120941,
+        "elapsed_seconds": 94202.57103919983,
+        "peak_gpu_memory_gib": 5.906041622161865
+      },
+      "best_epoch": 12,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.53332782470629,
+        "pearson": 0.7220859545816424,
+        "acc2_nonzero": 0.8324061196105702,
+        "f1_weighted_nonzero": 0.8340692585493457,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.7626937466595404,
+        "f1_weighted_has_zero": 0.7743273413170131,
+        "acc7": 0.5339390700160342
+      },
+      "last_completed_epoch": {
+        "epoch": 18,
+        "train_loss": 0.6257462634750296,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.5604573478789386,
+          "pearson": 0.7223324377750107,
+          "acc2_nonzero": 0.8435326842837274,
+          "f1_weighted_nonzero": 0.8374242931097462,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8471405665419561,
+          "f1_weighted_has_zero": 0.8437314709312467,
+          "acc7": 0.504008551576697
+        },
+        "gradient_norm_last": 5.573685169219971,
+        "elapsed_seconds": 92180.62987875938
+      }
+    },
+    {
+      "name": "M0_seed42",
+      "method": "M0",
+      "seed": 42,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M0_seed2026",
+      "method": "M0",
+      "seed": 2026,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M1_seed13",
+      "method": "M1",
+      "seed": 13,
+      "state": "complete",
+      "gpu": null,
+      "completed_epochs": 12,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 5
+      },
+      "best_epoch": 5,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.5166348342130435,
+        "pearson": 0.7404223417427411,
+        "acc2_nonzero": 0.8504867872044506,
+        "f1_weighted_nonzero": 0.8485978043919749,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8107963655799038,
+        "f1_weighted_has_zero": 0.8152974048536124,
+        "acc7": 0.5408872260823089
+      },
+      "last_completed_epoch": {
+        "epoch": 12,
+        "train_loss": 1.0343101826274814,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.5236932672744081,
+          "pearson": 0.7309271449425846,
+          "acc2_nonzero": 0.8525730180806675,
+          "f1_weighted_nonzero": 0.8510056265787332,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8043826830571886,
+          "f1_weighted_has_zero": 0.8099444139174197,
+          "acc7": 0.5440940673436665
+        },
+        "gradient_norm_last": 12.047675132751465,
+        "elapsed_seconds": 57849.642533779144
+      }
+    },
+    {
+      "name": "M1_seed42",
+      "method": "M1",
+      "seed": 42,
+      "state": "running",
+      "gpu": 0,
+      "completed_epochs": 5,
+      "progress": {
+        "status": "training",
+        "epoch": 6,
+        "step": 1100,
+        "steps": 2050,
+        "loss": 1.7363457679748535,
+        "elapsed_seconds": 30891.08392381668,
+        "peak_gpu_memory_gib": 5.900968551635742
+      },
+      "best_epoch": 3,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.5358914983008897,
+        "pearson": 0.7349620569555392,
+        "acc2_nonzero": 0.8456189151599444,
+        "f1_weighted_nonzero": 0.8479311788527631,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.7888829502939605,
+        "f1_weighted_has_zero": 0.7993290947352762,
+        "acc7": 0.5403527525387494
+      },
+      "last_completed_epoch": {
+        "epoch": 5,
+        "train_loss": 1.236688989620783,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.5581712371050865,
+          "pearson": 0.7373366974022444,
+          "acc2_nonzero": 0.8365785813630042,
+          "f1_weighted_nonzero": 0.8265074371898256,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8492784607161945,
+          "f1_weighted_has_zero": 0.8417416440061899,
+          "acc7": 0.4911811865312667
+        },
+        "gradient_norm_last": 40.30720520019531,
+        "elapsed_seconds": 28365.103714466095
+      }
+    },
+    {
+      "name": "M1_seed2026",
+      "method": "M1",
+      "seed": 2026,
+      "state": "running",
+      "gpu": 1,
+      "completed_epochs": 5,
+      "progress": {
+        "status": "training",
+        "epoch": 6,
+        "step": 800,
+        "steps": 2050,
+        "loss": 0.8905808925628662,
+        "elapsed_seconds": 31024.99446940422,
+        "peak_gpu_memory_gib": 5.900875568389893
+      },
+      "best_epoch": 5,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.5337645574754504,
+        "pearson": 0.7403148879942425,
+        "acc2_nonzero": 0.8616133518776078,
+        "f1_weighted_nonzero": 0.858659996190491,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8482095136290754,
+        "f1_weighted_has_zero": 0.8485817131476002,
+        "acc7": 0.5350080171031534
+      },
+      "last_completed_epoch": {
+        "epoch": 5,
+        "train_loss": 1.2626593385744338,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.5337645574754504,
+          "pearson": 0.7403148879942425,
+          "acc2_nonzero": 0.8616133518776078,
+          "f1_weighted_nonzero": 0.858659996190491,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8482095136290754,
+          "f1_weighted_has_zero": 0.8485817131476002,
+          "acc7": 0.5350080171031534
+        },
+        "gradient_norm_last": 20.030681610107422,
+        "elapsed_seconds": 29183.584149599075
+      }
+    },
+    {
+      "name": "M3_seed13",
+      "method": "M3",
+      "seed": 13,
+      "state": "complete",
+      "gpu": null,
+      "completed_epochs": 13,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 6
+      },
+      "best_epoch": 6,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.4712614540879744,
+        "pearson": 0.7862220711158247,
+        "acc2_nonzero": 0.872739916550765,
+        "f1_weighted_nonzero": 0.8725347822474367,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8188134687332977,
+        "f1_weighted_has_zero": 0.825210085079513,
+        "acc7": 0.5692143238909674
+      },
+      "last_completed_epoch": {
+        "epoch": 13,
+        "train_loss": 0.583360240603693,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.48601933467045483,
+          "pearson": 0.783041211354517,
+          "acc2_nonzero": 0.8796940194714882,
+          "f1_weighted_nonzero": 0.8776673230597616,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8717263495456975,
+          "f1_weighted_has_zero": 0.8718847454693756,
+          "acc7": 0.5595938001068947
+        },
+        "gradient_norm_last": 11.249776840209961,
+        "elapsed_seconds": 63560.38429450989
+      }
+    },
+    {
+      "name": "M3_seed42",
+      "method": "M3",
+      "seed": 42,
+      "state": "running",
+      "gpu": 0,
+      "completed_epochs": 5,
+      "progress": {
+        "status": "training",
+        "epoch": 6,
+        "step": 500,
+        "steps": 2050,
+        "loss": 0.5632529854774475,
+        "elapsed_seconds": 29931.90219759941,
+        "peak_gpu_memory_gib": 26.239676475524902
+      },
+      "best_epoch": 4,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.47036783299460266,
+        "pearson": 0.7890213801662801,
+        "acc2_nonzero": 0.8845618915159944,
+        "f1_weighted_nonzero": 0.8845094602971739,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.82896846606093,
+        "f1_weighted_has_zero": 0.8350934266590748,
+        "acc7": 0.5804382683057189
+      },
+      "last_completed_epoch": {
+        "epoch": 5,
+        "train_loss": 0.7895016456361781,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.4719563838261427,
+          "pearson": 0.7895631291895068,
+          "acc2_nonzero": 0.8810848400556328,
+          "f1_weighted_nonzero": 0.880780277858442,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8551576696953501,
+          "f1_weighted_has_zero": 0.8585713316741086,
+          "acc7": 0.5649385355424906
+        },
+        "gradient_norm_last": 5.439901351928711,
+        "elapsed_seconds": 28774.259287834167
+      }
+    },
+    {
+      "name": "M3_seed2026",
+      "method": "M3",
+      "seed": 2026,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M4_seed13",
+      "method": "M4",
+      "seed": 13,
+      "state": "complete",
+      "gpu": null,
+      "completed_epochs": 13,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 6
+      },
+      "best_epoch": 6,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.4745546419558453,
+        "pearson": 0.7921437449348013,
+        "acc2_nonzero": 0.8776077885952712,
+        "f1_weighted_nonzero": 0.8767075690940827,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8439337252805986,
+        "f1_weighted_has_zero": 0.8475074674616775,
+        "acc7": 0.567076429716729
+      },
+      "last_completed_epoch": {
+        "epoch": 13,
+        "train_loss": 1.618022838038375,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.6141084777760984,
+          "pearson": 0.6406428162692378,
+          "acc2_nonzero": 0.7475660639777468,
+          "f1_weighted_nonzero": 0.7531413588090573,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.6787814003206841,
+          "f1_weighted_has_zero": 0.6966886052924031,
+          "acc7": 0.5072153928380545
+        },
+        "gradient_norm_last": 4170.12109375,
+        "elapsed_seconds": 63652.70690202713
+      }
+    },
+    {
+      "name": "M4_seed42",
+      "method": "M4",
+      "seed": 42,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M4_seed2026",
+      "method": "M4",
+      "seed": 2026,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M6_seed13",
+      "method": "M6",
+      "seed": 13,
+      "state": "running",
+      "gpu": 1,
+      "completed_epochs": 6,
+      "progress": {
+        "status": "training",
+        "epoch": 7,
+        "step": 800,
+        "steps": 2050,
+        "loss": 1.0294816493988037,
+        "elapsed_seconds": 36148.20501732826,
+        "peak_gpu_memory_gib": 26.242483615875244
+      },
+      "best_epoch": 3,
+      "best_valid_metrics": {
+        "count": 1871,
+        "mae": 0.4754395112370198,
+        "pearson": 0.7858435286537249,
+        "acc2_nonzero": 0.8796940194714882,
+        "f1_weighted_nonzero": 0.8795000946929321,
+        "nonzero_count": 1438,
+        "acc2_has_zero": 0.8514163548904329,
+        "f1_weighted_has_zero": 0.855209267855253,
+        "acc7": 0.5702832709780866
+      },
+      "last_completed_epoch": {
+        "epoch": 6,
+        "train_loss": 0.8324852823985115,
+        "valid_metrics": {
+          "count": 1871,
+          "mae": 0.5051062051460661,
+          "pearson": 0.7947845374376254,
+          "acc2_nonzero": 0.874826147426982,
+          "f1_weighted_nonzero": 0.8708712366268465,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8743987172634955,
+          "f1_weighted_has_zero": 0.8722175886926704,
+          "acc7": 0.5419561731694281
+        },
+        "gradient_norm_last": 23.555871963500977,
+        "elapsed_seconds": 34323.88893580437
+      }
+    },
+    {
+      "name": "M6_seed42",
+      "method": "M6",
+      "seed": 42,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    },
+    {
+      "name": "M6_seed2026",
+      "method": "M6",
+      "seed": 2026,
+      "state": "pending",
+      "gpu": null,
+      "completed_epochs": 0,
+      "progress": {},
+      "best_epoch": null,
+      "best_valid_metrics": null,
+      "last_completed_epoch": null
+    }
+  ],
+  "schedule_version": "p0-live-five-jobs-v5",
+  "limits": {
+    "max_jobs": 5,
+    "slots_per_gpu": {
+      "0": 3,
+      "1": 2
+    },
+    "method_budget_gib": {
+      "frozen": 16,
+      "adapted": 34
+    },
+    "gpu_headroom_gib": 8
+  },
+  "gpu_snapshot": {
+    "1": {
+      "used_mib": 40700,
+      "total_mib": 85651,
+      "utilization": 0
+    },
+    "0": {
+      "used_mib": 52601,
+      "total_mib": 85651,
+      "utilization": 22
+    }
+  },
+  "queue_updated_at": 1789472255.6270394,
+  "pending": [
+    "M0_seed42",
+    "M0_seed2026",
+    "M3_seed2026",
+    "M4_seed42",
+    "M4_seed2026",
+    "M6_seed42",
+    "M6_seed2026"
+  ],
+  "blocked_on_own_seed13": [
+    "M0_seed42",
+    "M0_seed2026",
+    "M6_seed42",
+    "M6_seed2026"
+  ],
+  "seed13_audits": {
+    "M1": {
+      "status": "pass",
+      "promotion_basis": "technical_integrity_only",
+      "performance_gate": false,
+      "M4_improvement_required": false,
+      "runs": {
+        "M1": {
+          "valid_mae_observation_only": 0.5166348342130435,
+          "protocol_sha256": "34c104c1a55691b5f2c27cacb5cced4cddbd52b78145679a3f8fbf76548e6d66",
+          "checks": "pass"
+        }
+      },
+      "official_test_evaluated": false
+    },
+    "M3": {
+      "status": "pass",
+      "promotion_basis": "technical_integrity_only",
+      "performance_gate": false,
+      "M4_improvement_required": false,
+      "runs": {
+        "M3": {
+          "valid_mae_observation_only": 0.4712614540879744,
+          "protocol_sha256": "f9235e60feab0dcd1eee8e9c263d37ae74dd4b0ccca6236ededb327ca4032c45",
+          "checks": "pass"
+        }
+      },
+      "official_test_evaluated": false
+    },
+    "M4": {
+      "status": "pass",
+      "promotion_basis": "technical_integrity_only",
+      "performance_gate": false,
+      "M4_improvement_required": false,
+      "runs": {
+        "M4": {
+          "valid_mae_observation_only": 0.4745546419558453,
+          "protocol_sha256": "9a23dd2e26ac6e63c7a9b4b145bec82a36b22926ab003723c43187e44f96a1b2",
+          "checks": "pass"
+        }
+      },
+      "official_test_evaluated": false
+    }
+  },
+  "source_hashes_verified": 81,
+  "completed_run_comparisons": {
+    "M3_vs_M1": {
+      "13": {
+        "candidate_minus_baseline_mae": -0.0453733801250691,
+        "ci95": [
+          -0.06387187513856765,
+          -0.027477364376445938
+        ],
+        "video_clusters": 300,
+        "utterances": 1871,
+        "repetitions": 10000,
+        "bootstrap_probability_delta_below_zero": 1.0
+      }
+    },
+    "M4_vs_M3": {
+      "13": {
+        "candidate_minus_baseline_mae": 0.0032931878678709157,
+        "ci95": [
+          -0.006595148159151428,
+          0.013394615213617355
+        ],
+        "video_clusters": 300,
+        "utterances": 1871,
+        "repetitions": 10000,
+        "bootstrap_probability_delta_below_zero": 0.2606
+      }
+    }
+  },
+  "multiple_comparisons": "CIs are unadjusted; interpret primary comparisons and seed consistency jointly",
+  "protocol": {
+    "schema": "tav-m0-m6-v1",
+    "teacher_temperature": 1.0114532709121704,
+    "kd_temperature": 2.0,
+    "teacher_feature_checksum": "fbbdef379d7f5dba4a11712a452d6c5809e954c312a48c70cf89c678c7a53e52",
+    "student_input_checksum": "16bfe1c6bb059d1ec9ed6959c4b2a55d29b00fec1eb5841324ea44d8a0d9f2fc"
+  },
+  "official_test_evaluated": false
+}
