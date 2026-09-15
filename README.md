@@ -20,6 +20,10 @@ Conda 环境名为 `kd`，由 Conda 管理在 `/home/wy/sjq/miniconda3/envs/kd`�
 
 ## 当前状态
 
+2026-09-14：当前 P0 固定为 **M0→M1→M3→M4→M6，先全部 seed13**，各模型 seed13 完成且技术核查通过后即补该模型 seeds42/2026，无需等待整个 seed13 主链结束，共 **15 runs**。当前双 RTX 6000D 总上限为五任务（GPU0最多3个、GPU1最多2个），按方法显存预算与实测余量准入；每完成一个任务自动补位。调度器支持接管在训PID及热更新并发限制，无需重启训练。M5、Utility-only、R+U 等消融后移 P1；M2 和视频诊断后移 P2。M4 不提升也继续 M6，主链完成前不新增 KD 方法。
+协议、项目核查与最新调度见 [`docs/TAV主实验执行方案_20260914.md`](docs/TAV主实验执行方案_20260914.md)。运行状态以 `outputs/experiments/tav_main_v1/status.json` 为准，未完成结果不计入主表。
+注意历史 “LoRA(T+A)” 入口仍读取冻结 V 特征，适配范围不能等同于 TA-only 输入。
+
 已完成 official train/valid full-scale 的 B0 Student-only、B1 Full KD、B2 subset4
 和 SNR pair-only 三种子实验，以及 paired bootstrap 和 subgroup analysis。当前单元
 测试 44/44 通过。
