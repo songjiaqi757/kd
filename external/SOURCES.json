@@ -1,0 +1,79 @@
+{
+  "frozen_on": "2026-09-17",
+  "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+  "repositories": [
+    {
+      "method": "Projector-based feature KD",
+      "path": "external/original/Simple-Recipe-Distillation",
+      "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+      "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+      "license_file": null
+    },
+    {
+      "method": "EA-KD",
+      "path": "external/original/EA-KD",
+      "url": "https://github.com/cpsu00/EA-KD.git",
+      "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+      "license_file": null
+    },
+    {
+      "method": "RLD",
+      "path": "external/original/RLD",
+      "url": "https://github.com/zju-SWJ/RLD.git",
+      "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+      "license_file": null
+    },
+    {
+      "method": "SKD",
+      "path": "external/original/StreamLined",
+      "url": "https://github.com/HyunJunSik/StreamLined.git",
+      "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+      "license_file": null
+    },
+    {
+      "method": "DLF",
+      "path": "external/original/DLF",
+      "url": "https://github.com/pwang322/DLF.git",
+      "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+      "license_file": "LICENSE",
+      "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+      "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+    },
+    {
+      "method": "GsiT",
+      "path": "external/original/GsiT",
+      "url": "https://github.com/drewjin/GsiT.git",
+      "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+      "license_file": "LICENSE",
+      "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+      "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+    },
+    {
+      "method": "DPDF-LQ",
+      "path": "external/original/DPDF-LQ",
+      "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+      "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+      "license_file": "LICENSE",
+      "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+      "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+    },
+    {
+      "method": "Light-MER / SWD-H",
+      "path": "external/original/Light-MER",
+      "url": "https://github.com/GAIR-Lab/Light-MER.git",
+      "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+      "license_file": "LICENSE",
+      "purpose": "domain-related adaptation audit; not a main-table implementation",
+      "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+    },
+    {
+      "method": "CMAD / CAFD",
+      "path": "external/original/CMAD",
+      "url": "https://github.com/YetZzzzzz/CMAD.git",
+      "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+      "license_file": "LICENSE",
+      "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+      "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+    }
+  ]
+}

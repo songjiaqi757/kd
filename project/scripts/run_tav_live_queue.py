@@ -73,12 +73,21 @@ def admit(state, gpu, active, name, limits):
 
 def load_limits(path):
     limits = json.loads(path.read_text())
-    if (not 1 <= limits["max_jobs"] <= 5 or set(limits["slots_per_gpu"]) != {"0", "1"}
+    if (not 1 <= limits["max_jobs"] <= 6 or set(limits["slots_per_gpu"]) != {"0", "1"}
             or any(not 1 <= n <= 3 for n in limits["slots_per_gpu"].values())
+            or limits["max_jobs"] > sum(limits["slots_per_gpu"].values())
             or limits["gpu_headroom_gib"] < 8
-            or limits["method_budget_gib"]["frozen"] < 16
-            or limits["method_budget_gib"]["adapted"] < 34):
+            # Calibrated for the fixed batch-8 TAV protocol: measured total CUDA
+            # footprints ~8.3/29.7 GiB; retain >=8 GiB shared headroom as well.
+            or limits["method_budget_gib"]["frozen"] < 10
+            or limits["method_budget_gib"]["adapted"] < 32):
         raise ValueError("invalid resource limits")
+    priority = limits.get("pending_priority", [])
+    known = {f"{m}_seed{s}" for m, s in all_jobs()}
+    if (not isinstance(priority, list)
+            or any(not isinstance(name, str) or name not in known for name in priority)
+            or len(set(priority)) != len(priority)):
+        raise ValueError("invalid pending priority")
     return limits
 
 
@@ -86,8 +95,14 @@ def all_jobs():
     return [(m,13) for m in CORE_METHODS] + [(m,s) for m in CORE_METHODS for s in (42,2026)]
 
 
+def ordered_pending(pending, limits):
+    priority = {name: index for index, name in enumerate(limits.get("pending_priority", []))}
+    # Only reorder jobs already pending; running/completed jobs are never inserted.
+    return sorted(pending, key=lambda job: priority.get(f"{job[0]}_seed{job[1]}", len(priority)))
+
+
 def candidate(pending, audited, gpu, active, state, limits):
-    for method, seed in pending:
+    for method, seed in ordered_pending(pending, limits):
         name = f"{method}_seed{seed}"
         if (seed == 13 or method in audited) and admit(state, gpu, active, name, limits):
             return method, seed
@@ -145,8 +160,9 @@ def run(base):
             if len(audited) == len(CORE_METHODS) and not full_audit_done:
                 audit(base, assets)
                 full_audit_done = True
-            # Read on each pass: future limit changes require no process restart.
+            # Read on each pass: limits and pending priority can change without restart.
             limits = load_limits(base / "live_limits.json")
+            pending = ordered_pending(pending, limits)
             gpu_states = {}
             for gpu in sorted((0,1), key=lambda g: sum(v["gpu"]==g for v in active.values())):
                 state = gpu_state(gpu)

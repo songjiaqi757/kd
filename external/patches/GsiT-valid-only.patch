@@ -1,0 +1,84 @@
+diff --git a/src/MMSA-GsiT/run.py b/src/MMSA-GsiT/run.py
+index 28d28d1..b0f767d 100644
+--- a/src/MMSA-GsiT/run.py
++++ b/src/MMSA-GsiT/run.py
+@@ -224,9 +224,12 @@ def MMSA_run(
+             logger.info(f"{'-'*30} Running with seed {seed} [{i + 1}/{len(seeds)}] {'-'*30}")
+             # actual running
+             result = _run(args, num_workers, is_tune)
+-            result = {k: float(v) for k, v in result.items()}
++            if not args.get('return_sample_results', False):
++                result = {k: float(v) for k, v in result.items()}
+             logger.info(f"Result for seed {seed}: {result}")
+             model_results.append(result)
++        if args.get('return_sample_results', False):
++            return model_results
+         criterions = list(model_results[0].keys())
+         # save result to csv
+         csv_file = res_save_dir / f"{dataset_name}.csv"
+@@ -244,6 +247,7 @@ def MMSA_run(
+         df.loc[len(df)] = res
+         df.to_csv(csv_file, index=None)
+         logger.info(f"Results saved to {csv_file}.")
++        return model_results
+ 
+ 
+ def _run(args, num_workers=4, is_tune=False, from_sena=False):
+@@ -260,10 +264,14 @@ def _run(args, num_workers=4, is_tune=False, from_sena=False):
+     trainer = ATIO().getTrain(args)
+     # do train
+     # epoch_results = trainer.do_train(model, dataloader)
+-    epoch_results = trainer.do_train(model, dataloader, return_epoch_results=from_sena)
++    epoch_results = (
++        trainer.do_train(model, dataloader, return_epoch_results=from_sena)
++        if args.get('train_model', True) else None
++    )
+     # load trained model & do test
+-    assert Path(args['model_save_path']).exists()
+-    model.load_state_dict(torch.load(args['model_save_path']))
++    checkpoint_path = Path(args.get('checkpoint_path', args['model_save_path']))
++    assert checkpoint_path.exists()
++    model.load_state_dict(torch.load(checkpoint_path))
+     model.to(args['device'])
+     if from_sena:
+         final_results = {}
+@@ -273,11 +281,16 @@ def _run(args, num_workers=4, is_tune=False, from_sena=False):
+     elif is_tune:
+         # use valid set to tune hyper parameters
+         # results = trainer.do_test(model, dataloader['valid'], mode="VALID")
+-        results = trainer.do_test(model, dataloader['test'], mode="TEST")
++        results = trainer.do_test(model, dataloader['valid'], mode="VALID")
+         # delete saved model
+         Path(args['model_save_path']).unlink(missing_ok=True)
+     else:
+-        results = trainer.do_test(model, dataloader['test'], mode="TEST")
++        evaluation_split = 'test' if args.get('evaluate_test', False) else 'valid'
++        results = trainer.do_test(
++            model, dataloader[evaluation_split], mode=evaluation_split.upper(),
++            return_sample_results=args.get('return_sample_results', False),
++        )
++        results['DeployedParameters'] = sum(parameter.numel() for parameter in model.parameters())
+ 
+     del model
+     torch.cuda.empty_cache()
+diff --git a/src/MMSA-GsiT/trains/custom/GSIT.py b/src/MMSA-GsiT/trains/custom/GSIT.py
+index dfa010f..66a0dd6 100644
+--- a/src/MMSA-GsiT/trains/custom/GSIT.py
++++ b/src/MMSA-GsiT/trains/custom/GSIT.py
+@@ -241,7 +241,6 @@ class GsiT():
+             # validation
+             
+             val_results = self.do_test(model, dataloader['valid'], mode="VAL")
+-            test_results = self.do_test(model, dataloader['test'], mode="TEST")
+             cur_valid = val_results[self.args.KeyEval]
+             # save best model
+             isBetter = cur_valid <= (best_valid - 1e-6) if min_or_max == 'min' else cur_valid >= (best_valid + 1e-6)
+@@ -260,8 +259,6 @@ class GsiT():
+                 train_results["Loss"] = train_loss
+                 epoch_results['train'].append(train_results)
+                 epoch_results['valid'].append(val_results)
+-                test_results = self.do_test(model, dataloader['test'], mode="TEST")
+-                epoch_results['test'].append(test_results)
+             # early stop
+             if epochs - best_epoch >= self.args.early_stop:
+                 if self.args.save_labels:

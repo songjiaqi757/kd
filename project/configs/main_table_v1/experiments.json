@@ -1,0 +1,80 @@
+{
+  "schema": "rdid-msa-experiment-matrix-v1",
+  "protocol": {
+    "seeds": [13, 42, 2026],
+    "checkpoint_selection": "valid_mae",
+    "epochs": 30,
+    "patience": 7,
+    "batch_size": 8,
+    "learning_rate": 0.0001,
+    "official_test_policy": "forbidden during training/tuning; one final pass after configuration lock",
+    "primary_metric": "mae",
+    "other_metrics": ["pearson", "acc2_nonzero", "f1_weighted_nonzero", "acc7"],
+    "cluster_bootstrap_resamples": 10000
+  },
+  "datasets": {
+    "mosei": {
+      "assets": "outputs/experiments/main_table_v1/mosei/assets/protocol.json",
+      "standard_features": "dataset/standard_features/mosei_aligned_50.pkl",
+      "student_assets_ready": true,
+      "native_features_ready": false
+    },
+    "mosi": {
+      "assets": "outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+      "standard_features": "dataset/standard_features/mosi_aligned_50.pkl",
+      "student_assets_ready": false,
+      "native_features_ready": false,
+      "blocking_prerequisite": "extract seven-subset teacher features, train/calibrate probes 2026/2027/2028, and freeze train-only utility"
+    }
+  },
+  "main_table_a": [
+    {"row": "A0", "method": "adapted_student", "label": "Adapted Student-only", "tier": 1, "tuning": {}},
+    {"row": "A1", "method": "full_kd", "label": "Full KD", "tier": 1, "tuning": {}},
+    {"row": "A2", "method": "projector", "label": "Projector feature KD", "tier": 2, "tuning": {"lambda_feature": [0.5, 1.0, 2.0]}},
+    {"row": "A3", "method": "ea_kd", "label": "EA-KD", "tier": 2, "tuning": {"ea_entropy_temperature": [2.0, 3.0, 4.0]}},
+    {"row": "A4", "method": "cmad_cafd", "label": "CMAD-style CAFD component adaptation", "tier": 2, "tuning": {"lambda_cafd": [0.05, 0.1, 0.2]}},
+    {"row": "A5", "method": "subset7", "label": "Subset-7 KD", "tier": 1, "tuning": {"lambda_subset": [0.5, 1.0, 2.0]}},
+    {"row": "A6", "method": "uniform_interaction", "label": "Uniform Interaction", "tier": 1, "tuning": {}},
+    {"row": "A7", "method": "ru_interaction", "label": "Ours (R x U)", "tier": 1, "tuning": {}}
+  ],
+  "mechanism_ablations": [
+    {"method": "r_only_interaction", "label": "R-only", "tier": 1, "tuning": {}},
+    {"method": "u_only_interaction", "label": "U-only", "tier": 1, "tuning": {}},
+    {"method": "ensemble_full", "label": "Ensemble Full KD", "tier": 1, "tuning": {}},
+    {"method": "amplitude_interaction", "label": "Absolute interaction amplitude x U", "tier": 1, "tuning": {}},
+    {"method": "first_order_interaction", "label": "First-order only (lambda_interaction=1)", "tier": 1, "tuning": {}}
+  ],
+  "tier3_student_extensions": [
+    {"method": "rld", "label": "RLD", "tier": 3, "tuning": {"rld_temperature": [2.0, 4.0, 6.0]}},
+    {"method": "skd", "label": "SKD", "tier": 3, "tuning": {"skd_tik_factor": [0.01, 0.1, 1.0]}},
+    {"method": "shuffled_r_u_interaction", "label": "Shuffled R + U", "tier": 3, "tuning": {}},
+    {"method": "ea_kd_full", "label": "EA-KD-Full", "tier": 3, "tuning": {"ea_entropy_temperature": [2.0, 3.0, 4.0]}},
+    {"method": "coarse_u_interaction", "label": "R x coarse two-group U", "tier": 3, "tuning": {}},
+    {"method": "additive_r_u_interaction", "label": "R + U", "tier": 3, "tuning": {}}
+  ],
+  "main_table_b": [
+    {"system": "dlf", "label": "DLF", "architecture": "native", "tier": 2},
+    {"system": "dpdf_lq", "label": "DPDF-LQ", "architecture": "native", "tier": 2},
+    {"system": "gsit", "label": "GsiT", "architecture": "native", "tier": 3},
+    {"system": "ours", "label": "Ours", "architecture": "RDID-MSA student", "tier": 1}
+  ],
+  "primary_comparisons": [
+    {"candidate": "ru_interaction", "baseline": "full_kd"},
+    {"candidate": "ru_interaction", "baseline": "subset7"},
+    {"candidate": "ru_interaction", "baseline": "uniform_interaction"},
+    {"candidate": "ru_interaction", "baseline": "ensemble_full"},
+    {
+      "candidate": "ru_interaction",
+      "baseline_selection": "minimum seed13 valid MAE after each method's preregistered tuning",
+      "baseline_pool": ["projector", "ea_kd", "cmad_cafd"]
+    }
+  ],
+  "minimum_paper_budget": {
+    "student_training_runs_per_dataset": 47,
+    "native_training_runs_per_dataset": 6,
+    "total_training_runs_per_dataset": 53,
+    "datasets": 2,
+    "total_training_runs": 106,
+    "tuning_rule": "three seed13 candidates, then selected candidate on seeds 42 and 2026"
+  }
+}

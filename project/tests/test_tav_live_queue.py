@@ -36,6 +36,34 @@ def test_three_adapted_models_are_not_packed_into_one_gpu():
     assert not queue.admit({'used_mib':10000,'total_mib':85651,'utilization':20},0,active,'M4_seed42',limits())
 
 
+def test_calibrated_budgets_refill_m6_after_frozen_job_finishes(tmp_path):
+    active = {'M3_seed42': {'gpu': 0}, 'M0_seed42': {'gpu': 0},
+              'M0_seed2026': {'gpu': 1}, 'M3_seed2026': {'gpu': 1}}
+    state = {'used_mib': 38768, 'total_mib': 85651, 'utilization': 30}
+    pending = [('M4', 42), ('M6', 42), ('M6', 2026)]
+    assert not queue.admit(state, 0, active, 'M6_seed42', limits())
+    calibrated = {**limits(), 'method_budget_gib': {'frozen': 10, 'adapted': 32},
+                  'pending_priority': ['M6_seed42', 'M6_seed2026']}
+    path = tmp_path / 'limits.json'
+    path.write_text(json.dumps(calibrated))
+    calibrated = queue.load_limits(path)
+    assert queue.candidate(pending, {'M4', 'M6'}, 0, active, state, calibrated) == ('M6', 42)
+    assert not queue.admit(state, 1, active, 'M6_seed42', calibrated)  # GPU1 slots full
+    assert not queue.admit({**state, 'used_mib': 46000}, 0, active, 'M6_seed42', calibrated)
+    active['M6_seed42'] = {'gpu': 0}
+    assert not queue.admit(state, 0, active, 'M6_seed2026', calibrated)  # five jobs
+    assert not queue.admit(state, 0, {'M3_seed42': {'gpu': 0}, 'M6_seed42': {'gpu': 0}},
+                           'M4_seed42', calibrated)  # three adapted jobs exceed capacity
+
+
+@pytest.mark.parametrize('budgets', [{'frozen': 9, 'adapted': 32}, {'frozen': 10, 'adapted': 31}])
+def test_budgets_below_calibrated_floor_rejected(tmp_path, budgets):
+    path = tmp_path / 'limits.json'
+    path.write_text(json.dumps({**limits(), 'method_budget_gib': budgets}))
+    with pytest.raises(ValueError, match='invalid resource limits'):
+        queue.load_limits(path)
+
+
 def test_completion_releases_slot_and_replication_waits_only_for_own_audit():
     active=occupants()
     state={'used_mib':22286,'total_mib':85651,'utilization':0}
@@ -67,6 +95,67 @@ def test_limits_are_reloaded_and_invalid_expansion_rejected(tmp_path):
     assert queue.load_limits(path)['max_jobs']==4
     path.write_text(json.dumps({**limits(),'max_jobs':6}))
     with pytest.raises(ValueError):queue.load_limits(path)
+
+
+def test_six_jobs_admit_m6_on_gpu1_with_existing_five_unchanged(tmp_path):
+    active = {'M3_seed42': {'gpu': 0}, 'M0_seed42': {'gpu': 0}, 'M6_seed42': {'gpu': 0},
+              'M0_seed2026': {'gpu': 1}, 'M3_seed2026': {'gpu': 1}}
+    original = dict(active)
+    settings = {**limits(), 'max_jobs': 6, 'slots_per_gpu': {'0': 3, '1': 3},
+                'method_budget_gib': {'frozen': 10, 'adapted': 32},
+                'pending_priority': ['M6_seed2026', 'M4_seed42', 'M4_seed2026']}
+    path = tmp_path / 'limits.json'
+    path.write_text(json.dumps(settings))
+    settings = queue.load_limits(path)
+    pending = [('M6', 2026), ('M4', 42), ('M4', 2026)]
+    state = {'used_mib': 38896, 'total_mib': 85651, 'utilization': 17}
+    assert queue.candidate(pending, {'M6', 'M4'}, 1, active, state, settings) == ('M6', 2026)
+    assert queue.candidate(pending, {'M6', 'M4'}, 0, active, state, settings) is None
+    assert active == original
+    assert not queue.admit({**state, 'used_mib': 46000}, 1, active, 'M6_seed2026', settings)
+    active['M6_seed2026'] = {'gpu': 1}
+    assert not queue.admit(state, 1, active, 'M4_seed42', settings)
+    assert not queue.admit(state, 0, active, 'M4_seed42', settings)
+    path.write_text(json.dumps({**settings, 'max_jobs': 7}))
+    with pytest.raises(ValueError, match='invalid resource limits'):
+        queue.load_limits(path)
+
+
+def test_m6_priority_after_completion_preserves_active_jobs():
+    active = {'M1_seed42': {'gpu': 0}, 'M3_seed42': {'gpu': 0},
+              'M0_seed42': {'gpu': 0}, 'M0_seed2026': {'gpu': 1}, 'M3_seed2026': {'gpu': 1}}
+    original = dict(active)
+    pending = [('M4', 42), ('M4', 2026), ('M6', 42), ('M6', 2026)]
+    settings = {**limits(), 'pending_priority': ['M6_seed42', 'M6_seed2026', 'M4_seed42', 'M4_seed2026']}
+    state = {'used_mib': 38000, 'total_mib': 85651, 'utilization': 30}
+    assert queue.candidate(pending, {'M4', 'M6'}, 1, active, state, settings) is None
+    assert active == original
+    # A slot becomes available naturally; priority applies to future admission only.
+    del active['M3_seed2026']
+    assert queue.candidate(pending, {'M4', 'M6'}, 1, active, state, settings) == ('M6', 42)
+    pending.remove(('M6', 42))
+    assert queue.candidate(pending, {'M4', 'M6'}, 1, active, state, settings) == ('M6', 2026)
+    pending.remove(('M6', 2026))
+    assert queue.candidate(pending, {'M4', 'M6'}, 1, active, state, settings) == ('M4', 42)
+    assert queue.candidate(pending, {'M4', 'M6'}, 1, active, {**state, 'used_mib': 60000}, settings) is None
+
+
+def test_priority_hot_reload_and_no_reintroduction(tmp_path):
+    path = tmp_path / 'limits.json'
+    pending = [('M4', 42), ('M4', 2026), ('M6', 42), ('M6', 2026)]
+    path.write_text(json.dumps(limits()))
+    assert queue.ordered_pending(pending, queue.load_limits(path)) == pending
+    path.write_text(json.dumps({**limits(), 'pending_priority': ['M6_seed42', 'M6_seed2026', 'M1_seed13']}))
+    assert queue.ordered_pending(pending, queue.load_limits(path)) == [('M6', 42), ('M6', 2026), ('M4', 42), ('M4', 2026)]
+    assert pending == [('M4', 42), ('M4', 2026), ('M6', 42), ('M6', 2026)]
+
+
+@pytest.mark.parametrize('priority', ['M6_seed42', ['M6_seed42', 'M6_seed42'], ['M5_seed42'], [None]])
+def test_invalid_priority_rejected(tmp_path, priority):
+    path = tmp_path / 'limits.json'
+    path.write_text(json.dumps({**limits(), 'pending_priority': priority}))
+    with pytest.raises(ValueError, match='invalid pending priority'):
+        queue.load_limits(path)
 
 
 def test_controller_stop_preserves_adopted_training_pid(tmp_path,monkeypatch):

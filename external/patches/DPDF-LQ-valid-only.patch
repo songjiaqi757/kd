@@ -1,0 +1,173 @@
+diff --git a/train.py b/train.py
+index 866e280..2fba6a7 100644
+--- a/train.py
++++ b/train.py
+@@ -8,11 +8,15 @@ from tensorboardX import SummaryWriter
+ from models.Gate_fusion import build_model
+ from core.metric import MetricsTop
+ import yaml
++import json
+ 
+ parser = argparse.ArgumentParser()
+ parser.add_argument('--config_file', type=str, default='configs/mosi.yaml')
+ parser.add_argument('--seed', type=int, default=-1)
+ parser.add_argument('--gpu_id', type=int, default=0)
++parser.add_argument('--output_dir', type=str, default='./adapted_output')
++parser.add_argument('--evaluate_test', action='store_true')
++parser.add_argument('--checkpoint', type=str)
+ opt = parser.parse_args()
+ print(opt)
+ 
+@@ -38,12 +42,12 @@ print(f"Device: {device} ({gpu_id})")
+ def main():
+     print(f"seed{seed}")
+     setup_seed(seed)
+-    log_path = os.path.join(".", "log", args.base.project_name)
++    output_dir = os.path.abspath(opt.output_dir)
++    os.makedirs(output_dir, exist_ok=True)
++    log_path = os.path.join(output_dir, "tensorboard")
+     if not os.path.exists(log_path):
+         os.makedirs(log_path)
+-    log_path="/root/tf-logs"
+-
+-    save_path = os.path.join(args.base.ckpt_root, args.base.project_name)
++    save_path = os.path.join(output_dir, "checkpoints")
+     if not os.path.exists(save_path):
+         os.makedirs(save_path)
+ 
+@@ -63,47 +67,50 @@ def main():
+ 
+     training_results_recorder = results_recorder()
+     validation_results_recorder = results_recorder()
+-    test_results_recorder = results_recorder()
+ 
+     writer = SummaryWriter(logdir=log_path)
+ 
+-    best_non0_acc_2 = 0.0
++    best_valid_mae = float('inf')
+     best_epoch = 0
+     best_results = {}
+     best_cpk_path = ""
+ 
+-    best_cpk_dir = "./best_cpk"
++    best_cpk_dir = save_path
+     os.makedirs(best_cpk_dir, exist_ok=True)
+ 
+-    for epoch in range(1, args.base.n_epochs + 1):
++    if opt.checkpoint:
++        checkpoint = torch.load(opt.checkpoint, map_location=device)
++        model.load_state_dict(checkpoint['model_state_dict'])
++        best_epoch = checkpoint['epoch']
++        best_valid_mae = checkpoint['valid_mae']
++        best_cpk_path = opt.checkpoint
++
++    for epoch in (() if opt.checkpoint else range(1, args.base.n_epochs + 1)):
+         training_ret = train(model, dataLoader['train'], optimizer, loss_fn, metrics_fn)
+         validation_ret = evaluate(model, dataLoader['valid'], loss_fn, metrics_fn)
+-        test_ret = evaluate(model, dataLoader['test'], loss_fn, metrics_fn)
+ 
+         training_results_recorder.update(training_ret['results'], epoch)
+         validation_results_recorder.update(validation_ret['results'], epoch)
+-        test_results_recorder.update(test_ret['results'], epoch)
+         best_validation_results = validation_results_recorder.get_best_results()
+-        best_test_results = test_results_recorder.get_best_results()
+ 
+-        current_non0_acc_2 = test_ret['results'].get('Non0_acc_2', 0.0)
+-        if current_non0_acc_2 > best_non0_acc_2:
++        current_valid_mae = validation_ret['results'].get('MAE', float('inf'))
++        if current_valid_mae < best_valid_mae:
+             # delete previous best checkpoint
+             if os.path.exists(best_cpk_path):
+                 os.remove(best_cpk_path)
+ 
+-            best_non0_acc_2 = current_non0_acc_2
++            best_valid_mae = current_valid_mae
+             best_epoch = epoch
+-            best_results = test_ret['results']
++            best_results = validation_ret['results']
+ 
+             # save best model
+-            cpk_name = f"Non0_acc_2_{best_non0_acc_2:.4f}_epoch_{best_epoch}_seed_{seed}.pth"
++            cpk_name = f"valid_mae_{best_valid_mae:.6f}_epoch_{best_epoch}_seed_{seed}.pth"
+             best_cpk_path = os.path.join(best_cpk_dir, cpk_name)
+             torch.save({
+                 'epoch': best_epoch,
+                 'model_state_dict': model.state_dict(),
+                 'optimizer_state_dict': optimizer.state_dict(),
+-                'Non0_acc_2': best_non0_acc_2,
++                'valid_mae': best_valid_mae,
+                 'seed': seed
+             }, best_cpk_path)
+ 
+@@ -111,16 +118,12 @@ def main():
+         print(f'Learning Rate: {optimizer.state_dict()["param_groups"][0]["lr"]}')
+         print(f'Training Results: {training_ret["results"]}')
+         print(f'Validation Results: {validation_ret["results"]}')
+-        print(f'Test Results: {test_ret["results"]}\n')
+         print(f'Best Validation Results across All Epochs: {best_validation_results["best_results_all_epochs"]}')
+         print(f'Best Validation Results of One Epoch: {best_validation_results["best_results_one_epoch"]}\n')
+-        print(f'Best Test Results across All Epochs: {best_test_results["best_results_all_epochs"]}')
+-        print(f'Best Test Results of One Epoch: {best_test_results["best_results_one_epoch"]}')
+         print('----------------------------------------------------------\n')
+ 
+         writer.add_scalar('train/MAE', training_ret['loss_recorder'].value_avg, epoch)
+         writer.add_scalar('valid/MAE', validation_ret['loss_recorder'].value_avg, epoch)
+-        writer.add_scalar('test/MAE', test_ret['loss_recorder'].value_avg, epoch)
+         
+         # Note: For MOSI dataset, the best model parameters are achieved at epoch 31; for MOSEI, at epoch 4.
+         # Consider implementing early stopping based on validation performance.
+@@ -128,9 +131,17 @@ def main():
+         if epoch>99:
+             break
+ 
+-    # add to best.txt
+-    with open('best.txt', 'a') as f:
+-        f.write(f'Seed: {seed}, Epoch: {best_epoch}, Results: {best_results}\n')
++    checkpoint = torch.load(best_cpk_path, map_location=device)
++    model.load_state_dict(checkpoint['model_state_dict'])
++    evaluation_split = 'test' if opt.evaluate_test else 'valid'
++    final = evaluate(model, dataLoader[evaluation_split], loss_fn, metrics_fn, return_predictions=True)
++    with open(os.path.join(output_dir, 'report.json'), 'w') as f:
++        json.dump({'seed': seed, 'best_epoch': best_epoch, 'checkpoint_selection': 'valid_mae',
++                   'evaluation_split': evaluation_split, 'metrics': final['results'],
++                   'deployed_parameters': sum(parameter.numel() for parameter in model.parameters())}, f, indent=2)
++    with open(os.path.join(output_dir, 'predictions.jsonl'), 'w') as f:
++        for sample_id, target, prediction in zip(final['ids'], final['targets'], final['predictions']):
++            f.write(json.dumps({'id': str(sample_id), 'target': target, 'prediction': prediction}) + '\n')
+ 
+     writer.close()
+ 
+@@ -166,9 +177,9 @@ def train(model, data_loader, optimizer, loss_fn, metrics_fn):
+     return {'results': results, 'loss_recorder': loss_recorder}
+ 
+ 
+-def evaluate(model, data_loader, loss_fn, metrics_fn):
++def evaluate(model, data_loader, loss_fn, metrics_fn, return_predictions=False):
+     loss_recorder = AverageMeter()
+-    y_pred, y_true = [], []
++    y_pred, y_true, ids = [], [], []
+ 
+     model.eval()
+ 
+@@ -185,14 +196,18 @@ def evaluate(model, data_loader, loss_fn, metrics_fn):
+ 
+         y_pred.append(output.cpu())
+         y_true.append(label.cpu())
++        ids.extend(data['id'])
+ 
+         loss_recorder.update(loss.item(), batchsize)
+ 
+     pred, true = torch.cat(y_pred), torch.cat(y_true)
+     results = metrics_fn(pred, true)
+ 
+-    return {'results': results, 'loss_recorder': loss_recorder}
++    result = {'results': results, 'loss_recorder': loss_recorder}
++    if return_predictions:
++        result.update(ids=ids, predictions=pred.view(-1).tolist(), targets=true.view(-1).tolist())
++    return result
+ 
+ 
+ if __name__ == '__main__':
+-    main()
+\ No newline at end of file
++    main()
