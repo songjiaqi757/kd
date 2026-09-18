@@ -16,13 +16,11 @@
     "mosei": {
       "assets": "outputs/experiments/main_table_v1/mosei/assets/protocol.json",
       "standard_features": "dataset/standard_features/mosei_aligned_50.pkl",
-      "student_assets_ready": true,
       "native_features_ready": false
     },
     "mosi": {
       "assets": "outputs/experiments/main_table_v1/mosi/assets/protocol.json",
       "standard_features": "dataset/standard_features/mosi_aligned_50.pkl",
-      "student_assets_ready": false,
       "native_features_ready": false,
       "blocking_prerequisite": "extract seven-subset teacher features, train/calibrate probes 2026/2027/2028, and freeze train-only utility"
     }

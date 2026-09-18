@@ -69,6 +69,15 @@ def test_full_plan_has_no_training_command_that_unlocks_test():
     }
 
 
+def test_student_plan_readiness_comes_from_frozen_asset_file():
+    matrix = json.loads((ROOT / "configs/main_table_v1/experiments.json").read_text())
+    for dataset in ("mosei", "mosi"):
+        assets = ROOT.parent / matrix["datasets"][dataset]["assets"]
+        student = [run for run in build(matrix, dataset) if run["kind"] == "student"]
+        assert student
+        assert all(run["ready"] == assets.is_file() for run in student)
+
+
 def test_native_source_patches_remove_test_from_epoch_selection():
     workspace = ROOT.parent
     dlf = (workspace / "external/original/DLF/trains/singleTask/DLF.py").read_text()

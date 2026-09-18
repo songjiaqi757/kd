@@ -47,7 +47,10 @@ def build(matrix, dataset, include_tier3=False):
                 ]
                 for key, value in parameters.items():
                     command.extend([flag(key), str(value)])
-                ready = dataset_config["student_assets_ready"] and assets.is_file()
+                # The frozen protocol is the source of truth.  This lets a
+                # resumable asset-preparation service unlock MOSI without a
+                # later manual edit to the experiment matrix.
+                ready = assets.is_file()
                 run = {
                     "kind": "student", "dataset": dataset, "name": run_name,
                     "method": specification["method"], "seed": seed, "parameters": parameters,
