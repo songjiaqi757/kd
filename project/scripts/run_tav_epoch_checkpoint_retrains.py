@@ -115,13 +115,18 @@ def test_gate(args):
     return read_status(scheduler) == "complete" and summary.is_file()
 
 
-def job_complete(output):
+def job_complete(output, *, require_artifacts=False):
     output = Path(output)
     if read_status(output / "status.json") != "complete":
         return False
     required = ("run_config.json", "report.json", "history.json", "best.pt", "last.pt", "checkpoint_inventory.json")
     if not all((output / name).is_file() for name in required):
-        raise RuntimeError(f"completed retrain lacks required artifacts: {output}")
+        # The trainer marks status complete before the epoch-retention wrapper
+        # finishes auditing checkpoints and writes checkpoint_inventory.json.
+        # A running job is not complete until that final artifact exists.
+        if require_artifacts:
+            raise RuntimeError(f"completed retrain lacks required artifacts: {output}")
+        return False
     history = json.loads((output / "history.json").read_text())
     inventory = json.loads((output / "checkpoint_inventory.json").read_text())
     if [row["epoch"] for row in inventory["epochs"]] != [row["epoch"] for row in history]:
@@ -200,7 +205,7 @@ def main():
             }, args.output / "queue_status.json")
             time.sleep(args.poll_seconds)
 
-        pending = [job for job in jobs if not job_complete(job["output"])]
+        pending = [job for job in jobs if not job_complete(job["output"], require_artifacts=True)]
         while pending or running:
             for identity, item in list(running.items()):
                 returncode = item["process"].poll()
@@ -210,7 +215,7 @@ def main():
                 del running[identity]
                 if returncode != 0:
                     raise RuntimeError(f"retrain failed: {identity}; see {item['log']}")
-                if not job_complete(item["job"]["output"]):
+                if not job_complete(item["job"]["output"], require_artifacts=True):
                     raise RuntimeError(f"retrain exited without complete audited output: {identity}")
 
             pending = [job for job in pending if not job_complete(job["output"])]

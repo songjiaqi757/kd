@@ -1,0 +1,29 @@
+{
+  "schema": "rdid-v2-mosei-experiment-matrix-v1",
+  "seed": 13,
+  "assets": "outputs/experiments/main_table_v1/mosei/assets/protocol.json",
+  "output_root": "outputs/experiments/rdid_v2_mosei",
+  "checkpoint_selection": "valid_mae",
+  "mosei_test_role": "method_level_development_only_never_epoch_selection",
+  "runs": [
+    {"id": "B1", "method": "soft_ru_a025", "alpha": 0.25, "enabled": true},
+    {"id": "B2", "method": "soft_ru_a050", "alpha": 0.50, "enabled": true},
+    {"id": "B3", "method": "soft_ru_a075", "alpha": 0.75, "enabled": true},
+    {"id": "C1", "method": "r_only", "alpha": null, "enabled": true},
+    {"id": "C2", "method": "u_only", "alpha": null, "enabled": true},
+    {"id": "C3", "method": "amplitude_u", "alpha": null, "enabled": true}
+  ],
+  "deferred": [
+    {
+      "id": "E1",
+      "method": "soft_ru_gate",
+      "enabled": false,
+      "requires": "A Soft-RU candidate must first improve on uniform under the declared development score",
+      "soft_alpha": "best_soft_ru_alpha"
+    }
+  ],
+  "historical_endpoints": [
+    {"method": "uniform", "source": "M4_seed13", "retrain": false},
+    {"method": "ru", "source": "M6_seed13", "retrain": false}
+  ]
+}
