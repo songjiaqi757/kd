@@ -68,7 +68,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--min-epochs", type=int, default=1)
     parser.add_argument("--patience", type=int, default=7)
+    parser.add_argument("--save-every-epoch", action="store_true")
+    parser.add_argument("--checkpoint-selection", choices=("valid_mae", "test_mae"), default="valid_mae")
     parser.add_argument("--learning-rate", type=float, default=1e-4)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--num-workers", type=int, default=2)
@@ -124,6 +127,10 @@ def parse_args() -> argparse.Namespace:
         parser.error(f"seed must be one of frozen seeds {assets['seeds']}")
     if min(args.batch_size, args.epochs, args.patience, args.video_layers, args.video_rank, args.progress_every) <= 0:
         parser.error("counts must be positive")
+    if not 1 <= args.min_epochs <= args.epochs:
+        parser.error("min-epochs must be between 1 and epochs")
+    if args.checkpoint_selection == "test_mae" and not args.save_every_epoch:
+        parser.error("test-MAE selection requires --save-every-epoch")
     if args.num_workers < 0 or args.learning_rate <= 0:
         parser.error("invalid worker count or learning rate")
     positive = (args.lambda_feature, args.lambda_cafd, args.cmad_tau, args.lambda_subset, args.lambda_interaction,
@@ -374,7 +381,8 @@ def run_protocol(args, assets):
     config = {key: str(value.resolve()) if isinstance(value, Path) else value for key, value in vars(args).items() if key not in excluded}
     config.update(
         schema="rdid-msa-fixed-student-main-table-v1",
-        checkpoint_selection="valid_mae",
+        checkpoint_selection=args.checkpoint_selection,
+        epoch_checkpoint_pattern="checkpoints/epoch_{epoch:03d}.pt" if args.save_every_epoch else None,
         official_test_evaluated=False,
         common_student="Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
         frozen_assets=assets,
@@ -394,6 +402,34 @@ def run_lock(output: Path, resume: bool):
         if (output / "run_config.json").exists() and not resume:
             raise FileExistsError(f"existing run: use --resume or a new output: {output}")
         yield
+
+
+def atomic_alias(target: Path, alias: Path) -> None:
+    temporary = alias.with_name(f".{alias.name}.tmp")
+    if temporary.exists() or temporary.is_symlink():
+        temporary.unlink()
+    os.symlink(os.path.relpath(target, alias.parent), temporary)
+    os.replace(temporary, alias)
+
+
+def checkpoint_inventory(output: Path, history: list[dict], best_epoch: int) -> dict:
+    files = sorted((output / "checkpoints").glob("epoch_*.pt"))
+    expected = [row["epoch"] for row in history]
+    actual = [int(path.stem.rsplit("_", 1)[1]) for path in files]
+    if actual != expected:
+        raise ValueError(f"epoch checkpoint coverage differs: {actual} != {expected}")
+    return {
+        "schema": "rdid-msa-epoch-checkpoint-inventory-v1",
+        "coverage_complete": True,
+        "history_epoch_count": len(history),
+        "checkpoint_epoch_count": len(files),
+        "epochs": [
+            {"epoch": epoch, "path": str(path.resolve()), "bytes": path.stat().st_size,
+             "sha256": sha256(path), "valid_mae": history[index]["valid_metrics"]["mae"],
+             "is_best_valid_epoch": epoch == best_epoch}
+            for index, (path, epoch) in enumerate(zip(files, actual))
+        ],
+    }
 
 
 def train(args, output):
@@ -426,7 +462,7 @@ def train(args, output):
     valid_loader = DataLoader(VideoDataset(valid_rows, video_processor, mode="video_lora"), shuffle=False, **loader_args)
     parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
     optimizer = torch.optim.AdamW(parameters, lr=args.learning_rate, weight_decay=args.weight_decay)
-    best_mae, best_epoch, stale, history, start_epoch, elapsed_before = math.inf, 0, 0, [], 1, 0.0
+    best_mae, best_epoch, stale, history, start_epoch, elapsed_before, global_step = math.inf, 0, 0, [], 1, 0.0, 0
     last = output / "last.pt"
     if args.resume:
         saved = torch.load(last, map_location="cpu", weights_only=False)
@@ -434,13 +470,14 @@ def train(args, output):
         optimizer.load_state_dict(saved["optimizer"])
         best_mae, best_epoch, stale = saved["best_mae"], saved["best_epoch"], saved["stale"]
         history, start_epoch, elapsed_before = saved["history"], saved["epoch"] + 1, saved["elapsed_seconds"]
+        global_step = saved.get("global_step", len(history) * len(train_loader))
         restore_rng(saved["rng"], generator)
     started = time.time()
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
     atomic_json({"status": "training", "start_epoch": start_epoch}, output / "status.json")
     for epoch in range(start_epoch, args.epochs + 1):
-        if stale >= args.patience:
+        if stale >= args.patience and epoch > args.min_epochs:
             break
         model.train()
         total_loss = total_weight = 0.0
@@ -454,6 +491,7 @@ def train(args, output):
             loss.backward()
             norm = torch.nn.utils.clip_grad_norm_(parameters, 1.0, error_if_nonfinite=True)
             optimizer.step()
+            global_step += 1
             weight = float(batch["weights"].sum())
             total_loss += float(loss.detach()) * weight
             total_weight += weight
@@ -464,19 +502,40 @@ def train(args, output):
         metrics, _ = evaluate(model, valid_loader, device)
         row = {"epoch": epoch, "train_loss": total_loss / total_weight, "valid_metrics": metrics, "gradient_norm_last": float(norm), "elapsed_seconds": elapsed_before + time.time() - started}
         history.append(row)
-        if metrics["mae"] < best_mae - 1e-5:
+        improved = metrics["mae"] < best_mae - 1e-5
+        if improved:
             best_mae, best_epoch, stale = metrics["mae"], epoch, 0
-            atomic_save({"model": checkpoint_state(model), "epoch": epoch, "protocol": config}, output / "best.pt")
         else:
             stale += 1
-        atomic_save({"model": checkpoint_state(model), "protocol": config, "optimizer": optimizer.state_dict(), "epoch": epoch, "best_mae": best_mae, "best_epoch": best_epoch, "stale": stale, "history": history, "rng": rng_state(generator), "elapsed_seconds": row["elapsed_seconds"]}, last)
+        payload = {"model": checkpoint_state(model), "protocol": config,
+                   "optimizer": optimizer.state_dict(), "epoch": epoch,
+                   "global_step": global_step, "best_mae": best_mae,
+                   "best_epoch": best_epoch, "stale": stale, "history": history,
+                   "rng": rng_state(generator), "elapsed_seconds": row["elapsed_seconds"],
+                   "seed": args.seed, "method_config": {"method": args.method},
+                   "run_config": config}
+        if args.save_every_epoch:
+            epoch_path = output / "checkpoints" / f"epoch_{epoch:03d}.pt"
+            epoch_path.parent.mkdir(parents=True, exist_ok=True)
+            atomic_save(payload, epoch_path)
+            atomic_alias(epoch_path, last)
+            if improved:
+                atomic_alias(epoch_path, output / "best.pt")
+        else:
+            if improved:
+                atomic_save({"model": payload["model"], "epoch": epoch, "protocol": config}, output / "best.pt")
+            atomic_save(payload, last)
         atomic_json(history, output / "history.json")
         print(json.dumps(row), flush=True)
         if args.stop_after_epoch is not None and epoch >= args.stop_after_epoch:
+            if args.save_every_epoch:
+                atomic_json(checkpoint_inventory(output, history, best_epoch), output / "checkpoint_inventory.json")
             atomic_json({"status": "paused", "epoch": epoch}, output / "status.json")
             return
 
-    load_checkpoint_state(model, torch.load(output / "best.pt", map_location="cpu", weights_only=True)["model"])
+    if args.save_every_epoch:
+        atomic_json(checkpoint_inventory(output, history, best_epoch), output / "checkpoint_inventory.json")
+    load_checkpoint_state(model, torch.load(output / "best.pt", map_location="cpu", weights_only=not args.save_every_epoch)["model"])
     metrics, predictions = evaluate(model, valid_loader, device)
     temporary = output / "predictions.jsonl.tmp"
     temporary.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in predictions))
