@@ -146,7 +146,11 @@ def evaluate_entry(entry, plan, config, model, loader, device, parents, output):
         os.replace(temporary, predictions_path)
         result = {"method": config["method"], "seed": config["seed"],
                   "checkpoint": entry["name"], "checkpoint_role": entry["role"],
-                  "epoch": entry["epoch"], "is_valid_selected_epoch": entry["epoch"] == plan["source_valid_selected_epoch"],
+                  "epoch": entry["epoch"],
+                  "is_valid_selected_epoch": (
+                      None if plan["source_valid_selected_epoch"] is None
+                      else entry["epoch"] == plan["source_valid_selected_epoch"]
+                  ),
                   "test_metrics": metrics, "test_windows": len(loader.dataset),
                   "test_utterances": len(predictions), "inference_seconds": elapsed,
                   "peak_gpu_memory_gib": torch.cuda.max_memory_allocated(device) / 1024**3 if device.type == "cuda" else None,

@@ -85,6 +85,7 @@ def make_plan(args):
             "launch_free_mib": args.launch_free_mib,
             "max_concurrent_with_training": args.max_concurrent_with_training,
             "max_concurrent_after_training": args.max_concurrent_after_training,
+            "streaming_epoch_admission": "history_row_committed_after_atomic_epoch_and_last_checkpoint_save",
             "test_use_policy": "diagnostic_only_never_select_epoch_or_hyperparameters_on_test"}
 
 
@@ -105,7 +106,14 @@ def source_ready(job):
     if current == "failed":
         raise RuntimeError(f"source training failed: {run}")
     if current != "complete":
-        return False
+        history_path = run / "history.json"
+        if current != "training" or not history_path.is_file():
+            return False
+        history = read_json(history_path)
+        if not history:
+            return False
+        last_epoch = int(history[-1]["epoch"])
+        return (run / "checkpoints" / f"epoch_{last_epoch:03d}.pt").is_file()
     required = ("report.json", "history.json", "best.pt", "last.pt", "checkpoint_inventory.json")
     # status=complete precedes the wrapper's final inventory write.
     return all((run / name).is_file() for name in required)
@@ -128,7 +136,9 @@ def launch(job, args):
     log_path = args.output / "logs" / f"{job['method']}_seed{SEED}.log"
     # Physical GPU1 is the sole visible CUDA device for this child, so cuda:0
     # inside the evaluator maps to GPU1 and cannot allocate on physical GPU0.
-    command = [sys.executable, str(ROOT / "project/scripts/evaluate_tav_all_checkpoints.py"),
+    streaming = status(Path(job["source_run"]) / "status.json") != "complete"
+    script = "evaluate_tav_streaming_checkpoints.py" if streaming else "evaluate_tav_all_checkpoints.py"
+    command = [sys.executable, str(ROOT / "project/scripts" / script),
                "--run", job["source_run"], "--output", job["output"],
                "--test-manifest", str(args.test_manifest), "--device", "cuda:0",
                "--batch-size", str(args.batch_size), "--num-workers", str(args.num_workers),
@@ -140,7 +150,8 @@ def launch(job, args):
     log = log_path.open("a")
     process = subprocess.Popen(command, cwd=ROOT, env=environment, stdout=log, stderr=subprocess.STDOUT)
     return {"process": process, "log_handle": log, "log": str(log_path),
-            "pid": process.pid, "launched_at": time.time(), "gpu": 1}
+            "pid": process.pid, "launched_at": time.time(), "gpu": 1,
+            "streaming": streaming}
 
 
 def snapshot(args, jobs, running, free_mib, state="running", error=None):
@@ -149,6 +160,8 @@ def snapshot(args, jobs, running, free_mib, state="running", error=None):
                                      if key not in {"process", "log_handle"}}
                              for method, item in running.items()},
                  "completed": [job["method"] for job in jobs if output_complete(job)],
+                 "training_in_progress": [job["method"] for job in jobs
+                                          if status(Path(job["source_run"]) / "status.json") == "training"],
                  "waiting_for_training": [job["method"] for job in jobs
                                           if not output_complete(job) and not source_ready(job)],
                  "error": error}, args.output / "scheduler_status.json")
