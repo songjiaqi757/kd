@@ -13,7 +13,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / "outputs/experiments/uniform_followup_v1/mosei"
-PYTHON = Path(sys.executable).resolve()
+PYTHON = Path(sys.executable)
 TRAINER = ROOT / "project/scripts/train_main_table_all_epochs.py"
 JOBS = (
     ("adapted_student", 0),
@@ -21,6 +21,8 @@ JOBS = (
     ("ensemble_full", 0),
     ("first_order_interaction", 1),
 )
+if os.environ.get("UNIFORM_QIII_BASELINES") == "1":
+    JOBS = (("projector", 0), ("ea_kd", 0), ("cmad_cafd", 1))
 
 
 def write_json(payload: dict, path: Path) -> None:

@@ -2,6 +2,7 @@
 /dataset/
 /model/
 /outputs/
+/transfer/
 
 # Upstream repositories are cloned locally for source inspection and commit
 # pinning.  Only their metadata and our clean-room adapters are versioned.

@@ -13,10 +13,12 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / "outputs/experiments/uniform_followup_v1/mosei"
-PYTHON = Path(sys.executable).resolve()
+PYTHON = Path(sys.executable)
 ONE = ROOT / "project/scripts/evaluate_main_table_one_epoch.py"
 FINAL = ROOT / "project/scripts/evaluate_main_table_all_epochs.py"
 METHODS = (("adapted_student", 0), ("subset7", 1), ("ensemble_full", 0), ("first_order_interaction", 1))
+if os.environ.get("UNIFORM_QIII_BASELINES") == "1":
+    METHODS = (("projector", 0), ("ea_kd", 0), ("cmad_cafd", 1))
 
 
 def read(path: Path):
