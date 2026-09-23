@@ -1,0 +1,88 @@
+{
+  "figure": "Fig. 3: Per-epoch validation MAE trajectories",
+  "dataset_split": "official validation",
+  "seed": 13,
+  "minimum_markers_drawn": false,
+  "mosi_inset": {
+    "epochs": [
+      10,
+      20
+    ],
+    "mae_range": [
+      0.7,
+      0.88
+    ],
+    "axes_bounds": [
+      0.51,
+      0.53,
+      0.46,
+      0.41
+    ]
+  },
+  "curves": [
+    {
+      "dataset": "MOSEI",
+      "method": "Adapted Student",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 3,
+      "minimum_validation_mae": 0.5105879821878172,
+      "source": "outputs/experiments/uniform_followup_v1/mosei/students/adapted_student_seed13/checkpoint_inventory.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Full KD",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 6,
+      "minimum_validation_mae": 0.4712614540879744,
+      "source": "outputs/experiments/tav_epoch_checkpoints_v1/students/M3_seed13/checkpoint_inventory.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Subset-7",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 9,
+      "minimum_validation_mae": 0.46903938081556734,
+      "source": "outputs/experiments/uniform_followup_v1/mosei/students/subset7_seed13/checkpoint_inventory.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Uniform",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 6,
+      "minimum_validation_mae": 0.4745546419558453,
+      "source": "outputs/experiments/tav_epoch_checkpoints_v1/students/M4_seed13/checkpoint_inventory.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Adapted Student",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 20,
+      "minimum_validation_mae": 0.7884052570903985,
+      "source": "outputs/experiments/uniform_main_v1/mosi/students/adapted_student_seed13/history.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Full KD",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 19,
+      "minimum_validation_mae": 0.7311665408649618,
+      "source": "outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/history.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Subset-7",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 11,
+      "minimum_validation_mae": 0.7838042724254148,
+      "source": "outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/history.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Uniform",
+      "epochs_plotted": 20,
+      "minimum_validation_epoch": 15,
+      "minimum_validation_mae": 0.7600951260007425,
+      "source": "outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/history.json"
+    }
+  ]
+}

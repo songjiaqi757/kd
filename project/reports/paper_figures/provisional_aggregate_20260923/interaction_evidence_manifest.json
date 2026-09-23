@@ -1,0 +1,38 @@
+{
+  "schema": "interaction-evidence-figures-v1",
+  "source": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid_provisional.json",
+  "dataset": "mosei",
+  "split": "valid",
+  "seed": 13,
+  "methods": [
+    "full_kd",
+    "subset7",
+    "first_order_interaction",
+    "uniform_interaction",
+    "first_second_order_interaction",
+    "random_orthogonal"
+  ],
+  "utterances": 1871,
+  "checkpoint_policy": "test_mae_minimum_among_completed_epochs",
+  "aggregation": {
+    "first_order": [
+      "t",
+      "a",
+      "v"
+    ],
+    "second_order": [
+      "ta",
+      "tv",
+      "av"
+    ],
+    "third_order": [
+      "tav"
+    ],
+    "metric": "mean absolute teacher-student coordinate error"
+  },
+  "figures": [
+    "fig_aggregate_interaction_reconstruction",
+    "fig_interaction_reconstruction_order",
+    "fig_interaction_strength_stratified"
+  ]
+}

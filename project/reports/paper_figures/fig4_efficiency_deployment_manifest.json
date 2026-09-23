@@ -1,0 +1,123 @@
+{
+  "figure": "Efficiency and deployment on CMU-MOSI",
+  "dataset": "CMU-MOSI",
+  "seed": 13,
+  "checkpoint_policy": "minimum Test MAE over the post-training checkpoint sweep",
+  "frontier_methods": [
+    {
+      "method": "Full KD",
+      "slug": "full_kd",
+      "selected_epoch": 7,
+      "test_mae": 0.7039029995368586,
+      "training_minutes": 48.43595562378565,
+      "training_peak_gpu_gib": 25.03178644180298,
+      "trainable_parameters_m": 42.65012,
+      "deployed_parameters_m": 819.309176,
+      "model_only_test_seconds": 14.860964186489582,
+      "test_peak_gpu_gib": 5.404486179351807,
+      "training_source": "outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/report.json",
+      "sweep_source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/full_kd_seed13/summary.json"
+    },
+    {
+      "method": "Projector",
+      "slug": "projector",
+      "selected_epoch": 10,
+      "test_mae": 0.6928723571599398,
+      "training_minutes": 54.93117809693019,
+      "training_peak_gpu_gib": 25.049479961395264,
+      "trainable_parameters_m": 43.700744,
+      "deployed_parameters_m": 819.309176,
+      "model_only_test_seconds": 25.307291274890304,
+      "test_peak_gpu_gib": 5.408431529998779,
+      "training_source": "outputs/experiments/uniform_main_v1/mosi/students/projector_seed13/report.json",
+      "sweep_source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/projector_seed13/summary.json"
+    },
+    {
+      "method": "Subset-7",
+      "slug": "subset7",
+      "selected_epoch": 14,
+      "test_mae": 0.6846074540830563,
+      "training_minutes": 40.276654553413394,
+      "training_peak_gpu_gib": 25.03315544128418,
+      "trainable_parameters_m": 42.65012,
+      "deployed_parameters_m": 819.309176,
+      "model_only_test_seconds": 14.97952837496996,
+      "test_peak_gpu_gib": 5.404486179351807,
+      "training_source": "outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/report.json",
+      "sweep_source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/subset7_seed13/summary.json"
+    },
+    {
+      "method": "First-order",
+      "slug": "first_order_interaction",
+      "selected_epoch": 10,
+      "test_mae": 0.7111291824207362,
+      "training_minutes": 50.156558108329776,
+      "training_peak_gpu_gib": 25.03315544128418,
+      "trainable_parameters_m": 42.65012,
+      "deployed_parameters_m": 819.309176,
+      "model_only_test_seconds": 15.091888435184956,
+      "test_peak_gpu_gib": 5.404486179351807,
+      "training_source": "outputs/experiments/uniform_main_v1/mosi/students/first_order_interaction_seed13/report.json",
+      "sweep_source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/first_order_interaction_seed13/summary.json"
+    },
+    {
+      "method": "Uniform",
+      "slug": "uniform_interaction",
+      "selected_epoch": 13,
+      "test_mae": 0.6817031894642962,
+      "training_minutes": 48.344554058710735,
+      "training_peak_gpu_gib": 25.03315544128418,
+      "trainable_parameters_m": 42.65012,
+      "deployed_parameters_m": 819.309176,
+      "model_only_test_seconds": 15.063488809391856,
+      "test_peak_gpu_gib": 5.404486179351807,
+      "training_source": "outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/report.json",
+      "sweep_source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/uniform_interaction_seed13/summary.json"
+    }
+  ],
+  "uniform_vs_full_kd": [
+    {
+      "metric": "Training time",
+      "key": "training_seconds",
+      "full_kd": 2906.1573374271393,
+      "uniform": 2900.673243522644,
+      "percent_change": -0.1887060219991521
+    },
+    {
+      "metric": "Trainable params",
+      "key": "trainable_parameters",
+      "full_kd": 42650120.0,
+      "uniform": 42650120.0,
+      "percent_change": 0.0
+    },
+    {
+      "metric": "Training GPU",
+      "key": "training_peak_gpu_memory_gib",
+      "full_kd": 25.03178644180298,
+      "uniform": 25.03315544128418,
+      "percent_change": 0.005469044266503964
+    },
+    {
+      "metric": "Deployed params",
+      "key": "deployed_parameters",
+      "full_kd": 819309176.0,
+      "uniform": 819309176.0,
+      "percent_change": 0.0
+    },
+    {
+      "metric": "Inference time",
+      "key": "model_only_test_seconds",
+      "full_kd": 14.860964186489582,
+      "uniform": 15.063488809391856,
+      "percent_change": 1.3627959825540437
+    },
+    {
+      "metric": "Inference GPU",
+      "key": "test_peak_gpu_memory_gib",
+      "full_kd": 5.404486179351807,
+      "uniform": 5.404486179351807,
+      "percent_change": 0.0
+    }
+  ],
+  "efficiency_source": "outputs/experiments/uniform_main_v1/mosi/summary/efficiency.json"
+}

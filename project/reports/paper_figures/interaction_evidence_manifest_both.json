@@ -1,0 +1,47 @@
+{
+  "schema": "aggregate-interaction-reconstruction-both-v1",
+  "sources": [
+    "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+    "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json"
+  ],
+  "datasets": [
+    "mosei",
+    "mosi"
+  ],
+  "split": "valid",
+  "seed": 13,
+  "checkpoint_policies": [
+    "validation_mae_minimum_among_completed_epochs",
+    "validation_mae_minimum_among_completed_epochs"
+  ],
+  "methods": [
+    "full_kd",
+    "subset7",
+    "first_order_interaction",
+    "first_second_order_interaction",
+    "random_orthogonal",
+    "uniform_interaction"
+  ],
+  "independent_y_axes": true,
+  "overall_reconstruction_mae": {
+    "mosei": {
+      "full_kd": 0.4486023280886092,
+      "subset7": 0.2857137024191575,
+      "first_order_interaction": 0.28020935539146213,
+      "first_second_order_interaction": 0.26524971420960414,
+      "random_orthogonal": 0.2937579198352869,
+      "uniform_interaction": 0.26687776279363956
+    },
+    "mosi": {
+      "full_kd": 1.1438365496074256,
+      "subset7": 0.6136988935518908,
+      "first_order_interaction": 0.5982940351224686,
+      "first_second_order_interaction": 0.5825041085021695,
+      "random_orthogonal": 0.5825811161004207,
+      "uniform_interaction": 0.5384401574600247
+    }
+  },
+  "evaluation_coordinate_policy": "All methods are evaluated post hoc in the same anchored Mobius coordinate space, irrespective of training supervision.",
+  "provisional": false,
+  "figure": "fig_aggregate_interaction_reconstruction_both"
+}

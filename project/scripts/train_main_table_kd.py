@@ -89,6 +89,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cmad-tau", type=float)
     parser.add_argument("--lambda-subset", type=float)
     parser.add_argument("--lambda-interaction", type=float)
+    parser.add_argument("--coordinate-seed", type=int, default=20260922)
     parser.add_argument("--ea-entropy-temperature", type=float)
     parser.add_argument("--rld-temperature", type=float)
     parser.add_argument("--rld-alpha", type=float)
@@ -311,6 +312,14 @@ def compute_loss(model, outputs, batch, device, args, assets, epoch):
     elif method == "subset7":
         loss = loss + args.lambda_subset * subset_regression_loss(
             outputs, batch["teacher_subset_scores"].to(device), weights
+        )
+    elif method == "random_orthogonal":
+        from rdid_mosei.main_table_kd import random_orthogonal_loss
+        loss = loss + args.lambda_interaction * random_orthogonal_loss(
+            outputs,
+            batch["teacher_subset_scores"].to(device),
+            weights,
+            args.coordinate_seed,
         )
     elif method in SUBSET_METHODS:
         utility_key = "coarse_utility_normalized" if method == "coarse_u_interaction" else "utility_normalized"

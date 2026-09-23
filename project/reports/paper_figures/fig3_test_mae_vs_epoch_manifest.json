@@ -1,0 +1,89 @@
+{
+  "figure": "Fig. 3: Test MAE vs Epoch",
+  "seed": 13,
+  "best_marker_definition": null,
+  "mosi_inset": {
+    "epochs": [
+      10,
+      20
+    ],
+    "mae_range": [
+      0.66,
+      0.9
+    ],
+    "axes_bounds": [
+      0.54,
+      0.54,
+      0.43,
+      0.4
+    ]
+  },
+  "visualization_note": "No best-test text boxes or minimum markers are drawn.",
+  "test_selection_disclosure": "Markers summarize test trajectories and must not be presented as validation-selected generalization estimates.",
+  "curves": [
+    {
+      "dataset": "MOSEI",
+      "method": "Adapted Student",
+      "best_epoch_by_test_mae": 3,
+      "best_test_mae": 0.5283521954457883,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_followup_v1/mosei/test_epoch_sweeps/adapted_student_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Full KD",
+      "best_epoch_by_test_mae": 6,
+      "best_test_mae": 0.4816275753064819,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/tav_epoch_checkpoints_v1/checkpoint_diagnostic_test_gpu1_20260919/M3_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Subset-7",
+      "best_epoch_by_test_mae": 9,
+      "best_test_mae": 0.4801432885246864,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_followup_v1/mosei/test_epoch_sweeps/subset7_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSEI",
+      "method": "Uniform",
+      "best_epoch_by_test_mae": 6,
+      "best_test_mae": 0.4773604499136077,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/tav_epoch_checkpoints_v1/checkpoint_diagnostic_test_gpu1_20260919/M4_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Adapted Student",
+      "best_epoch_by_test_mae": 19,
+      "best_test_mae": 0.7713749454598384,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/adapted_student_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Full KD",
+      "best_epoch_by_test_mae": 7,
+      "best_test_mae": 0.7039029995368586,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/full_kd_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Subset-7",
+      "best_epoch_by_test_mae": 14,
+      "best_test_mae": 0.6846074540830563,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/subset7_seed13/summary.json"
+    },
+    {
+      "dataset": "MOSI",
+      "method": "Uniform",
+      "best_epoch_by_test_mae": 13,
+      "best_test_mae": 0.6817031894642962,
+      "epochs_plotted": 20,
+      "source": "outputs/experiments/uniform_main_v1/mosi/test_sweep/uniform_interaction_seed13/summary.json"
+    }
+  ]
+}

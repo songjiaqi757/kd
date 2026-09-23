@@ -1,0 +1,1 @@
+**Supplementary Figure: Per-epoch test MAE trajectories.** Test MAE over epochs 1–20 on (a) CMU-MOSEI and (b) CMU-MOSI for four representative methods (seed 13). The inset enlarges MOSI epochs 10–20. These trajectories come from post-training checkpoint sweeps; no test-minimum checkpoint is highlighted in the figure.

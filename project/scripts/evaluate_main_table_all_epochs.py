@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -101,6 +102,9 @@ def update_summary(output: Path, plan: dict) -> dict:
 def main() -> None:
     args = parse_args()
     run, output, manifest = args.run.resolve(), args.output.resolve(), args.test_manifest.resolve()
+    output.mkdir(parents=True, exist_ok=True)
+    evaluation_lock = (output / ".live_evaluator.lock").open("a")
+    fcntl.flock(evaluation_lock, fcntl.LOCK_EX)
     config = read_json(run / "run_config.json")
     status = read_json(run / "status.json")
     inventory = read_json(run / "checkpoint_inventory.json")
@@ -123,10 +127,19 @@ def main() -> None:
         "selection_policy": "minimum_test_mae_among_completed_training_epochs",
         "epochs": [{"epoch": row["epoch"], "path": row["path"], "sha256": row["sha256"]} for row in epochs],
     }
-    output.mkdir(parents=True, exist_ok=True)
     plan_path = output / "evaluation_plan.json"
     if plan_path.exists() and read_json(plan_path) != plan:
-        raise ValueError("existing evaluation plan differs")
+        existing = read_json(plan_path)
+        immutable = (
+            "source_run", "source_config_sha256", "method", "seed",
+            "test_manifest", "test_manifest_sha256", "test_utterances",
+            "test_windows", "smoke_limit_parents", "selection_policy",
+        )
+        if any(existing.get(key) != plan.get(key) for key in immutable):
+            raise ValueError("existing evaluation plan differs in immutable fields")
+        existing_epochs = existing.get("epochs", [])
+        if plan["epochs"][:len(existing_epochs)] != existing_epochs:
+            raise ValueError("existing evaluation plan is not a checkpoint prefix")
     atomic_json(plan, plan_path)
     if update_summary(output, plan)["complete"]:
         return

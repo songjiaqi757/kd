@@ -1,0 +1,40 @@
+{
+  "schema": "qualitative-interaction-distillation-figure-v1",
+  "dataset": "CMU-MOSEI",
+  "split": "official valid",
+  "layout": "horizontal side-by-side panels",
+  "prediction_axis_range": [
+    -3,
+    3
+  ],
+  "displayed_frames": [
+    1,
+    3,
+    5
+  ],
+  "method_display_name": {
+    "uniform_interaction": "Ours"
+  },
+  "selection_audit": {
+    "selection_uses_student_results": false,
+    "cross_modal_conflict": {
+      "definition": "among mixed-sign teacher first-order coordinates T/A/V, rank by min(max positive magnitude, max negative magnitude)",
+      "score": 0.9818572969279143,
+      "rank": 6,
+      "eligible_mixed_sign_samples": 696,
+      "top_percent": 0.8620689655172413
+    },
+    "strong_text_audio": {
+      "definition": "rank all validation samples by absolute teacher TA interaction",
+      "score": 1.8919602405072702,
+      "rank": 66,
+      "validation_samples": 1871,
+      "top_percent": 3.527525387493319
+    }
+  },
+  "outputs": {
+    "pdf": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation.pdf",
+    "svg": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation.svg",
+    "png": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation.png"
+  }
+}

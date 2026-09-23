@@ -35,6 +35,8 @@ MAIN_TABLE_METHODS = (
     "ensemble_full",
     "shuffled_r_u_interaction",
     "first_order_interaction",
+    "first_second_order_interaction",
+    "random_orthogonal",
     "coarse_u_interaction",
     "amplitude_interaction",
     "additive_r_u_interaction",
@@ -49,6 +51,8 @@ SUBSET_METHODS = frozenset(
         "ru_interaction",
         "shuffled_r_u_interaction",
         "first_order_interaction",
+        "first_second_order_interaction",
+        "random_orthogonal",
         "coarse_u_interaction",
         "amplitude_interaction",
         "additive_r_u_interaction",
@@ -382,7 +386,11 @@ def interaction_coordinate_weights(
     reliability = mean.abs() / torch.sqrt(variance.clamp_min(0) + 1e-4)
     reliability = (reliability / reliability.mean(-1, keepdim=True).clamp_min(1e-8)).clamp(0.25, 4.0)
     utility = utility.to(mean).expand_as(mean)
-    if method == "uniform_interaction" or method == "first_order_interaction":
+    if method in {
+        "uniform_interaction",
+        "first_order_interaction",
+        "first_second_order_interaction",
+    }:
         result = torch.ones_like(mean)
     elif method == "r_only_interaction" or method == "shuffled_r_u_interaction":
         result = reliability
@@ -423,9 +431,38 @@ def adapted_interaction_loss(
         method,
     )
     errors = F.smooth_l1_loss(coordinates, mean, reduction="none")
-    if method == "first_order_interaction":
-        errors = errors[:, :3]
-        weights = weights[:, :3]
+    retained_coordinates = {
+        "first_order_interaction": 3,
+        "first_second_order_interaction": 6,
+    }.get(method)
+    if retained_coordinates is not None:
+        errors = errors[:, :retained_coordinates]
+        weights = weights[:, :retained_coordinates]
         weights = weights / weights.mean(-1, keepdim=True).clamp_min(1e-8)
     per_sample = (weights * errors).mean(-1)
     return weighted_mean(per_sample, sample_weights), weights
+
+
+def random_orthogonal_loss(
+    outputs: Mapping[str, Mapping[str, torch.Tensor]],
+    teacher_subset_scores: torch.Tensor,
+    sample_weights: torch.Tensor,
+    coordinate_seed: int,
+) -> torch.Tensor:
+    """Distil the seven subset responses after a fixed orthogonal rotation."""
+    from .interaction import random_orthogonal_matrix
+
+    student = torch.stack(
+        [outputs[subset]["regression"].float() for subset in SUBSETS], -1
+    )
+    if teacher_subset_scores.shape != student.shape:
+        raise ValueError("teacher subset scores must have shape [batch, 7]")
+    matrix = random_orthogonal_matrix(
+        size=len(SUBSETS), seed=coordinate_seed, dtype=student.dtype
+    ).to(student.device)
+    student_coordinates = student @ matrix.T
+    teacher_coordinates = teacher_subset_scores.to(student) @ matrix.T
+    errors = F.smooth_l1_loss(
+        student_coordinates, teacher_coordinates, reduction="none"
+    ).mean(-1)
+    return weighted_mean(errors, sample_weights)

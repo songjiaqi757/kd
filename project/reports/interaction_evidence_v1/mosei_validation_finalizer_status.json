@@ -1,0 +1,7 @@
+{
+  "schema": "mosei-validation-interaction-finalizer-v1",
+  "phase": "complete",
+  "report": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+  "aggregate_figure": "/home/wy/sjq/kd/project/reports/paper_figures/fig_aggregate_interaction_reconstruction_both.pdf",
+  "completed_at_unix": 1790153878.3212357
+}

@@ -1,0 +1,7 @@
+{
+  "schema": "mosi-interaction-evidence-finalizer-v1",
+  "phase": "complete",
+  "report": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json",
+  "aggregate_figure": "/home/wy/sjq/kd/project/reports/paper_figures/fig_aggregate_interaction_reconstruction_mosi.pdf",
+  "completed_at_unix": 1790143591.4463181
+}

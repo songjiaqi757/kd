@@ -1,0 +1,143 @@
+{
+  "schema": "teacher-structure-analysis-v1",
+  "dataset": "mosei",
+  "split": "valid",
+  "utterances": 1871,
+  "coordinate_order": [
+    "t",
+    "a",
+    "v",
+    "ta",
+    "tv",
+    "av",
+    "tav"
+  ],
+  "subset_metrics": {
+    "t": {
+      "count": 1871,
+      "mae": 0.47316969489355104,
+      "pearson": 0.8102046385357065,
+      "acc2_nonzero": 0.8915159944367177,
+      "f1_weighted_nonzero": 0.8902393938227593,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.865847140566542,
+      "f1_weighted_has_zero": 0.8677189810465751,
+      "acc7": 0.5574559059326564
+    },
+    "a": {
+      "count": 1871,
+      "mae": 0.4542630533465953,
+      "pearson": 0.8214230731185478,
+      "acc2_nonzero": 0.8866481223922114,
+      "f1_weighted_nonzero": 0.8853466656524894,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.8626402993051844,
+      "f1_weighted_has_zero": 0.8645568849759752,
+      "acc7": 0.5734901122394441
+    },
+    "v": {
+      "count": 1871,
+      "mae": 0.7197824110838436,
+      "pearson": 0.4329076851740763,
+      "acc2_nonzero": 0.7155771905424201,
+      "f1_weighted_nonzero": 0.709507228351311,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.7028327097808659,
+      "f1_weighted_has_zero": 0.7085352341505248,
+      "acc7": 0.4377338321753073
+    },
+    "ta": {
+      "count": 1871,
+      "mae": 0.45044851965415544,
+      "pearson": 0.8299566867671105,
+      "acc2_nonzero": 0.8970792767732962,
+      "f1_weighted_nonzero": 0.8956884682874517,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.8760021378941742,
+      "f1_weighted_has_zero": 0.8771671414240945,
+      "acc7": 0.5756280064136825
+    },
+    "tv": {
+      "count": 1871,
+      "mae": 0.45789527194184937,
+      "pearson": 0.8256977229133389,
+      "acc2_nonzero": 0.8915159944367177,
+      "f1_weighted_nonzero": 0.8909982231102545,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.8524853019775521,
+      "f1_weighted_has_zero": 0.8563136951648703,
+      "acc7": 0.5820416889363976
+    },
+    "av": {
+      "count": 1871,
+      "mae": 0.4370539396880742,
+      "pearson": 0.8298732354447997,
+      "acc2_nonzero": 0.8762169680111266,
+      "f1_weighted_nonzero": 0.875810135455146,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.8327097808658471,
+      "f1_weighted_has_zero": 0.8377634673168961,
+      "acc7": 0.5964724746125066
+    },
+    "tav": {
+      "count": 1871,
+      "mae": 0.4339358562737624,
+      "pearson": 0.8399783102756093,
+      "acc2_nonzero": 0.8949930458970793,
+      "f1_weighted_nonzero": 0.8944119817939477,
+      "nonzero_count": 1438,
+      "acc2_has_zero": 0.8572955638695885,
+      "f1_weighted_has_zero": 0.8607843695777951,
+      "acc7": 0.5905932656333511
+    }
+  },
+  "interaction_statistics": {
+    "t": {
+      "mean_absolute_magnitude": 0.672182121154987,
+      "median_absolute_magnitude": 0.515788816308831,
+      "standard_deviation": 0.873855810923488,
+      "signed_mean": 0.07599536018642818
+    },
+    "a": {
+      "mean_absolute_magnitude": 0.6462058794871175,
+      "median_absolute_magnitude": 0.4822177915730624,
+      "standard_deviation": 0.8567957461622601,
+      "signed_mean": 0.05984183570631356
+    },
+    "v": {
+      "mean_absolute_magnitude": 0.41212376222201896,
+      "median_absolute_magnitude": 0.32841700603152796,
+      "standard_deviation": 0.5136992114233497,
+      "signed_mean": -0.0020024244632053036
+    },
+    "ta": {
+      "mean_absolute_magnitude": 0.6471855458012766,
+      "median_absolute_magnitude": 0.49536382446274635,
+      "standard_deviation": 0.8452041977513596,
+      "signed_mean": -0.07154511445945926
+    },
+    "tv": {
+      "mean_absolute_magnitude": 0.3618324573336452,
+      "median_absolute_magnitude": 0.31062969108010813,
+      "standard_deviation": 0.44594956102904465,
+      "signed_mean": -0.017770038653229882
+    },
+    "av": {
+      "mean_absolute_magnitude": 0.35514256229230506,
+      "median_absolute_magnitude": 0.3219667602537621,
+      "standard_deviation": 0.4274277252893277,
+      "signed_mean": -0.04059447873325225
+    },
+    "tav": {
+      "mean_absolute_magnitude": 0.37581395968215964,
+      "median_absolute_magnitude": 0.32951937406843385,
+      "standard_deviation": 0.45834881072608213,
+      "signed_mean": 0.04764797344790045
+    }
+  },
+  "sources": {
+    "protocol": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/protocol.json",
+    "ensemble_targets": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/ensemble_targets.jsonl",
+    "interaction_targets": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/assets/interaction_targets.jsonl"
+  }
+}

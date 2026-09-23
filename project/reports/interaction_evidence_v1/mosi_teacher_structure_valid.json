@@ -1,0 +1,143 @@
+{
+  "schema": "teacher-structure-analysis-v1",
+  "dataset": "mosi",
+  "split": "valid",
+  "utterances": 229,
+  "coordinate_order": [
+    "t",
+    "a",
+    "v",
+    "ta",
+    "tv",
+    "av",
+    "tav"
+  ],
+  "subset_metrics": {
+    "t": {
+      "count": 229,
+      "mae": 0.5119952961141804,
+      "pearson": 0.9060288540391737,
+      "acc2_nonzero": 0.9166666666666666,
+      "f1_weighted_nonzero": 0.9164021164021166,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8777292576419214,
+      "f1_weighted_has_zero": 0.8782911459709039,
+      "acc7": 0.5414847161572053
+    },
+    "a": {
+      "count": 229,
+      "mae": 0.4749497696392796,
+      "pearson": 0.9181614658708829,
+      "acc2_nonzero": 0.9074074074074074,
+      "f1_weighted_nonzero": 0.9067497895622896,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8777292576419214,
+      "f1_weighted_has_zero": 0.8777292576419213,
+      "acc7": 0.5676855895196506
+    },
+    "v": {
+      "count": 229,
+      "mae": 1.4045993879003495,
+      "pearson": 0.16394527680846108,
+      "acc2_nonzero": 0.5555555555555556,
+      "f1_weighted_nonzero": 0.49538333852059346,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.5807860262008734,
+      "f1_weighted_has_zero": 0.5209183583992865,
+      "acc7": 0.19213973799126638
+    },
+    "ta": {
+      "count": 229,
+      "mae": 0.4952730607021924,
+      "pearson": 0.9135748549720125,
+      "acc2_nonzero": 0.8935185185185185,
+      "f1_weighted_nonzero": 0.8934414037449128,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8733624454148472,
+      "f1_weighted_has_zero": 0.8738606163972635,
+      "acc7": 0.5458515283842795
+    },
+    "tv": {
+      "count": 229,
+      "mae": 0.5552204288328904,
+      "pearson": 0.9029053887818336,
+      "acc2_nonzero": 0.9027777777777778,
+      "f1_weighted_nonzero": 0.9021897271149515,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8777292576419214,
+      "f1_weighted_has_zero": 0.8777292576419213,
+      "acc7": 0.49344978165938863
+    },
+    "av": {
+      "count": 229,
+      "mae": 0.5213845498263258,
+      "pearson": 0.9109086099561263,
+      "acc2_nonzero": 0.875,
+      "f1_weighted_nonzero": 0.8736804517151338,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8471615720524017,
+      "f1_weighted_has_zero": 0.8467226001628898,
+      "acc7": 0.537117903930131
+    },
+    "tav": {
+      "count": 229,
+      "mae": 0.4889464278967201,
+      "pearson": 0.9181877542871857,
+      "acc2_nonzero": 0.8981481481481481,
+      "f1_weighted_nonzero": 0.8978248089359201,
+      "nonzero_count": 216,
+      "acc2_has_zero": 0.8733624454148472,
+      "f1_weighted_has_zero": 0.8736773088021379,
+      "acc7": 0.5851528384279476
+    }
+  },
+  "interaction_statistics": {
+    "t": {
+      "mean_absolute_magnitude": 1.3323154506721537,
+      "median_absolute_magnitude": 1.3688859881307092,
+      "standard_deviation": 1.513730264032861,
+      "signed_mean": 0.057555888264432795
+    },
+    "a": {
+      "mean_absolute_magnitude": 1.3757496401378284,
+      "median_absolute_magnitude": 1.4478267372991052,
+      "standard_deviation": 1.5717144898483015,
+      "signed_mean": 0.05219684749682902
+    },
+    "v": {
+      "mean_absolute_magnitude": 0.31539072150451236,
+      "median_absolute_magnitude": 0.2519276568139995,
+      "standard_deviation": 0.38577633207885625,
+      "signed_mean": 0.14909279060454964
+    },
+    "ta": {
+      "mean_absolute_magnitude": 1.3473842975877377,
+      "median_absolute_magnitude": 1.3585672436808143,
+      "standard_deviation": 1.530044491790543,
+      "signed_mean": -0.10126238472952721
+    },
+    "tv": {
+      "mean_absolute_magnitude": 0.4020499531674796,
+      "median_absolute_magnitude": 0.33416632400498747,
+      "standard_deviation": 0.4918275840887649,
+      "signed_mean": -0.11504276679789953
+    },
+    "av": {
+      "mean_absolute_magnitude": 0.3192817404158487,
+      "median_absolute_magnitude": 0.26931577510183996,
+      "standard_deviation": 0.3985272285130324,
+      "signed_mean": -0.13173897916023897
+    },
+    "tav": {
+      "mean_absolute_magnitude": 0.4635350300214687,
+      "median_absolute_magnitude": 0.36364297654773753,
+      "standard_deviation": 0.5837216115085351,
+      "signed_mean": 0.13123512657789482
+    }
+  },
+  "sources": {
+    "protocol": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+    "ensemble_targets": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+    "interaction_targets": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl"
+  }
+}

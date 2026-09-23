@@ -30,6 +30,20 @@ def select_test_best(reports: list[dict]) -> dict:
     return min(reports, key=lambda row: (row["test_metrics"]["mae"], row["epoch"]))
 
 
+def localize_path(path: str | Path) -> Path:
+    """Map paths embedded by the original Qiii run to this repository."""
+    value = Path(path)
+    if value.exists():
+        return value
+    qiii_root = Path("/ai/sjq/kd")
+    try:
+        relative = value.relative_to(qiii_root)
+    except ValueError:
+        return value
+    localized = ROOT / relative
+    return localized if localized.exists() else value
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True)
@@ -69,7 +83,7 @@ def main() -> None:
     output.mkdir(parents=True, exist_ok=True)
     model_args = SimpleNamespace(**config)
     for name in ("text_model", "audio_model", "video_model", "assets"):
-        setattr(model_args, name, Path(getattr(model_args, name)))
+        setattr(model_args, name, localize_path(getattr(model_args, name)))
     device = torch.device(args.device)
     model = build_model(model_args, config["frozen_assets"], device)
     from transformers import AutoFeatureExtractor, AutoImageProcessor, AutoTokenizer
@@ -149,7 +163,11 @@ def main() -> None:
         raise ValueError("test sweep did not cover every saved epoch")
     winner = select_test_best(reports)
     deployable = output / "test_best_model.pt"
-    if not deployable.exists():
+    pointer_path = output / "test_best_pointer.json"
+    pointer = json.loads(pointer_path.read_text()) if pointer_path.exists() else {}
+    if (not deployable.exists()
+            or pointer.get("epoch") != winner["epoch"]
+            or pointer.get("sha256") != winner["checkpoint_sha256"]):
         selected = torch.load(Path(winner["checkpoint"]), map_location="cpu", weights_only=False)
         temporary = deployable.with_suffix(".pt.tmp")
         torch.save({"model": selected["model"], "epoch": winner["epoch"],
@@ -163,7 +181,7 @@ def main() -> None:
                "selected_model_checkpoint": str(deployable), "epochs": reports}
     atomic_json(summary, output / "summary.json")
     atomic_json({"epoch": winner["epoch"], "checkpoint": winner["checkpoint"],
-                 "sha256": winner["checkpoint_sha256"]}, output / "test_best_pointer.json")
+                 "sha256": winner["checkpoint_sha256"]}, pointer_path)
     print(json.dumps({"status": "complete", "method": config["method"],
                       "selected_epoch": winner["epoch"], "metrics": winner["test_metrics"]}), flush=True)
 

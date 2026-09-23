@@ -1,0 +1,23 @@
+{
+  "schema": "full-interaction-case-study-v1",
+  "dataset": "CMU-MOSEI",
+  "split": "official valid",
+  "methods": [
+    "full_kd",
+    "subset7",
+    "first_order_interaction",
+    "uniform_interaction"
+  ],
+  "outputs": {
+    "125676[7]": {
+      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.pdf",
+      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.svg",
+      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.png"
+    },
+    "130456[11]": {
+      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.pdf",
+      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.svg",
+      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.png"
+    }
+  }
+}

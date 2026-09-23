@@ -1,0 +1,191 @@
+{
+  "schema": "interaction-case-heatmaps-v1",
+  "dataset": "CMU-MOSEI",
+  "split": "official valid",
+  "coordinate_order": [
+    "T",
+    "A",
+    "V",
+    "TA",
+    "TV",
+    "AV",
+    "TAV"
+  ],
+  "color_limits": [
+    -2.0,
+    2.0
+  ],
+  "available_methods": [
+    "full_kd",
+    "subset7",
+    "first_order_interaction",
+    "uniform_interaction"
+  ],
+  "cases": {
+    "125676[7]": {
+      "salient_coordinate": "TA",
+      "target_sentiment": -1.3333333730697632,
+      "rows": [
+        {
+          "method": "Teacher",
+          "interactions": [
+            -1.744514998897061,
+            -1.9325088829836699,
+            -0.6811925044696979,
+            1.8919602405072702,
+            0.6829946707726968,
+            0.7543395629566364,
+            -0.7697788348835163
+          ]
+        },
+        {
+          "method": "Full KD",
+          "prediction": -1.40625,
+          "interaction_mae": 0.5437588180814472,
+          "interactions": [
+            -1.5969031027000598,
+            -0.6379187277000598,
+            -0.46213747770005986,
+            0.6535437277000598,
+            0.45432497770005964,
+            0.42698122770005975,
+            -0.41916872770005953
+          ]
+        },
+        {
+          "method": "Subset-7 KD",
+          "prediction": -1.2109375000000002,
+          "interaction_mae": 0.5677543537957328,
+          "interactions": [
+            -1.1594031027000598,
+            -0.8234656027000598,
+            -0.5539343527000598,
+            0.7687781027000598,
+            0.44455935270005975,
+            0.33518435270005975,
+            -0.39768435270006
+          ]
+        },
+        {
+          "method": "First-order",
+          "prediction": -1.15625,
+          "interaction_mae": 0.5358591675758363,
+          "interactions": [
+            -0.9640906027000598,
+            -0.8000281027000598,
+            -0.7687781027000598,
+            0.5890906027000598,
+            0.43284060270005975,
+            0.7531531027000598,
+            -0.5734656027000598
+          ]
+        },
+        {
+          "method": "Uniform",
+          "prediction": -1.3203124999999998,
+          "interaction_mae": 0.2758145247186934,
+          "interactions": [
+            -1.4250281027000598,
+            -1.1515906027000598,
+            -0.8156531027000598,
+            1.3703406027000598,
+            0.5656531027000598,
+            0.7140906027000598,
+            -0.7531531027000598
+          ]
+        }
+      ]
+    },
+    "130456[11]": {
+      "salient_coordinate": "TV",
+      "target_sentiment": 0.6666666865348816,
+      "rows": [
+        {
+          "method": "Teacher",
+          "interactions": [
+            1.3707264094510225,
+            1.324340644375339,
+            -0.9818572969279143,
+            -1.1260415145713634,
+            0.7809392582417978,
+            1.0235035788060676,
+            -0.9305417906285776
+          ]
+        },
+        {
+          "method": "Full KD",
+          "prediction": 1.921875,
+          "interaction_mae": 0.8412286951428367,
+          "interactions": [
+            1.7468468972999402,
+            -0.3166296652000598,
+            -0.27756716520005975,
+            0.2853796652000598,
+            0.30881716520005975,
+            0.3351843527000598,
+            -0.3351843527000598
+          ]
+        },
+        {
+          "method": "Subset-7 KD",
+          "prediction": 1.4765625000000002,
+          "interaction_mae": 0.6459161951428369,
+          "interactions": [
+            1.4030968972999402,
+            -0.07053591520005978,
+            -0.6633093527000598,
+            -0.06227658479994,
+            0.6086218527000595,
+            0.25022341520005975,
+            -0.16428591520005956
+          ]
+        },
+        {
+          "method": "First-order",
+          "prediction": 1.890625,
+          "interaction_mae": 0.7626851683571226,
+          "interactions": [
+            1.7937218972999402,
+            -0.09104372770005978,
+            -0.44846560270005975,
+            0.02854372770005978,
+            0.33909060270005975,
+            0.33860232145005975,
+            -0.24485232145005978
+          ]
+        },
+        {
+          "method": "Uniform",
+          "prediction": 0.6328125,
+          "interaction_mae": 0.6137880200431461,
+          "interactions": [
+            0.9187218972999402,
+            -0.38987185270005975,
+            -0.7961218527000596,
+            -0.41090939729994025,
+            0.7726843527000596,
+            0.5480749777000596,
+            -0.18479372770005967
+          ]
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.pdf",
+    "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.svg",
+    "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.png"
+  },
+  "separate_case_outputs": {
+    "125676[7]": {
+      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.pdf",
+      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.svg",
+      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.png"
+    },
+    "130456[11]": {
+      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.pdf",
+      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.svg",
+      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.png"
+    }
+  }
+}

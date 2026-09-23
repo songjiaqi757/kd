@@ -18,6 +18,7 @@ from rdid_mosei.main_table_kd import (
     entropy_adaptive_weights,
     kd_per_sample,
     probability_kd_per_sample,
+    random_orthogonal_loss,
     requires_all_subset_outputs,
     rld_per_sample,
     skd_losses,
@@ -100,6 +101,7 @@ def test_subset7_exact_match_is_zero():
     [
         "uniform_interaction", "r_only_interaction", "u_only_interaction",
         "ru_interaction", "shuffled_r_u_interaction", "first_order_interaction",
+        "first_second_order_interaction",
         "coarse_u_interaction", "amplitude_interaction", "additive_r_u_interaction",
     ],
 )
@@ -114,6 +116,38 @@ def test_every_interaction_ablation_has_normalized_finite_weights(method):
     assert loss.item() == pytest.approx(0.0, abs=1e-7)
     assert torch.isfinite(weights).all()
     torch.testing.assert_close(weights.mean(-1), torch.ones(2))
+
+
+def test_first_second_order_ignores_only_third_order_error():
+    mean = torch.tensor([[1.0, 2.0, 3.0, -0.2, 0.4, 0.5, 0.1]])
+    values = inverse_mobius(mean, 0.3)
+    changed = mean.clone()
+    changed[:, -1] += 10.0
+    outputs = {
+        subset: {"regression": values[:, index]}
+        for index, subset in enumerate(SUBSETS)
+    }
+    loss, weights = adapted_interaction_loss(
+        outputs, changed, torch.ones_like(mean), torch.ones(7),
+        torch.ones(1), 0.3, "first_second_order_interaction",
+    )
+    assert loss.item() == pytest.approx(0.0, abs=1e-7)
+    assert weights.shape == (1, 6)
+
+
+def test_random_orthogonal_exact_match_is_zero_and_backpropagates():
+    scores = torch.randn(3, 7)
+    student = scores.clone().requires_grad_(True)
+    outputs = {
+        subset: {"regression": student[:, index]}
+        for index, subset in enumerate(SUBSETS)
+    }
+    loss = random_orthogonal_loss(
+        outputs, scores, torch.tensor([1.0, 0.5, 2.0]), 20260922
+    )
+    loss.backward()
+    assert loss.item() == pytest.approx(0.0, abs=1e-7)
+    assert torch.isfinite(student.grad).all()
 
 
 def test_amplitude_ablation_replaces_reliability_but_retains_utility():
@@ -154,6 +188,7 @@ def test_teacher_supervision_metadata_distinguishes_information_budget():
     assert ours["probe_count"] == 3
     assert ours["base_tav_probe_count"] == 1
     assert len(ours["teacher_subsets"]) == 7
+    assert teacher_supervision_metadata("random_orthogonal")["probe_count"] == 3
     assert requires_all_subset_outputs("ru_interaction", training=True)
     assert not requires_all_subset_outputs("ru_interaction", training=False)
     assert not requires_all_subset_outputs("full_kd", training=True)

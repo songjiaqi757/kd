@@ -1,0 +1,1 @@
+**Figure X: Aggregate interaction reconstruction.** Mean absolute teacher--student interaction reconstruction error on 1,871 CMU-MOSEI official-validation utterances for 6 methods (seed 13). First-order averages $I_T$, $I_A$, and $I_V$; second-order averages $I_{TA}$, $I_{TV}$, and $I_{AV}$; third-order is $I_{TAV}$. Lower is better.

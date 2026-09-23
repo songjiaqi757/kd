@@ -9,6 +9,7 @@ import json
 import math
 import re
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -175,7 +176,7 @@ def display(value: Any) -> str:
     return str(value)
 
 
-def build(output: Path, document: Path) -> dict[str, Any]:
+def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     sources = sorted(
         set(ROOT.glob("outputs/**/*.json"))
@@ -424,7 +425,7 @@ def build(output: Path, document: Path) -> dict[str, Any]:
 
     catalog = clean({
         "schema": "rdid-msa-all-experiment-data-catalog-v1",
-        "generated_at": "2026-09-21",
+        "generated_at": generated_at,
         "policy": "Exhaustive inventory; no best-only filtering and no ranking.",
         "source_roots": ["outputs/**/*.json", "project/reports/*.json", "docs/*.json"],
         "counts": {name.removesuffix(".csv"): len(rows) for name, rows in artifacts.items()},
@@ -436,7 +437,7 @@ def build(output: Path, document: Path) -> dict[str, Any]:
     states = Counter(str(row["state"]) for row in run_rows)
     families = sorted(family_stats)
     lines = [
-        "# RDID-MSA 全部实验数据总账（2026-09-21）", "",
+        f"# RDID-MSA 全部实验数据总账（{generated_at}）", "",
         "本总账按文件系统中的机器可读记录生成，覆盖历史实验、正式实验、开发实验、smoke/preflight、失败启动和未完成运行。这里不按指标筛选方法，也不只保留最佳 epoch。每个训练历史中的所有 epoch 均写入 `training_epochs.csv`；所有可识别的 train/valid/test 指标块均写入 `metric_records.csv`。", "",
         "## 覆盖范围", "",
         f"- 实验产物文件：{len(artifact_rows)} 个；其中 JSON 来源文件 {len(source_rows)} 个，解析失败 {len(parse_errors)} 个。",
@@ -509,8 +510,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "outputs/experiment_catalog_20260921")
     parser.add_argument("--document", type=Path, default=ROOT / "docs/全部实验数据总账_20260921.md")
+    parser.add_argument("--date", default=date.today().isoformat(), help="Date shown in catalog metadata and title (YYYY-MM-DD).")
     args = parser.parse_args()
-    catalog = build(args.output.resolve(), args.document.resolve())
+    catalog = build(args.output.resolve(), args.document.resolve(), args.date)
     print(json.dumps(catalog["counts"], ensure_ascii=False, sort_keys=True))
 
 
