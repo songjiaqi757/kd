@@ -991,7 +991,7 @@ $$
 1. 方案的最低完成集合合理：交互重建、交互强度分层、一+二阶交互和随机正交基对照可形成闭环。
 2. 交互重建与交互强度分层在 official validation split 上完成。原因是现有冻结 teacher interaction target 覆盖 train/valid，而重新产生 test 上全部七子集 teacher target 需要 32,809 次多模态 teacher 任务，不属于“无需重新训练”的快速分析。
 3. Random Orthogonal Basis 使用坐标级 SmoothL1，损失对正交旋转并不严格不变。因此该对照检验的是“Möbius 坐标系+坐标级鲁棒损失”的联合作用，不应单独归因为交互基的唯一性。
-4. 主性能统计按 seed 13 对每个已完成 epoch checkpoint 评估 Test MAE，并以最小 Test MAE 对应的 epoch 作为该运行的汇报点。测试集不参与反向传播，但参与 checkpoint 选择；相关机器可读摘要保留该选择策略。
+4. seed 13 对每个已完成 epoch checkpoint 评估 Test MAE，test-best 结果仅作诊断口径单独保留。Aggregate interaction reconstruction 与交互强度分层统一按 official-validation MAE 选 checkpoint，不使用 test 误差选轮。
 
 ## 18.2 已完成
 
@@ -1004,12 +1004,12 @@ $$
 - 已有 Fig. 4 效率/部署证据；interaction supervision 只影响训练，部署时使用同一 student 前向图。
 - 全部自动化测试通过：174 passed。
 
-## 18.3 正在执行与自动收尾
+## 18.3 已完成的训练、测评与自动收尾
 
-- GPU0：`first_second_order_interaction`, seed 13，最多 20 epochs。
-- GPU1：`random_orthogonal`, seed 13，最多 20 epochs。
-- 两项训练完成后，监督器会并行评估每个已完成 epoch checkpoint，然后生成 test-sweep summary。
-- 收尾服务会自动取两种方法的 test-MAE 最优 checkpoint，同现有 Full KD、Subset-7、First-order 和 Uniform 一起重跑完整交互重建/强度分层/案例分析，并生成 PDF/SVG/PNG 图。
+- MOSEI `first_second_order_interaction` 已完成 20/20 epoch 训练与 20/20 个 checkpoint 测评。
+- MOSEI `random_orthogonal` 已完成 15/15 epoch 训练与 15/15 个 checkpoint 测评。
+- 自动收尾已完成。Aggregate interaction evidence 对六种方法统一按 validation MAE 选 checkpoint：Full KD e6、Subset-7 e9、First-order e14、First+Second e14、Random Orthogonal e8、Uniform e6。
+- 旧 test-selected finalizer 入口已改为转发到 validation-selected finalizer，避免再次覆盖正式报告。
 
 主监督状态：
 
@@ -1031,9 +1031,7 @@ project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.{json,m
 
 ## 18.4 MOSI 对称对照与增量测评（2026-09-23）
 
-- 已在 GPU1 并行启动 MOSI `first_second_order_interaction` 与
-  `random_orthogonal`（seed 13，`max_epochs=20`，`min_epochs=8`，
-  `patience=7`），每个完成 epoch 都原子保存 checkpoint。
+- MOSI `first_second_order_interaction` 与 `random_orthogonal`（seed 13）均已完成 20/20 epoch 训练和 20/20 checkpoint 测评。
 - 测评改为 checkpoint 生成即入队，不再等待整次训练结束。训练并行期间先设置
   两个 evaluation workers；MOSI 两项训练跑满 20 epochs 并释放显存后，扩展为
   MOSI 测评阶段使用八个并行 workers，每个方法两个 evaluator，按奇偶 epoch
@@ -1041,8 +1039,7 @@ project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.{json,m
   epoch 模 4 分片；共享汇总锁保证结果不重复且原子更新。
 - live evaluator 与原最终 evaluator 共用输出锁；最终收尾只补缺失 epoch，已经
   完成的 checkpoint 不重复测评。
-- GPU1 设置显存准入门槛并保留安全余量；训练和测评均可在同卡并行，但不会无限
-  增加 evaluator 数量。
+- 本轮 GPU 训练与测评队列已全部结束，当前无活跃 evaluator。
 
 队列状态：
 

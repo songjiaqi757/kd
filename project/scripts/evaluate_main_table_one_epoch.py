@@ -21,6 +21,20 @@ from train_main_table_kd import build_model, evaluate, load_checkpoint_state
 from train_tav_distillation import VideoDataset, sha256
 
 
+def localize_path(path: str | Path) -> Path:
+    """Map paths embedded by an original Qiii run to this repository."""
+    value = Path(path)
+    if value.exists():
+        return value
+    qiii_root = Path("/ai/sjq/kd")
+    try:
+        relative = value.relative_to(qiii_root)
+    except ValueError:
+        return value
+    localized = ROOT / relative
+    return localized if localized.exists() else value
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True)
@@ -37,7 +51,11 @@ def main() -> None:
     run, output, manifest = args.run.resolve(), args.output.resolve(), args.test_manifest.resolve()
     config = read_json(run / "run_config.json")
     history = read_json(run / "history.json")
-    if config.get("training_variant") != "retain-every-completed-epoch-v1":
+    retained_every_epoch = (
+        config.get("training_variant") == "retain-every-completed-epoch-v1"
+        or config.get("save_every_epoch") is True
+    )
+    if not retained_every_epoch:
         raise ValueError("source is not an every-epoch-retained run")
     if args.epoch > len(history) or history[args.epoch - 1]["epoch"] != args.epoch:
         raise ValueError("epoch has not been committed to training history")
@@ -73,12 +91,19 @@ def main() -> None:
         if report.get("checkpoint_sha256") != checkpoint_hash:
             raise ValueError("existing test report checkpoint differs")
         return
-    saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    # Legacy --save-every-epoch checkpoints include optimizer/RNG objects that
+    # predate PyTorch's weights-only loader; current retained checkpoints are
+    # model-only and keep the safer loader path.
+    saved = torch.load(
+        checkpoint,
+        map_location="cpu",
+        weights_only=config.get("save_every_epoch") is not True,
+    )
     if saved.get("protocol") != config or saved.get("epoch") != args.epoch:
         raise ValueError("checkpoint protocol or epoch differs")
     model_args = SimpleNamespace(**{key: value for key, value in config.items() if key not in {"frozen_assets", "upstream_sources", "input_sha256"}})
     for name in ("text_model", "audio_model", "video_model", "assets"):
-        setattr(model_args, name, Path(getattr(model_args, name)))
+        setattr(model_args, name, localize_path(getattr(model_args, name)))
     device = torch.device(args.device)
     model = build_model(model_args, config["frozen_assets"], device)
     load_checkpoint_state(model, saved["model"])

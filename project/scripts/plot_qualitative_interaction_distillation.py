@@ -2,6 +2,7 @@
 """Plot the final two-panel qualitative interaction-distillation figure."""
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 import textwrap
@@ -287,9 +288,22 @@ def teacher_selection_audit() -> dict:
     }
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-stem", type=Path, default=OUTPUT_STEM)
+    parser.add_argument("--figure-width", type=float, default=10.6)
+    parser.add_argument("--figure-height", type=float, default=6.15)
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    output_stem = args.output_stem.resolve()
     data, _ = load_data()
-    figure = plt.figure(figsize=(10.6, 6.15), constrained_layout=True)
+    figure = plt.figure(
+        figsize=(args.figure_width, args.figure_height),
+        constrained_layout=True,
+    )
     full_grid = figure.add_gridspec(1, 2, wspace=0.08)
 
     for panel_index, panel in enumerate(PANELS):
@@ -335,12 +349,12 @@ def main() -> None:
             data[panel["sample_id"]]["target_sentiment"],
         )
 
-    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
+    output_stem.parent.mkdir(parents=True, exist_ok=True)
     for suffix in (".pdf", ".svg", ".png"):
         kwargs = {"bbox_inches": "tight"}
         if suffix == ".png":
             kwargs["dpi"] = 300
-        figure.savefig(OUTPUT_STEM.with_suffix(suffix), **kwargs)
+        figure.savefig(output_stem.with_suffix(suffix), **kwargs)
     plt.close(figure)
 
     audit = teacher_selection_audit()
@@ -354,11 +368,11 @@ def main() -> None:
         "method_display_name": {"uniform_interaction": "Ours"},
         "selection_audit": audit,
         "outputs": {
-            suffix[1:]: str(OUTPUT_STEM.with_suffix(suffix))
+            suffix[1:]: str(output_stem.with_suffix(suffix))
             for suffix in (".pdf", ".svg", ".png")
         },
     }
-    OUTPUT_STEM.with_name(OUTPUT_STEM.name + "_manifest").with_suffix(".json").write_text(
+    output_stem.with_name(output_stem.name + "_manifest").with_suffix(".json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     )
 
@@ -369,13 +383,14 @@ def main() -> None:
         "the teacher's text and audio coordinates are positive while its visual coordinate is negative, with "
         f"opposition strength ranked {audit['cross_modal_conflict']['rank']}/"
         f"{audit['cross_modal_conflict']['eligible_mixed_sign_samples']} among mixed-sign "
-        "validation samples. Ours yields the lowest overall interaction reconstruction "
-        "error; it does not necessarily minimize every coordinate error. (b) Strong "
+        "validation samples. Ours produces the closest prediction, although First-order "
+        "has the lower seven-coordinate reconstruction error in this case. (b) Strong "
         "text–audio interaction: the example is in the top 5% by absolute teacher TA "
         f"interaction (rank {audit['strong_text_audio']['rank']}/"
         f"{audit['strong_text_audio']['validation_samples']}). In this example, "
         "higher-order interaction supervision helps the student recover the strong TA "
-        "coordinate and produces a prediction closer to the ground truth. The highlighted "
+        "coordinate; both First-order and Ours predict close to the ground truth in the "
+        "validation-selected checkpoint results. The highlighted "
         "TA column denotes the dominant higher-order teacher interaction. Ours denotes "
         "Uniform Interaction Distillation. All prediction panels use the common sentiment "
         "range [-3, 3]. Values in brackets next to method names denote reconstruction "
@@ -383,7 +398,7 @@ def main() -> None:
         "[absolute error]. Frames show the "
         "beginning, middle, and end of each utterance."
     )
-    OUTPUT_STEM.with_name(OUTPUT_STEM.name + "_caption").with_suffix(".md").write_text(
+    output_stem.with_name(output_stem.name + "_caption").with_suffix(".md").write_text(
         caption + "\n"
     )
     print(json.dumps(manifest["outputs"], ensure_ascii=False))

@@ -158,10 +158,15 @@ def strength_figure(payload: dict, output: Path) -> None:
     plt.close(figure)
 
 
-def combined_reconstruction_figure(payloads: list[dict], output: Path) -> None:
+def combined_reconstruction_figure(
+    payloads: list[dict],
+    output: Path,
+    figure_size: tuple[float, float] = (7.15, 3.15),
+    output_stem: str = "fig_aggregate_interaction_reconstruction_both",
+) -> None:
     orders = ("first_order", "second_order", "third_order")
     category_labels = ("First-order", "Second-order", "Third-order")
-    figure, axes = plt.subplots(1, len(payloads), figsize=(7.15, 3.15), squeeze=False)
+    figure, axes = plt.subplots(1, len(payloads), figsize=figure_size, squeeze=False)
     handles = None
     legend_labels = None
     for panel, (axis, payload) in enumerate(zip(axes[0], payloads)):
@@ -202,7 +207,7 @@ def combined_reconstruction_figure(payloads: list[dict], output: Path) -> None:
         handletextpad=0.3,
     )
     figure.subplots_adjust(left=0.09, right=0.99, bottom=0.17, top=0.76, wspace=0.3)
-    save_all(figure, output / "fig_aggregate_interaction_reconstruction_both")
+    save_all(figure, output / output_stem)
     plt.close(figure)
 
 
@@ -215,16 +220,42 @@ def main() -> None:
         help="Optional second dataset report used to produce a two-panel aggregate figure.",
     )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--combined-figure-width", type=float, default=7.15)
+    parser.add_argument("--combined-figure-height", type=float, default=3.15)
+    parser.add_argument(
+        "--combined-output-stem",
+        default="fig_aggregate_interaction_reconstruction_both",
+    )
+    parser.add_argument(
+        "--combined-only",
+        action="store_true",
+        help="Render only the optional two-dataset comparison figure.",
+    )
     args = parser.parse_args()
     payload = json.loads(args.input.resolve().read_text())
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     configure_style()
-    reconstruction_figure(payload, output)
-    strength_figure(payload, output)
+    if not args.combined_only:
+        reconstruction_figure(payload, output)
+        strength_figure(payload, output)
     if args.compare_input is not None:
         comparison = json.loads(args.compare_input.resolve().read_text())
-        combined_reconstruction_figure([payload, comparison], output)
+        combined_reconstruction_figure(
+            [payload, comparison],
+            output,
+            figure_size=(args.combined_figure_width, args.combined_figure_height),
+            output_stem=args.combined_output_stem,
+        )
+    elif args.combined_only:
+        parser.error("--combined-only requires --compare-input")
+    if args.combined_only:
+        print(json.dumps({
+            "pdf": str((output / args.combined_output_stem).with_suffix(".pdf")),
+            "svg": str((output / args.combined_output_stem).with_suffix(".svg")),
+            "png": str((output / args.combined_output_stem).with_suffix(".png")),
+        }, ensure_ascii=False))
+        return
     manifest = {
         "schema": "interaction-evidence-figures-v1",
         "source": str(args.input.resolve()),

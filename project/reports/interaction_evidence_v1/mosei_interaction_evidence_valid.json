@@ -24,10 +24,8 @@
     "random_orthogonal": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosei/students/random_orthogonal_seed13/checkpoints/epoch_008.pt"
   },
   "reused_prediction_methods": [
-    "first_order_interaction",
     "first_second_order_interaction",
     "full_kd",
-    "random_orthogonal",
     "subset7",
     "uniform_interaction"
   ],

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Wait for the two missing sweeps, then rebuild final interaction evidence."""
+"""Compatibility entry point for validation-selected interaction evidence.
+
+The legacy implementation below is retained for provenance, but direct script
+execution delegates to the authoritative validation finalizer so this entry
+point can no longer overwrite the report with test-selected checkpoints.
+"""
 from __future__ import annotations
 
 import json
@@ -71,7 +76,7 @@ def checkpoint_arguments() -> list[str]:
     return arguments
 
 
-def main() -> None:
+def legacy_test_selected_main() -> None:
     try:
         wait_for_supervisor()
         atomic_json({
@@ -106,6 +111,12 @@ def main() -> None:
             "updated_at_unix": time.time(),
         }, STATUS)
         raise
+
+
+def main() -> None:
+    from finalize_mosei_validation_interaction_evidence import main as validation_main
+
+    validation_main()
 
 
 if __name__ == "__main__":

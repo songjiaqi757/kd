@@ -35,7 +35,7 @@ def protocol_with_epoch_retention(args, assets):
     config = ORIGINAL_RUN_PROTOCOL(args, assets)
     config["training_variant"] = "retain-every-completed-epoch-v1"
     config["epoch_checkpoint_pattern"] = "checkpoints/epoch_{epoch:03d}.pt"
-    config["epoch_checkpoint_selection"] = "deferred_test_mae_minimum_per_user_plan"
+    config["epoch_checkpoint_selection"] = "validation_mae_minimum"
     config["input_sha256"][str(Path(__file__).resolve())] = trainer.sha256(__file__)
     return config
 
@@ -89,7 +89,7 @@ def audit(output: Path) -> None:
         })
     atomic_json({
         "schema": "uniform-interaction-followup-epoch-inventory-v1",
-        "epoch_checkpoint_selection": "test_mae_minimum_after_training",
+        "epoch_checkpoint_selection": "validation_mae_minimum",
         "epochs": epochs,
     }, output / "checkpoint_inventory.json")
 
