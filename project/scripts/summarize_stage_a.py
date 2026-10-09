@@ -10,7 +10,7 @@ import numpy as np
 ROOT = Path("/home/wy/sjq/kd")
 STUDENT = ROOT / "outputs/student"
 OUTPUT_JSON = STUDENT / "comparisons/stage_a_seed2026.json"
-OUTPUT_MD = ROOT / "docs/RDID-MOSEI_StageA_实验结果.md"
+OUTPUT_MD = ROOT / "docs/archive/reports/RDID-MOSEI_StageA_实验结果.md"
 
 RUNS = {
     "A1 subset4": STUDENT / "subset_value_4_benchmark500_seed2026",
@@ -150,6 +150,7 @@ def main() -> int:
             f"{summary['high_interaction_mae']['mean']:.4f} ± {summary['high_interaction_mae']['sample_standard_deviation']:.4f} |"
         )
     lines += ["", "## Stage A Gate", "", f"```json\n{json.dumps(gate, ensure_ascii=False, indent=2)}\n```", ""]
+    OUTPUT_MD.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_MD.write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps({"json": str(OUTPUT_JSON), "markdown": str(OUTPUT_MD), "rows": len(rows), "gate": gate}, ensure_ascii=False))
     return 0

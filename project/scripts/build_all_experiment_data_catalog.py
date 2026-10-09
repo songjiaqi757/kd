@@ -176,12 +176,12 @@ def display(value: Any) -> str:
     return str(value)
 
 
-def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
+def build(output: Path, document: Path | None, generated_at: str) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     sources = sorted(
         set(ROOT.glob("outputs/**/*.json"))
         | set(ROOT.glob("project/reports/*.json"))
-        | set(ROOT.glob("docs/*.json"))
+        | set(ROOT.glob("docs/**/*.json"))
     )
     sources = [path for path in sources if output.resolve() not in path.resolve().parents]
     parsed: dict[Path, Any] = {}
@@ -204,7 +204,7 @@ def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
     artifact_paths = sorted(
         set(ROOT.glob("outputs/**/*"))
         | set(ROOT.glob("project/reports/*"))
-        | set(ROOT.glob("docs/*.json"))
+        | set(ROOT.glob("docs/**/*.json"))
     )
     artifact_rows: list[dict[str, Any]] = []
     for path in artifact_paths:
@@ -427,7 +427,7 @@ def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
         "schema": "rdid-msa-all-experiment-data-catalog-v1",
         "generated_at": generated_at,
         "policy": "Exhaustive inventory; no best-only filtering and no ranking.",
-        "source_roots": ["outputs/**/*.json", "project/reports/*.json", "docs/*.json"],
+        "source_roots": ["outputs/**/*.json", "project/reports/*.json", "docs/**/*.json"],
         "counts": {name.removesuffix(".csv"): len(rows) for name, rows in artifacts.items()},
         "family_stats": {key: dict(value) for key, value in sorted(family_stats.items())},
         "artifacts": list(artifacts),
@@ -448,7 +448,7 @@ def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
         "- `predictions.jsonl`、模型权重、媒体与特征文件不复制进总账；全部产物的路径、类别和大小收录在 `artifact_inventory.csv`，逐样本预测仍保留在原目录。JSON 元数据另记录 SHA-256。", "",
         "## 输出文件", "",
         "| 文件 | 内容 |", "|---|---|",
-        "| `artifact_inventory.csv` | `outputs/`、`project/reports/` 与 `docs/*.json` 的全部产物路径、类别和大小 |",
+        "| `artifact_inventory.csv` | `outputs/`、`project/reports/` 与 `docs/**/*.json` 的全部产物路径、类别和大小 |",
         "| `source_inventory.csv` | 所有纳入 JSON 文件的路径、大小、SHA-256、schema |",
         "| `training_runs.csv` | 每个训练运行的身份、状态、epoch 数、报告与最后一轮指标 |",
         "| `training_epochs.csv` | 所有训练运行的每一个 epoch，不做最佳轮筛选 |",
@@ -501,18 +501,24 @@ def build(output: Path, document: Path, generated_at: str) -> dict[str, Any]:
     for path in sorted(ROOT.glob("project/reports/*.json")):
         lines.append(f"- `{relative(path)}`")
     lines += ["", "## 口径说明", "", "- `report_valid_*` 是原训练报告记录的选定 checkpoint 指标；`last_valid_*` 是 history 的最后一轮。两者同时保留。", "- `training_epochs.csv` 保存完整轨迹，能恢复任意 epoch 的结果，不需要从最佳轮反推。", "- test 是否参与 checkpoint 选择以各来源的 `selection_policy`、`checkpoint_selection` 和 `test_use_policy` 为准；总账不替来源改写口径。", "- 同一模型的重跑、失败启动、smoke 和正式结果可能同时存在；总账保留它们的真实路径，不自动去重。", ""]
-    document.write_text("\n".join(lines), encoding="utf-8")
-    (output / "README.md").write_text("\n".join(lines), encoding="utf-8")
+    payload = "\n".join(lines)
+    readme = output / "README.md"
+    readme.write_text(payload, encoding="utf-8")
+    if document is not None and document.resolve() != readme.resolve():
+        document.parent.mkdir(parents=True, exist_ok=True)
+        document.write_text(payload, encoding="utf-8")
     return catalog
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "outputs/experiment_catalog_20260921")
-    parser.add_argument("--document", type=Path, default=ROOT / "docs/全部实验数据总账_20260921.md")
+    parser.add_argument("--document", type=Path, default=None,
+                        help="Optional second copy of the generated README; omitted by default.")
     parser.add_argument("--date", default=date.today().isoformat(), help="Date shown in catalog metadata and title (YYYY-MM-DD).")
     args = parser.parse_args()
-    catalog = build(args.output.resolve(), args.document.resolve(), args.date)
+    document = args.document.resolve() if args.document is not None else None
+    catalog = build(args.output.resolve(), document, args.date)
     print(json.dumps(catalog["counts"], ensure_ascii=False, sort_keys=True))
 
 

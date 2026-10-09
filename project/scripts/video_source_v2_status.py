@@ -53,7 +53,8 @@ def main():
     else:
         print('C2：未运行。')
     if s['status']=='complete' or s['stage']=='controls_deferred':
-        print('结果：',ROOT/'docs/video_source_v2_results.md')
+        print('统一记录：',ROOT/'docs/experiments/video_source_v2.md')
+        print('可重生成简表：',ROOT/'docs/experiments/video_source_v2_results.generated.md')
 
 
 if __name__=='__main__':

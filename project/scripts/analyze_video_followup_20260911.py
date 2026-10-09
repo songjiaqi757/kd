@@ -157,7 +157,8 @@ def main():
             'seeds':seeds,'per_seed':{s:compare(family_predictions[a][s],family_predictions[b][s]) for s in seeds},
             'mean_delta_mae':float(mean_delta.mean()), 'cluster_ci95_mean_over_fixed_seeds':ci(mean_delta)}
     result['input_sha256'] = HASHES
-    path = ROOT/'docs/video_followup_20260911.json'
+    path = ROOT/'docs/audit/video_followup_20260911.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
     print(path)
     print(json.dumps({'video_comparisons':result['video_comparisons'],

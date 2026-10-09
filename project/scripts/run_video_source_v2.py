@@ -16,6 +16,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT/'outputs/experiments/video_source_v2'
+
+
+def result_document():
+    return ROOT/'docs/experiments/video_source_v2_results.generated.md'
 MANIFEST = ROOT/'dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl'
 SCRIPTS = ROOT/'project/scripts'
 sys.path.insert(0,str(SCRIPTS))
@@ -328,7 +332,7 @@ def summarize(base,modes=MODES):
     lines+=['',f'Machine-readable results: {base / "summary.json"}',
         f'Teacher paired diagnostic: {base / "teacher_pair/summary.json"}',
         'Wall-clock efficiency is not an exclusive-device benchmark; two student jobs may decode media concurrently.','']
-    path=ROOT/'docs/video_source_v2_results.md';tmp=path.with_suffix('.md.tmp')
+    path=result_document();path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix('.md.tmp')
     tmp.write_text('\n'.join(lines));os.replace(tmp,path)
 
 
@@ -373,11 +377,11 @@ def main():
                     completed_modes=plan['student_schedule']['priority_modes'],
                     deferred_modes=plan['student_schedule']['deferred_modes'],
                     reason='Controls deferred by user; no automatic launch.',
-                    summary=str(base/'summary.json'),report=str(ROOT/'docs/video_source_v2_results.md'),c2_rerun=False)
+                    summary=str(base/'summary.json'),report=str(result_document()),c2_rerun=False)
                 return
             summarize(base)
             status(base,status='complete',stage='complete',summary=str(base/'summary.json'),
-                report=str(ROOT/'docs/video_source_v2_results.md'),c2_rerun=False)
+                report=str(result_document()),c2_rerun=False)
         except BaseException as exc:
             status(base,status='failed',stage='stopped',error=repr(exc),resume='systemctl --user restart rdid-video-source-v2.service')
             raise

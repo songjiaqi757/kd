@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "deleted_checkpoints": 506,
+  "deleted_raw_files": 117,
+  "deleted_archives": 389,
+  "freed_bytes": 156295897088,
+  "disk_free_before": 23806713856,
+  "disk_free_after": 180099428352,
+  "preserved_files_checked": 188,
+  "missing_preserved_files": [],
+  "errors": [],
+  "evaluation_records_deleted": 0
+}

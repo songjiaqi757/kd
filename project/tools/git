@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec /home/wy/sjq/miniconda3/bin/git "$@"

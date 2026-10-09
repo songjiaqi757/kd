@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Apply a unified diff from stdin using the server's standard patch tool."""
+from __future__ import annotations
+
+import subprocess
+import sys
+
+
+def main() -> int:
+    patch = sys.stdin.buffer.read()
+    if not patch.strip():
+        print("apply_patch: empty patch", file=sys.stderr)
+        return 2
+    completed = subprocess.run(
+        ["/usr/bin/patch", "--batch", "--forward", "-p0"],
+        input=patch,
+    )
+    return completed.returncode
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

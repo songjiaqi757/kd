@@ -25,7 +25,7 @@ LABELS = {
     "subset7": "Subset-7",
     "first_order_interaction": "First-order",
     "first_second_order_interaction": "First+Second",
-    "uniform_interaction": "Uniform Interaction",
+    "uniform_interaction": "ICD (Ours)",
     "random_orthogonal": "Random Orthogonal",
 }
 COLORS = {
@@ -163,14 +163,22 @@ def combined_reconstruction_figure(
     output: Path,
     figure_size: tuple[float, float] = (7.15, 3.15),
     output_stem: str = "fig_aggregate_interaction_reconstruction_both",
+    exclude_methods: set[str] | None = None,
 ) -> None:
+    excluded = exclude_methods or set()
     orders = ("first_order", "second_order", "third_order")
     category_labels = ("First-order", "Second-order", "Third-order")
     figure, axes = plt.subplots(1, len(payloads), figsize=figure_size, squeeze=False)
     handles = None
     legend_labels = None
     for panel, (axis, payload) in enumerate(zip(axes[0], payloads)):
-        methods = ordered_methods(payload["reconstruction"])
+        methods = [
+            method
+            for method in ordered_methods(payload["reconstruction"])
+            if method not in excluded
+        ]
+        if not methods:
+            raise ValueError("cannot exclude every reconstruction method")
         x = np.arange(len(orders), dtype=float)
         width = 0.8 / len(methods)
         for index, method in enumerate(methods):
@@ -231,6 +239,12 @@ def main() -> None:
         action="store_true",
         help="Render only the optional two-dataset comparison figure.",
     )
+    parser.add_argument(
+        "--exclude-method",
+        action="append",
+        default=[],
+        help="Method key to omit from the combined figure; may be repeated.",
+    )
     args = parser.parse_args()
     payload = json.loads(args.input.resolve().read_text())
     output = args.output_dir.resolve()
@@ -246,6 +260,7 @@ def main() -> None:
             output,
             figure_size=(args.combined_figure_width, args.combined_figure_height),
             output_stem=args.combined_output_stem,
+            exclude_methods=set(args.exclude_method),
         )
     elif args.combined_only:
         parser.error("--combined-only requires --compare-input")

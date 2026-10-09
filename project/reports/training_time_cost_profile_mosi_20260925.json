@@ -1,0 +1,53 @@
+{
+  "schema": "icd-training-time-cost-profile-v1",
+  "dataset": "CMU-MOSI",
+  "scope": "official train+valid target preparation and seed13 student training",
+  "target_preparation": {
+    "teacher_jobs": 10605,
+    "teacher_feature_dimension": 2048,
+    "teacher_feature_dtype": "float16",
+    "pipeline_started_at_unix": 1789650626.5478427,
+    "teacher_features_completed_at_unix": 1789655899.8939798,
+    "probes_completed_at_unix": 1789655975.7249448,
+    "student_assets_completed_at_unix": 1789655983.511037,
+    "teacher_feature_extraction_seconds": 5273.346137046814,
+    "teacher_feature_extraction_wall_minutes": 87.88910228411357,
+    "teacher_feature_extraction_gpus": 2,
+    "teacher_feature_extraction_gpu_hours": 2.9296367428037857,
+    "probe_parallel_wall_seconds": 45.63462495803833,
+    "probe_stage_gpus": 2,
+    "probe_stage_approx_gpu_hours": 0.025352569421132408,
+    "cache_to_frozen_assets_seconds": 7.786092281341553,
+    "pipeline_wall_seconds": 5356.963194131851,
+    "pipeline_wall_minutes": 89.28271990219752,
+    "pipeline_approx_gpu_hours": 2.954989312224918,
+    "reuse": "frozen hidden-state, Probe-prediction, calibrated-probability, interaction-target, and ensemble-target assets are shared by all student methods and seeds"
+  },
+  "student_training": {
+    "hardware_accounting": "one GPU per run",
+    "full_kd_seconds": 2906.1573374271393,
+    "full_kd_gpu_hours": 0.8072659270630942,
+    "icd_seconds": 2900.673243522644,
+    "icd_gpu_hours": 0.8057425676451788,
+    "icd_over_full_kd_wall_clock_multiplier": 0.9981129397800085,
+    "icd_over_full_kd_percent_change": -0.1887060219991521
+  },
+  "measurement_notes": [
+    "Student seconds are instrumented elapsed_seconds from the frozen efficiency reports.",
+    "Target-pipeline wall time is reconstructed from the teacher-feature log birth time and durable completion markers from the same uninterrupted preparation run.",
+    "The teacher feature extractor uses two-GPU model parallelism; three Probes are scheduled concurrently across the same two GPUs.",
+    "Cache-to-target assembly is CPU-only and does not invoke the teacher."
+  ],
+  "sources": {
+    "preparation_plan": "outputs/experiments/main_table_v1/mosi/preparation_plan.json",
+    "teacher_feature_log": "outputs/experiments/main_table_v1/mosi/logs/teacher_features.log",
+    "teacher_feature_marker": "outputs/experiments/main_table_v1/mosi/teacher_features.done.json",
+    "probe_markers": [
+      "outputs/experiments/main_table_v1/mosi/probe_seed2026.done.json",
+      "outputs/experiments/main_table_v1/mosi/probe_seed2027.done.json",
+      "outputs/experiments/main_table_v1/mosi/probe_seed2028.done.json"
+    ],
+    "asset_marker": "outputs/experiments/main_table_v1/mosi/main_table_assets.done.json",
+    "student_efficiency": "outputs/experiments/uniform_main_v1/mosi/summary/efficiency.json"
+  }
+}

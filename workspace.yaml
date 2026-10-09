@@ -1,6 +1,6 @@
 workspace_root: /home/wy/sjq/kd
 project_root: /home/wy/sjq/kd/project
-plan: /home/wy/sjq/kd/docs/后续方案.md
+plan: /home/wy/sjq/kd/docs/experiments/main_table_v1.md
 conda_environment:
   name: kd
   prefix: /home/wy/sjq/miniconda3/envs/kd

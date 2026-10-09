@@ -1,42 +1,59 @@
-# RDID-MSA 文档导航
+# ICD 文档导航
 
-本页是 `docs/` 的统一入口。文档保持原位，因为多个重算脚本、测试和报告已引用它们的稳定路径；通过本页区分当前规范、冻结结果、专项审计和历史快照。
+论文最终方法名称为 **Interaction Coordinate Distillation (ICD)**。 `RDID`、`TAV` 和 `Uniform Interaction` 保留为历史阶段及内部运行名称。
 
-## 当前规范
+## 提交版本与结果依据
 
-1. [主表对比与消融实验方案（2026-09-17）](RDID-MSA_主表对比与消融实验方案_20260917.md)：主表、消融、公平性和统计协议的当前规范。
-2. [实验实现说明（2026-09-17）](RDID-MSA_实验实现说明_20260917.md)：对应配置、资产、入口和已实现范围。
-3. [TAV 主实验执行方案](TAV主实验执行方案_20260914.md)：冻结的 P0 训练协议、调度和 Gate。
-4. [详细后续方案](后续方案.md)：TAV M0–M6 与视频诊断的设计推导；若与前三项冲突，以日期更新的冻结规范为准。
+- [ICD 提交版 PDF](../ICD/ICD.pdf)：论文术语、实验口径和主张的最终依据。
+- [ICD 实验结果总汇](paper/icd_experiment_summary.md)：正式结果及明确分开的历史诊断快照。
+- [ICD 补充说明](paper/icd_supplementary_notes.md)：定性选择、训练成本、Teacher Probe 和 ensemble control。
 
-## 当前结果
+## 统一实验记录
 
-- [TAV/P0 结果汇总（2026-09-17）](TAV主实验结果汇总_20260917.md)：最新冻结快照。
-- [实验汇总报告](实验汇总报告.md)：跨 Stage 的结果、限制和复现入口。
-- [Stage A 实验结果](RDID-MOSEI_StageA_实验结果.md)：Stage A v1/v2 的冻结候选与 Gate。
+- [main_table_v1](experiments/main_table_v1.md)：主表对比方案、实现范围与复现命令。
+- [tav_main_v1](experiments/tav_main_v1.md)：P0/TAV 方案、进展与三 seed 结果。
+- [video_source_v2](experiments/video_source_v2.md)：视频链路审计、修正、适配与结果。
+- [rdid_v2_mosei](experiments/rdid_v2_mosei.md)：RDID-v2 方法探索与代码落实。
+- [uniform_main_v1](experiments/uniform_main_v1.md)：MOSI Uniform/ICD 主实验方案与执行记录。
+- [uniform_followup_v1](experiments/uniform_followup_v1.md)：Uniform/ICD 后续对照方案。
+- [multiseed_controls_v1](experiments/multiseed_controls_v1.md)：MOSEI/MOSI 多种子对照记录。
 
-## 历史快照
+实验名称与 `outputs/experiments/<experiment_id>/` 对应。统一文档中的原文快照保留其日期和当时的协议，不能将历史计划或 test-best 诊断当作当前提交结果。
 
-以下文件保留当时的决策语境和数值，不代替上述当前结果：
+## 审计证据
 
-- [TAV 主实验 2026-09-15 进展](TAV主实验进展汇总_20260915.md)
-- [TAV 主实验 seed13 2026-09-16 结果](TAV主实验seed13结果汇总_20260916.md)
-- [统一实验方案与论文收敛路线（2026-09-09）](RDID-MSA_统一实验方案与论文收敛路线_20260909.md)
+- [项目复核 JSON](audit/project_review_20260909.json)
+- [视频复核 JSON](audit/video_review_20260909.json)
+- [25 条训练视频帧抽查](audit/video_frame_spotcheck_20260909.json)
+- [视频后续统计](audit/video_followup_20260911.json)
+- [教师视频时序审计](audit/teacher_video_timing_audit_20260911.json)
+- [Video adaptation 验证](audit/video_adaptation_validation_v1.json)
+- [Video source v2 预检](audit/video_source_v2_preflight.json)
 
-## 项目与视频审计
+JSON 保留当时的机器可读证据和指纹；其中运行状态仅代表记录日期。
 
-- [项目全量复核](project_review_20260909.md) / [机器可读结果](project_review_20260909.json)
-- [视频实验复核](video_review_20260909.md) / [机器可读结果](video_review_20260909.json) / [帧抽查](video_frame_spotcheck_20260909.json)
-- [视频后续分析](video_followup_20260911.md) / [机器可读结果](video_followup_20260911.json)
-- [教师视频源修正](teacher_video_source_fix_20260911.md) / [时序审计](teacher_video_timing_audit_20260911.json)
-- [视频分辨率复核](video_resolution_review_20260914.md)
-- [Video adaptation v1 结果](video_adaptation_v1_results.md) / [验证记录](video_adaptation_validation_v1.json)
-- [Video source v2 执行说明](video_source_v2_execution.md) / [预检](video_source_v2_preflight.json) / [结果](video_source_v2_results.md)
+## 历史归档
 
-## 文档与产物约定
+以下文件用于追溯决策，不作为当前执行指令。
 
-- `docs/*.md` 记录方案、解释和人类可读结论。
-- `docs/*.json` 保存专项审计的小型机器可读证据。
-- `project/reports/` 保存由脚本重算的正式表格与统计，JSON 与 Markdown 职责不同，不互相删除。
-- 实时状态只位于 `outputs/`；文档中的日期快照不覆盖写。
-- [2026-09-17 工作区整理记录](WORKSPACE_CLEANUP_20260917.md)保存本次判定边界、删除规则和验证结果。
+- [实验补充内容方案](archive/plans/experiment方案.md)
+- [早期 TAV 后续方案](archive/plans/后续方案.md)
+- [统一实验与论文收敛路线（2026-09-09）](archive/plans/RDID-MSA_统一实验方案与论文收敛路线_20260909.md)
+- [Student Absorbability 方案（2026-09-18）](archive/plans/RDID-MSA_Student_Absorbability_实验方案_20260918.md)
+- [跨 Stage 历史实验报告](archive/reports/实验汇总报告.md)
+- [Stage A 历史结果](archive/reports/RDID-MOSEI_StageA_实验结果.md)
+- [项目复核说明（2026-09-09）](archive/reports/project_review_20260909.md)
+- [工作区整理记录（2026-09-17）](archive/cleanup/WORKSPACE_CLEANUP_20260917.md)
+- [工作区与 Docs 整理记录（2026-10-02）](archive/cleanup/WORKSPACE_CLEANUP_20261002.md)
+
+## 产物与版本
+
+- `paper/`：与 ICD 提交版对应的结果依据和补充口径。
+- `experiments/`：按稳定实验 ID 组织的完整记录。
+- `audit/`：机器可读审计证据；`archive/`：历史方案、报告与整理记录。
+- `project/reports/`：脚本生成的表格、统计和论文图源。
+- `outputs/`：checkpoint、预测、日志、状态与冻结实验产物。
+- [2026-09-21 全量实验 catalog](../outputs/experiment_catalog_20260921/README.md)
+- [2026-09-23 全量实验 catalog](../outputs/experiment_catalog_20260923/README.md)
+
+`ICD/` 是提交包。Video source v2 的生成简表可由脚本重建，真实结果以统一记录和原始 JSON 为依据。

@@ -55,7 +55,7 @@ DISPLAY_METHODS = {
     "Full KD": "Full KD",
     "Subset-7 KD": "Subset-7",
     "First-order": "First-order",
-    "Uniform": "Ours",
+    "Uniform": "ICD (Ours)",
 }
 
 
@@ -167,7 +167,7 @@ def draw_heatmap(
         )
     axis.get_yticklabels()[0].set_fontweight("bold")
     for tick in axis.get_yticklabels():
-        if tick.get_text().startswith("Ours"):
+        if tick.get_text().startswith("ICD (Ours)"):
             tick.set_fontweight("bold")
 
     colorbar = figure.colorbar(image, cax=colorbar_axis)
@@ -365,7 +365,7 @@ def main() -> None:
         "layout": "horizontal side-by-side panels",
         "prediction_axis_range": [-3, 3],
         "displayed_frames": [1, 3, 5],
-        "method_display_name": {"uniform_interaction": "Ours"},
+        "method_display_name": {"uniform_interaction": "ICD (Ours)"},
         "selection_audit": audit,
         "outputs": {
             suffix[1:]: str(output_stem.with_suffix(suffix))
@@ -378,20 +378,26 @@ def main() -> None:
 
     caption = (
         "**Figure X: Qualitative analysis of interaction distillation.** "
-        "Cases are selected using teacher-side interaction statistics, independently "
-        "of student prediction errors. (a) Conflicting first-order modality effects: "
-        "the teacher's text and audio coordinates are positive while its visual coordinate is negative, with "
+        "Cases are selected using teacher-side interaction statistics only, before inspecting "
+        "student predictions or errors. (a) Among the 696 validation utterances with mixed-sign "
+        "teacher first-order coordinates, we rank by opposition strength "
+        "$s_{\\rm opp}=\\min(\\max_m [I_m]_+,\\max_m [-I_m]_+)$ for "
+        "$m\\in\\{T,A,V\\}$. The shown text/audio-positive, visual-negative case has "
         f"opposition strength ranked {audit['cross_modal_conflict']['rank']}/"
-        f"{audit['cross_modal_conflict']['eligible_mixed_sign_samples']} among mixed-sign "
-        "validation samples. Ours produces the closest prediction, although First-order "
+        f"{audit['cross_modal_conflict']['eligible_mixed_sign_samples']} "
+        f"(top {audit['cross_modal_conflict']['top_percent']:.2f}%). "
+        "ICD (Ours) produces the closest prediction, although First-order "
         "has the lower seven-coordinate reconstruction error in this case. (b) Strong "
-        "text–audio interaction: the example is in the top 5% by absolute teacher TA "
+        "text–audio interaction: all 1,871 validation utterances are ranked by "
+        "$|I_{TA}|$; the shown case has $|I_{TA}|="
+        f"{audit['strong_text_audio']['score']:.3f}$ and is in the top 5% "
         f"interaction (rank {audit['strong_text_audio']['rank']}/"
-        f"{audit['strong_text_audio']['validation_samples']}). In this example, "
+        f"{audit['strong_text_audio']['validation_samples']}, top "
+        f"{audit['strong_text_audio']['top_percent']:.2f}%). In this example, "
         "higher-order interaction supervision helps the student recover the strong TA "
-        "coordinate; both First-order and Ours predict close to the ground truth in the "
+        "coordinate; both First-order and ICD (Ours) predict close to the ground truth in the "
         "validation-selected checkpoint results. The highlighted "
-        "TA column denotes the dominant higher-order teacher interaction. Ours denotes "
+        "TA column denotes the dominant higher-order teacher interaction. ICD (Ours) denotes "
         "Uniform Interaction Distillation. All prediction panels use the common sentiment "
         "range [-3, 3]. Values in brackets next to method names denote reconstruction "
         "MAE over all seven interaction coordinates; prediction labels show prediction "

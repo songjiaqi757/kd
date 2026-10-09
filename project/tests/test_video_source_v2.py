@@ -149,4 +149,6 @@ def test_primary_summary_does_not_require_deferred_controls(tmp_path,monkeypatch
     assert len(result['runs'])==3 and result['comparisons']=={}
     assert result['full_matrix_complete'] is False
     assert result['deferred_modes']==['frozen_video','ta_only']
-    assert 'controls deferred by user' in (tmp_path/'docs/video_source_v2_results.md').read_text()
+    assert 'controls deferred by user' in (
+        tmp_path/'docs/experiments/video_source_v2_results.generated.md'
+    ).read_text()

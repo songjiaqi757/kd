@@ -35,7 +35,7 @@ def protocol_with_epoch_retention(args, assets):
     config = ORIGINAL_RUN_PROTOCOL(args, assets)
     config["training_variant"] = "retain-every-completed-epoch-v1"
     config["epoch_checkpoint_pattern"] = "checkpoints/epoch_{epoch:03d}.pt"
-    config["epoch_checkpoint_selection"] = "validation_mae_minimum"
+    config["epoch_checkpoint_selection"] = args.checkpoint_selection
     config["input_sha256"][str(Path(__file__).resolve())] = trainer.sha256(__file__)
     return config
 
@@ -70,11 +70,16 @@ def audit(output: Path) -> None:
         return
     history = json.loads((output / "history.json").read_text())
     expected = [int(row["epoch"]) for row in history]
+    config = json.loads((output / "run_config.json").read_text())
+    required = list(range(1, int(config["epochs"]) + 1))
+    if expected != required:
+        raise ValueError(
+            f"training did not retain every configured epoch: expected={required}, actual={expected}"
+        )
     paths = sorted((output / "checkpoints").glob("epoch_*.pt"))
     actual = [int(path.stem.split("_")[-1]) for path in paths]
     if expected != actual:
         raise ValueError(f"checkpoint coverage differs: expected={expected}, actual={actual}")
-    config = json.loads((output / "run_config.json").read_text())
     epochs = []
     for path, epoch in zip(paths, actual):
         saved = torch.load(path, map_location="cpu", weights_only=True)
@@ -87,9 +92,21 @@ def audit(output: Path) -> None:
             "sha256": trainer.sha256(path),
             "valid_metrics": saved["valid_metrics"],
         })
+    selections = {
+        "valid_mae": min(
+            history,
+            key=lambda row: (float(row["valid_metrics"]["mae"]), int(row["epoch"])),
+        )["epoch"],
+        "valid_acc2_nonzero": min(
+            history,
+            key=lambda row: (-float(row["valid_metrics"]["acc2_nonzero"]), int(row["epoch"])),
+        )["epoch"],
+    }
     atomic_json({
-        "schema": "uniform-interaction-followup-epoch-inventory-v1",
-        "epoch_checkpoint_selection": "validation_mae_minimum",
+        "schema": "uniform-interaction-followup-epoch-inventory-v2",
+        "coverage_complete": True,
+        "configured_epochs": int(config["epochs"]),
+        "checkpoint_selections": selections,
         "epochs": epochs,
     }, output / "checkpoint_inventory.json")
 

@@ -5,12 +5,12 @@
 ## 快速入口
 
 - [文档导航与版本地位](docs/README.md)
-- [最新冻结的 TAV/P0 结果](docs/TAV主实验结果汇总_20260917.md)
-- [主表对比与消融方案](docs/RDID-MSA_主表对比与消融实验方案_20260917.md)
-- [实验实现说明](docs/RDID-MSA_实验实现说明_20260917.md)
+- [ICD 提交版本](ICD/ICD.pdf)
+- [ICD 实验结果总汇](docs/paper/icd_experiment_summary.md)
+- [主表方案、实现与复现命令](docs/experiments/main_table_v1.md)
 - [代码与复现命令](project/README.md)
 
-运行中任务以 `outputs/experiments/*/status.json` 为准，文档只记录已冻结结果。Official test 尚未使用。
+运行中任务以 `outputs/experiments/*/status.json` 为准，文档只记录已冻结结果。提交论文的最终实验口径以 `ICD/ICD.pdf` 和 `docs/paper/` 为准。
 
 ## 目录边界
 

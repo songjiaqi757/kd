@@ -1,0 +1,16 @@
+{
+  "requested_snapshot": {
+    "count": 413,
+    "runs": 25,
+    "original_bytes": 152101387320,
+    "archive_bytes": 140455865237,
+    "saved_bytes": 11645522083
+  },
+  "subsequent_additions": {
+    "count": 142,
+    "runs": 11,
+    "original_bytes": 24255490950,
+    "archive_bytes": 22352989057,
+    "saved_bytes": 1902501893
+  }
+}
