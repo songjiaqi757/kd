@@ -29,7 +29,8 @@ class TAVDistillationStudent(VideoAdaptationStudent):
         return self
 
     def forward(self, *, input_ids, text_attention_mask, input_values,
-                audio_attention_mask, pixel_values, all_subsets=False):
+                audio_attention_mask, pixel_values, all_subsets=False,
+                shared_subset_dropout=False):
         text = self.text_encoder(input_ids=input_ids, attention_mask=text_attention_mask,
                                  return_dict=True).last_hidden_state
         audio = self.audio_encoder(input_values=input_values, attention_mask=audio_attention_mask,
@@ -41,12 +42,16 @@ class TAVDistillationStudent(VideoAdaptationStudent):
                    "v": self.pools["v"](self.encode_video(pixel_values), None)}
         # The full prediction is evaluated first in every method. Extra subsets
         # reuse encoder graphs; they do not re-encode the expensive backbones.
-        full = self.fusion(encoded, "tav")
         if not all_subsets:
-            return full
-        outputs = {"tav": full}
-        outputs.update({s: self.fusion(encoded, s) for s in SUBSETS if s != "tav"})
-        return outputs
+            return self.fusion(encoded, "tav")
+        # Preserve the historical full-path-first order.  The shared-dropout
+        # variant replays that path's RNG state for each counterfactual subset.
+        order = ("tav",) + tuple(subset for subset in SUBSETS if subset != "tav")
+        return self.fusion.forward_subsets(
+            encoded,
+            order,
+            shared_dropout=shared_subset_dropout,
+        )
 
 
 def interaction_weights(mean, variance, utility, method):

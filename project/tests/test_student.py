@@ -8,6 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.student import (
+    ExplicitInteractionFusion,
     LoRALinear,
     QFormerPool,
     SUBSETS,
@@ -62,6 +63,54 @@ def test_subset_fusion_runs_all_seven_subsets_and_backward() -> None:
         assert torch.all(output["regression"].abs() <= 3.0)
     sum(output["regression"].mean() for output in outputs.values()).backward()
     assert fusion.cls_token.grad is not None
+
+
+def test_subset_fusion_can_replay_one_dropout_mask_across_subsets() -> None:
+    fusion = SubsetFusion(
+        hidden_size=16,
+        tokens_per_modality=2,
+        layers=1,
+        heads=4,
+        ffn_size=32,
+        dropout=0.4,
+    ).train()
+    encoded = {modality: torch.randn(2, 2, 16) for modality in "tav"}
+    order = ("tav", "t", "a", "v", "ta", "tv", "av")
+    start = torch.get_rng_state()
+    expected = {}
+    advanced = None
+    for index, subset in enumerate(order):
+        torch.set_rng_state(start)
+        expected[subset] = fusion(encoded, subset)
+        if index == 0:
+            advanced = torch.get_rng_state()
+    torch.set_rng_state(start)
+    actual = fusion.forward_subsets(encoded, order, shared_dropout=True)
+    for subset in order:
+        for key in expected[subset]:
+            torch.testing.assert_close(actual[subset][key], expected[subset][key])
+    assert advanced is not None
+    assert torch.equal(torch.get_rng_state(), advanced)
+
+
+def test_explicit_interaction_fusion_uses_shared_order_modules() -> None:
+    fusion = ExplicitInteractionFusion(
+        hidden_size=16,
+        tokens_per_modality=2,
+        dropout=0.0,
+    )
+    encoded = {
+        modality: torch.randn(3, 2, 16, requires_grad=True)
+        for modality in "tav"
+    }
+    outputs = fusion.forward_subsets(encoded)
+    assert tuple(outputs) == SUBSETS
+    assert sum(1 for _ in fusion.unary.modules()) > 1
+    assert sum(1 for _ in fusion.pair.modules()) > 1
+    assert sum(1 for _ in fusion.triple.modules()) > 1
+    loss = sum(output["regression"].mean() for output in outputs.values())
+    loss.backward()
+    assert all(encoded[modality].grad is not None for modality in "tav")
 
 
 def test_subset_fusion_rejects_unknown_subset() -> None:

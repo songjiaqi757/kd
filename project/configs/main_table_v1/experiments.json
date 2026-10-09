@@ -2,9 +2,10 @@
   "schema": "rdid-msa-experiment-matrix-v1",
   "protocol": {
     "seeds": [13, 42, 2026],
-    "checkpoint_selection": "valid_mae",
-    "epochs": 30,
-    "patience": 7,
+    "checkpoint_selection": ["valid_mae", "valid_acc2_nonzero"],
+    "epochs": 20,
+    "minimum_epochs": 20,
+    "patience": 20,
     "batch_size": 8,
     "learning_rate": 0.0001,
     "official_test_policy": "forbidden during training/tuning; one final pass after configuration lock",
@@ -50,6 +51,21 @@
     {"method": "coarse_u_interaction", "label": "R x coarse two-group U", "tier": 3, "tuning": {}},
     {"method": "additive_r_u_interaction", "label": "R + U", "tier": 3, "tuning": {}}
   ],
+  "equal_modality_method_extensions": {
+    "constraint": "All rows use identical T/A/V encoders, input processing, LoRA scope/rank, pooling dimensions, optimization budget, and one shared rule across modality identities.",
+    "checkpoint_selection": ["valid_mae", "valid_acc2_nonzero"],
+    "retain_every_epoch_checkpoint": false,
+    "retained_checkpoints": ["best_valid_mae.pt", "best_valid_acc2_nonzero.pt", "best.pt", "last.pt"],
+    "safety_metric": "mae",
+    "rows": [
+      {"method": "uniform_interaction", "label": "ICD reference"},
+      {"method": "uniform_interaction_shared_dropout", "label": "ICD with common subset dropout"},
+      {"method": "uniform_interaction_gradient_projected", "label": "ICD with projected conflicting auxiliary gradient"},
+      {"method": "uniform_interaction_coordinate_compatible", "label": "ICD with per-coordinate gradient compatibility"},
+      {"method": "explicit_full_kd", "label": "Explicit interaction fusion + Full KD (architecture control)"},
+      {"method": "explicit_uniform_interaction", "label": "Explicit interaction fusion + ICD"}
+    ]
+  },
   "main_table_b": [
     {"system": "dlf", "label": "DLF", "architecture": "native", "tier": 2},
     {"system": "dpdf_lq", "label": "DPDF-LQ", "architecture": "native", "tier": 2},

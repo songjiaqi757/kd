@@ -20,6 +20,56 @@ from train_main_table_kd import build_model, evaluate, load_checkpoint_state
 from rdid_mosei.main_table_kd import teacher_supervision_metadata
 
 
+VALID_CHECKPOINT_SELECTIONS = ("valid_mae", "valid_acc2_nonzero")
+
+
+def selected_checkpoint(run: Path, selection_policy: str) -> tuple[Path, int, dict]:
+    """Select one retained epoch using validation metrics only."""
+    history = json.loads((run / "history.json").read_text())
+    if not history:
+        raise ValueError("training history is empty")
+    if selection_policy == "valid_mae":
+        key = lambda row: (float(row["valid_metrics"]["mae"]), int(row["epoch"]))
+    elif selection_policy == "valid_acc2_nonzero":
+        key = lambda row: (-float(row["valid_metrics"]["acc2_nonzero"]), int(row["epoch"]))
+    else:
+        raise ValueError(f"unsupported checkpoint selection: {selection_policy}")
+    selected = min(history, key=key)
+    epoch = int(selected["epoch"])
+    checkpoint = run / f"best_{selection_policy}.pt"
+    if not checkpoint.is_file():
+        checkpoint = run / "checkpoints" / f"epoch_{epoch:03d}.pt"
+    if not checkpoint.is_file():
+        raise FileNotFoundError(checkpoint)
+    saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    if int(saved.get("epoch", -1)) != epoch:
+        raise ValueError(f"checkpoint epoch mismatch: {checkpoint}")
+    if saved.get("checkpoint_selection") not in {None, selection_policy}:
+        raise ValueError(f"checkpoint selection mismatch: {checkpoint}")
+    saved_metrics = saved.get("valid_metrics")
+    if saved_metrics is not None and saved_metrics != selected["valid_metrics"]:
+        raise ValueError(f"checkpoint validation metrics mismatch: {checkpoint}")
+    return checkpoint, epoch, selected["valid_metrics"]
+
+
+def relocate_config(value, source_roots: list[str], destination_root: str):
+    """Map provenance paths only for runtime use after a verified relocation."""
+    if isinstance(value, str):
+        for source in source_roots:
+            if value == source or value.startswith(source + "/"):
+                return destination_root + value[len(source):]
+        return value
+    if isinstance(value, list):
+        return [relocate_config(item, source_roots, destination_root) for item in value]
+    if isinstance(value, dict):
+        return {
+            relocate_config(key, source_roots, destination_root):
+            relocate_config(item, source_roots, destination_root)
+            for key, item in value.items()
+        }
+    return value
+
+
 class OfficialTestCollator:
     def __init__(self, tokenizer, audio_processor):
         self.tokenizer = tokenizer
@@ -47,6 +97,11 @@ def parse_args():
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--num-workers", type=int, default=2)
+    parser.add_argument(
+        "--checkpoint-selection",
+        choices=VALID_CHECKPOINT_SELECTIONS,
+        help="Select the retained epoch by this validation metric; defaults to the run policy.",
+    )
     parser.add_argument("--allow-official-test", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
@@ -65,8 +120,25 @@ def main():
     if status.get("status") != "complete":
         raise ValueError("only a completed train/valid run may enter final test")
     config = json.loads((run / "run_config.json").read_text())
-    if config.get("official_test_evaluated") or config.get("checkpoint_selection") != "valid_mae":
-        raise ValueError("run was not locked under the valid-only protocol")
+    runtime_config = config
+    relocation_path = run / "relocation_manifest.json"
+    relocation_sha256 = None
+    if relocation_path.is_file():
+        relocation = json.loads(relocation_path.read_text())
+        if relocation.get("schema") != "rdid-msa-verified-run-relocation-v1":
+            raise ValueError(f"unrecognized relocation manifest: {relocation_path}")
+        runtime_config = relocate_config(
+            config,
+            list(relocation["source_roots"]),
+            str(relocation["destination_root"]),
+        )
+        relocation_sha256 = sha256(relocation_path)
+    selection_policy = args.checkpoint_selection or config.get("checkpoint_selection")
+    if config.get("official_test_evaluated") or selection_policy not in VALID_CHECKPOINT_SELECTIONS:
+        raise ValueError("run was not locked under a supported valid-only protocol")
+    checkpoint, selected_epoch, selected_valid_metrics = selected_checkpoint(
+        run, selection_policy
+    )
     rows = [json.loads(line) for line in args.test_manifest.read_text().splitlines() if line.strip()]
     if {row["split"] for row in rows} != {"test"}:
         raise ValueError("official-test manifest must contain only test")
@@ -78,14 +150,18 @@ def main():
         "schema": "rdid-msa-official-test-v1",
         "source_run": str(run),
         "source_run_config_sha256": sha256(run / "run_config.json"),
-        "checkpoint": str(run / "best.pt"),
-        "checkpoint_sha256": sha256(run / "best.pt"),
+        "checkpoint": str(checkpoint),
+        "checkpoint_sha256": sha256(checkpoint),
+        "selected_epoch": selected_epoch,
+        "selected_valid_metrics": selected_valid_metrics,
         "manifest": str(args.test_manifest.resolve()),
         "manifest_sha256": sha256(args.test_manifest),
-        "checkpoint_selection": "valid_mae",
+        "checkpoint_selection": selection_policy,
         "official_test_evaluated": True,
         "test_parents": len(parents),
         "test_windows": len(rows),
+        "relocation_manifest": str(relocation_path) if relocation_sha256 else None,
+        "relocation_manifest_sha256": relocation_sha256,
     }
     if args.dry_run:
         print(json.dumps(protocol, indent=2))
@@ -93,13 +169,13 @@ def main():
     output.mkdir(parents=True)
     (output / "run_config.json").write_text(json.dumps(protocol, indent=2) + "\n")
 
-    model_args = SimpleNamespace(**{key: value for key, value in config.items() if key not in {"frozen_assets", "upstream_sources", "input_sha256"}})
+    model_args = SimpleNamespace(**{key: value for key, value in runtime_config.items() if key not in {"frozen_assets", "upstream_sources", "input_sha256"}})
     for name in ("text_model", "audio_model", "video_model", "assets"):
         setattr(model_args, name, Path(getattr(model_args, name)))
     device = torch.device(args.device)
-    assets = config["frozen_assets"]
+    assets = runtime_config["frozen_assets"]
     model = build_model(model_args, assets, device)
-    load_checkpoint_state(model, torch.load(run / "best.pt", map_location="cpu", weights_only=True)["model"])
+    load_checkpoint_state(model, torch.load(checkpoint, map_location="cpu", weights_only=True)["model"])
     from transformers import AutoFeatureExtractor, AutoImageProcessor, AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_args.text_model, local_files_only=True)
     if tokenizer.pad_token_id is None:
@@ -131,7 +207,8 @@ def main():
     )
     report = {
         "method": model_args.method, "seed": model_args.seed, "metrics": metrics,
-        "checkpoint_selection": "valid_mae", "official_test_evaluated": True,
+        "checkpoint_selection": selection_policy, "selected_epoch": selected_epoch,
+        "selected_valid_metrics": selected_valid_metrics, "official_test_evaluated": True,
         "model_only_inference_seconds": timing["model_only_seconds"],
         "model_only_seconds_per_window": timing["model_only_seconds"] / timing["model_windows"],
         "model_only_seconds_per_utterance_equivalent": timing["model_only_seconds"] / len(parents),

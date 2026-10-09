@@ -296,8 +296,150 @@ class SubsetFusion(nn.Module):
         self,
         encoded: Mapping[str, torch.Tensor],
         subsets: Iterable[str] = SUBSETS,
+        *,
+        shared_dropout: bool = False,
     ) -> dict[str, dict[str, torch.Tensor]]:
-        return {subset: self(encoded, subset) for subset in subsets}
+        requested = tuple(subsets)
+        if not requested:
+            raise ValueError("at least one subset is required")
+        if len(set(requested)) != len(requested):
+            raise ValueError("subsets must not contain duplicates")
+        if not shared_dropout or not self.training:
+            return {subset: self(encoded, subset) for subset in requested}
+
+        # A Mobius contrast should differ because the modality subset changed,
+        # not because each term happened to receive an unrelated dropout mask.
+        # Replaying the starting RNG state gives equal-shaped fusion paths the
+        # same masks.  Restoring the state reached by one path advances the
+        # global stream exactly once, so the next batch still gets fresh masks.
+        reference = encoded[MODALITIES[0]]
+        cpu_start = torch.get_rng_state()
+        cuda_device = reference.device if reference.device.type == "cuda" else None
+        cuda_start = torch.cuda.get_rng_state(cuda_device) if cuda_device is not None else None
+        cpu_advanced = None
+        cuda_advanced = None
+        outputs: dict[str, dict[str, torch.Tensor]] = {}
+        try:
+            for index, subset in enumerate(requested):
+                torch.set_rng_state(cpu_start)
+                if cuda_device is not None:
+                    torch.cuda.set_rng_state(cuda_start, cuda_device)
+                outputs[subset] = self(encoded, subset)
+                if index == 0:
+                    cpu_advanced = torch.get_rng_state()
+                    if cuda_device is not None:
+                        cuda_advanced = torch.cuda.get_rng_state(cuda_device)
+        finally:
+            torch.set_rng_state(cpu_start if cpu_advanced is None else cpu_advanced)
+            if cuda_device is not None:
+                torch.cuda.set_rng_state(
+                    cuda_start if cuda_advanced is None else cuda_advanced,
+                    cuda_device,
+                )
+        return outputs
+
+
+class ExplicitInteractionFusion(nn.Module):
+    """Symmetric shared modules that explicitly compose modality interactions.
+
+    The same unary module is used for T/A/V and the same pair module is used
+    for TA/TV/AV.  Modality identity is supplied only through a learned
+    embedding, keeping architecture and hyperparameters identical across the
+    three modalities while still allowing them to carry different semantics.
+    """
+
+    def __init__(
+        self,
+        hidden_size: int = 512,
+        tokens_per_modality: int = 4,
+        dropout: float = 0.1,
+        classes: int = 7,
+        binary_classes: int | None = None,
+    ) -> None:
+        super().__init__()
+        self.hidden_size = hidden_size
+        self.tokens_per_modality = tokens_per_modality
+        self.modality_embedding = nn.Embedding(len(MODALITIES), hidden_size)
+        self.empty_state = nn.Parameter(torch.empty(hidden_size))
+        self.unary = self._block(hidden_size, hidden_size, dropout)
+        self.pair = self._block(2 * hidden_size, hidden_size, dropout)
+        self.triple = self._block(3 * hidden_size, hidden_size, dropout)
+        self.final_norm = nn.LayerNorm(hidden_size)
+        self.classifier = nn.Linear(hidden_size, classes)
+        self.binary_classifier = (
+            nn.Linear(hidden_size, binary_classes) if binary_classes is not None else None
+        )
+        self.regressor = nn.Linear(hidden_size, 1)
+        nn.init.normal_(self.empty_state, mean=0.0, std=0.02)
+
+    @staticmethod
+    def _block(input_size: int, hidden_size: int, dropout: float) -> nn.Sequential:
+        return nn.Sequential(
+            nn.LayerNorm(input_size),
+            nn.Linear(input_size, hidden_size),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_size, hidden_size),
+        )
+
+    def _summaries(self, encoded: Mapping[str, torch.Tensor]) -> dict[str, torch.Tensor]:
+        if set(encoded) != set(MODALITIES):
+            raise ValueError("encoded must contain exactly t, a and v")
+        batch_size = encoded[MODALITIES[0]].shape[0]
+        expected = (batch_size, self.tokens_per_modality, self.hidden_size)
+        summaries = {}
+        for index, modality in enumerate(MODALITIES):
+            if encoded[modality].shape != expected:
+                raise ValueError(f"encoded[{modality!r}] must have shape {expected}")
+            summaries[modality] = (
+                encoded[modality].mean(dim=1)
+                + self.modality_embedding.weight[index].view(1, -1)
+            )
+        return summaries
+
+    def forward(self, encoded: Mapping[str, torch.Tensor], subset: str) -> dict[str, torch.Tensor]:
+        if subset not in SUBSETS:
+            raise ValueError(f"unknown subset {subset!r}; expected one of {SUBSETS}")
+        summaries = self._summaries(encoded)
+        present = tuple(modality for modality in MODALITIES if modality in subset)
+        terms = [self.unary(summaries[modality]) for modality in present]
+        for left_index, left in enumerate(present):
+            for right in present[left_index + 1:]:
+                a, b = summaries[left], summaries[right]
+                # Sum and absolute difference make the shared pair operator
+                # invariant to the arbitrary order used to enumerate a pair.
+                terms.append(self.pair(torch.cat((a + b, (a - b).abs()), dim=-1)))
+        if len(present) == len(MODALITIES):
+            stacked = torch.stack([summaries[m] for m in MODALITIES], dim=1)
+            triple_input = torch.cat(
+                (stacked.mean(dim=1), stacked.amax(dim=1), stacked.amin(dim=1)),
+                dim=-1,
+            )
+            terms.append(self.triple(triple_input))
+        fused = self.empty_state.view(1, -1) + torch.stack(terms, dim=0).sum(dim=0)
+        fused = self.final_norm(fused)
+        output = {
+            "regression": 3.0 * torch.tanh(self.regressor(fused).squeeze(-1)),
+            "classification_logits": self.classifier(fused),
+            "fused": fused,
+        }
+        if self.binary_classifier is not None:
+            output["binary_logits"] = self.binary_classifier(fused)
+        return output
+
+    def forward_subsets(
+        self,
+        encoded: Mapping[str, torch.Tensor],
+        subsets: Iterable[str] = SUBSETS,
+        *,
+        shared_dropout: bool = False,
+    ) -> dict[str, dict[str, torch.Tensor]]:
+        requested = tuple(subsets)
+        if not requested:
+            raise ValueError("at least one subset is required")
+        if shared_dropout:
+            raise ValueError("shared dropout is a separate ablation for SubsetFusion")
+        return {subset: self(encoded, subset) for subset in requested}
 
 
 class CachedStudentCore(nn.Module):

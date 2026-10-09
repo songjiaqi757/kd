@@ -15,6 +15,7 @@ from rdid_mosei.main_table_kd import (
     CAFDFeatureLoss,
     ProjectorFeatureLoss,
     adapted_interaction_loss,
+    adapted_interaction_coordinate_losses,
     entropy_adaptive_weights,
     kd_per_sample,
     probability_kd_per_sample,
@@ -26,6 +27,11 @@ from rdid_mosei.main_table_kd import (
     teacher_supervision_metadata,
 )
 from analyze_main_tables import per_seed_cluster_bootstrap
+from train_main_table_kd import (
+    checkpoint_selection_score,
+    coordinate_compatibility_weights,
+    projected_auxiliary_backward,
+)
 from rdid_mosei.student import SUBSETS
 
 
@@ -103,6 +109,10 @@ def test_subset7_exact_match_is_zero():
         "ru_interaction", "shuffled_r_u_interaction", "first_order_interaction",
         "first_second_order_interaction",
         "coarse_u_interaction", "amplitude_interaction", "additive_r_u_interaction",
+        "uniform_interaction_shared_dropout",
+        "uniform_interaction_gradient_projected",
+        "uniform_interaction_coordinate_compatible",
+        "explicit_uniform_interaction",
     ],
 )
 def test_every_interaction_ablation_has_normalized_finite_weights(method):
@@ -133,6 +143,71 @@ def test_first_second_order_ignores_only_third_order_error():
     )
     assert loss.item() == pytest.approx(0.0, abs=1e-7)
     assert weights.shape == (1, 6)
+
+
+def test_coordinate_losses_average_to_original_interaction_loss():
+    mean = torch.randn(3, 7)
+    values = inverse_mobius(mean + 0.2, 0.3)
+    outputs = {
+        subset: {"regression": values[:, index]}
+        for index, subset in enumerate(SUBSETS)
+    }
+    sample_weights = torch.tensor([1.0, 0.5, 2.0])
+    coordinates, coordinate_weights = adapted_interaction_coordinate_losses(
+        outputs,
+        mean,
+        torch.ones_like(mean),
+        torch.ones(7),
+        sample_weights,
+        0.3,
+        "uniform_interaction_coordinate_compatible",
+    )
+    total, original_weights = adapted_interaction_loss(
+        outputs,
+        mean,
+        torch.ones_like(mean),
+        torch.ones(7),
+        sample_weights,
+        0.3,
+        "uniform_interaction_coordinate_compatible",
+    )
+    torch.testing.assert_close(total, coordinates.mean())
+    torch.testing.assert_close(coordinate_weights, original_weights)
+
+
+def test_projected_auxiliary_gradient_removes_conflicting_component():
+    parameter = torch.nn.Parameter(torch.tensor([1.0, 2.0]))
+    base = parameter[0]
+    auxiliary = -parameter[0] + parameter[1]
+    diagnostics = projected_auxiliary_backward(base, auxiliary, [parameter])
+    torch.testing.assert_close(parameter.grad, torch.tensor([1.0, 1.0]))
+    assert diagnostics["auxiliary_gradient_projected"] is True
+    assert diagnostics["base_auxiliary_gradient_cosine"] < 0
+
+
+def test_coordinate_compatibility_is_mean_one_and_orders_gradients():
+    parameter = torch.nn.Parameter(torch.tensor([1.0, 2.0]))
+    base = parameter[0]
+    coordinate_losses = torch.stack((parameter[0], -parameter[0], parameter[1]))
+    weights, cosines = coordinate_compatibility_weights(
+        base, coordinate_losses, [parameter]
+    )
+    torch.testing.assert_close(cosines, torch.tensor([1.0, -1.0, 0.0]))
+    torch.testing.assert_close(weights, torch.tensor([2.0, 0.0, 1.0]))
+    torch.testing.assert_close(weights.mean(), torch.tensor(1.0))
+
+
+def test_checkpoint_selection_supports_polarity_metrics():
+    metrics = {
+        "mae": 0.5,
+        "acc2_nonzero": 0.8,
+        "f1_weighted_nonzero": 0.75,
+    }
+    assert checkpoint_selection_score(metrics, "valid_mae") == pytest.approx(0.5)
+    assert checkpoint_selection_score(metrics, "valid_acc2_nonzero") == pytest.approx(-0.8)
+    assert checkpoint_selection_score(
+        metrics, "valid_f1_weighted_nonzero"
+    ) == pytest.approx(-0.75)
 
 
 def test_random_orthogonal_exact_match_is_zero_and_backpropagates():
@@ -189,6 +264,11 @@ def test_teacher_supervision_metadata_distinguishes_information_budget():
     assert ours["base_tav_probe_count"] == 1
     assert len(ours["teacher_subsets"]) == 7
     assert teacher_supervision_metadata("random_orthogonal")["probe_count"] == 3
+    assert teacher_supervision_metadata("explicit_full_kd")["probe_count"] == 1
+    assert teacher_supervision_metadata("explicit_uniform_interaction")["probe_count"] == 3
+    assert requires_all_subset_outputs("uniform_interaction_shared_dropout", training=True)
+    assert requires_all_subset_outputs("explicit_uniform_interaction", training=True)
+    assert not requires_all_subset_outputs("explicit_full_kd", training=True)
     assert requires_all_subset_outputs("ru_interaction", training=True)
     assert not requires_all_subset_outputs("ru_interaction", training=False)
     assert not requires_all_subset_outputs("full_kd", training=True)

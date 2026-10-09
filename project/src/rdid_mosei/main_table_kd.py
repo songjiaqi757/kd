@@ -14,7 +14,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from .student import SUBSETS
+from .student import ExplicitInteractionFusion, SUBSETS
 from .tav_distillation import TAVDistillationStudent
 
 
@@ -40,6 +40,29 @@ MAIN_TABLE_METHODS = (
     "coarse_u_interaction",
     "amplitude_interaction",
     "additive_r_u_interaction",
+    "uniform_interaction_shared_dropout",
+    "uniform_interaction_gradient_projected",
+    "uniform_interaction_coordinate_compatible",
+    "explicit_full_kd",
+    "explicit_uniform_interaction",
+)
+
+UNIFORM_INTERACTION_VARIANTS = frozenset(
+    {
+        "uniform_interaction",
+        "uniform_interaction_shared_dropout",
+        "uniform_interaction_gradient_projected",
+        "uniform_interaction_coordinate_compatible",
+        "explicit_uniform_interaction",
+    }
+)
+SHARED_DROPOUT_METHODS = frozenset({"uniform_interaction_shared_dropout"})
+GRADIENT_PROJECTED_METHODS = frozenset({"uniform_interaction_gradient_projected"})
+COORDINATE_COMPATIBLE_METHODS = frozenset(
+    {"uniform_interaction_coordinate_compatible"}
+)
+EXPLICIT_FUSION_METHODS = frozenset(
+    {"explicit_full_kd", "explicit_uniform_interaction"}
 )
 
 SUBSET_METHODS = frozenset(
@@ -56,6 +79,10 @@ SUBSET_METHODS = frozenset(
         "coarse_u_interaction",
         "amplitude_interaction",
         "additive_r_u_interaction",
+        "uniform_interaction_shared_dropout",
+        "uniform_interaction_gradient_projected",
+        "uniform_interaction_coordinate_compatible",
+        "explicit_uniform_interaction",
     }
 )
 
@@ -349,6 +376,11 @@ class MainTableKDStudent(TAVDistillationStudent):
         # M3 supplies identical T/A/V LoRA scope without changing frozen P0 code.
         super().__init__(*args, method="M3", **kwargs)
         self.comparison_method = comparison_method
+        if comparison_method in EXPLICIT_FUSION_METHODS:
+            self.fusion = ExplicitInteractionFusion(
+                hidden_size=self.fusion.hidden_size,
+                tokens_per_modality=self.fusion.tokens_per_modality,
+            )
         if comparison_method == "projector":
             self.feature_loss = ProjectorFeatureLoss(self.fusion.hidden_size, teacher_feature_dim)
         elif comparison_method == "cmad_cafd":
@@ -360,6 +392,9 @@ class MainTableKDStudent(TAVDistillationStudent):
         # Seven subset heads are a training-only supervision mechanism.  Valid
         # and test deployment execute the complete TAV path exactly once.
         kwargs["all_subsets"] = requires_all_subset_outputs(self.comparison_method, self.training)
+        kwargs["shared_subset_dropout"] = (
+            self.comparison_method in SHARED_DROPOUT_METHODS and self.training
+        )
         return super().forward(**kwargs)
 
 
@@ -386,8 +421,7 @@ def interaction_coordinate_weights(
     reliability = mean.abs() / torch.sqrt(variance.clamp_min(0) + 1e-4)
     reliability = (reliability / reliability.mean(-1, keepdim=True).clamp_min(1e-8)).clamp(0.25, 4.0)
     utility = utility.to(mean).expand_as(mean)
-    if method in {
-        "uniform_interaction",
+    if method in UNIFORM_INTERACTION_VARIANTS | {
         "first_order_interaction",
         "first_second_order_interaction",
     }:
@@ -409,7 +443,7 @@ def interaction_coordinate_weights(
     return (result / result.mean(-1, keepdim=True).clamp_min(1e-8)).detach()
 
 
-def adapted_interaction_loss(
+def adapted_interaction_coordinate_losses(
     outputs: Mapping[str, Mapping[str, torch.Tensor]],
     mean: torch.Tensor,
     variance: torch.Tensor,
@@ -439,8 +473,35 @@ def adapted_interaction_loss(
         errors = errors[:, :retained_coordinates]
         weights = weights[:, :retained_coordinates]
         weights = weights / weights.mean(-1, keepdim=True).clamp_min(1e-8)
-    per_sample = (weights * errors).mean(-1)
-    return weighted_mean(per_sample, sample_weights), weights
+    coordinate_losses = (
+        errors * weights * sample_weights.to(errors).unsqueeze(-1)
+    ).sum(0) / sample_weights.sum().clamp_min(1e-8)
+    return coordinate_losses, weights
+
+
+def adapted_interaction_loss(
+    outputs: Mapping[str, Mapping[str, torch.Tensor]],
+    mean: torch.Tensor,
+    variance: torch.Tensor,
+    utility: torch.Tensor,
+    sample_weights: torch.Tensor,
+    empty_baseline: float,
+    method: str,
+    weight_mean: torch.Tensor | None = None,
+    weight_variance: torch.Tensor | None = None,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    coordinate_losses, weights = adapted_interaction_coordinate_losses(
+        outputs,
+        mean,
+        variance,
+        utility,
+        sample_weights,
+        empty_baseline,
+        method,
+        weight_mean,
+        weight_variance,
+    )
+    return coordinate_losses.mean(), weights
 
 
 def random_orthogonal_loss(

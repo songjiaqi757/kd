@@ -1,0 +1,687 @@
+{
+  "schema": "rdid-msa-validation-acc2-nonzero-selected-official-test-summary-v1",
+  "dataset": "mosi",
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "candidate_scope": "all completed epoch checkpoints retained by each existing formal run",
+  "selection_policy": [
+    "maximize valid acc2_nonzero",
+    "break ties by maximize valid f1_weighted_nonzero",
+    "then minimize valid mae",
+    "then earliest epoch"
+  ],
+  "test_labels_used_for_selection": false,
+  "official_test_utterances": 686,
+  "rows": [
+    {
+      "run": "full_kd_seed13",
+      "method": "full_kd",
+      "seed": 13,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
+      "selected_epoch": 16,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7661329688637336,
+        "pearson": 0.7831830356136759,
+        "acc2_nonzero": 0.8611111111111112,
+        "f1_weighted_nonzero": 0.861582330481852,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8296943231441049,
+        "f1_weighted_has_zero": 0.8311812472353167,
+        "acc7": 0.36681222707423583
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_016.pt",
+      "checkpoint_sha256": "5949ceffea388407d1146a4df674f1d9bdab622994c1d1e21c589780d6c8e08e",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7137661413965698,
+        "pearson": 0.7928970406428713,
+        "acc2_nonzero": 0.8445121951219512,
+        "f1_weighted_nonzero": 0.844095369664634,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8221574344023324,
+        "f1_weighted_has_zero": 0.8209748883112902,
+        "acc7": 0.45335276967930027
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed13/epochs/epoch_016/report.json"
+    },
+    {
+      "run": "full_kd_seed42",
+      "method": "full_kd",
+      "seed": 42,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42",
+      "selected_epoch": 11,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8031638421692905,
+        "pearson": 0.7815223948904478,
+        "acc2_nonzero": 0.8611111111111112,
+        "f1_weighted_nonzero": 0.8614502189667869,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8253275109170306,
+        "f1_weighted_has_zero": 0.8268000800751892,
+        "acc7": 0.36681222707423583
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42/checkpoints/epoch_011.pt",
+      "checkpoint_sha256": "13f6dc5a7936776bd2067483a8da7791b353b46e8e71e296a60643b5d6045958",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7278499740437374,
+        "pearson": 0.7798336786082153,
+        "acc2_nonzero": 0.836890243902439,
+        "f1_weighted_nonzero": 0.8363056295303275,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8134110787172012,
+        "f1_weighted_has_zero": 0.81194715832295,
+        "acc7": 0.4577259475218659
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed42/epochs/epoch_011/report.json"
+    },
+    {
+      "run": "full_kd_seed2026",
+      "method": "full_kd",
+      "seed": 2026,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
+      "selected_epoch": 18,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7801037895280519,
+        "pearson": 0.7935218546531799,
+        "acc2_nonzero": 0.8425925925925926,
+        "f1_weighted_nonzero": 0.8433426062292042,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8034934497816594,
+        "f1_weighted_has_zero": 0.8054030092400618,
+        "acc7": 0.3624454148471616
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026/checkpoints/epoch_018.pt",
+      "checkpoint_sha256": "6cb039386e6b31a3c19239af2cb454d98cb2707edf7d0b8827921e030e4cf24d",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7027036967152409,
+        "pearson": 0.7897771065595681,
+        "acc2_nonzero": 0.8490853658536586,
+        "f1_weighted_nonzero": 0.8479285675295969,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8221574344023324,
+        "f1_weighted_has_zero": 0.819911967151759,
+        "acc7": 0.4650145772594752
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed2026/epochs/epoch_018/report.json"
+    },
+    {
+      "run": "subset7_seed13",
+      "method": "subset7",
+      "seed": 13,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13",
+      "selected_epoch": 9,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8531485967066812,
+        "pearson": 0.7735889231904434,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8571988411650859,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8165938864628821,
+        "f1_weighted_has_zero": 0.8183815943810856,
+        "acc7": 0.3406113537117904
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/checkpoints/epoch_009.pt",
+      "checkpoint_sha256": "099d9cb750529682009afcbe8b6a630603a8d40c1ffb7c54bdae90eff5336eb8",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7584735444034423,
+        "pearson": 0.7822143190786074,
+        "acc2_nonzero": 0.8338414634146342,
+        "f1_weighted_nonzero": 0.8321812752966024,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8104956268221575,
+        "f1_weighted_has_zero": 0.807811377012723,
+        "acc7": 0.3979591836734694
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed13/epochs/epoch_009/report.json"
+    },
+    {
+      "run": "subset7_seed42",
+      "method": "subset7",
+      "seed": 42,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42",
+      "selected_epoch": 16,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8043869262873145,
+        "pearson": 0.7758363757586301,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8570271081404883,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8209606986899564,
+        "f1_weighted_has_zero": 0.8226104791151374,
+        "acc7": 0.33624454148471616
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42/checkpoints/epoch_016.pt",
+      "checkpoint_sha256": "481c78e432c06659f45606bf7a5dfeea335d79a157029ac4ddfd0a4db79c4a47",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7175873455199407,
+        "pearson": 0.7958631392080872,
+        "acc2_nonzero": 0.836890243902439,
+        "f1_weighted_nonzero": 0.8347050091050057,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.814868804664723,
+        "f1_weighted_has_zero": 0.8117131616094971,
+        "acc7": 0.44169096209912534
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed42/epochs/epoch_016/report.json"
+    },
+    {
+      "run": "subset7_seed2026",
+      "method": "subset7",
+      "seed": 2026,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026",
+      "selected_epoch": 6,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8219740599697654,
+        "pearson": 0.7660110031423623,
+        "acc2_nonzero": 0.8611111111111112,
+        "f1_weighted_nonzero": 0.8611111111111112,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8253275109170306,
+        "f1_weighted_has_zero": 0.826521188111248,
+        "acc7": 0.3406113537117904
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026/checkpoints/epoch_006.pt",
+      "checkpoint_sha256": "919f4876cd6087e136a11451d0e22265bfca8a4f7479892c4a6c1a7ea5c6caef",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7666871926295726,
+        "pearson": 0.7814556465692095,
+        "acc2_nonzero": 0.8460365853658537,
+        "f1_weighted_nonzero": 0.8461453209863046,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8294460641399417,
+        "f1_weighted_has_zero": 0.8290393444722772,
+        "acc7": 0.42419825072886297
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed2026/epochs/epoch_006/report.json"
+    },
+    {
+      "run": "first_second_order_interaction_seed13",
+      "method": "first_second_order_interaction",
+      "seed": 13,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13",
+      "selected_epoch": 10,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8041278600345853,
+        "pearson": 0.770554677216885,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8569033466152808,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8165938864628821,
+        "f1_weighted_has_zero": 0.818243119731898,
+        "acc7": 0.39737991266375544
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13/checkpoints/epoch_010.pt",
+      "checkpoint_sha256": "a09197482aceb62c924befade5ea726ac28263b4ac28dd084abdb27c8ab080b9",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7165902778173114,
+        "pearson": 0.7946561166718515,
+        "acc2_nonzero": 0.8429878048780488,
+        "f1_weighted_nonzero": 0.8408842611010803,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8221574344023324,
+        "f1_weighted_has_zero": 0.8192018585440343,
+        "acc7": 0.4314868804664723
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed13/epochs/epoch_010/report.json"
+    },
+    {
+      "run": "first_second_order_interaction_seed42",
+      "method": "first_second_order_interaction",
+      "seed": 42,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42",
+      "selected_epoch": 4,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8050615824292522,
+        "pearson": 0.7646273851970842,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8558952000778574,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8209606986899564,
+        "f1_weighted_has_zero": 0.8216650093892346,
+        "acc7": 0.39737991266375544
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42/checkpoints/epoch_004.pt",
+      "checkpoint_sha256": "c32bc126cd02a9bca33b2ddef0d2bcdbb48f612edbd0382a1627f1a61f4ddf27",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7493317288027,
+        "pearson": 0.7722647662924559,
+        "acc2_nonzero": 0.8445121951219512,
+        "f1_weighted_nonzero": 0.8442715387189412,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8279883381924198,
+        "f1_weighted_has_zero": 0.8272179810445116,
+        "acc7": 0.4489795918367347
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed42/epochs/epoch_004/report.json"
+    },
+    {
+      "run": "first_second_order_interaction_seed2026",
+      "method": "first_second_order_interaction",
+      "seed": 2026,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026",
+      "selected_epoch": 16,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.739252659604727,
+        "pearson": 0.7906509143210134,
+        "acc2_nonzero": 0.8611111111111112,
+        "f1_weighted_nonzero": 0.8591029287032879,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8384279475982532,
+        "f1_weighted_has_zero": 0.837245483294531,
+        "acc7": 0.4410480349344978
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026/checkpoints/epoch_016.pt",
+      "checkpoint_sha256": "f398d432d26e83400b98741f8b5933d4086523464ee3afb0a9f9d70aedfedb86",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7573855512227813,
+        "pearson": 0.8030095671320242,
+        "acc2_nonzero": 0.8551829268292683,
+        "f1_weighted_nonzero": 0.8560573218899543,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8483965014577259,
+        "f1_weighted_has_zero": 0.8487823496537095,
+        "acc7": 0.43002915451895046
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed2026/epochs/epoch_016/report.json"
+    },
+    {
+      "run": "random_orthogonal_seed13",
+      "method": "random_orthogonal",
+      "seed": 13,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13",
+      "selected_epoch": 13,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7906105718932097,
+        "pearson": 0.7844218999384933,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8569033466152808,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8209606986899564,
+        "f1_weighted_has_zero": 0.8225238752986662,
+        "acc7": 0.38427947598253276
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13/checkpoints/epoch_013.pt",
+      "checkpoint_sha256": "53c20a4a7abfbd6d96316fb7c03bcb7ef3b9dd9d457a0aad9cb594deaeeaaa8c",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.6934193602803845,
+        "pearson": 0.8113826017504608,
+        "acc2_nonzero": 0.850609756097561,
+        "f1_weighted_nonzero": 0.8488052699132751,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8236151603498543,
+        "f1_weighted_has_zero": 0.8206086027933004,
+        "acc7": 0.4577259475218659
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed13/epochs/epoch_013/report.json"
+    },
+    {
+      "run": "random_orthogonal_seed42",
+      "method": "random_orthogonal",
+      "seed": 42,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42",
+      "selected_epoch": 18,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.8147489011894868,
+        "pearson": 0.7718518918031071,
+        "acc2_nonzero": 0.8518518518518519,
+        "f1_weighted_nonzero": 0.851104754227819,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8165938864628821,
+        "f1_weighted_has_zero": 0.8171864515263194,
+        "acc7": 0.39737991266375544
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42/checkpoints/epoch_018.pt",
+      "checkpoint_sha256": "3ad2ad65ab8cf3c62b56ca6b1b400d99a603f11bbaf3a08ca434657b799bc1aa",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7642788663665606,
+        "pearson": 0.789989504859154,
+        "acc2_nonzero": 0.8536585365853658,
+        "f1_weighted_nonzero": 0.854134646325893,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8396501457725948,
+        "f1_weighted_has_zero": 0.8396983509957271,
+        "acc7": 0.39941690962099125
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed42/epochs/epoch_018/report.json"
+    },
+    {
+      "run": "random_orthogonal_seed2026",
+      "method": "random_orthogonal",
+      "seed": 2026,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026",
+      "selected_epoch": 15,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7607949247179913,
+        "pearson": 0.7989301118990336,
+        "acc2_nonzero": 0.8657407407407407,
+        "f1_weighted_nonzero": 0.8658318237265606,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8296943231441049,
+        "f1_weighted_has_zero": 0.8309362910322613,
+        "acc7": 0.38427947598253276
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026/checkpoints/epoch_015.pt",
+      "checkpoint_sha256": "cdf3e5ba80ded38195000aebc671776fbda3e921f75a9b82c724458ad6c3d820",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.7298671014338952,
+        "pearson": 0.7889176382050195,
+        "acc2_nonzero": 0.8475609756097561,
+        "f1_weighted_nonzero": 0.8470612952882774,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8250728862973761,
+        "f1_weighted_has_zero": 0.8238067211001028,
+        "acc7": 0.42565597667638483
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed2026/epochs/epoch_015/report.json"
+    },
+    {
+      "run": "uniform_interaction_seed13",
+      "method": "uniform_interaction",
+      "seed": 13,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+      "selected_epoch": 13,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7778275180244869,
+        "pearson": 0.7807596560845743,
+        "acc2_nonzero": 0.8703703703703703,
+        "f1_weighted_nonzero": 0.8708101751163952,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.834061135371179,
+        "f1_weighted_has_zero": 0.8355532988050505,
+        "acc7": 0.4017467248908297
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_013.pt",
+      "checkpoint_sha256": "49ffd8a7faeea8e70073f7c1aa52f67f1f5bbb9c607d4eb38e0b9f91e67ea64f",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.6815063357932362,
+        "pearson": 0.8168185460617089,
+        "acc2_nonzero": 0.8475609756097561,
+        "f1_weighted_nonzero": 0.8460990211579955,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.826530612244898,
+        "f1_weighted_has_zero": 0.8242749071862847,
+        "acc7": 0.4489795918367347
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed13/epochs/epoch_013/report.json"
+    },
+    {
+      "run": "uniform_interaction_seed42",
+      "method": "uniform_interaction",
+      "seed": 42,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42",
+      "selected_epoch": 14,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7845772067185371,
+        "pearson": 0.7850272993536432,
+        "acc2_nonzero": 0.8564814814814815,
+        "f1_weighted_nonzero": 0.8565788460525303,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8209606986899564,
+        "f1_weighted_has_zero": 0.8222663572390438,
+        "acc7": 0.35807860262008734
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42/checkpoints/epoch_014.pt",
+      "checkpoint_sha256": "39e95e0215a32c7554f91a89dcfcf4ec95a064d3f0565cb174e74c6fd5cb3926",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.765171538891416,
+        "pearson": 0.7820470844702256,
+        "acc2_nonzero": 0.8338414634146342,
+        "f1_weighted_nonzero": 0.833444366712246,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8163265306122449,
+        "f1_weighted_has_zero": 0.8153113286130779,
+        "acc7": 0.4008746355685131
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed42/epochs/epoch_014/report.json"
+    },
+    {
+      "run": "uniform_interaction_seed2026",
+      "method": "uniform_interaction",
+      "seed": 2026,
+      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
+      "selected_epoch": 12,
+      "valid_metrics": {
+        "count": 229,
+        "mae": 0.7921961000045633,
+        "pearson": 0.7713057363860039,
+        "acc2_nonzero": 0.8379629629629629,
+        "f1_weighted_nonzero": 0.8375884634166424,
+        "nonzero_count": 216,
+        "acc2_has_zero": 0.8034934497816594,
+        "f1_weighted_has_zero": 0.804518426591238,
+        "acc7": 0.3799126637554585
+      },
+      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026/checkpoints/epoch_012.pt",
+      "checkpoint_sha256": "c058e66c57c02a585168d43cb606a8693665880dff2328f6e48db1c535ce614a",
+      "test_metrics": {
+        "count": 686,
+        "mae": 0.753647336969097,
+        "pearson": 0.7771207036192262,
+        "acc2_nonzero": 0.8384146341463414,
+        "f1_weighted_nonzero": 0.8391666896459806,
+        "nonzero_count": 656,
+        "acc2_has_zero": 0.8177842565597667,
+        "f1_weighted_has_zero": 0.817962029541503,
+        "acc7": 0.4402332361516035
+      },
+      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed2026/epochs/epoch_012/report.json"
+    }
+  ],
+  "aggregates": {
+    "full_kd": {
+      "mae": {
+        "mean": 0.714773270718516,
+        "sample_std": 0.012603354631754087,
+        "count": 3
+      },
+      "pearson": {
+        "mean": 0.7875026086035516,
+        "sample_std": 0.006822232964804513,
+        "count": 3
+      },
+      "acc2_nonzero": {
+        "mean": 0.8434959349593496,
+        "sample_std": 0.006160749823669788,
+        "count": 3
+      },
+      "f1_weighted_nonzero": {
+        "mean": 0.8427765222415194,
+        "sample_std": 0.005922642216765001,
+        "count": 3
+      },
+      "acc2_has_zero": {
+        "mean": 0.8192419825072886,
+        "sample_std": 0.005049710809238687,
+        "count": 3
+      },
+      "f1_weighted_has_zero": {
+        "mean": 0.8176113379286664,
+        "sample_std": 0.004934029621131707,
+        "count": 3
+      },
+      "acc7": {
+        "mean": 0.4586977648202138,
+        "sample_std": 0.00589132927744516,
+        "count": 3
+      }
+    },
+    "subset7": {
+      "mae": {
+        "mean": 0.7475826941843186,
+        "sample_std": 0.026299367110614036,
+        "count": 3
+      },
+      "pearson": {
+        "mean": 0.7865110349519681,
+        "sample_std": 0.00810803838836005,
+        "count": 3
+      },
+      "acc2_nonzero": {
+        "mean": 0.8389227642276423,
+        "sample_std": 0.006346542681299191,
+        "count": 3
+      },
+      "f1_weighted_nonzero": {
+        "mean": 0.8376772017959708,
+        "sample_std": 0.007441376892094163,
+        "count": 3
+      },
+      "acc2_has_zero": {
+        "mean": 0.8182701652089407,
+        "sample_std": 0.009922535401682281,
+        "count": 3
+      },
+      "f1_weighted_has_zero": {
+        "mean": 0.8161879610314992,
+        "sample_std": 0.0112993151569613,
+        "count": 3
+      },
+      "acc7": {
+        "mean": 0.42128279883381925,
+        "sample_std": 0.022011179111576518,
+        "count": 3
+      }
+    },
+    "first_second_order_interaction": {
+      "mae": {
+        "mean": 0.741102519280931,
+        "sample_std": 0.021606792914998757,
+        "count": 3
+      },
+      "pearson": {
+        "mean": 0.7899768166987772,
+        "sample_std": 0.01589756524895213,
+        "count": 3
+      },
+      "acc2_nonzero": {
+        "mean": 0.8475609756097561,
+        "sample_std": 0.00664466302369007,
+        "count": 3
+      },
+      "f1_weighted_nonzero": {
+        "mean": 0.8470710405699919,
+        "sample_std": 0.007964505721401925,
+        "count": 3
+      },
+      "acc2_has_zero": {
+        "mean": 0.8328474246841594,
+        "sample_std": 0.01377788812318545,
+        "count": 3
+      },
+      "f1_weighted_has_zero": {
+        "mean": 0.8317340630807518,
+        "sample_std": 0.015298614685354088,
+        "count": 3
+      },
+      "acc7": {
+        "mean": 0.43683187560738584,
+        "sample_std": 0.010545449180860388,
+        "count": 3
+      }
+    },
+    "random_orthogonal": {
+      "mae": {
+        "mean": 0.7291884426936135,
+        "sample_std": 0.035434627611399094,
+        "count": 3
+      },
+      "pearson": {
+        "mean": 0.7967632482715448,
+        "sample_std": 0.01267206954830911,
+        "count": 3
+      },
+      "acc2_nonzero": {
+        "mean": 0.850609756097561,
+        "sample_std": 0.0030487804878048808,
+        "count": 3
+      },
+      "f1_weighted_nonzero": {
+        "mean": 0.8500004038424819,
+        "sample_std": 0.003685014593850346,
+        "count": 3
+      },
+      "acc2_has_zero": {
+        "mean": 0.8294460641399417,
+        "sample_std": 0.008867000773029482,
+        "count": 3
+      },
+      "f1_weighted_has_zero": {
+        "mean": 0.8280378916297101,
+        "sample_std": 0.010224075735536022,
+        "count": 3
+      },
+      "acc7": {
+        "mean": 0.42759961127308066,
+        "sample_std": 0.029203069390314335,
+        "count": 3
+      }
+    },
+    "uniform_interaction": {
+      "mae": {
+        "mean": 0.7334417372179164,
+        "sample_std": 0.045344969382982304,
+        "count": 3
+      },
+      "pearson": {
+        "mean": 0.7919954447170536,
+        "sample_std": 0.021638093200361815,
+        "count": 3
+      },
+      "acc2_nonzero": {
+        "mean": 0.8399390243902439,
+        "sample_std": 0.0069856336813351036,
+        "count": 3
+      },
+      "f1_weighted_nonzero": {
+        "mean": 0.8395700258387407,
+        "sample_std": 0.006336961405013035,
+        "count": 3
+      },
+      "acc2_has_zero": {
+        "mean": 0.8202137998056366,
+        "sample_std": 0.005518861366181044,
+        "count": 3
+      },
+      "f1_weighted_has_zero": {
+        "mean": 0.8191827551136218,
+        "sample_std": 0.00460478700933408,
+        "count": 3
+      },
+      "acc7": {
+        "mean": 0.4300291545189504,
+        "sample_std": 0.025624483719018876,
+        "count": 3
+      }
+    }
+  }
+}

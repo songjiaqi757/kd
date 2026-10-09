@@ -23,9 +23,13 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "project/src"), str(ROOT / "project/scripts")]
 
 from rdid_mosei.main_table_kd import (
+    COORDINATE_COMPATIBLE_METHODS,
+    GRADIENT_PROJECTED_METHODS,
+    EXPLICIT_FUSION_METHODS,
     MAIN_TABLE_METHODS,
     SUBSET_METHODS,
     MainTableKDStudent,
+    adapted_interaction_coordinate_losses,
     adapted_interaction_loss,
     entropy_adaptive_weights,
     kd_per_sample,
@@ -71,7 +75,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-epochs", type=int, default=1)
     parser.add_argument("--patience", type=int, default=7)
     parser.add_argument("--save-every-epoch", action="store_true")
-    parser.add_argument("--checkpoint-selection", choices=("valid_mae", "test_mae"), default="valid_mae")
+    parser.add_argument(
+        "--retain-best-mae-and-acc2",
+        action="store_true",
+        help="Retain only validation-MAE best, validation-Acc-2 best, and resumable last.pt.",
+    )
+    parser.add_argument(
+        "--checkpoint-selection",
+        choices=(
+            "valid_mae",
+            "valid_acc2_nonzero",
+            "valid_f1_weighted_nonzero",
+            "test_mae",
+        ),
+        default="valid_mae",
+    )
     parser.add_argument("--learning-rate", type=float, default=1e-4)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--num-workers", type=int, default=2)
@@ -132,6 +150,8 @@ def parse_args() -> argparse.Namespace:
         parser.error("min-epochs must be between 1 and epochs")
     if args.checkpoint_selection == "test_mae" and not args.save_every_epoch:
         parser.error("test-MAE selection requires --save-every-epoch")
+    if args.retain_best_mae_and_acc2 and args.checkpoint_selection != "valid_mae":
+        parser.error("dual best-checkpoint retention requires valid_mae as the primary policy")
     if args.num_workers < 0 or args.learning_rate <= 0:
         parser.error("invalid worker count or learning rate")
     positive = (args.lambda_feature, args.lambda_cafd, args.cmad_tau, args.lambda_subset, args.lambda_interaction,
@@ -223,6 +243,17 @@ class MainTableCollator(Collator):
 
 def regression_kd(output, scores, weights):
     return weighted_mean(F.smooth_l1_loss(output["regression"].float(), scores.float(), reduction="none"), weights)
+
+
+def checkpoint_selection_score(metrics: dict, policy: str) -> float:
+    """Convert every validation selection policy to a lower-is-better score."""
+    if policy in {"valid_mae", "test_mae"}:
+        return float(metrics["mae"])
+    if policy == "valid_acc2_nonzero":
+        return -float(metrics["acc2_nonzero"])
+    if policy == "valid_f1_weighted_nonzero":
+        return -float(metrics["f1_weighted_nonzero"])
+    raise ValueError(f"unsupported checkpoint selection policy: {policy}")
 
 
 def checkpoint_state(model):
@@ -338,6 +369,123 @@ def compute_loss(model, outputs, batch, device, args, assets, epoch):
     return loss
 
 
+def uniform_interaction_components(outputs, batch, device, args, assets):
+    """Return the common TAV objective and seven uniform ICD coordinates."""
+    output = outputs["tav"]
+    weights = batch["weights"].to(device)
+    sentiment = batch["sentiment"].to(device)
+    classes = batch["classes"].to(device)
+    teacher_scores = batch["teacher_scores"].to(device)
+    teacher_logits = batch["teacher_logits"].to(device)
+    task, _, _ = weighted_task_loss(
+        output, sentiment, classes, weights, assets["alpha_ce"]
+    )
+    full, _, _ = weighted_full_kd_loss(
+        output,
+        teacher_scores,
+        teacher_logits,
+        weights,
+        assets["kd_temperature"],
+        args.teacher_calibration_temperature,
+        1.0,
+        1.0,
+    )
+    coordinate_losses, _ = adapted_interaction_coordinate_losses(
+        outputs,
+        batch["interaction_mean"].to(device),
+        batch["interaction_variance"].to(device),
+        torch.tensor(assets["utility_normalized"], device=device),
+        weights,
+        assets["student_empty_baseline"],
+        args.method,
+        batch["weight_interaction_mean"].to(device),
+        batch["weight_interaction_variance"].to(device),
+    )
+    return task + full, coordinate_losses
+
+
+def _gradient_geometry(left, right) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    dot = torch.zeros((), dtype=torch.float32, device=next(
+        value.device for value in (*left, *right) if value is not None
+    ))
+    left_norm = torch.zeros_like(dot)
+    right_norm = torch.zeros_like(dot)
+    for left_value, right_value in zip(left, right):
+        if left_value is not None:
+            left_norm = left_norm + left_value.float().square().sum()
+        if right_value is not None:
+            right_norm = right_norm + right_value.float().square().sum()
+        if left_value is not None and right_value is not None:
+            dot = dot + (left_value.float() * right_value.float()).sum()
+    return dot, left_norm, right_norm
+
+
+def projected_auxiliary_backward(
+    base_loss: torch.Tensor,
+    auxiliary_loss: torch.Tensor,
+    parameters: list[torch.nn.Parameter],
+) -> dict[str, float | bool]:
+    """Backpropagate base + PCGrad-projected auxiliary gradients."""
+    base_gradients = torch.autograd.grad(
+        base_loss, parameters, retain_graph=True, allow_unused=True
+    )
+    auxiliary_gradients = torch.autograd.grad(
+        auxiliary_loss, parameters, allow_unused=True
+    )
+    dot, base_norm, auxiliary_norm = _gradient_geometry(
+        base_gradients, auxiliary_gradients
+    )
+    conflict = bool(dot.detach() < 0)
+    coefficient = dot / base_norm.clamp_min(1e-12) if conflict else dot.new_zeros(())
+    for parameter, base_gradient, auxiliary_gradient in zip(
+        parameters, base_gradients, auxiliary_gradients
+    ):
+        if base_gradient is None and auxiliary_gradient is None:
+            parameter.grad = None
+            continue
+        base_value = torch.zeros_like(parameter) if base_gradient is None else base_gradient
+        auxiliary_value = (
+            torch.zeros_like(parameter) if auxiliary_gradient is None else auxiliary_gradient
+        )
+        if conflict and base_gradient is not None:
+            auxiliary_value = auxiliary_value - coefficient.to(auxiliary_value) * base_value
+        parameter.grad = (base_value + auxiliary_value).detach()
+    cosine = dot / (base_norm.sqrt() * auxiliary_norm.sqrt()).clamp_min(1e-12)
+    return {
+        "base_auxiliary_gradient_cosine": float(cosine.detach()),
+        "auxiliary_gradient_projected": conflict,
+    }
+
+
+def coordinate_compatibility_weights(
+    base_loss: torch.Tensor,
+    coordinate_losses: torch.Tensor,
+    parameters: list[torch.nn.Parameter],
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Map per-coordinate task compatibility to detached mean-one weights."""
+    if coordinate_losses.ndim != 1:
+        raise ValueError("coordinate losses must be a vector")
+    base_gradients = torch.autograd.grad(
+        base_loss, parameters, retain_graph=True, allow_unused=True
+    )
+    cosines = []
+    for coordinate_loss in coordinate_losses:
+        coordinate_gradients = torch.autograd.grad(
+            coordinate_loss, parameters, retain_graph=True, allow_unused=True
+        )
+        dot, base_norm, coordinate_norm = _gradient_geometry(
+            base_gradients, coordinate_gradients
+        )
+        cosine = dot / (base_norm.sqrt() * coordinate_norm.sqrt()).clamp_min(1e-12)
+        cosines.append(cosine.clamp(-1.0, 1.0))
+    cosine_tensor = torch.stack(cosines).detach()
+    weights = ((cosine_tensor + 1.0) / 2.0).clamp(0.0, 1.0)
+    if float(weights.sum()) <= 1e-8:
+        weights = torch.ones_like(weights)
+    weights = (weights / weights.mean().clamp_min(1e-8)).detach()
+    return weights, cosine_tensor
+
+
 @torch.inference_mode()
 def evaluate(model, loader, device, timing=None):
     model.eval()
@@ -394,11 +542,22 @@ def run_protocol(args, assets):
         epoch_checkpoint_pattern="checkpoints/epoch_{epoch:03d}.pt" if args.save_every_epoch else None,
         official_test_evaluated=False,
         common_student="Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        fusion_architecture=(
+            "shared-order explicit interaction fusion"
+            if args.method in EXPLICIT_FUSION_METHODS
+            else "subset transformer fusion"
+        ),
         frozen_assets=assets,
         upstream_sources=json.loads(Path(assets["upstream_sources"]).read_text()),
         **teacher_supervision_metadata(args.method),
     )
-    paths = [args.assets, Path(__file__), ROOT / "project/src/rdid_mosei/main_table_kd.py"]
+    paths = [
+        args.assets,
+        Path(__file__),
+        ROOT / "project/src/rdid_mosei/main_table_kd.py",
+        ROOT / "project/src/rdid_mosei/student.py",
+        ROOT / "project/src/rdid_mosei/tav_distillation.py",
+    ]
     config["input_sha256"] = {str(path.resolve()): sha256(path) for path in paths}
     return config
 
@@ -435,7 +594,8 @@ def checkpoint_inventory(output: Path, history: list[dict], best_epoch: int) -> 
         "epochs": [
             {"epoch": epoch, "path": str(path.resolve()), "bytes": path.stat().st_size,
              "sha256": sha256(path), "valid_mae": history[index]["valid_metrics"]["mae"],
-             "is_best_valid_epoch": epoch == best_epoch}
+             "is_best_valid_epoch": epoch == best_epoch,
+             "is_selected_epoch": epoch == best_epoch}
             for index, (path, epoch) in enumerate(zip(files, actual))
         ],
     }
@@ -471,15 +631,29 @@ def train(args, output):
     valid_loader = DataLoader(VideoDataset(valid_rows, video_processor, mode="video_lora"), shuffle=False, **loader_args)
     parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
     optimizer = torch.optim.AdamW(parameters, lr=args.learning_rate, weight_decay=args.weight_decay)
-    best_mae, best_epoch, stale, history, start_epoch, elapsed_before, global_step = math.inf, 0, 0, [], 1, 0.0, 0
+    best_score, best_mae, best_epoch, stale = math.inf, math.inf, 0, 0
+    retained_best = {
+        "valid_mae": {"score": math.inf, "epoch": 0},
+        "valid_acc2_nonzero": {"score": math.inf, "epoch": 0},
+    }
+    history, start_epoch, elapsed_before, global_step = [], 1, 0.0, 0
     last = output / "last.pt"
     if args.resume:
         saved = torch.load(last, map_location="cpu", weights_only=False)
         load_checkpoint_state(model, saved["model"])
         optimizer.load_state_dict(saved["optimizer"])
         best_mae, best_epoch, stale = saved["best_mae"], saved["best_epoch"], saved["stale"]
+        best_score = saved.get("best_selection_score")
+        if best_score is None:
+            if args.checkpoint_selection != "valid_mae":
+                raise ValueError("legacy checkpoints may only resume under valid_mae selection")
+            best_score = best_mae
         history, start_epoch, elapsed_before = saved["history"], saved["epoch"] + 1, saved["elapsed_seconds"]
         global_step = saved.get("global_step", len(history) * len(train_loader))
+        if args.retain_best_mae_and_acc2:
+            retained_best = saved.get("retained_best_checkpoints")
+            if retained_best is None:
+                raise ValueError("resume checkpoint lacks dual best-checkpoint state")
         restore_rng(saved["rng"], generator)
     started = time.time()
     if device.type == "cuda":
@@ -492,12 +666,43 @@ def train(args, output):
         total_loss = total_weight = 0.0
         for step, batch in enumerate(train_loader, 1):
             optimizer.zero_grad(set_to_none=True)
+            gradient_diagnostics = {}
             with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=device.type == "cuda"):
                 outputs = model(**batch_inputs(batch, device))
-                loss = compute_loss(model, outputs, batch, device, args, assets, epoch)
+                if args.method in GRADIENT_PROJECTED_METHODS | COORDINATE_COMPATIBLE_METHODS:
+                    base_loss, coordinate_losses = uniform_interaction_components(
+                        outputs, batch, device, args, assets
+                    )
+                    if args.method in COORDINATE_COMPATIBLE_METHODS:
+                        compatibility_parameters = [
+                            parameter
+                            for parameter in model.fusion.parameters()
+                            if parameter.requires_grad
+                        ]
+                        coordinate_weights, coordinate_cosines = coordinate_compatibility_weights(
+                            base_loss, coordinate_losses, compatibility_parameters
+                        )
+                        interaction_loss = (coordinate_weights * coordinate_losses).mean()
+                        loss = base_loss + args.lambda_interaction * interaction_loss
+                        gradient_diagnostics = {
+                            "coordinate_gradient_cosines": coordinate_cosines.cpu().tolist(),
+                            "coordinate_compatibility_weights": coordinate_weights.cpu().tolist(),
+                        }
+                    else:
+                        interaction_loss = coordinate_losses.mean()
+                        loss = base_loss + args.lambda_interaction * interaction_loss
+                else:
+                    loss = compute_loss(model, outputs, batch, device, args, assets, epoch)
             if not torch.isfinite(loss):
                 raise FloatingPointError("non-finite loss")
-            loss.backward()
+            if args.method in GRADIENT_PROJECTED_METHODS:
+                gradient_diagnostics = projected_auxiliary_backward(
+                    base_loss,
+                    args.lambda_interaction * interaction_loss,
+                    parameters,
+                )
+            else:
+                loss.backward()
             norm = torch.nn.utils.clip_grad_norm_(parameters, 1.0, error_if_nonfinite=True)
             optimizer.step()
             global_step += 1
@@ -505,24 +710,47 @@ def train(args, output):
             total_loss += float(loss.detach()) * weight
             total_weight += weight
             if step == 1 or step % args.progress_every == 0:
-                progress = {"status": "training", "method": args.method, "epoch": epoch, "step": step, "steps": len(train_loader), "loss": float(loss.detach()), "elapsed_seconds": elapsed_before + time.time() - started}
+                progress = {"status": "training", "method": args.method, "epoch": epoch, "step": step, "steps": len(train_loader), "loss": float(loss.detach()), "elapsed_seconds": elapsed_before + time.time() - started, **gradient_diagnostics}
                 atomic_json(progress, output / "status.json")
                 print(json.dumps(progress), flush=True)
         metrics, _ = evaluate(model, valid_loader, device)
-        row = {"epoch": epoch, "train_loss": total_loss / total_weight, "valid_metrics": metrics, "gradient_norm_last": float(norm), "elapsed_seconds": elapsed_before + time.time() - started}
+        row = {"epoch": epoch, "train_loss": total_loss / total_weight, "valid_metrics": metrics, "gradient_norm_last": float(norm), "elapsed_seconds": elapsed_before + time.time() - started, **gradient_diagnostics}
         history.append(row)
-        improved = metrics["mae"] < best_mae - 1e-5
+        selection_score = checkpoint_selection_score(metrics, args.checkpoint_selection)
+        improved = selection_score < best_score - 1e-5
         if improved:
-            best_mae, best_epoch, stale = metrics["mae"], epoch, 0
+            best_score, best_mae, best_epoch, stale = (
+                selection_score, metrics["mae"], epoch, 0
+            )
         else:
             stale += 1
+        retained_improvements = []
+        if args.retain_best_mae_and_acc2:
+            for policy in retained_best:
+                score = checkpoint_selection_score(metrics, policy)
+                if score < float(retained_best[policy]["score"]) - 1e-5:
+                    retained_best[policy] = {"score": score, "epoch": epoch}
+                    retained_improvements.append(policy)
         payload = {"model": checkpoint_state(model), "protocol": config,
                    "optimizer": optimizer.state_dict(), "epoch": epoch,
                    "global_step": global_step, "best_mae": best_mae,
+                   "best_selection_score": best_score,
                    "best_epoch": best_epoch, "stale": stale, "history": history,
                    "rng": rng_state(generator), "elapsed_seconds": row["elapsed_seconds"],
                    "seed": args.seed, "method_config": {"method": args.method},
-                   "run_config": config}
+                   "run_config": config,
+                   "retained_best_checkpoints": retained_best}
+        for policy in retained_improvements:
+            atomic_save(
+                {
+                    "model": payload["model"],
+                    "epoch": epoch,
+                    "protocol": config,
+                    "valid_metrics": metrics,
+                    "checkpoint_selection": policy,
+                },
+                output / f"best_{policy}.pt",
+            )
         if args.save_every_epoch:
             epoch_path = output / "checkpoints" / f"epoch_{epoch:03d}.pt"
             epoch_path.parent.mkdir(parents=True, exist_ok=True)
@@ -531,9 +759,11 @@ def train(args, output):
             if improved:
                 atomic_alias(epoch_path, output / "best.pt")
         else:
-            if improved:
+            if improved and not args.retain_best_mae_and_acc2:
                 atomic_save({"model": payload["model"], "epoch": epoch, "protocol": config}, output / "best.pt")
             atomic_save(payload, last)
+            if args.retain_best_mae_and_acc2:
+                atomic_alias(output / "best_valid_mae.pt", output / "best.pt")
         atomic_json(history, output / "history.json")
         print(json.dumps(row), flush=True)
         if args.stop_after_epoch is not None and epoch >= args.stop_after_epoch:
@@ -551,6 +781,8 @@ def train(args, output):
     os.replace(temporary, output / "predictions.jsonl")
     report = {
         "method": args.method, "seed": args.seed, "best_epoch": best_epoch, "epochs_run": len(history),
+        "checkpoint_selection": args.checkpoint_selection,
+        "retained_best_checkpoints": retained_best if args.retain_best_mae_and_acc2 else None,
         "valid_metrics": metrics, "train_windows": len(train_rows), "valid_windows": len(valid_rows),
         "total_parameters": sum(parameter.numel() for parameter in model.parameters()),
         "trainable_parameters": sum(parameter.numel() for parameter in parameters),

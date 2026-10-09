@@ -1,0 +1,12 @@
+[
+  {
+    "queue": "mosi_research_v1/resource_queue",
+    "old_scheduler": 3100740,
+    "new_scheduler": 2699988
+  },
+  {
+    "queue": "equal_modality_extensions_v3/mosei/resource_queue",
+    "old_scheduler": 385762,
+    "new_scheduler": 2700064
+  }
+]

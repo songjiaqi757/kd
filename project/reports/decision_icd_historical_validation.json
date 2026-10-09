@@ -1,0 +1,539 @@
+{
+  "scope": "historical validation only; different experiment budgets are not pooled",
+  "runs": [
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
+      "prediction_epoch": 19,
+      "selections": {
+        "valid_mae": {
+          "epoch": 19,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7311665408649618,
+            "pearson": 0.7964538757319357,
+            "acc2_nonzero": 0.8518518518518519,
+            "f1_weighted_nonzero": 0.8518518518518519,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.8209606986899564,
+            "f1_weighted_has_zero": 0.8220949001490325,
+            "acc7": 0.388646288209607
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 16,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7661329688637336,
+            "pearson": 0.7831830356136759,
+            "acc2_nonzero": 0.8611111111111112,
+            "f1_weighted_nonzero": 0.861582330481852,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.8296943231441049,
+            "f1_weighted_has_zero": 0.8311812472353167,
+            "acc7": 0.36681222707423583
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 229,
+        "groups": {
+          "neutral": {
+            "count": 13,
+            "mae": 0.8082087590144231,
+            "total_mae_contribution": 0.0458808465816048,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 36,
+            "mae": 0.6197791205512152,
+            "total_mae_contribution": 0.09743252550150108,
+            "acc2_nonzero": 0.6666666666666666
+          },
+          "away_from_zero": {
+            "count": 180,
+            "mae": 0.7478798647280279,
+            "total_mae_contribution": 0.587853168781856,
+            "acc2_nonzero": 0.8888888888888888
+          },
+          "near_zero_wrong_sign": {
+            "count": 12,
+            "mae": 0.9889729817708331,
+            "total_mae_contribution": 0.051823911708515275,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 20,
+            "mae": 2.0160839843750002,
+            "total_mae_contribution": 0.17607720387554585,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 184,
+            "mae": 0.5692449376203192,
+            "total_mae_contribution": 0.45738457869929583,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 229,
+          "mae": 0.7311665408649618,
+          "pearson": 0.7964538757319357,
+          "acc2_nonzero": 0.8518518518518519,
+          "f1_weighted_nonzero": 0.8518518518518519,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8209606986899564,
+          "f1_weighted_has_zero": 0.8220949001490325,
+          "acc7": 0.388646288209607
+        }
+      }
+    },
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+      "prediction_epoch": 15,
+      "selections": {
+        "valid_mae": {
+          "epoch": 15,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7600951260007425,
+            "pearson": 0.7924093705572607,
+            "acc2_nonzero": 0.8518518518518519,
+            "f1_weighted_nonzero": 0.8501026966143246,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.8165938864628821,
+            "f1_weighted_has_zero": 0.8162506754684464,
+            "acc7": 0.39737991266375544
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 13,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7778275180244869,
+            "pearson": 0.7807596560845743,
+            "acc2_nonzero": 0.8703703703703703,
+            "f1_weighted_nonzero": 0.8708101751163952,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.834061135371179,
+            "f1_weighted_has_zero": 0.8355532988050505,
+            "acc7": 0.4017467248908297
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 229,
+        "groups": {
+          "neutral": {
+            "count": 13,
+            "mae": 0.8196739783653846,
+            "total_mae_contribution": 0.046531710562227074,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 36,
+            "mae": 0.5852227105034723,
+            "total_mae_contribution": 0.09200007676037118,
+            "acc2_nonzero": 0.7222222222222222
+          },
+          "away_from_zero": {
+            "count": 180,
+            "mae": 0.7907666919849722,
+            "total_mae_contribution": 0.6215633386781441,
+            "acc2_nonzero": 0.8777777777777778
+          },
+          "near_zero_wrong_sign": {
+            "count": 10,
+            "mae": 1.08404296875,
+            "total_mae_contribution": 0.04733812090611353,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 22,
+            "mae": 1.9631281072443185,
+            "total_mae_contribution": 0.188597460084607,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 184,
+            "mae": 0.5944389896116576,
+            "total_mae_contribution": 0.4776278344477948,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 229,
+          "mae": 0.7600951260007425,
+          "pearson": 0.7924093705572607,
+          "acc2_nonzero": 0.8518518518518519,
+          "f1_weighted_nonzero": 0.8501026966143246,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8165938864628821,
+          "f1_weighted_has_zero": 0.8162506754684464,
+          "acc7": 0.39737991266375544
+        }
+      }
+    },
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
+      "prediction_epoch": 19,
+      "selections": {
+        "valid_mae": {
+          "epoch": 19,
+          "metrics": {
+            "count": 229,
+            "mae": 0.756622372201104,
+            "pearson": 0.7896695798329965,
+            "acc2_nonzero": 0.8379629629629629,
+            "f1_weighted_nonzero": 0.8382706618000735,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.7991266375545851,
+            "f1_weighted_has_zero": 0.8008200920864675,
+            "acc7": 0.3406113537117904
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 15,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7926577016949974,
+            "pearson": 0.7792766806360757,
+            "acc2_nonzero": 0.8425925925925926,
+            "f1_weighted_nonzero": 0.8425925925925926,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.8034934497816594,
+            "f1_weighted_has_zero": 0.8049264896526092,
+            "acc7": 0.36681222707423583
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 229,
+        "groups": {
+          "neutral": {
+            "count": 13,
+            "mae": 0.7620192307692307,
+            "total_mae_contribution": 0.04325873362445415,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 36,
+            "mae": 0.6221238878038196,
+            "total_mae_contribution": 0.09780113520060045,
+            "acc2_nonzero": 0.6111111111111112
+          },
+          "away_from_zero": {
+            "count": 180,
+            "mae": 0.7831322959617518,
+            "total_mae_contribution": 0.6155625033760495,
+            "acc2_nonzero": 0.8833333333333333
+          },
+          "near_zero_wrong_sign": {
+            "count": 14,
+            "mae": 0.9309204101562498,
+            "total_mae_contribution": 0.05691216481304584,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 21,
+            "mae": 2.0894996279761906,
+            "total_mae_contribution": 0.19161350300218344,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 181,
+            "mae": 0.5881099188086482,
+            "total_mae_contribution": 0.4648379707614206,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 229,
+          "mae": 0.756622372201104,
+          "pearson": 0.7896695798329965,
+          "acc2_nonzero": 0.8379629629629629,
+          "f1_weighted_nonzero": 0.8382706618000735,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.7991266375545851,
+          "f1_weighted_has_zero": 0.8008200920864675,
+          "acc7": 0.3406113537117904
+        }
+      }
+    },
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
+      "prediction_epoch": 5,
+      "selections": {
+        "valid_mae": {
+          "epoch": 5,
+          "metrics": {
+            "count": 229,
+            "mae": 0.775445174615644,
+            "pearson": 0.777453788950636,
+            "acc2_nonzero": 0.8333333333333334,
+            "f1_weighted_nonzero": 0.8317740354628888,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.7991266375545851,
+            "f1_weighted_has_zero": 0.7991266375545851,
+            "acc7": 0.388646288209607
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 12,
+          "metrics": {
+            "count": 229,
+            "mae": 0.7921961000045633,
+            "pearson": 0.7713057363860039,
+            "acc2_nonzero": 0.8379629629629629,
+            "f1_weighted_nonzero": 0.8375884634166424,
+            "nonzero_count": 216,
+            "acc2_has_zero": 0.8034934497816594,
+            "f1_weighted_has_zero": 0.804518426591238,
+            "acc7": 0.3799126637554585
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 229,
+        "groups": {
+          "neutral": {
+            "count": 13,
+            "mae": 0.6274038461538461,
+            "total_mae_contribution": 0.03561681222707424,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 36,
+            "mae": 0.6044345431857638,
+            "total_mae_contribution": 0.09502027753138646,
+            "acc2_nonzero": 0.5833333333333334
+          },
+          "away_from_zero": {
+            "count": 180,
+            "mae": 0.8203391746238612,
+            "total_mae_contribution": 0.6448080848571834,
+            "acc2_nonzero": 0.8833333333333333
+          },
+          "near_zero_wrong_sign": {
+            "count": 15,
+            "mae": 0.8898616536458334,
+            "total_mae_contribution": 0.05828788124317685,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 21,
+            "mae": 2.1145653134300595,
+            "total_mae_contribution": 0.1939121029783024,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 180,
+            "mae": 0.6203716588903542,
+            "total_mae_contribution": 0.4876283781670906,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 229,
+          "mae": 0.775445174615644,
+          "pearson": 0.777453788950636,
+          "acc2_nonzero": 0.8333333333333334,
+          "f1_weighted_nonzero": 0.8317740354628888,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.7991266375545851,
+          "f1_weighted_has_zero": 0.7991266375545851,
+          "acc7": 0.388646288209607
+        }
+      }
+    },
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/students/M3_seed13",
+      "prediction_epoch": 6,
+      "selections": {
+        "valid_mae": {
+          "epoch": 6,
+          "metrics": {
+            "count": 1871,
+            "mae": 0.4712614540879744,
+            "pearson": 0.7862220711158247,
+            "acc2_nonzero": 0.872739916550765,
+            "f1_weighted_nonzero": 0.8725347822474367,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8188134687332977,
+            "f1_weighted_has_zero": 0.825210085079513,
+            "acc7": 0.5692143238909674
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 5,
+          "metrics": {
+            "count": 1871,
+            "mae": 0.49895928285927904,
+            "pearson": 0.7922796639098577,
+            "acc2_nonzero": 0.8852573018080667,
+            "f1_weighted_nonzero": 0.8854846722293885,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8423303046499199,
+            "f1_weighted_has_zero": 0.8476214877268864,
+            "acc7": 0.5440940673436665
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 1871,
+        "groups": {
+          "neutral": {
+            "count": 433,
+            "mae": 0.29696265874778977,
+            "total_mae_contribution": 0.06872519039967556,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 402,
+            "mae": 0.3532039511263074,
+            "total_mae_contribution": 0.07588882327780629,
+            "acc2_nonzero": 0.763681592039801
+          },
+          "away_from_zero": {
+            "count": 1036,
+            "mae": 0.5899202326332351,
+            "total_mae_contribution": 0.32664744041049254,
+            "acc2_nonzero": 0.915057915057915
+          },
+          "near_zero_wrong_sign": {
+            "count": 95,
+            "mae": 0.5643252288040362,
+            "total_mae_contribution": 0.02865360595210232,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 88,
+            "mae": 1.3204851656845797,
+            "total_mae_contribution": 0.06210726594347569,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 1255,
+            "mae": 0.4648061817085105,
+            "total_mae_contribution": 0.31177539179272085,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 1871,
+          "mae": 0.4712614540879744,
+          "pearson": 0.7862220711158247,
+          "acc2_nonzero": 0.872739916550765,
+          "f1_weighted_nonzero": 0.8725347822474367,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8188134687332977,
+          "f1_weighted_has_zero": 0.825210085079513,
+          "acc7": 0.5692143238909674
+        }
+      }
+    },
+    {
+      "run": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/students/M4_seed13",
+      "prediction_epoch": 6,
+      "selections": {
+        "valid_mae": {
+          "epoch": 6,
+          "metrics": {
+            "count": 1871,
+            "mae": 0.4745546419558453,
+            "pearson": 0.7921437449348013,
+            "acc2_nonzero": 0.8776077885952712,
+            "f1_weighted_nonzero": 0.8767075690940827,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8439337252805986,
+            "f1_weighted_has_zero": 0.8475074674616775,
+            "acc7": 0.567076429716729
+          },
+          "cached_predictions_available": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 4,
+          "metrics": {
+            "count": 1871,
+            "mae": 0.5104005907570753,
+            "pearson": 0.7877011377483638,
+            "acc2_nonzero": 0.8845618915159944,
+            "f1_weighted_nonzero": 0.8833345943965553,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.863174772848744,
+            "f1_weighted_has_zero": 0.8650483156999477,
+            "acc7": 0.5285943345804383
+          },
+          "cached_predictions_available": false
+        }
+      },
+      "cached_prediction_error_strata": {
+        "boundary_abs_target": 0.5,
+        "count": 1871,
+        "groups": {
+          "neutral": {
+            "count": 433,
+            "mae": 0.32662286384001066,
+            "total_mae_contribution": 0.07558936399931834,
+            "acc2_nonzero": null
+          },
+          "near_zero": {
+            "count": 402,
+            "mae": 0.35991945314170115,
+            "total_mae_contribution": 0.07733170505770383,
+            "acc2_nonzero": 0.7587064676616916
+          },
+          "away_from_zero": {
+            "count": 1036,
+            "mae": 0.5808652653414074,
+            "total_mae_contribution": 0.3216335728988231,
+            "acc2_nonzero": 0.9237451737451737
+          },
+          "near_zero_wrong_sign": {
+            "count": 97,
+            "mae": 0.5694520925123667,
+            "total_mae_contribution": 0.029522636543933497,
+            "acc2_nonzero": 0.0
+          },
+          "away_from_zero_wrong_sign": {
+            "count": 79,
+            "mae": 1.2894169161703857,
+            "total_mae_contribution": 0.05444357903659031,
+            "acc2_nonzero": 0.0
+          },
+          "correct_sign": {
+            "count": 1262,
+            "mae": 0.46700732623256885,
+            "total_mae_contribution": 0.3149990623760031,
+            "acc2_nonzero": 1.0
+          }
+        },
+        "metrics": {
+          "count": 1871,
+          "mae": 0.4745546419558453,
+          "pearson": 0.7921437449348013,
+          "acc2_nonzero": 0.8776077885952712,
+          "f1_weighted_nonzero": 0.8767075690940827,
+          "nonzero_count": 1438,
+          "acc2_has_zero": 0.8439337252805986,
+          "f1_weighted_has_zero": 0.8475074674616775,
+          "acc7": 0.567076429716729
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-10-08T12:53:51.321152+08:00",
+  "reason": "User directs all new experiments to MOSI for effectiveness validation",
+  "action": "SIGSTOP to queue scheduler only; current run and its evaluation wrapper continue",
+  "scheduler_pid": 4163423,
+  "scheduler_start_ticks": "183909462",
+  "scheduler_cmdline": "bash project/scripts/run_equal_modality_method_extensions.sh 1 outputs/experiments/main_table_v1/mosei/assets/protocol.json dataset/cmu_mosei/manifests/official_test_windowed.jsonl /home/wy/sjq/kd/outputs/experiments/equal_modality_extensions_v3/mosei all",
+  "current_training_pid": 2254713,
+  "current_run": "uniform_interaction_shared_dropout_seed2026",
+  "dataset_of_current_run": "mosei",
+  "future_new_experiment_dataset": "mosi",
+  "resume_note": "Do not resume the MOSEI scheduler automatically. Any later SIGCONT requires checking PID start ticks and the current experiment instruction."
+}
