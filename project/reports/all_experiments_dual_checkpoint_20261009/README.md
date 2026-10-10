@@ -1,9 +1,9 @@
 # 全部历史实验：两种验证 checkpoint 选择汇总
 
-快照时间：2026-10-09T19:29:55.703316+08:00
+快照时间：2026-10-09T22:37:39.742760+08:00
 
 - 清点 272 个有逐轮情感指标的学生训练目录，状态分布：{'complete': 259, 'training': 2, 'paused': 7, 'partial_no_report': 4}。另有 8 个无已完成 epoch 的配置目录，见 no_history_runs.csv；6 个 history 不含逐轮情感指标（教师 Probe），独立列入 JSON 排除清单。
-- 共 544 个 run × 选模记录。已有同轮测试：MAE 策略 123 个，Acc2 策略 108 个；缺失记录详见 missing_tests.csv。
+- 共 544 个 run × 选模记录。已有同轮测试：MAE 策略 175 个，Acc2 策略 117 个；缺失记录详见 missing_tests.csv。
 - 主口径统一为验证 MAE 最小 / 验证 Acc2_nonzero 最大；并列取最早 epoch。从各自 history 选择同一轮的全部指标，绝不拼接不同轮次的最优值。
 - 历史有一份 Acc2 汇总采用“Acc2 并列后 F1 更大、再 MAE 更小”的规则，已原样保存在 historical_acc2_original_tiebreak.json；与本表统一规则不同，不能混用其结果。
 - 若有测试 sweep，只取由验证指标确定的那个 epoch；不取 test-best。历史 sweep 已经看过测试集的事实不会因重新选模而消失，故不称为新的盲测。每个测试来源和探索属性均保留。
@@ -62,11 +62,11 @@
 | ensemble_full | mosei | full | valid_mae | validation | 13 (1/1) | 0.4718 | 88.04 | 0.7921 | 88.08 |
 | ensemble_full | mosei | full | valid_mae | test | 13 (1/1) | 0.4869 | 87.84 | 0.8172 | 87.84 |
 | first_order_interaction | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4694 ± 0.0013 | 88.80 ± 0.18 | 0.7939 ± 0.0041 | 88.70 ± 0.19 |
-| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.4891 | 87.26 | 0.8186 | 87.09 |
+| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,42,2026 (3/3) | 0.4826 ± 0.0057 | 87.86 ± 0.63 | 0.8187 ± 0.0019 | 87.76 ± 0.67 |
 | first_order_interaction | mosei | full | valid_mae | validation | 13,42,2026 (3/3) | 0.4653 ± 0.0017 | 87.71 ± 0.84 | 0.7973 ± 0.0002 | 87.75 ± 0.77 |
 | first_order_interaction | mosei | full | valid_mae | test | 13,42,2026 (3/3) | 0.4814 ± 0.0037 | 87.19 ± 0.73 | 0.8186 ± 0.0020 | 87.21 ± 0.67 |
 | first_second_order_interaction | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4902 ± 0.0187 | 88.73 ± 0.30 | 0.7913 ± 0.0017 | 88.68 ± 0.27 |
-| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,2026 (2/3) | 0.4940 ± 0.0236 | 87.62 ± 0.12 | 0.8183 ± 0.0079 | 87.57 ± 0.06 |
+| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,42,2026 (3/3) | 0.4957 ± 0.0169 | 87.77 ± 0.28 | 0.8178 ± 0.0057 | 87.71 ± 0.24 |
 | first_second_order_interaction | mosei | full | valid_mae | validation | 13,42,2026 (3/3) | 0.4675 ± 0.0017 | 88.22 ± 0.47 | 0.7928 ± 0.0025 | 88.23 ± 0.40 |
 | first_second_order_interaction | mosei | full | valid_mae | test | 13,42,2026 (3/3) | 0.4780 ± 0.0007 | 87.47 ± 0.21 | 0.8215 ± 0.0023 | 87.46 ± 0.14 |
 | full_kd | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4792 ± 0.0174 | 88.66 ± 0.24 | 0.7904 ± 0.0046 | 88.62 ± 0.21 |
@@ -180,8 +180,8 @@
 
 | Run | 状态 | 已完成 epoch |
 |---|---|---:|
-| outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed2026 | training | 1 |
-| outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed42 | training | 9 |
+| outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed2026 | training | 3 |
+| outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed42 | training | 11 |
 | outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls/students/ensemble_full_seed2026 | paused | 7 |
 | outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls/students/ensemble_full_seed42 | paused | 7 |
 | outputs/experiments/rdid_v2_mosei/students/amplitude_u_seed13 | paused | 19 |

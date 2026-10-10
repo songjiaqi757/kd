@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-10",
+  "selected_runs": [
+    "uniform_interaction_coordinate_compatible_seed42",
+    "uniform_interaction_coordinate_compatible_seed2026"
+  ],
+  "selected_jobs": [
+    "uniform_interaction_coordinate_compatible_seed2026",
+    "uniform_interaction_coordinate_compatible_seed2026_test_valid_acc2_nonzero",
+    "uniform_interaction_coordinate_compatible_seed2026_test_valid_mae",
+    "uniform_interaction_coordinate_compatible_seed42",
+    "uniform_interaction_coordinate_compatible_seed42_test_valid_acc2_nonzero",
+    "uniform_interaction_coordinate_compatible_seed42_test_valid_mae"
+  ],
+  "from_device": 1,
+  "to_device": 0,
+  "gpu0_plan": "/home/wy/sjq/kd/outputs/experiments/equal_modality_extensions_v3/mosei/resource_queue_gpu0_20261010/plan.json",
+  "original_plan_sha256": "1fd71887650dcb32540e2f9ddde79ab7ffc4bc9dedcdff943e608620971a33f4",
+  "old_gpu1_scheduler_pid": 2700064,
+  "new_gpu1_scheduler_pid": 1710280,
+  "preserved_running_jobs": {
+    "uniform_interaction_gradient_projected_seed2026": {
+      "state": "running",
+      "pid": 748926,
+      "start_ticks": "242381295",
+      "started_at": 1791538208.88797
+    },
+    "uniform_interaction_coordinate_compatible_seed13": {
+      "state": "running",
+      "pid": 3290347,
+      "start_ticks": "248304763",
+      "started_at": 1791597443.5716531
+    }
+  },
+  "new_gpu0_scheduler_pid": 1731264,
+  "verification": {
+    "gpu0_both_training": true,
+    "gpu0_resident_mib": {
+      "1731434": 30362,
+      "1809878": 13692
+    },
+    "gpu0_free_mib": 40958,
+    "verified_at_unix": 1791606732.245037
+  }
+}

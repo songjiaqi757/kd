@@ -1,5 +1,7 @@
 # GPU1 原有 MOSEI 队列接续与并行调度
 
+2026-10-10 更新：按用户要求，将尚未启动的 `uniform_interaction_coordinate_compatible_seed42`、`uniform_interaction_coordinate_compatible_seed2026` 及其四次测评移至空闲 GPU0，GPU1 计划已移除这些任务。GPU1 两个在运行训练通过新调度器接管并继续。详见 [迁移记录](../../project/reports/gpu0_transfer_20261010.md)。下文为原始队列说明。
+
 用户于2026-10-08明确更正：原有 GPU1 队列继续，不转到 MOSI。没有启动 MOSI 迁移训练。
 
 旧18次训练中已有5次完成、1次运行，原来尚未开始的12次由新调度器接续：

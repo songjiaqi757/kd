@@ -152,11 +152,11 @@
 | 方法 | 数据集 | 范围 | 选模 | split | seeds（已有/该组） | MAE ↓ | Acc2 NZ ↑ (%) | Pearson ↑ | F1 NZ ↑ (%) |
 |---|---|---|---|---|---|---:|---:|---:|---:|
 | first_order_interaction | mosei | full | valid_acc2_nonzero | validation | 2026,42 (2/2) | 0.4694 ± 0.0019 | 88.84 ± 0.25 | 0.7915 ± 0.0009 | 88.78 ± 0.20 |
-| first_order_interaction | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
+| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026,42 (2/2) | 0.4793 ± 0.0013 | 88.17 ± 0.51 | 0.8187 ± 0.0027 | 88.10 ± 0.47 |
 | first_order_interaction | mosei | full | valid_mae | validation | 2026,42 (2/2) | 0.4644 ± 0.0001 | 88.11 ± 0.69 | 0.7974 ± 0.0000 | 88.10 ± 0.69 |
 | first_order_interaction | mosei | full | valid_mae | test | 2026,42 (2/2) | 0.4793 ± 0.0007 | 87.56 ± 0.47 | 0.8197 ± 0.0007 | 87.54 ± 0.48 |
 | first_second_order_interaction | mosei | full | valid_acc2_nonzero | validation | 2026,42 (2/2) | 0.4824 ± 0.0184 | 88.84 ± 0.34 | 0.7922 ± 0.0004 | 88.75 ± 0.34 |
-| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026 (1/2) | 0.4773 | 87.70 | 0.8239 | 87.61 |
+| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026,42 (2/2) | 0.4883 ± 0.0155 | 87.89 ± 0.27 | 0.8203 ± 0.0051 | 87.80 ± 0.26 |
 | first_second_order_interaction | mosei | full | valid_mae | validation | 2026,42 (2/2) | 0.4682 ± 0.0016 | 88.14 ± 0.64 | 0.7940 ± 0.0020 | 88.14 ± 0.51 |
 | first_second_order_interaction | mosei | full | valid_mae | test | 2026,42 (2/2) | 0.4776 ± 0.0003 | 87.49 ± 0.29 | 0.8226 ± 0.0019 | 87.48 ± 0.19 |
 
@@ -357,9 +357,9 @@
 | 方法 | 数据集 | 范围 | 选模 | split | seeds（已有/该组） | MAE ↓ | Acc2 NZ ↑ (%) | Pearson ↑ | F1 NZ ↑ (%) |
 |---|---|---|---|---|---|---:|---:|---:|---:|
 | video_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4792 ± 0.0174 | 88.66 ± 0.24 | 0.7904 ± 0.0046 | 88.62 ± 0.21 |
-| video_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| video_lora | mosei | full | valid_acc2_nonzero | test | 42 (1/3) | 0.4778 | 87.97 | 0.8171 | 87.93 |
 | video_lora | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.4671 ± 0.0038 | 88.02 ± 0.66 | 0.7901 ± 0.0075 | 88.01 ± 0.66 |
-| video_lora | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| video_lora | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.4798 ± 0.0019 | 87.28 ± 0.61 | 0.8169 ± 0.0042 | 87.28 ± 0.57 |
 
 ## student
 
@@ -368,35 +368,35 @@
 | fullscale_ensemble_pair | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5277 ± 0.0146 | 86.39 ± 0.11 | 0.7473 ± 0.0031 | — |
 | fullscale_ensemble_pair | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_ensemble_pair | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5087 ± 0.0014 | 85.47 ± 0.42 | 0.7445 ± 0.0036 | 85.49 ± 0.40 |
-| fullscale_ensemble_pair | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_ensemble_pair | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5219 ± 0.0046 | 85.38 ± 0.23 | 0.7736 ± 0.0035 | 85.37 ± 0.24 |
 | fullscale_full_kd | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5188 ± 0.0166 | 86.37 ± 0.49 | 0.7451 ± 0.0073 | — |
 | fullscale_full_kd | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_full_kd | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5072 ± 0.0046 | 85.30 ± 0.60 | 0.7423 ± 0.0064 | 85.29 ± 0.49 |
-| fullscale_full_kd | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_full_kd | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5180 ± 0.0018 | 86.04 ± 0.10 | 0.7801 ± 0.0036 | 85.98 ± 0.16 |
 | fullscale_pair_snr | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5156 ± 0.0062 | 86.21 ± 0.46 | 0.7387 ± 0.0046 | 86.10 |
-| fullscale_pair_snr | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| fullscale_pair_snr | mosei | full | valid_acc2_nonzero | test | 2026 (1/3) | 0.5173 | 86.05 | 0.7830 | 86.01 |
 | fullscale_pair_snr | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5085 ± 0.0013 | 85.30 ± 0.88 | 0.7408 ± 0.0069 | 85.38 ± 0.90 |
-| fullscale_pair_snr | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_pair_snr | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5191 ± 0.0016 | 85.56 ± 0.42 | 0.7799 ± 0.0033 | 85.56 ± 0.39 |
 | fullscale_reliability_utility_pair | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5175 ± 0.0121 | 86.30 ± 0.61 | 0.7448 ± 0.0052 | — |
 | fullscale_reliability_utility_pair | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_reliability_utility_pair | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5055 ± 0.0023 | 85.14 ± 0.73 | 0.7451 ± 0.0027 | 85.13 ± 0.62 |
-| fullscale_reliability_utility_pair | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_reliability_utility_pair | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5231 ± 0.0014 | 85.56 ± 0.11 | 0.7736 ± 0.0050 | 85.54 ± 0.12 |
 | fullscale_selective50_interaction4 | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5608 ± 0.0436 | 85.81 ± 0.39 | 0.7333 ± 0.0080 | — |
 | fullscale_selective50_interaction4 | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_selective50_interaction4 | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5061 ± 0.0047 | 85.33 ± 0.55 | 0.7462 ± 0.0030 | 85.23 ± 0.44 |
-| fullscale_selective50_interaction4 | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_selective50_interaction4 | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5230 ± 0.0060 | 85.18 ± 0.53 | 0.7746 ± 0.0027 | 85.05 ± 0.45 |
 | fullscale_student | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5572 ± 0.0144 | 85.23 ± 0.46 | 0.7143 ± 0.0144 | — |
 | fullscale_student | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_student | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5323 ± 0.0080 | 84.79 ± 0.82 | 0.7180 ± 0.0073 | 84.28 ± 1.07 |
-| fullscale_student | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_student | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5482 ± 0.0068 | 84.25 ± 0.92 | 0.7548 ± 0.0006 | 83.78 ± 1.17 |
 | fullscale_subset4 | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5231 ± 0.0117 | 86.30 ± 0.67 | 0.7355 ± 0.0126 | 85.67 |
-| fullscale_subset4 | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| fullscale_subset4 | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.5339 | 85.77 | 0.7750 | 85.87 |
 | fullscale_subset4 | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5084 ± 0.0050 | 85.79 ± 0.38 | 0.7465 ± 0.0068 | 85.80 ± 0.40 |
-| fullscale_subset4 | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| fullscale_subset4 | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5265 ± 0.0064 | 85.85 ± 0.10 | 0.7767 ± 0.0016 | 85.84 ± 0.15 |
 | fullscale_utility_pair | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.5231 | 86.09 | 0.7418 | — |
 | fullscale_utility_pair | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | fullscale_utility_pair | mosei | full | valid_mae | validation | 13 (1/1) | 0.5199 | 84.35 | 0.7484 | 84.50 |
-| fullscale_utility_pair | mosei | full | valid_mae | test | — (0/1) | — | — | — | — |
+| fullscale_utility_pair | mosei | full | valid_mae | test | 13 (1/1) | 0.5226 | 86.08 | 0.7807 | 86.11 |
 | polarity_e1 | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.5535 ± 0.0480 | 86.61 ± 0.64 | 0.7208 ± 0.0266 | — |
 | polarity_e1 | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | polarity_e1 | mosei | full | valid_mae | validation | 13,42 (2/2) | 0.5145 ± 0.0043 | 85.19 ± 0.89 | 0.7371 ± 0.0014 | — |
@@ -410,41 +410,41 @@
 | polarity_e2_detached | mosei | full | valid_mae | validation | 13 (1/1) | 0.5139 | 83.94 | 0.7482 | — |
 | polarity_e2_detached | mosei | full | valid_mae | test | — (0/1) | — | — | — | — |
 | stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5278 ± 0.0245 | 87.20 ± 0.72 | 0.7600 ± 0.0036 | 87.86 |
-| stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | test | 42 (1/3) | 0.5119 | 86.65 | 0.7941 | 86.51 |
 | stage_d_c0_task_only_lora | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5127 ± 0.0011 | 86.51 ± 1.47 | 0.7561 ± 0.0164 | 86.40 ± 1.30 |
-| stage_d_c0_task_only_lora | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_c0_task_only_lora | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5249 ± 0.0114 | 85.64 ± 1.13 | 0.7827 ± 0.0121 | 85.59 ± 0.94 |
 | stage_d_c2_ensemble_pair_lora | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.4732 ± 0.0023 | 89.36 ± 0.30 | 0.7908 ± 0.0004 | — |
 | stage_d_c2_ensemble_pair_lora | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | stage_d_c2_ensemble_pair_lora | mosei | full | valid_mae | validation | 13,42 (2/2) | 0.4675 ± 0.0046 | 88.35 ± 0.84 | 0.7939 ± 0.0009 | 88.28 ± 0.86 |
-| stage_d_c2_ensemble_pair_lora | mosei | full | valid_mae | test | — (0/2) | — | — | — | — |
+| stage_d_c2_ensemble_pair_lora | mosei | full | valid_mae | test | 13,42 (2/2) | 0.4816 ± 0.0000 | 87.47 ± 0.56 | 0.8202 ± 0.0000 | 87.38 ± 0.59 |
 | stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5477 ± 0.0361 | 86.58 ± 0.55 | 0.7431 ± 0.0016 | — |
 | stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5039 ± 0.0019 | 85.91 ± 0.49 | 0.7495 ± 0.0061 | 85.81 ± 0.57 |
-| stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5207 ± 0.0023 | 85.91 ± 0.17 | 0.7795 ± 0.0022 | 85.84 ± 0.13 |
 | stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5152 ± 0.0813 | 88.85 ± 0.35 | 0.7816 ± 0.0239 | 89.17 |
-| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | test | 2026 (1/3) | 0.4782 | 87.84 | 0.8213 | 87.79 |
 | stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.4662 ± 0.0002 | 87.60 ± 1.42 | 0.7942 ± 0.0016 | 87.64 ± 1.35 |
-| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.4840 ± 0.0079 | 87.16 ± 0.79 | 0.8171 ± 0.0040 | 87.19 ± 0.69 |
 | stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.4758 ± 0.0039 | 88.42 ± 0.05 | 0.7924 ± 0.0007 | — |
 | stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_mae | validation | 13,42 (2/2) | 0.4672 ± 0.0020 | 88.25 ± 0.20 | 0.7895 ± 0.0000 | 88.25 ± 0.26 |
-| stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_mae | test | — (0/2) | — | — | — | — |
+| stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_mae | test | 13,42 (2/2) | 0.4823 ± 0.0056 | 87.22 ± 0.21 | 0.8181 ± 0.0041 | 87.21 ± 0.27 |
 | stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5205 ± 0.0132 | 86.65 ± 0.57 | 0.7464 ± 0.0059 | 86.82 |
-| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.5277 | 85.88 | 0.7791 | 85.89 |
 | stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.5048 ± 0.0005 | 86.11 ± 0.74 | 0.7484 ± 0.0037 | 86.12 ± 0.71 |
-| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.5246 ± 0.0030 | 85.62 ± 0.53 | 0.7744 ± 0.0043 | 85.60 ± 0.49 |
 | stage_d_d1_full_kd_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4959 ± 0.0323 | 89.11 ± 0.32 | 0.7848 ± 0.0110 | — |
 | stage_d_d1_full_kd_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | stage_d_d1_full_kd_lora | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.4728 ± 0.0057 | 87.39 ± 1.19 | 0.7907 ± 0.0026 | 87.39 ± 1.18 |
-| stage_d_d1_full_kd_lora | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_d1_full_kd_lora | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.4884 ± 0.0063 | 87.13 ± 0.61 | 0.8109 ± 0.0053 | 87.14 ± 0.60 |
 | stage_d_d2_ru_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4795 ± 0.0085 | 88.41 ± 0.14 | 0.7847 ± 0.0115 | — |
 | stage_d_d2_ru_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | stage_d_d2_ru_lora | mosei | full | valid_mae | validation | 13,2026,42 (3/3) | 0.4646 ± 0.0008 | 87.62 ± 0.14 | 0.7946 ± 0.0043 | 87.63 ± 0.16 |
-| stage_d_d2_ru_lora | mosei | full | valid_mae | test | — (0/3) | — | — | — | — |
+| stage_d_d2_ru_lora | mosei | full | valid_mae | test | 13,2026,42 (3/3) | 0.4787 ± 0.0041 | 87.38 ± 0.25 | 0.8186 ± 0.0015 | 87.37 ± 0.19 |
 | stage_d_d3_full_kd_hidden | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.5319 ± 0.0258 | 85.95 ± 0.20 | 0.7267 ± 0.0148 | — |
 | stage_d_d3_full_kd_hidden | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | stage_d_d3_full_kd_hidden | mosei | full | valid_mae | validation | 13,42 (2/2) | 0.5114 ± 0.0055 | 85.47 ± 0.79 | 0.7426 ± 0.0055 | 85.28 ± 0.64 |
-| stage_d_d3_full_kd_hidden | mosei | full | valid_mae | test | — (0/2) | — | — | — | — |
+| stage_d_d3_full_kd_hidden | mosei | full | valid_mae | test | 13,42 (2/2) | 0.5295 ± 0.0044 | 85.51 ± 0.33 | 0.7712 ± 0.0026 | 85.37 ± 0.24 |
 | a10_random_nonorthogonal_cseed100 | mosei | pilot | valid_acc2_nonzero | validation | 2026 (1/1) | 0.6701 | 80.95 | 0.6206 | 80.95 |
 | a10_random_nonorthogonal_cseed100 | mosei | pilot | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | a10_random_nonorthogonal_cseed100 | mosei | pilot | valid_mae | validation | 2026 (1/1) | 0.6701 | 80.95 | 0.6206 | 80.95 |
@@ -703,12 +703,12 @@
 | frozen_video | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.4750 | 88.73 | 0.7920 | 88.66 |
 | frozen_video | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | frozen_video | mosei | full | valid_mae | validation | 13 (1/1) | 0.4717 | 87.69 | 0.7965 | 87.74 |
-| frozen_video | mosei | full | valid_mae | test | — (0/1) | — | — | — | — |
+| frozen_video | mosei | full | valid_mae | test | 13 (1/1) | 0.4818 | 86.98 | 0.8200 | 86.99 |
 | ta_only | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.4787 | 88.60 | 0.7801 | 88.58 |
 | ta_only | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | ta_only | mosei | full | valid_mae | validation | 13 (1/1) | 0.4690 | 88.60 | 0.7890 | 88.54 |
-| ta_only | mosei | full | valid_mae | test | — (0/1) | — | — | — | — |
+| ta_only | mosei | full | valid_mae | test | 13 (1/1) | 0.4833 | 87.53 | 0.8159 | 87.50 |
 | video_lora | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.4736 | 88.32 | 0.7917 | 88.33 |
 | video_lora | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | video_lora | mosei | full | valid_mae | validation | 13 (1/1) | 0.4703 | 87.76 | 0.7922 | 87.73 |
-| video_lora | mosei | full | valid_mae | test | — (0/1) | — | — | — | — |
+| video_lora | mosei | full | valid_mae | test | 13 (1/1) | 0.4835 | 87.04 | 0.8143 | 86.99 |

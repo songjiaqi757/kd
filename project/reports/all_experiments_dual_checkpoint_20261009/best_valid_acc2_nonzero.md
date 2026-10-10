@@ -28,9 +28,9 @@
 | ensemble_full | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.4967 | 88.94 | 0.7826 | 88.94 |
 | ensemble_full | mosei | full | valid_acc2_nonzero | test | 13 (1/1) | 0.5097 | 87.01 | 0.8048 | 87.00 |
 | first_order_interaction | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4694 ± 0.0013 | 88.80 ± 0.18 | 0.7939 ± 0.0041 | 88.70 ± 0.19 |
-| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.4891 | 87.26 | 0.8186 | 87.09 |
+| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,42,2026 (3/3) | 0.4826 ± 0.0057 | 87.86 ± 0.63 | 0.8187 ± 0.0019 | 87.76 ± 0.67 |
 | first_second_order_interaction | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4902 ± 0.0187 | 88.73 ± 0.30 | 0.7913 ± 0.0017 | 88.68 ± 0.27 |
-| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,2026 (2/3) | 0.4940 ± 0.0236 | 87.62 ± 0.12 | 0.8183 ± 0.0079 | 87.57 ± 0.06 |
+| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 13,42,2026 (3/3) | 0.4957 ± 0.0169 | 87.77 ± 0.28 | 0.8178 ± 0.0057 | 87.71 ± 0.24 |
 | full_kd | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4792 ± 0.0174 | 88.66 ± 0.24 | 0.7904 ± 0.0046 | 88.62 ± 0.21 |
 | full_kd | mosei | full | valid_acc2_nonzero | test | 13,42 (2/3) | 0.4949 ± 0.0242 | 87.66 ± 0.45 | 0.8143 ± 0.0040 | 87.65 ± 0.40 |
 | random_orthogonal | mosei | full | valid_acc2_nonzero | validation | 13,42,2026 (3/3) | 0.4730 ± 0.0043 | 88.94 ± 0.25 | 0.7917 ± 0.0050 | 88.85 ± 0.27 |
@@ -182,9 +182,9 @@
 | 方法 | 数据集 | 范围 | 选模 | split | seeds（已有/该组） | MAE ↓ | Acc2 NZ ↑ (%) | Pearson ↑ | F1 NZ ↑ (%) |
 |---|---|---|---|---|---|---:|---:|---:|---:|
 | first_order_interaction | mosei | full | valid_acc2_nonzero | validation | 2026,42 (2/2) | 0.4694 ± 0.0019 | 88.84 ± 0.25 | 0.7915 ± 0.0009 | 88.78 ± 0.20 |
-| first_order_interaction | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
+| first_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026,42 (2/2) | 0.4793 ± 0.0013 | 88.17 ± 0.51 | 0.8187 ± 0.0027 | 88.10 ± 0.47 |
 | first_second_order_interaction | mosei | full | valid_acc2_nonzero | validation | 2026,42 (2/2) | 0.4824 ± 0.0184 | 88.84 ± 0.34 | 0.7922 ± 0.0004 | 88.75 ± 0.34 |
-| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026 (1/2) | 0.4773 | 87.70 | 0.8239 | 87.61 |
+| first_second_order_interaction | mosei | full | valid_acc2_nonzero | test | 2026,42 (2/2) | 0.4883 ± 0.0155 | 87.89 ± 0.27 | 0.8203 ± 0.0051 | 87.80 ± 0.26 |
 
 ### experiments/multiseed_controls_v1/mosi
 
@@ -307,7 +307,7 @@
 | 方法 | 数据集 | 范围 | 选模 | split | seeds（已有/该组） | MAE ↓ | Acc2 NZ ↑ (%) | Pearson ↑ | F1 NZ ↑ (%) |
 |---|---|---|---|---|---|---:|---:|---:|---:|
 | video_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4792 ± 0.0174 | 88.66 ± 0.24 | 0.7904 ± 0.0046 | 88.62 ± 0.21 |
-| video_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| video_lora | mosei | full | valid_acc2_nonzero | test | 42 (1/3) | 0.4778 | 87.97 | 0.8171 | 87.93 |
 
 ### student
 
@@ -318,7 +318,7 @@
 | fullscale_full_kd | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5188 ± 0.0166 | 86.37 ± 0.49 | 0.7451 ± 0.0073 | — |
 | fullscale_full_kd | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_pair_snr | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5156 ± 0.0062 | 86.21 ± 0.46 | 0.7387 ± 0.0046 | 86.10 |
-| fullscale_pair_snr | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| fullscale_pair_snr | mosei | full | valid_acc2_nonzero | test | 2026 (1/3) | 0.5173 | 86.05 | 0.7830 | 86.01 |
 | fullscale_reliability_utility_pair | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5175 ± 0.0121 | 86.30 ± 0.61 | 0.7448 ± 0.0052 | — |
 | fullscale_reliability_utility_pair | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_selective50_interaction4 | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5608 ± 0.0436 | 85.81 ± 0.39 | 0.7333 ± 0.0080 | — |
@@ -326,7 +326,7 @@
 | fullscale_student | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5572 ± 0.0144 | 85.23 ± 0.46 | 0.7143 ± 0.0144 | — |
 | fullscale_student | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | fullscale_subset4 | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5231 ± 0.0117 | 86.30 ± 0.67 | 0.7355 ± 0.0126 | 85.67 |
-| fullscale_subset4 | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| fullscale_subset4 | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.5339 | 85.77 | 0.7750 | 85.87 |
 | fullscale_utility_pair | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.5231 | 86.09 | 0.7418 | — |
 | fullscale_utility_pair | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | polarity_e1 | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.5535 ± 0.0480 | 86.61 ± 0.64 | 0.7208 ± 0.0266 | — |
@@ -336,17 +336,17 @@
 | polarity_e2_detached | mosei | full | valid_acc2_nonzero | validation | 13 (1/1) | 0.5490 | 86.16 | 0.7518 | — |
 | polarity_e2_detached | mosei | full | valid_acc2_nonzero | test | — (0/1) | — | — | — | — |
 | stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5278 ± 0.0245 | 87.20 ± 0.72 | 0.7600 ± 0.0036 | 87.86 |
-| stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_c0_task_only_lora | mosei | full | valid_acc2_nonzero | test | 42 (1/3) | 0.5119 | 86.65 | 0.7941 | 86.51 |
 | stage_d_c2_ensemble_pair_lora | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.4732 ± 0.0023 | 89.36 ± 0.30 | 0.7908 ± 0.0004 | — |
 | stage_d_c2_ensemble_pair_lora | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5477 ± 0.0361 | 86.58 ± 0.55 | 0.7431 ± 0.0016 | — |
 | stage_d_cminus1_online_frozen_full_kd | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5152 ± 0.0813 | 88.85 ± 0.35 | 0.7816 ± 0.0239 | 89.17 |
-| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_c1_full_kd_lora_tempfix | mosei | full | valid_acc2_nonzero | test | 2026 (1/3) | 0.4782 | 87.84 | 0.8213 | 87.79 |
 | stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_acc2_nonzero | validation | 13,42 (2/2) | 0.4758 ± 0.0039 | 88.42 ± 0.05 | 0.7924 ± 0.0007 | — |
 | stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean | mosei | full | valid_acc2_nonzero | test | — (0/2) | — | — | — | — |
 | stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.5205 ± 0.0132 | 86.65 ± 0.57 | 0.7464 ± 0.0059 | 86.82 |
-| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
+| stage_d_cv2_cminus1_online_frozen_full_kd_tempfix | mosei | full | valid_acc2_nonzero | test | 13 (1/3) | 0.5277 | 85.88 | 0.7791 | 85.89 |
 | stage_d_d1_full_kd_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4959 ± 0.0323 | 89.11 ± 0.32 | 0.7848 ± 0.0110 | — |
 | stage_d_d1_full_kd_lora | mosei | full | valid_acc2_nonzero | test | — (0/3) | — | — | — | — |
 | stage_d_d2_ru_lora | mosei | full | valid_acc2_nonzero | validation | 13,2026,42 (3/3) | 0.4795 ± 0.0085 | 88.41 ± 0.14 | 0.7847 ± 0.0115 | — |

@@ -1,0 +1,1767 @@
+{
+  "snapshot": "2026-10-10T22:54:03+08:00",
+  "scope": "MOSEI equal_modality_extensions_v3; all 18 planned runs",
+  "counts": {
+    "complete": 9,
+    "training": 4,
+    "pending": 5
+  },
+  "completed_test_reports": 18,
+  "runs": [
+    {
+      "method": "uniform_interaction",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed13",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 14
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 14,
+          "train_loss": 0.6291727228636605,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46926938970081455,
+            "pearson": 0.7936038443821876,
+            "acc2_nonzero": 0.8908205841446454,
+            "f1_weighted_nonzero": 0.8898710945545169,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8647781934794228,
+            "f1_weighted_has_zero": 0.8670766228585419,
+            "acc7": 0.5676109032602886
+          },
+          "gradient_norm_last": 3.7698380947113037,
+          "elapsed_seconds": 60869.86550951004
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 3,
+          "train_loss": 1.0885037085601867,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4767443909760708,
+            "pearson": 0.786939276831579,
+            "acc2_nonzero": 0.8908205841446454,
+            "f1_weighted_nonzero": 0.889988551361113,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8717263495456975,
+            "f1_weighted_has_zero": 0.873615480794632,
+            "acc7": 0.5750935328701229
+          },
+          "gradient_norm_last": 11.131895065307617,
+          "elapsed_seconds": 12969.272712230682
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed42",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 11
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 11,
+          "train_loss": 0.6569648883659024,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4636806246048737,
+            "pearson": 0.7989442381331869,
+            "acc2_nonzero": 0.8796940194714882,
+            "f1_weighted_nonzero": 0.8796118273330639,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8295029396044896,
+            "f1_weighted_has_zero": 0.8353452892212967,
+            "acc7": 0.5745590593265634
+          },
+          "gradient_norm_last": 9.642386436462402,
+          "elapsed_seconds": 47987.80996632576
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 8,
+          "train_loss": 0.72667409614243,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46878517136153175,
+            "pearson": 0.7963008900222374,
+            "acc2_nonzero": 0.8908205841446454,
+            "f1_weighted_nonzero": 0.8903268935997013,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8647781934794228,
+            "f1_weighted_has_zero": 0.8675964406663071,
+            "acc7": 0.581507215392838
+          },
+          "gradient_norm_last": 8.491968154907227,
+          "elapsed_seconds": 35023.63914346695
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed2026",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 11
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 11,
+          "train_loss": 0.6692804781082,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4711729441957424,
+            "pearson": 0.7993065671972788,
+            "acc2_nonzero": 0.8789986091794159,
+            "f1_weighted_nonzero": 0.8788318899201017,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8423303046499199,
+            "f1_weighted_has_zero": 0.8469077523941138,
+            "acc7": 0.564404061998931
+          },
+          "gradient_norm_last": 7.008196830749512,
+          "elapsed_seconds": 47834.823669195175
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 12,
+          "train_loss": 0.6541099176626247,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.47637795297542795,
+            "pearson": 0.7959566570043313,
+            "acc2_nonzero": 0.8894297635605007,
+            "f1_weighted_nonzero": 0.8880327948759257,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8663816141101015,
+            "f1_weighted_has_zero": 0.867999946375164,
+            "acc7": 0.5595938001068947
+          },
+          "gradient_norm_last": 10.638589859008789,
+          "elapsed_seconds": 52222.9524474144
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed13",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 16
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 16,
+          "train_loss": 0.6031399293675649,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46948936384691653,
+            "pearson": 0.7964446777681703,
+            "acc2_nonzero": 0.8845618915159944,
+            "f1_weighted_nonzero": 0.8848153354534131,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8385889898450026,
+            "f1_weighted_has_zero": 0.8442043093530938,
+            "acc7": 0.5702832709780866
+          },
+          "gradient_norm_last": 7.879610061645508,
+          "elapsed_seconds": 69616.40311145782
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 18,
+          "train_loss": 0.5943575016914511,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.476165977457086,
+            "pearson": 0.7926314566920296,
+            "acc2_nonzero": 0.8901251738525731,
+            "f1_weighted_nonzero": 0.8891397132677563,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8567610903260289,
+            "f1_weighted_has_zero": 0.8596458157827455,
+            "acc7": 0.5595938001068947
+          },
+          "gradient_norm_last": 13.827641487121582,
+          "elapsed_seconds": 78219.91637539864
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed42",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 14
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 14,
+          "train_loss": 0.655304164906791,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4682909871124272,
+            "pearson": 0.7896545520269685,
+            "acc2_nonzero": 0.8734353268428373,
+            "f1_weighted_nonzero": 0.8748725146337184,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8081239978621059,
+            "f1_weighted_has_zero": 0.8172079466028572,
+            "acc7": 0.5799037947621593
+          },
+          "gradient_norm_last": 14.389666557312012,
+          "elapsed_seconds": 60381.24748945236
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 8,
+          "train_loss": 0.7349456668603109,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46995729665871916,
+            "pearson": 0.7941167402933739,
+            "acc2_nonzero": 0.8838664812239221,
+            "f1_weighted_nonzero": 0.8850941782333175,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8246926777124532,
+            "f1_weighted_has_zero": 0.8325794833850102,
+            "acc7": 0.572421165152325
+          },
+          "gradient_norm_last": 26.23097038269043,
+          "elapsed_seconds": 34490.06259608269
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed2026",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 14
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 14,
+          "train_loss": 0.6269700214978889,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4700319894747989,
+            "pearson": 0.793744672712308,
+            "acc2_nonzero": 0.8699582753824756,
+            "f1_weighted_nonzero": 0.871454889960648,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8011758417958311,
+            "f1_weighted_has_zero": 0.8107705661265787,
+            "acc7": 0.5718866916087654
+          },
+          "gradient_norm_last": 24.083913803100586,
+          "elapsed_seconds": 65193.879992723465
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 13,
+          "train_loss": 0.6357173390687211,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4760264833257725,
+            "pearson": 0.7935303792376597,
+            "acc2_nonzero": 0.8894297635605007,
+            "f1_weighted_nonzero": 0.8883468241232675,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8727952966328166,
+            "f1_weighted_has_zero": 0.874267877124678,
+            "acc7": 0.5601282736504543
+          },
+          "gradient_norm_last": 13.449846267700195,
+          "elapsed_seconds": 59915.06222701073
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed13",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 9
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 9,
+          "train_loss": 0.709938003855239,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4638265814230592,
+            "pearson": 0.7981702173792153,
+            "acc2_nonzero": 0.8824756606397774,
+            "f1_weighted_nonzero": 0.882449045686883,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.840726884019241,
+            "f1_weighted_has_zero": 0.8457509771311817,
+            "acc7": 0.5756280064136825
+          },
+          "gradient_norm_last": 9.286381721496582,
+          "elapsed_seconds": 46024.484104156494,
+          "base_auxiliary_gradient_cosine": 0.2353644222021103,
+          "auxiliary_gradient_projected": false
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 17,
+          "train_loss": 0.6155293719888059,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46569096083079786,
+            "pearson": 0.8007493115177556,
+            "acc2_nonzero": 0.8852573018080667,
+            "f1_weighted_nonzero": 0.8845634088211994,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8551576696953501,
+            "f1_weighted_has_zero": 0.8583101907734549,
+            "acc7": 0.5692143238909674
+          },
+          "gradient_norm_last": 19.33833885192871,
+          "elapsed_seconds": 86095.19443821907,
+          "base_auxiliary_gradient_cosine": 0.8975309133529663,
+          "auxiliary_gradient_projected": false
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed42",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 11
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 11,
+          "train_loss": 0.664856737554586,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46648767776674455,
+            "pearson": 0.7955793464628511,
+            "acc2_nonzero": 0.8630041724617524,
+            "f1_weighted_nonzero": 0.8637774213354652,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.806520577231427,
+            "f1_weighted_has_zero": 0.8146291373493405,
+            "acc7": 0.5766969535008017
+          },
+          "gradient_norm_last": 16.168193817138672,
+          "elapsed_seconds": 53168.44977092743,
+          "base_auxiliary_gradient_cosine": -0.9057331085205078,
+          "auxiliary_gradient_projected": true
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 16,
+          "train_loss": 0.6148208242843566,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4805838751381752,
+            "pearson": 0.7840249718331823,
+            "acc2_nonzero": 0.8824756606397774,
+            "f1_weighted_nonzero": 0.8806406043783326,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8637092463923036,
+            "f1_weighted_has_zero": 0.8647994105271323,
+            "acc7": 0.5745590593265634
+          },
+          "gradient_norm_last": 16.831865310668945,
+          "elapsed_seconds": 75580.04652643204,
+          "base_auxiliary_gradient_cosine": 0.6565567255020142,
+          "auxiliary_gradient_projected": false
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed2026",
+      "state": "complete",
+      "device": 1,
+      "completed_epochs": 20,
+      "progress": {
+        "status": "complete",
+        "best_epoch": 13
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 13,
+          "train_loss": 0.6563902453464332,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4694668014106062,
+            "pearson": 0.788204510743239,
+            "acc2_nonzero": 0.8949930458970793,
+            "f1_weighted_nonzero": 0.8941928105447647,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8695884553714591,
+            "f1_weighted_has_zero": 0.8718373853988597,
+            "acc7": 0.5793693212185996
+          },
+          "gradient_norm_last": 16.009187698364258,
+          "elapsed_seconds": 59305.60749077797,
+          "base_auxiliary_gradient_cosine": 0.3282318115234375,
+          "auxiliary_gradient_projected": false
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 13,
+          "train_loss": 0.6563902453464332,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4694668014106062,
+            "pearson": 0.788204510743239,
+            "acc2_nonzero": 0.8949930458970793,
+            "f1_weighted_nonzero": 0.8941928105447647,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8695884553714591,
+            "f1_weighted_has_zero": 0.8718373853988597,
+            "acc7": 0.5793693212185996
+          },
+          "gradient_norm_last": 16.009187698364258,
+          "elapsed_seconds": 59305.60749077797,
+          "base_auxiliary_gradient_cosine": 0.3282318115234375,
+          "auxiliary_gradient_projected": false
+        }
+      },
+      "test_reports": 2
+    },
+    {
+      "method": "uniform_interaction_coordinate_compatible",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_coordinate_compatible_seed13",
+      "state": "training",
+      "device": 1,
+      "completed_epochs": 9,
+      "progress": {
+        "status": "training",
+        "method": "uniform_interaction_coordinate_compatible",
+        "epoch": 10,
+        "step": 600,
+        "steps": 2050,
+        "loss": 0.9006045460700989,
+        "elapsed_seconds": 46551.712851047516,
+        "coordinate_gradient_cosines": [
+          0.9782363772392273,
+          0.9254884719848633,
+          0.9150410890579224,
+          0.9632804989814758,
+          0.8969140648841858,
+          0.9013205170631409,
+          0.9193821549415588
+        ],
+        "coordinate_compatibility_weights": [
+          1.025777816772461,
+          0.9984262585639954,
+          0.9930089712142944,
+          1.0180226564407349,
+          0.9836094975471497,
+          0.9858943819999695,
+          0.9952599406242371
+        ]
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 7,
+          "train_loss": 0.7702761314492286,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46277646897386765,
+            "pearson": 0.7995695175511885,
+            "acc2_nonzero": 0.8769123783031989,
+            "f1_weighted_nonzero": 0.87677144199765,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8321753073222875,
+            "f1_weighted_has_zero": 0.8375940562819916,
+            "acc7": 0.5847140566541956
+          },
+          "gradient_norm_last": 10.374068260192871,
+          "elapsed_seconds": 34943.7792737484,
+          "coordinate_gradient_cosines": [
+            -0.48154252767562866,
+            -0.5866125822067261,
+            -0.78975909948349,
+            -0.5573462247848511,
+            -0.7103697061538696,
+            -0.5169066190719604,
+            0.18777193129062653
+          ],
+          "coordinate_compatibility_weights": [
+            1.0236843824386597,
+            0.8162255883216858,
+            0.41511666774749756,
+            0.8740114569664001,
+            0.5718694925308228,
+            0.9538586735725403,
+            2.3452329635620117
+          ]
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 5,
+          "train_loss": 0.8788199356626681,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4946385972837365,
+            "pearson": 0.8035401170028448,
+            "acc2_nonzero": 0.8929068150208623,
+            "f1_weighted_nonzero": 0.8907270637087432,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8727952966328166,
+            "f1_weighted_has_zero": 0.8731837966657636,
+            "acc7": 0.5435595938001069
+          },
+          "gradient_norm_last": 16.101083755493164,
+          "elapsed_seconds": 24652.251395463943,
+          "coordinate_gradient_cosines": [
+            0.8611204028129578,
+            0.009779665619134903,
+            0.4618397653102875,
+            0.6034103631973267,
+            0.2459677755832672,
+            0.4017219841480255,
+            0.41630950570106506
+          ],
+          "coordinate_compatibility_weights": [
+            1.302764892578125,
+            0.7068352103233337,
+            1.0232725143432617,
+            1.1223704814910889,
+            0.8721643686294556,
+            0.9811906814575195,
+            0.9914017915725708
+          ]
+        }
+      },
+      "test_reports": 0,
+      "estimated_remaining_hours": 15.373164813964346
+    },
+    {
+      "method": "uniform_interaction_coordinate_compatible",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_coordinate_compatible_seed42",
+      "state": "training",
+      "device": 0,
+      "completed_epochs": 7,
+      "progress": {
+        "status": "training",
+        "method": "uniform_interaction_coordinate_compatible",
+        "epoch": 8,
+        "step": 400,
+        "steps": 2050,
+        "loss": 0.46537530422210693,
+        "elapsed_seconds": 37300.80173206329,
+        "coordinate_gradient_cosines": [
+          -0.3724711239337921,
+          0.7243129014968872,
+          0.18148474395275116,
+          -0.12468859553337097,
+          -0.7250089049339294,
+          -0.5094313025474548,
+          -0.7798059582710266
+        ],
+        "coordinate_compatibility_weights": [
+          0.8143090605735779,
+          2.237544059753418,
+          1.5331463813781738,
+          1.1358424425125122,
+          0.3568405210971832,
+          0.6365835070610046,
+          0.2857334613800049
+        ]
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 7,
+          "train_loss": 0.7557257698979201,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.46707997939783874,
+            "pearson": 0.799424541173968,
+            "acc2_nonzero": 0.8845618915159944,
+            "f1_weighted_nonzero": 0.8818262339408871,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8722608230892571,
+            "f1_weighted_has_zero": 0.8718152766900029,
+            "acc7": 0.5761624799572421
+          },
+          "gradient_norm_last": 25.308456420898438,
+          "elapsed_seconds": 36418.81239795685,
+          "coordinate_gradient_cosines": [
+            0.8083601593971252,
+            0.8317796587944031,
+            0.8982751965522766,
+            0.8558400869369507,
+            0.7735894918441772,
+            0.7736736536026001,
+            0.3293166160583496
+          ],
+          "coordinate_compatibility_weights": [
+            1.031593918800354,
+            1.0449538230895996,
+            1.0828866958618164,
+            1.0586793422698975,
+            1.011758804321289,
+            1.0118067264556885,
+            0.758319616317749
+          ]
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 4,
+          "train_loss": 0.9622686973571706,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.47207056044925877,
+            "pearson": 0.7974317140243579,
+            "acc2_nonzero": 0.8915159944367177,
+            "f1_weighted_nonzero": 0.8910525313134179,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8444681988241582,
+            "f1_weighted_has_zero": 0.8490451430148622,
+            "acc7": 0.5638695884553715
+          },
+          "gradient_norm_last": 7.062671661376953,
+          "elapsed_seconds": 20865.755212306976,
+          "coordinate_gradient_cosines": [
+            -0.84095698595047,
+            -0.6848974227905273,
+            0.6853654384613037,
+            -0.6911793351173401,
+            -0.753117561340332,
+            -0.7336200475692749,
+            -0.7676908373832703
+          ],
+          "coordinate_compatibility_weights": [
+            0.346401572227478,
+            0.686305046081543,
+            3.670788288116455,
+            0.672622799873352,
+            0.5377190709114075,
+            0.5801853537559509,
+            0.5059779286384583
+          ]
+        }
+      },
+      "test_reports": 0,
+      "estimated_remaining_hours": 18.40637889892105
+    },
+    {
+      "method": "uniform_interaction_coordinate_compatible",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_coordinate_compatible_seed2026",
+      "state": "training",
+      "device": 0,
+      "completed_epochs": 7,
+      "progress": {
+        "status": "training",
+        "method": "uniform_interaction_coordinate_compatible",
+        "epoch": 8,
+        "step": 400,
+        "steps": 2050,
+        "loss": 0.7246183156967163,
+        "elapsed_seconds": 37221.249606609344,
+        "coordinate_gradient_cosines": [
+          0.6056773066520691,
+          -0.7707929015159607,
+          -0.7692098617553711,
+          -0.5465001463890076,
+          -0.7578118443489075,
+          -0.7736084461212158,
+          -0.5423974990844727
+        ],
+        "coordinate_compatibility_weights": [
+          3.262286424636841,
+          0.46568459272384644,
+          0.4689008891582489,
+          0.9213846325874329,
+          0.49205848574638367,
+          0.45996421575546265,
+          0.9297201037406921
+        ]
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 6,
+          "train_loss": 0.8209471681385202,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4720146078629912,
+            "pearson": 0.7907713582043723,
+            "acc2_nonzero": 0.8678720445062587,
+            "f1_weighted_nonzero": 0.8693724053868488,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8006413682522715,
+            "f1_weighted_has_zero": 0.8102023506576892,
+            "acc7": 0.5729556386958845
+          },
+          "gradient_norm_last": 28.11114501953125,
+          "elapsed_seconds": 31204.06310081482,
+          "coordinate_gradient_cosines": [
+            0.856480598449707,
+            0.8948444724082947,
+            0.3105202615261078,
+            0.7075092196464539,
+            -0.923892617225647,
+            -0.8991771936416626,
+            -0.9041094183921814
+          ],
+          "coordinate_compatibility_weights": [
+            1.8453621864318848,
+            1.8834962844848633,
+            1.3026715517044067,
+            1.6972830295562744,
+            0.07565157860517502,
+            0.10021898150444031,
+            0.09531629085540771
+          ]
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 4,
+          "train_loss": 0.9751824277064909,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.4759175477112536,
+            "pearson": 0.7895776967926469,
+            "acc2_nonzero": 0.8824756606397774,
+            "f1_weighted_nonzero": 0.8830473584943513,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.831640833778728,
+            "f1_weighted_has_zero": 0.8381318558455679,
+            "acc7": 0.567076429716729
+          },
+          "gradient_norm_last": 25.39915657043457,
+          "elapsed_seconds": 20980.328739643097,
+          "coordinate_gradient_cosines": [
+            0.8856305480003357,
+            0.6416047811508179,
+            0.34584754705429077,
+            0.6563845872879028,
+            0.5818870663642883,
+            0.4298565089702606,
+            0.365966796875
+          ],
+          "coordinate_compatibility_weights": [
+            1.2101585865020752,
+            1.0535478591918945,
+            0.8637370467185974,
+            1.0630332231521606,
+            1.0152223110198975,
+            0.9176522493362427,
+            0.8766491413116455
+          ]
+        }
+      },
+      "test_reports": 0,
+      "estimated_remaining_hours": 18.168714941759422
+    },
+    {
+      "method": "explicit_full_kd",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_full_kd_seed13",
+      "state": "training",
+      "device": 1,
+      "completed_epochs": 2,
+      "progress": {
+        "status": "training",
+        "method": "explicit_full_kd",
+        "epoch": 3,
+        "step": 1,
+        "steps": 2050,
+        "loss": 0.7220034003257751,
+        "elapsed_seconds": 10123.301123857498
+      },
+      "validation_so_far": {
+        "valid_mae": {
+          "epoch": 2,
+          "train_loss": 1.1165539704273664,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.509344502410816,
+            "pearson": 0.7760050114888402,
+            "acc2_nonzero": 0.8463143254520167,
+            "f1_weighted_nonzero": 0.8441920387609323,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.8022447888829503,
+            "f1_weighted_has_zero": 0.8072080620285901,
+            "acc7": 0.5403527525387494
+          },
+          "gradient_norm_last": 20.624801635742188,
+          "elapsed_seconds": 10114.750329256058
+        },
+        "valid_acc2_nonzero": {
+          "epoch": 1,
+          "train_loss": 1.930191471251537,
+          "valid_metrics": {
+            "count": 1871,
+            "mae": 0.5594416212423499,
+            "pearson": 0.7479803853069368,
+            "acc2_nonzero": 0.8525730180806675,
+            "f1_weighted_nonzero": 0.855117340496724,
+            "nonzero_count": 1438,
+            "acc2_has_zero": 0.7765900587920898,
+            "f1_weighted_has_zero": 0.7884997398992653,
+            "acc7": 0.5146980224478889
+          },
+          "gradient_norm_last": 32.72213363647461,
+          "elapsed_seconds": 5037.880509853363
+        }
+      },
+      "test_reports": 0,
+      "estimated_remaining_hours": 25.286190541952525
+    },
+    {
+      "method": "explicit_full_kd",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_full_kd_seed42",
+      "state": "pending",
+      "device": 1,
+      "completed_epochs": 0,
+      "progress": {
+        "status": "pending"
+      },
+      "validation_so_far": {
+        "valid_mae": null,
+        "valid_acc2_nonzero": null
+      },
+      "test_reports": 0
+    },
+    {
+      "method": "explicit_full_kd",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_full_kd_seed2026",
+      "state": "pending",
+      "device": 1,
+      "completed_epochs": 0,
+      "progress": {
+        "status": "pending"
+      },
+      "validation_so_far": {
+        "valid_mae": null,
+        "valid_acc2_nonzero": null
+      },
+      "test_reports": 0
+    },
+    {
+      "method": "explicit_uniform_interaction",
+      "seed": 13,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_uniform_interaction_seed13",
+      "state": "pending",
+      "device": 1,
+      "completed_epochs": 0,
+      "progress": {
+        "status": "pending"
+      },
+      "validation_so_far": {
+        "valid_mae": null,
+        "valid_acc2_nonzero": null
+      },
+      "test_reports": 0
+    },
+    {
+      "method": "explicit_uniform_interaction",
+      "seed": 42,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_uniform_interaction_seed42",
+      "state": "pending",
+      "device": 1,
+      "completed_epochs": 0,
+      "progress": {
+        "status": "pending"
+      },
+      "validation_so_far": {
+        "valid_mae": null,
+        "valid_acc2_nonzero": null
+      },
+      "test_reports": 0
+    },
+    {
+      "method": "explicit_uniform_interaction",
+      "seed": 2026,
+      "run": "outputs/experiments/equal_modality_extensions_v3/mosei/explicit_uniform_interaction_seed2026",
+      "state": "pending",
+      "device": 1,
+      "completed_epochs": 0,
+      "progress": {
+        "status": "pending"
+      },
+      "validation_so_far": {
+        "valid_mae": null,
+        "valid_acc2_nonzero": null
+      },
+      "test_reports": 0
+    }
+  ],
+  "test_rows": [
+    {
+      "method": "uniform_interaction",
+      "seed": 13,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 14,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed13/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.477142645537343,
+      "pearson": 0.8243086339886141,
+      "acc2_nonzero": 0.8780957622454596,
+      "f1_weighted_nonzero": 0.8772055271672751,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8486799742433999,
+      "f1_weighted_has_zero": 0.8512303450288811,
+      "acc7": 0.5750160978750805
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 13,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 3,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed13/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.4882411013536558,
+      "pearson": 0.8130377766753614,
+      "acc2_nonzero": 0.8731425426527243,
+      "f1_weighted_nonzero": 0.8722859545878427,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8551191242755957,
+      "f1_weighted_has_zero": 0.8570342924739864,
+      "acc7": 0.570294054518137
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 42,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 11,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed42/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.4712466462311932,
+      "pearson": 0.8242249997610667,
+      "acc2_nonzero": 0.8731425426527243,
+      "f1_weighted_nonzero": 0.8726862292468265,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8166988624168277,
+      "f1_weighted_has_zero": 0.8220760779078851,
+      "acc7": 0.5754453745438936
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 42,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 8,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed42/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.47573861195928896,
+      "pearson": 0.8230368810705172,
+      "acc2_nonzero": 0.8769950467804073,
+      "f1_weighted_nonzero": 0.8765732541933308,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8458896758961151,
+      "f1_weighted_has_zero": 0.8491404868773181,
+      "acc7": 0.5741575445374544
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 2026,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 11,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed2026/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.4801184152765197,
+      "pearson": 0.8245565947597172,
+      "acc2_nonzero": 0.8783709411117226,
+      "f1_weighted_nonzero": 0.8782777056185602,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8349431208413822,
+      "f1_weighted_has_zero": 0.8394625257665791,
+      "acc7": 0.5685769478428847
+    },
+    {
+      "method": "uniform_interaction",
+      "seed": 2026,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 12,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_seed2026/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.48321073573931067,
+      "pearson": 0.8238321729180437,
+      "acc2_nonzero": 0.8805723720418271,
+      "f1_weighted_nonzero": 0.8792998280650657,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8534020176003434,
+      "f1_weighted_has_zero": 0.8552607623975412,
+      "acc7": 0.5627817128139085
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 13,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 16,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed13/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.4819785191959648,
+      "pearson": 0.8209580904073661,
+      "acc2_nonzero": 0.872041827187672,
+      "f1_weighted_nonzero": 0.8725225069545648,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8171281390856407,
+      "f1_weighted_has_zero": 0.8234287082390122,
+      "acc7": 0.57072333118695
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 13,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 18,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed13/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.49088922670561475,
+      "pearson": 0.8126137531963926,
+      "acc2_nonzero": 0.8753439735828289,
+      "f1_weighted_nonzero": 0.8746589247012391,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8385919725262933,
+      "f1_weighted_has_zero": 0.8420458948982475,
+      "acc7": 0.5660012878300065
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 42,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 14,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed42/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.48505806611679453,
+      "pearson": 0.8169423906675706,
+      "acc2_nonzero": 0.8687396807925152,
+      "f1_weighted_nonzero": 0.8697259241788011,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.7913715389568577,
+      "f1_weighted_has_zero": 0.8000044530928834,
+      "acc7": 0.5675037561708521
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 42,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 8,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed42/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.4854831782736761,
+      "pearson": 0.8168384168052905,
+      "acc2_nonzero": 0.8662630709961475,
+      "f1_weighted_nonzero": 0.8671853463068604,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.7993131573298992,
+      "f1_weighted_has_zero": 0.8072220281845619,
+      "acc7": 0.570294054518137
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 2026,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 14,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed2026/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.48286142262950366,
+      "pearson": 0.8198335549911451,
+      "acc2_nonzero": 0.8648871766648322,
+      "f1_weighted_nonzero": 0.8661290595850251,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.7885812406095729,
+      "f1_weighted_has_zero": 0.7975257644993841,
+      "acc7": 0.5717965228589826
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "seed": 2026,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 13,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_shared_dropout_seed2026/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.48243220829796707,
+      "pearson": 0.821194190621705,
+      "acc2_nonzero": 0.8731425426527243,
+      "f1_weighted_nonzero": 0.8717275319509314,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8510409959218717,
+      "f1_weighted_has_zero": 0.8526421974135319,
+      "acc7": 0.5694355011805109
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 13,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 9,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed13/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.4797645221465436,
+      "pearson": 0.8202721046993855,
+      "acc2_nonzero": 0.8756191524490919,
+      "f1_weighted_nonzero": 0.8755812916102474,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8227087357802103,
+      "f1_weighted_has_zero": 0.8281429100500608,
+      "acc7": 0.5679330328396651
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 13,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 17,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed13/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.4831637059705567,
+      "pearson": 0.8175273615148807,
+      "acc2_nonzero": 0.8802971931755641,
+      "f1_weighted_nonzero": 0.8794889159342986,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.841382270873578,
+      "f1_weighted_has_zero": 0.8446672827775631,
+      "acc7": 0.5705086928525435
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 42,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 11,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed42/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.4745203338188531,
+      "pearson": 0.824270598088264,
+      "acc2_nonzero": 0.8791964777105118,
+      "f1_weighted_nonzero": 0.8792056147530166,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8139085640695428,
+      "f1_weighted_has_zero": 0.8202159450501533,
+      "acc7": 0.5756600128783
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 42,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 16,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed42/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.48172235642781386,
+      "pearson": 0.8229623914715873,
+      "acc2_nonzero": 0.8778205833791964,
+      "f1_weighted_nonzero": 0.8761693043275425,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8538312942691565,
+      "f1_weighted_has_zero": 0.8551391590532582,
+      "acc7": 0.571152607855763
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 2026,
+      "checkpoint_selection": "valid_mae",
+      "selected_epoch": 13,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed2026/test/valid_mae/report.json",
+      "count": 4659,
+      "mae": 0.47651857191753,
+      "pearson": 0.8201390347975707,
+      "acc2_nonzero": 0.8824986241056687,
+      "f1_weighted_nonzero": 0.8818942668380438,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8514702725906848,
+      "f1_weighted_has_zero": 0.8543014999836163,
+      "acc7": 0.578879587894398
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "seed": 2026,
+      "checkpoint_selection": "valid_acc2_nonzero",
+      "selected_epoch": 13,
+      "report_source": "outputs/experiments/equal_modality_extensions_v3/mosei/uniform_interaction_gradient_projected_seed2026/test/valid_acc2_nonzero/report.json",
+      "count": 4659,
+      "mae": 0.47651857191753,
+      "pearson": 0.8201390347975707,
+      "acc2_nonzero": 0.8824986241056687,
+      "f1_weighted_nonzero": 0.8818942668380438,
+      "nonzero_count": 3634,
+      "acc2_has_zero": 0.8514702725906848,
+      "f1_weighted_has_zero": 0.8543014999836163,
+      "acc7": 0.578879587894398
+    }
+  ],
+  "test_aggregates": [
+    {
+      "method": "uniform_interaction",
+      "policy": "valid_mae",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.4761692356816853,
+          "sample_std": 0.004515275911693766
+        },
+        "acc2_nonzero": {
+          "mean": 0.8765364153366355,
+          "sample_std": 0.0029423986300395367
+        },
+        "pearson": {
+          "mean": 0.8243634095031327,
+          "sample_std": 0.00017245022042778978
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8760564873442206,
+          "sample_std": 0.002967553098116017
+        },
+        "acc2_has_zero": {
+          "mean": 0.8334406525005366,
+          "sample_std": 0.01604340789085544
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8375896495677817,
+          "sample_std": 0.01466709145613449
+        },
+        "acc7": {
+          "mean": 0.5730128067539529,
+          "sample_std": 0.003847558033840968
+        }
+      }
+    },
+    {
+      "method": "uniform_interaction",
+      "policy": "valid_acc2_nonzero",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.4823968163507518,
+          "sample_std": 0.006290859149779762
+        },
+        "acc2_nonzero": {
+          "mean": 0.8769033204916529,
+          "sample_std": 0.0037157639149750397
+        },
+        "pearson": {
+          "mean": 0.8199689435546408,
+          "sample_std": 0.006015723398893944
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8760530122820798,
+          "sample_std": 0.00353575932768188
+        },
+        "acc2_has_zero": {
+          "mean": 0.8514702725906848,
+          "sample_std": 0.00490860554884278
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8538118472496152,
+          "sample_std": 0.004141564683657004
+        },
+        "acc7": {
+          "mean": 0.5690777706231667,
+          "sample_std": 0.00578462589416819
+        }
+      }
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_mae",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.4832993359807543,
+          "sample_std": 0.0015857895152890465
+        },
+        "acc2_nonzero": {
+          "mean": 0.8685562282150064,
+          "sample_std": 0.0035808514577037325
+        },
+        "pearson": {
+          "mean": 0.8192446786886939,
+          "sample_std": 0.0020716038653033797
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.869459163572797,
+          "sample_std": 0.0032050605661134374
+        },
+        "acc2_has_zero": {
+          "mean": 0.7990269728840238,
+          "sample_std": 0.01573803051879856
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8069863086104265,
+          "sample_std": 0.014293367463459071
+        },
+        "acc7": {
+          "mean": 0.5700078700722616,
+          "sample_std": 0.002234026614580516
+        }
+      }
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_acc2_nonzero",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.48626820442575264,
+          "sample_std": 0.004282813284677022
+        },
+        "acc2_nonzero": {
+          "mean": 0.8715831957439002,
+          "sample_std": 0.004737021219473631
+        },
+        "pearson": {
+          "mean": 0.816882120207796,
+          "sample_std": 0.004290385657836376
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8711906009863436,
+          "sample_std": 0.0037656094659139624
+        },
+        "acc2_has_zero": {
+          "mean": 0.829648708592688,
+          "sample_std": 0.026998681425004497
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8339700401654471,
+          "sample_std": 0.023762628546649442
+        },
+        "acc7": {
+          "mean": 0.5685769478428848,
+          "sample_std": 0.0022715186186431386
+        }
+      }
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_mae",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.47693447596097555,
+          "sample_std": 0.0026467168216654795
+        },
+        "acc2_nonzero": {
+          "mean": 0.8791047514217575,
+          "sample_std": 0.0034406529689068087
+        },
+        "pearson": {
+          "mean": 0.8215605791950734,
+          "sample_std": 0.0023478881363428994
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.878893724400436,
+          "sample_std": 0.0031680231613290624
+        },
+        "acc2_has_zero": {
+          "mean": 0.8293625241468127,
+          "sample_std": 0.019644978021811477
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8342201183612767,
+          "sample_std": 0.017836917038097286
+        },
+        "acc7": {
+          "mean": 0.5741575445374544,
+          "sample_std": 0.005625817738605383
+        }
+      }
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_acc2_nonzero",
+      "seeds": [
+        13,
+        42,
+        2026
+      ],
+      "n": 3,
+      "metrics": {
+        "mae": {
+          "mean": 0.4804682114386335,
+          "sample_std": 0.00349558455570572
+        },
+        "acc2_nonzero": {
+          "mean": 0.8802054668868098,
+          "sample_std": 0.0023403688905105913
+        },
+        "pearson": {
+          "mean": 0.8202095959280129,
+          "sample_std": 0.0027182019447461233
+        },
+        "f1_weighted_nonzero": {
+          "mean": 0.8791841623666283,
+          "sample_std": 0.0028746225820822703
+        },
+        "acc2_has_zero": {
+          "mean": 0.8488946125778064,
+          "sample_std": 0.006612114960613637
+        },
+        "f1_weighted_has_zero": {
+          "mean": 0.8513693139381459,
+          "sample_std": 0.005819221119471672
+        },
+        "acc7": {
+          "mean": 0.5735136295342348,
+          "sample_std": 0.004658195839066491
+        }
+      }
+    }
+  ],
+  "paired_deltas": [
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_mae",
+      "seed": 13,
+      "mae": 0.004835873658621814,
+      "acc2_nonzero": -0.006053935057787618,
+      "pearson": -0.003350543581247978,
+      "f1_weighted_nonzero": -0.004683020212710276,
+      "acc2_has_zero": -0.03155183515775917,
+      "f1_weighted_has_zero": -0.02780163678986891,
+      "acc7": -0.0042927666881305004
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_mae",
+      "seed": 42,
+      "mae": 0.013811419885601306,
+      "acc2_nonzero": -0.004402861860209106,
+      "pearson": -0.007282609093496095,
+      "f1_weighted_nonzero": -0.0029603050680253595,
+      "acc2_has_zero": -0.025327323459969908,
+      "f1_weighted_has_zero": -0.02207162481500169,
+      "acc7": -0.007941618373041415
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_mae",
+      "seed": 2026,
+      "mae": 0.0027430073529839394,
+      "acc2_nonzero": -0.013483764446890478,
+      "pearson": -0.004723039768572135,
+      "f1_weighted_nonzero": -0.01214864603353516,
+      "acc2_has_zero": -0.046361880231809316,
+      "f1_weighted_has_zero": -0.04193676126719503,
+      "acc7": 0.003219575016097931
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_mae",
+      "seed": 13,
+      "mae": 0.002621876609200602,
+      "acc2_nonzero": -0.002476609796367657,
+      "pearson": -0.0040365292892285964,
+      "f1_weighted_nonzero": -0.0016242355570276201,
+      "acc2_has_zero": -0.025971238463189605,
+      "f1_weighted_has_zero": -0.023087434978820265,
+      "acc7": -0.007083065035415337
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_mae",
+      "seed": 42,
+      "mae": 0.0032736875876598903,
+      "acc2_nonzero": 0.006053935057787507,
+      "pearson": 4.559832719730483e-05,
+      "f1_weighted_nonzero": 0.006519385506190134,
+      "acc2_has_zero": -0.0027902983472848364,
+      "f1_weighted_has_zero": -0.0018601328577317888,
+      "acc7": 0.00021463833440649172
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_mae",
+      "seed": 2026,
+      "mae": -0.0035998433589897183,
+      "acc2_nonzero": 0.004127682993946058,
+      "pearson": -0.0044175599621465444,
+      "f1_weighted_nonzero": 0.003616561219483616,
+      "acc2_has_zero": 0.016527151749302527,
+      "f1_weighted_has_zero": 0.01483897421703717,
+      "acc7": 0.010302640051513268
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_acc2_nonzero",
+      "seed": 13,
+      "mae": 0.002648125351958963,
+      "acc2_nonzero": 0.0022014309301046087,
+      "pearson": -0.00042402347896874915,
+      "f1_weighted_nonzero": 0.002372970113396322,
+      "acc2_has_zero": -0.016527151749302416,
+      "f1_weighted_has_zero": -0.014988397575738888,
+      "acc7": -0.0042927666881305004
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_acc2_nonzero",
+      "seed": 42,
+      "mae": 0.009744566314387137,
+      "acc2_nonzero": -0.010731975784259773,
+      "pearson": -0.006198464265226744,
+      "f1_weighted_nonzero": -0.00938790788647037,
+      "acc2_has_zero": -0.04657651856621592,
+      "f1_weighted_has_zero": -0.04191845869275623,
+      "acc7": -0.003863490019317406
+    },
+    {
+      "method": "uniform_interaction_shared_dropout",
+      "policy": "valid_acc2_nonzero",
+      "seed": 2026,
+      "mae": -0.0007785274413436016,
+      "acc2_nonzero": -0.00742982938910286,
+      "pearson": -0.0026379822963387145,
+      "f1_weighted_nonzero": -0.007572296114134236,
+      "acc2_has_zero": -0.002361021678471742,
+      "f1_weighted_has_zero": -0.002618564984009364,
+      "acc7": 0.006653788366602353
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_acc2_nonzero",
+      "seed": 13,
+      "mae": -0.0050773953830990926,
+      "acc2_nonzero": 0.007154650522839812,
+      "pearson": 0.004489584839519334,
+      "f1_weighted_nonzero": 0.007202961346455816,
+      "acc2_has_zero": -0.01373685340201769,
+      "f1_weighted_has_zero": -0.012367009696423348,
+      "acc7": 0.00021463833440649172
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_acc2_nonzero",
+      "seed": 42,
+      "mae": 0.005983744468524899,
+      "acc2_nonzero": 0.000825536598789145,
+      "pearson": -7.448959892986107e-05,
+      "f1_weighted_nonzero": -0.00040394986578828895,
+      "acc2_has_zero": 0.007941618373041415,
+      "f1_weighted_has_zero": 0.0059986721759400785,
+      "acc7": -0.003004936681691328
+    },
+    {
+      "method": "uniform_interaction_gradient_projected",
+      "policy": "valid_acc2_nonzero",
+      "seed": 2026,
+      "mae": -0.006692163821780672,
+      "acc2_nonzero": 0.0019262520638415603,
+      "pearson": -0.003693138120473005,
+      "f1_weighted_nonzero": 0.002594438772978158,
+      "acc2_has_zero": -0.0019317450096586475,
+      "f1_weighted_has_zero": -0.0009592624139249661,
+      "acc7": 0.016097875080489432
+    }
+  ],
+  "queues": {
+    "resource_queue": {
+      "status": "running",
+      "pid": 1710280,
+      "updated_at": 1791644040.4150448,
+      "dataset": "mosei",
+      "device": 1,
+      "gpu_free_mib": 24538,
+      "external_active": [],
+      "allow_official_test": true,
+      "jobs": {
+        "uniform_interaction_gradient_projected_seed13": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed13_test_valid_mae": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed13_test_valid_acc2_nonzero": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed42": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed42_test_valid_mae": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed42_test_valid_acc2_nonzero": {
+          "state": "complete"
+        },
+        "uniform_interaction_gradient_projected_seed2026": {
+          "state": "complete",
+          "pid": 748926,
+          "start_ticks": "242381295",
+          "started_at": 1791538208.88797,
+          "returncode": 0,
+          "finished_at": 1791632180.6623936
+        },
+        "uniform_interaction_gradient_projected_seed2026_test_valid_mae": {
+          "state": "complete",
+          "pid": 1466515,
+          "start_ticks": "251778480",
+          "started_at": 1791632180.7337713,
+          "returncode": 0,
+          "finished_at": 1791633652.9806778
+        },
+        "uniform_interaction_gradient_projected_seed2026_test_valid_acc2_nonzero": {
+          "state": "complete",
+          "pid": 1567912,
+          "start_ticks": "251781501",
+          "started_at": 1791632210.9518735,
+          "returncode": 0,
+          "finished_at": 1791633723.5136013
+        },
+        "uniform_interaction_coordinate_compatible_seed13": {
+          "state": "running",
+          "pid": 3290347,
+          "start_ticks": "248304763",
+          "started_at": 1791597443.5716531
+        },
+        "uniform_interaction_coordinate_compatible_seed13_test_valid_mae": {
+          "state": "pending"
+        },
+        "uniform_interaction_coordinate_compatible_seed13_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed13": {
+          "state": "running",
+          "pid": 3434007,
+          "start_ticks": "251932765",
+          "started_at": 1791633723.583372
+        },
+        "explicit_full_kd_seed13_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed13_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed42": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed42_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed42_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed2026": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed2026_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_full_kd_seed2026_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed13": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed13_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed13_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed42": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed42_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed42_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed2026": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed2026_test_valid_mae": {
+          "state": "pending"
+        },
+        "explicit_uniform_interaction_seed2026_test_valid_acc2_nonzero": {
+          "state": "pending"
+        }
+      }
+    },
+    "resource_queue_gpu0_20261010": {
+      "status": "running",
+      "pid": 1731264,
+      "updated_at": 1791644037.3559294,
+      "dataset": "mosei",
+      "device": 0,
+      "gpu_free_mib": 24164,
+      "external_active": [],
+      "allow_official_test": true,
+      "jobs": {
+        "uniform_interaction_coordinate_compatible_seed42": {
+          "state": "running",
+          "pid": 1731434,
+          "start_ticks": "249227956",
+          "started_at": 1791606675.49609
+        },
+        "uniform_interaction_coordinate_compatible_seed42_test_valid_mae": {
+          "state": "pending"
+        },
+        "uniform_interaction_coordinate_compatible_seed42_test_valid_acc2_nonzero": {
+          "state": "pending"
+        },
+        "uniform_interaction_coordinate_compatible_seed2026": {
+          "state": "running",
+          "pid": 1809878,
+          "start_ticks": "249230981",
+          "started_at": 1791606705.7429314
+        },
+        "uniform_interaction_coordinate_compatible_seed2026_test_valid_mae": {
+          "state": "pending"
+        },
+        "uniform_interaction_coordinate_compatible_seed2026_test_valid_acc2_nonzero": {
+          "state": "pending"
+        }
+      }
+    }
+  },
+  "legacy_gpu0_complete": true
+}
