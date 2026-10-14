@@ -1,0 +1,19 @@
+path,reason
+outputs/experiments/efficiency_benchmark_v1/mosei/full_kd/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/efficiency_benchmark_v1/mosei/teacher/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/efficiency_benchmark_v1/mosei/uniform/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/main_table_v1/mosi/probes/seed2027/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/main_table_v1/mosi/probes/seed2028/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/video_source_v2/probes/seed2026/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/video_source_v2/probes/seed2027/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/experiments/video_source_v2/probes/seed2028/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/benchmark500/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/benchmark500_seed2027/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/benchmark500_seed2028/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/cv2_emptymean_seed2026/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/cv2_emptymean_seed2027/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/cv2_emptymean_seed2028/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/official_train_valid_seed2026/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/official_train_valid_seed2027/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable
+outputs/probe/official_train_valid_seed2028/report.json,teacher probe / efficiency / teacher diagnostic; dual student checkpoint selection not applicable

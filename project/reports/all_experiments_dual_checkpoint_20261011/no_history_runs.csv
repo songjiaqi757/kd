@@ -1,0 +1,9 @@
+run,method,seed,recorded_status,reason
+outputs/experiments/equal_modality_extensions_v2/mosei/uniform_interaction_seed13,uniform_interaction,13,training,no completed epoch history; archived status is not live process status
+outputs/experiments/equal_modality_extensions_v2/mosei/uniform_interaction_seed42,uniform_interaction,42,training,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/archive/switched_to_subset_random_20260924_0032/students/first_second_order_interaction_seed42,first_second_order_interaction,42,training,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/archive/switched_to_subset_random_20260924_0032/students/random_orthogonal_seed42,random_orthogonal,42,training,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/archive/switched_to_subset_random_20260924_0032/students/subset7_seed2026,subset7,2026,training,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/archive/switched_to_subset_random_20260924_0032/students/subset7_seed42,subset7,42,training,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/followup_order_controls/archive/precheckpoint_failure_1790236048/first_order_interaction_seed42,first_order_interaction,42,failed,no completed epoch history; archived status is not live process status
+outputs/experiments/multiseed_controls_v1/mosei/followup_order_controls/archive/precheckpoint_failure_1790236048/first_second_order_interaction_seed42,first_second_order_interaction,42,failed,no completed epoch history; archived status is not live process status
