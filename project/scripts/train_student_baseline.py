@@ -56,8 +56,8 @@ ALL_MULTI_SUBSET_METHODS = MULTI_SUBSET_METHODS + POLARITY_MULTI_SUBSET_METHODS
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train the B0 task-only student on cached encoder features")
-    parser.add_argument("--features", type=Path, default=Path("/home/wy/sjq/kd/outputs/student/features/benchmark500"))
-    parser.add_argument("--output", type=Path, default=Path("/home/wy/sjq/kd/outputs/student/baseline_benchmark500_seed2026"))
+    parser.add_argument("--features", type=Path, default=Path("/data/sjq/kd/outputs/student/features/benchmark500"))
+    parser.add_argument("--output", type=Path, default=Path("/data/sjq/kd/outputs/student/baseline_benchmark500_seed2026"))
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--batch-size", type=int, default=8)
@@ -72,7 +72,7 @@ def parse_args() -> argparse.Namespace:
         choices=("student", "full_kd", "subset_value", "subset_value_4") + COORDINATE_METHODS + POLARITY_METHODS,
         default="student",
     )
-    parser.add_argument("--teacher-targets", type=Path, default=Path("/home/wy/sjq/kd/outputs/probe/benchmark500/predictions.jsonl"))
+    parser.add_argument("--teacher-targets", type=Path, default=Path("/data/sjq/kd/outputs/probe/benchmark500/predictions.jsonl"))
     parser.add_argument("--teacher-targets-ensemble", type=Path, nargs="+", default=None)
     parser.add_argument("--lambda-full", type=float, default=1.0)
     parser.add_argument("--lambda-subset", type=float, default=1.0)

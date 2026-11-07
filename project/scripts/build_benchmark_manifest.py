@@ -13,7 +13,7 @@ import cv2
 import soundfile as sf
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
@@ -51,7 +51,7 @@ QUOTAS: dict[tuple[str, str, str], int] = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the frozen 500-sample teacher benchmark")
-    parser.add_argument("--dataset-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei_source"))
+    parser.add_argument("--dataset-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei_source"))
     parser.add_argument("--output", type=Path, default=DATASET_ROOT / "manifests/benchmark500.jsonl")
     parser.add_argument("--summary", type=Path, default=PROJECT_ROOT / "reports/benchmark500_manifest.json")
     parser.add_argument("--seed", type=int, default=2026)

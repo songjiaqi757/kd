@@ -4,7 +4,7 @@ Qwen3-Omni 教师驱动的 CMU-MOSEI 多模态情感交互坐标蒸馏实验工�
 
 ## 当前阶段
 
-全量数据与教师模型已经准备完成。数据统一位于 `/home/wy/sjq/kd/dataset/cmu_mosei`，教师模型位于 `/home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct`。
+全量数据与教师模型已经准备完成。数据统一位于 `/data/sjq/kd/dataset/cmu_mosei`，教师模型位于 `/data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct`。
 
 ## 环境
 
@@ -19,10 +19,10 @@ python scripts/check_environment.py
 
 统一数据目录中的关键文件：
 
-- `/home/wy/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl`：全量 22,856 条清单；
-- `/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl`：固定 500 条基准；
-- `/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl`：复用全量规范媒体的 500 条清单；
-- `/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl`：教师推理使用的 521 个单元；
+- `/data/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl`：全量 22,856 条清单；
+- `/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl`：固定 500 条基准；
+- `/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl`：复用全量规范媒体的 500 条清单；
+- `/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl`：教师推理使用的 521 个单元；
 - `reports/benchmark500_media_audit.json` 与 `reports/benchmark500_windowed_media_audit.json`：媒体审计报告。
 
 官方 `label.csv` 中的 split 原样保留，不重新划分数据。500 条样本来自 500 个不同源视频，训练/验证为 450/50；测试集不参与教师基准。16 条超过 30 秒的样本按最长 30 秒、重叠 5 秒切窗，并用重叠校正权重聚合。

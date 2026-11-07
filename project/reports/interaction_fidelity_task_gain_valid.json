@@ -182,28 +182,28 @@
         "delta_task_error": -0.0032931878678709157
       },
       "checkpoints": {
-        "full_kd": "/home/wy/sjq/kd/outputs/experiments/tav_epoch_checkpoints_v1/students/M3_seed13/checkpoints/epoch_006.pt",
-        "uniform_interaction": "/home/wy/sjq/kd/outputs/experiments/tav_epoch_checkpoints_v1/students/M4_seed13/checkpoints/epoch_006.pt"
+        "full_kd": "/data/sjq/kd/outputs/experiments/tav_epoch_checkpoints_v1/students/M3_seed13/checkpoints/epoch_006.pt",
+        "uniform_interaction": "/data/sjq/kd/outputs/experiments/tav_epoch_checkpoints_v1/students/M4_seed13/checkpoints/epoch_006.pt"
       },
       "inputs": {
         "protocol": {
-          "path": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/assets/protocol.json",
+          "path": "/data/sjq/kd/outputs/experiments/tav_main_v1/assets/protocol.json",
           "sha256": "df5d13614bc9efc05ef3cce789d75b8526e530260488eb39639146936fbca5ae"
         },
         "teacher_interactions": {
-          "path": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/assets/interaction_targets.jsonl",
+          "path": "/data/sjq/kd/outputs/experiments/tav_main_v1/assets/interaction_targets.jsonl",
           "sha256": "fea6598ca076539156cb479f2da33fad2366a5448141509d47fd7e7238a8d9d9"
         },
         "aggregate_evidence": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
           "sha256": "290b104b31ef6bbf7333a8b7e284f5c87168621cca02340f8367879a83ef0735"
         },
         "full_kd_predictions": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid/full_kd.jsonl",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid/full_kd.jsonl",
           "sha256": "0d16d56be42ba25154bf100eaf930baa988f5f8dc44666c166a61daf5b4bb796"
         },
         "uniform_predictions": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid/uniform_interaction.jsonl",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid/uniform_interaction.jsonl",
           "sha256": "4a22cdec564aa20b77516b22714044dfef4898f1726218f73c2c7f2498f1beb0"
         }
       },
@@ -32191,28 +32191,28 @@
         "delta_task_error": -0.031202930966839522
       },
       "checkpoints": {
-        "full_kd": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_019.pt",
-        "uniform_interaction": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_015.pt"
+        "full_kd": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_019.pt",
+        "uniform_interaction": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_015.pt"
       },
       "inputs": {
         "protocol": {
-          "path": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "path": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
           "sha256": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be"
         },
         "teacher_interactions": {
-          "path": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "path": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
           "sha256": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231"
         },
         "aggregate_evidence": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json",
           "sha256": "ede9919d6514338f20f36d577e4a71bbbe9c396ff955f1594a7de468fa41087f"
         },
         "full_kd_predictions": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid_mosi/full_kd.jsonl",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid_mosi/full_kd.jsonl",
           "sha256": "9630c83bd2a0e7e26afd936b6e5072e6fff44767697b77b9f3e9cc1f7463077a"
         },
         "uniform_predictions": {
-          "path": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid_mosi/uniform_interaction.jsonl",
+          "path": "/data/sjq/kd/project/reports/interaction_evidence_v1/student_subset_predictions_valid_mosi/uniform_interaction.jsonl",
           "sha256": "dab8354be5899fcab8c014eb1323ff354122d56ff6d74dec153c3e6fbf510843"
         }
       },

@@ -2,7 +2,7 @@
   "scope": "historical validation only; different experiment budgets are not pooled",
   "runs": [
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
+      "run": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
       "prediction_epoch": 19,
       "selections": {
         "valid_mae": {
@@ -91,7 +91,7 @@
       }
     },
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+      "run": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
       "prediction_epoch": 15,
       "selections": {
         "valid_mae": {
@@ -180,7 +180,7 @@
       }
     },
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
+      "run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
       "prediction_epoch": 19,
       "selections": {
         "valid_mae": {
@@ -269,7 +269,7 @@
       }
     },
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
+      "run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
       "prediction_epoch": 5,
       "selections": {
         "valid_mae": {
@@ -358,7 +358,7 @@
       }
     },
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/students/M3_seed13",
+      "run": "/data/sjq/kd/outputs/experiments/tav_main_v1/students/M3_seed13",
       "prediction_epoch": 6,
       "selections": {
         "valid_mae": {
@@ -447,7 +447,7 @@
       }
     },
     {
-      "run": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/students/M4_seed13",
+      "run": "/data/sjq/kd/outputs/experiments/tav_main_v1/students/M4_seed13",
       "prediction_epoch": 6,
       "selections": {
         "valid_mae": {

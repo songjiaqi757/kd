@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from qwen_omni_utils import process_mm_info  # noqa: E402

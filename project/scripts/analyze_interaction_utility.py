@@ -24,7 +24,7 @@ LEVELS = ("low", "middle", "high")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Diagnose interaction fidelity versus downstream task utility")
-    parser.add_argument("--root", type=Path, default=Path("/home/wy/sjq/kd"))
+    parser.add_argument("--root", type=Path, default=Path("/data/sjq/kd"))
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-markdown", type=Path, required=True)
     return parser.parse_args()

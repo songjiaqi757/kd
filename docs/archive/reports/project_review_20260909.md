@@ -147,7 +147,7 @@ WavLM 的 GroupNorm 位于卷积特征提取阶段，attention mask 不能撤销
 
 **10. P2 — 配置、环境和测试依赖本机状态，可迁移复现不足**
 
-证据：`workspace.yaml` 与多个 YAML 配置包含绝对路径，但训练脚本主要独立解析 argparse，没有统一读取 student_pilot.yaml 的配置链路。`environment/requirements.lock` 未显式列出直接使用的 `av`，torch 仅出现在注释；完整 pip_freeze 有这些包，因而不能简单说环境完全缺失。部分 tests 直接访问 `/home/wy/sjq/kd/dataset/...`，而数据被 Git 忽略。仓库没有统一打包/测试配置来区分单元测试和本机资产审计。
+证据：`workspace.yaml` 与多个 YAML 配置包含绝对路径，但训练脚本主要独立解析 argparse，没有统一读取 student_pilot.yaml 的配置链路。`environment/requirements.lock` 未显式列出直接使用的 `av`，torch 仅出现在注释；完整 pip_freeze 有这些包，因而不能简单说环境完全缺失。部分 tests 直接访问 `/data/sjq/kd/dataset/...`，而数据被 Git 忽略。仓库没有统一打包/测试配置来区分单元测试和本机资产审计。
 
 影响：本机 44 passed 不代表干净 checkout 能安装并通过测试；编辑 YAML 也不保证训练参数改变。不同工作目录下，相对路径与绝对路径入口的行为不一致。
 

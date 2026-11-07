@@ -1,6 +1,6 @@
 {
   "schema": "interaction-evidence-figures-v1",
-  "source": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+  "source": "/data/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
   "dataset": "mosei",
   "split": "valid",
   "seed": 13,

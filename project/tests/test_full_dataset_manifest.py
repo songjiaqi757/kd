@@ -2,7 +2,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-MANIFEST = Path("/home/wy/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl")
+MANIFEST = Path("/data/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl")
 
 
 def test_full_manifest_preserves_official_rows_and_splits() -> None:

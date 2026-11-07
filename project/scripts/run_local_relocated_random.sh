@@ -17,7 +17,7 @@ if [[ "$physical_gpu" != "0" && "$physical_gpu" != "1" ]]; then
   exit 2
 fi
 
-project_root="/home/wy/sjq/kd"
+project_root="/data/sjq/kd"
 python_bin="/home/wy/sjq/miniconda3/envs/kd/bin/python"
 base="$project_root/outputs/experiments/multiseed_controls_v1/mosei"
 run="$base/students/random_orthogonal_seed${seed}"

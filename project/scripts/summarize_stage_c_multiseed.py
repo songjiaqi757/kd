@@ -21,7 +21,7 @@ from analyze_interaction_utility import (
 )
 
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 REPORTS = ROOT / "project/reports"
 STUDENT = ROOT / "outputs/student"
 SEEDS = (13, 42, 2026)

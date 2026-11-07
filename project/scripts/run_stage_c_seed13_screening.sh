@@ -8,7 +8,7 @@ fi
 
 queue="$1"
 device="$2"
-root="/home/wy/sjq/kd"
+root="/data/sjq/kd"
 python_bin="/home/wy/sjq/miniconda3/envs/kd/bin/python"
 trainer="$root/project/scripts/train_student_baseline.py"
 features="$root/outputs/student/features/official_train_valid"

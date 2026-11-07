@@ -20,7 +20,7 @@
       "run": "full_kd_seed13",
       "method": "full_kd",
       "seed": 13,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
+      "source_run": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
       "selected_epoch": 16,
       "valid_metrics": {
         "count": 229,
@@ -33,7 +33,7 @@
         "f1_weighted_has_zero": 0.8311812472353167,
         "acc7": 0.36681222707423583
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_016.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_016.pt",
       "checkpoint_sha256": "5949ceffea388407d1146a4df674f1d9bdab622994c1d1e21c589780d6c8e08e",
       "test_metrics": {
         "count": 686,
@@ -46,13 +46,13 @@
         "f1_weighted_has_zero": 0.8209748883112902,
         "acc7": 0.45335276967930027
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed13/epochs/epoch_016/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed13/epochs/epoch_016/report.json"
     },
     {
       "run": "full_kd_seed42",
       "method": "full_kd",
       "seed": 42,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42",
       "selected_epoch": 11,
       "valid_metrics": {
         "count": 229,
@@ -65,7 +65,7 @@
         "f1_weighted_has_zero": 0.8268000800751892,
         "acc7": 0.36681222707423583
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42/checkpoints/epoch_011.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed42/checkpoints/epoch_011.pt",
       "checkpoint_sha256": "13f6dc5a7936776bd2067483a8da7791b353b46e8e71e296a60643b5d6045958",
       "test_metrics": {
         "count": 686,
@@ -78,13 +78,13 @@
         "f1_weighted_has_zero": 0.81194715832295,
         "acc7": 0.4577259475218659
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed42/epochs/epoch_011/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed42/epochs/epoch_011/report.json"
     },
     {
       "run": "full_kd_seed2026",
       "method": "full_kd",
       "seed": 2026,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026",
       "selected_epoch": 18,
       "valid_metrics": {
         "count": 229,
@@ -97,7 +97,7 @@
         "f1_weighted_has_zero": 0.8054030092400618,
         "acc7": 0.3624454148471616
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026/checkpoints/epoch_018.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/full_kd_seed2026/checkpoints/epoch_018.pt",
       "checkpoint_sha256": "6cb039386e6b31a3c19239af2cb454d98cb2707edf7d0b8827921e030e4cf24d",
       "test_metrics": {
         "count": 686,
@@ -110,13 +110,13 @@
         "f1_weighted_has_zero": 0.819911967151759,
         "acc7": 0.4650145772594752
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed2026/epochs/epoch_018/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/full_kd_seed2026/epochs/epoch_018/report.json"
     },
     {
       "run": "subset7_seed13",
       "method": "subset7",
       "seed": 13,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13",
+      "source_run": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13",
       "selected_epoch": 9,
       "valid_metrics": {
         "count": 229,
@@ -129,7 +129,7 @@
         "f1_weighted_has_zero": 0.8183815943810856,
         "acc7": 0.3406113537117904
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/checkpoints/epoch_009.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/checkpoints/epoch_009.pt",
       "checkpoint_sha256": "099d9cb750529682009afcbe8b6a630603a8d40c1ffb7c54bdae90eff5336eb8",
       "test_metrics": {
         "count": 686,
@@ -142,13 +142,13 @@
         "f1_weighted_has_zero": 0.807811377012723,
         "acc7": 0.3979591836734694
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed13/epochs/epoch_009/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed13/epochs/epoch_009/report.json"
     },
     {
       "run": "subset7_seed42",
       "method": "subset7",
       "seed": 42,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42",
       "selected_epoch": 16,
       "valid_metrics": {
         "count": 229,
@@ -161,7 +161,7 @@
         "f1_weighted_has_zero": 0.8226104791151374,
         "acc7": 0.33624454148471616
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42/checkpoints/epoch_016.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed42/checkpoints/epoch_016.pt",
       "checkpoint_sha256": "481c78e432c06659f45606bf7a5dfeea335d79a157029ac4ddfd0a4db79c4a47",
       "test_metrics": {
         "count": 686,
@@ -174,13 +174,13 @@
         "f1_weighted_has_zero": 0.8117131616094971,
         "acc7": 0.44169096209912534
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed42/epochs/epoch_016/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed42/epochs/epoch_016/report.json"
     },
     {
       "run": "subset7_seed2026",
       "method": "subset7",
       "seed": 2026,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026",
       "selected_epoch": 6,
       "valid_metrics": {
         "count": 229,
@@ -193,7 +193,7 @@
         "f1_weighted_has_zero": 0.826521188111248,
         "acc7": 0.3406113537117904
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026/checkpoints/epoch_006.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/subset7_seed2026/checkpoints/epoch_006.pt",
       "checkpoint_sha256": "919f4876cd6087e136a11451d0e22265bfca8a4f7479892c4a6c1a7ea5c6caef",
       "test_metrics": {
         "count": 686,
@@ -206,13 +206,13 @@
         "f1_weighted_has_zero": 0.8290393444722772,
         "acc7": 0.42419825072886297
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed2026/epochs/epoch_006/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/subset7_seed2026/epochs/epoch_006/report.json"
     },
     {
       "run": "first_second_order_interaction_seed13",
       "method": "first_second_order_interaction",
       "seed": 13,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13",
+      "source_run": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13",
       "selected_epoch": 10,
       "valid_metrics": {
         "count": 229,
@@ -225,7 +225,7 @@
         "f1_weighted_has_zero": 0.818243119731898,
         "acc7": 0.39737991266375544
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13/checkpoints/epoch_010.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13/checkpoints/epoch_010.pt",
       "checkpoint_sha256": "a09197482aceb62c924befade5ea726ac28263b4ac28dd084abdb27c8ab080b9",
       "test_metrics": {
         "count": 686,
@@ -238,13 +238,13 @@
         "f1_weighted_has_zero": 0.8192018585440343,
         "acc7": 0.4314868804664723
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed13/epochs/epoch_010/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed13/epochs/epoch_010/report.json"
     },
     {
       "run": "first_second_order_interaction_seed42",
       "method": "first_second_order_interaction",
       "seed": 42,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42",
       "selected_epoch": 4,
       "valid_metrics": {
         "count": 229,
@@ -257,7 +257,7 @@
         "f1_weighted_has_zero": 0.8216650093892346,
         "acc7": 0.39737991266375544
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42/checkpoints/epoch_004.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed42/checkpoints/epoch_004.pt",
       "checkpoint_sha256": "c32bc126cd02a9bca33b2ddef0d2bcdbb48f612edbd0382a1627f1a61f4ddf27",
       "test_metrics": {
         "count": 686,
@@ -270,13 +270,13 @@
         "f1_weighted_has_zero": 0.8272179810445116,
         "acc7": 0.4489795918367347
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed42/epochs/epoch_004/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed42/epochs/epoch_004/report.json"
     },
     {
       "run": "first_second_order_interaction_seed2026",
       "method": "first_second_order_interaction",
       "seed": 2026,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026",
       "selected_epoch": 16,
       "valid_metrics": {
         "count": 229,
@@ -289,7 +289,7 @@
         "f1_weighted_has_zero": 0.837245483294531,
         "acc7": 0.4410480349344978
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026/checkpoints/epoch_016.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/first_second_order_interaction_seed2026/checkpoints/epoch_016.pt",
       "checkpoint_sha256": "f398d432d26e83400b98741f8b5933d4086523464ee3afb0a9f9d70aedfedb86",
       "test_metrics": {
         "count": 686,
@@ -302,13 +302,13 @@
         "f1_weighted_has_zero": 0.8487823496537095,
         "acc7": 0.43002915451895046
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed2026/epochs/epoch_016/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/first_second_order_interaction_seed2026/epochs/epoch_016/report.json"
     },
     {
       "run": "random_orthogonal_seed13",
       "method": "random_orthogonal",
       "seed": 13,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13",
+      "source_run": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13",
       "selected_epoch": 13,
       "valid_metrics": {
         "count": 229,
@@ -321,7 +321,7 @@
         "f1_weighted_has_zero": 0.8225238752986662,
         "acc7": 0.38427947598253276
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13/checkpoints/epoch_013.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13/checkpoints/epoch_013.pt",
       "checkpoint_sha256": "53c20a4a7abfbd6d96316fb7c03bcb7ef3b9dd9d457a0aad9cb594deaeeaaa8c",
       "test_metrics": {
         "count": 686,
@@ -334,13 +334,13 @@
         "f1_weighted_has_zero": 0.8206086027933004,
         "acc7": 0.4577259475218659
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed13/epochs/epoch_013/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed13/epochs/epoch_013/report.json"
     },
     {
       "run": "random_orthogonal_seed42",
       "method": "random_orthogonal",
       "seed": 42,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42",
       "selected_epoch": 18,
       "valid_metrics": {
         "count": 229,
@@ -353,7 +353,7 @@
         "f1_weighted_has_zero": 0.8171864515263194,
         "acc7": 0.39737991266375544
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42/checkpoints/epoch_018.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed42/checkpoints/epoch_018.pt",
       "checkpoint_sha256": "3ad2ad65ab8cf3c62b56ca6b1b400d99a603f11bbaf3a08ca434657b799bc1aa",
       "test_metrics": {
         "count": 686,
@@ -366,13 +366,13 @@
         "f1_weighted_has_zero": 0.8396983509957271,
         "acc7": 0.39941690962099125
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed42/epochs/epoch_018/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed42/epochs/epoch_018/report.json"
     },
     {
       "run": "random_orthogonal_seed2026",
       "method": "random_orthogonal",
       "seed": 2026,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026",
       "selected_epoch": 15,
       "valid_metrics": {
         "count": 229,
@@ -385,7 +385,7 @@
         "f1_weighted_has_zero": 0.8309362910322613,
         "acc7": 0.38427947598253276
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026/checkpoints/epoch_015.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/random_orthogonal_seed2026/checkpoints/epoch_015.pt",
       "checkpoint_sha256": "cdf3e5ba80ded38195000aebc671776fbda3e921f75a9b82c724458ad6c3d820",
       "test_metrics": {
         "count": 686,
@@ -398,13 +398,13 @@
         "f1_weighted_has_zero": 0.8238067211001028,
         "acc7": 0.42565597667638483
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed2026/epochs/epoch_015/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/random_orthogonal_seed2026/epochs/epoch_015/report.json"
     },
     {
       "run": "uniform_interaction_seed13",
       "method": "uniform_interaction",
       "seed": 13,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+      "source_run": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
       "selected_epoch": 13,
       "valid_metrics": {
         "count": 229,
@@ -417,7 +417,7 @@
         "f1_weighted_has_zero": 0.8355532988050505,
         "acc7": 0.4017467248908297
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_013.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_013.pt",
       "checkpoint_sha256": "49ffd8a7faeea8e70073f7c1aa52f67f1f5bbb9c607d4eb38e0b9f91e67ea64f",
       "test_metrics": {
         "count": 686,
@@ -430,13 +430,13 @@
         "f1_weighted_has_zero": 0.8242749071862847,
         "acc7": 0.4489795918367347
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed13/epochs/epoch_013/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed13/epochs/epoch_013/report.json"
     },
     {
       "run": "uniform_interaction_seed42",
       "method": "uniform_interaction",
       "seed": 42,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42",
       "selected_epoch": 14,
       "valid_metrics": {
         "count": 229,
@@ -449,7 +449,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.35807860262008734
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42/checkpoints/epoch_014.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed42/checkpoints/epoch_014.pt",
       "checkpoint_sha256": "39e95e0215a32c7554f91a89dcfcf4ec95a064d3f0565cb174e74c6fd5cb3926",
       "test_metrics": {
         "count": 686,
@@ -462,13 +462,13 @@
         "f1_weighted_has_zero": 0.8153113286130779,
         "acc7": 0.4008746355685131
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed42/epochs/epoch_014/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed42/epochs/epoch_014/report.json"
     },
     {
       "run": "uniform_interaction_seed2026",
       "method": "uniform_interaction",
       "seed": 2026,
-      "source_run": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
+      "source_run": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026",
       "selected_epoch": 12,
       "valid_metrics": {
         "count": 229,
@@ -481,7 +481,7 @@
         "f1_weighted_has_zero": 0.804518426591238,
         "acc7": 0.3799126637554585
       },
-      "checkpoint": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026/checkpoints/epoch_012.pt",
+      "checkpoint": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/students/uniform_interaction_seed2026/checkpoints/epoch_012.pt",
       "checkpoint_sha256": "c058e66c57c02a585168d43cb606a8693665880dff2328f6e48db1c535ce614a",
       "test_metrics": {
         "count": 686,
@@ -494,7 +494,7 @@
         "f1_weighted_has_zero": 0.817962029541503,
         "acc7": 0.4402332361516035
       },
-      "report": "/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed2026/epochs/epoch_012/report.json"
+      "report": "/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi/official_test_valid_acc2_nonzero/uniform_interaction_seed2026/epochs/epoch_012/report.json"
     }
   ],
   "aggregates": {

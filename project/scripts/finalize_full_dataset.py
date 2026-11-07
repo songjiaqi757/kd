@@ -16,7 +16,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Audit and checksum the aligned CMU-MOSEI dataset")
-    parser.add_argument("--dataset-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei"))
+    parser.add_argument("--dataset-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei"))
     parser.add_argument("--checksum-workers", type=int, default=4)
     return parser.parse_args()
 

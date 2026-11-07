@@ -1,6 +1,6 @@
 {
   "protocol": "official-valid video-cluster paired bootstrap",
-  "manifest": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl",
+  "manifest": "/data/sjq/kd/dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl",
   "bootstrap_repetitions": 10000,
   "bootstrap_seed": 2026,
   "three_seed_metrics": {

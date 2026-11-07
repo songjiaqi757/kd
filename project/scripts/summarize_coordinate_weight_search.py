@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 
-ROOT = Path("/home/wy/sjq/kd/outputs/student")
+ROOT = Path("/data/sjq/kd/outputs/student")
 OUTPUT = ROOT / "comparisons" / "subset4_interaction4_weight_search_seed2026.json"
 
 

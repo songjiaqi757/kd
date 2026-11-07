@@ -27,8 +27,8 @@ from rdid_mosei.mosei import (  # noqa: E402
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build a full CMU-MOSEI official-aligned inventory")
-    parser.add_argument("--source-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei_source"))
-    parser.add_argument("--output-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei"))
+    parser.add_argument("--source-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei_source"))
+    parser.add_argument("--output-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei"))
     parser.add_argument("--video-tolerance", type=float, default=0.55)
     parser.add_argument("--audio-tolerance", type=float, default=0.55)
     return parser.parse_args()

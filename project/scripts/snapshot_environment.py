@@ -9,7 +9,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-REPORTS = Path("/home/wy/sjq/kd/environment")
+REPORTS = Path("/data/sjq/kd/environment")
 
 
 def capture(command: list[str]) -> str:

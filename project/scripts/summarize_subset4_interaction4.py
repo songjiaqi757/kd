@@ -6,7 +6,7 @@ import statistics
 from pathlib import Path
 
 
-ROOT = Path("/home/wy/sjq/kd/outputs/student")
+ROOT = Path("/data/sjq/kd/outputs/student")
 OUTPUT = ROOT / "comparisons" / "subset4_vs_interaction4_three_seed.json"
 SEEDS = (2026, 2027, 2028)
 METRICS = ("mae", "pearson", "acc2_nonzero", "f1_weighted_nonzero", "acc7")

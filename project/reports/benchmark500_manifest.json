@@ -55,6 +55,6 @@
     "min": 1.341,
     "max": 91.684
   },
-  "output": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl",
-  "checksum_file": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl.sha256"
+  "output": "/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl",
+  "checksum_file": "/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl.sha256"
 }

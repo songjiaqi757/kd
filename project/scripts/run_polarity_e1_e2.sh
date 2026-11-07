@@ -13,7 +13,7 @@ case "$seed" in
   *) echo "pilot seed must be 13 or 42" >&2; exit 2 ;;
 esac
 
-root="/home/wy/sjq/kd"
+root="/data/sjq/kd"
 python_bin="/home/wy/sjq/miniconda3/envs/kd/bin/python"
 trainer="$root/project/scripts/train_student_baseline.py"
 features="$root/outputs/student/features/official_train_valid"

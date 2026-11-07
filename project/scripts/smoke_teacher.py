@@ -12,7 +12,7 @@ from qwen_omni_utils import process_mm_info
 from transformers import Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.subsets import build_conversation  # noqa: E402
@@ -23,7 +23,7 @@ def main() -> int:
     parser.add_argument(
         "--model",
         type=Path,
-        default=Path("/home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct"),
+        default=Path("/data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct"),
     )
     parser.add_argument(
         "--manifest", type=Path, default=DATASET_ROOT / "manifests/benchmark500_windowed.jsonl"

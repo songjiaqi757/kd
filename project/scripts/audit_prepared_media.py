@@ -11,7 +11,7 @@ import av
 import soundfile as sf
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
 
 
 def parse_args() -> argparse.Namespace:

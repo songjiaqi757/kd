@@ -1,6 +1,6 @@
 {
   "status": "pass_with_v2_gaps",
-  "manifest": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl",
+  "manifest": "/data/sjq/kd/dataset/cmu_mosei/manifests/official_train_valid_windowed.jsonl",
   "manifest_sha256": "21779839489bb1c9e14baa2e287399e4fadfefe95db7499efa45dbadd97a9380",
   "counts": {
     "manifest_windows": 18278,

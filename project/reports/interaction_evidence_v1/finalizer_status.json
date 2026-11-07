@@ -2,7 +2,7 @@
   "schema": "interaction-evidence-v1-finalizer-compat-v2",
   "phase": "superseded_by_validation_finalizer",
   "checkpoint_policy": "validation_mae_minimum_among_completed_epochs",
-  "authoritative_status": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_validation_finalizer_status.json",
-  "report": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+  "authoritative_status": "/data/sjq/kd/project/reports/interaction_evidence_v1/mosei_validation_finalizer_status.json",
+  "report": "/data/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
   "note": "The legacy test-selected finalizer entry point now delegates to the validation-selected finalizer."
 }

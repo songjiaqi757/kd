@@ -48,7 +48,7 @@
     "all_8_nonzero_finite": true,
     "min_norm": 4.055867248098366e-05,
     "max_norm": 0.0005649499944411218,
-    "artifact": "/home/wy/sjq/kd/outputs/student/video_adaptation_smoke_v2/video_lora/video_gradient_audit.json"
+    "artifact": "/data/sjq/kd/outputs/student/video_adaptation_smoke_v2/video_lora/video_gradient_audit.json"
   },
   "resume_vs_continuous": {
     "trainable_parameters_bitwise_equal": true,
@@ -74,6 +74,6 @@
         "rdid-stage-d-d2-seed2026-queue.service"
       ]
     },
-    "log": "/home/wy/sjq/kd/outputs/logs/video_adaptation_v1_queue.log"
+    "log": "/data/sjq/kd/outputs/logs/video_adaptation_v1_queue.log"
   }
 }

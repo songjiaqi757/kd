@@ -10,7 +10,7 @@ import signal
 import time
 
 
-BASE = Path("/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls")
+BASE = Path("/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls")
 TARGET_EPOCH = 7
 RUNS = ("ensemble_full_seed42", "ensemble_full_seed2026")
 

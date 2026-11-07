@@ -1,13 +1,13 @@
 seed: 2026
 
 models:
-  text: /home/wy/sjq/kd/model/Qwen3-0.6B-Base
-  audio: /home/wy/sjq/kd/model/WavLM-Base-Plus
-  video: /home/wy/sjq/kd/model/VideoMAE-Base
+  text: /data/sjq/kd/model/Qwen3-0.6B-Base
+  audio: /data/sjq/kd/model/WavLM-Base-Plus
+  video: /data/sjq/kd/model/VideoMAE-Base
 
 data:
-  train_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
-  teacher_targets: /home/wy/sjq/kd/outputs/probe/benchmark500/predictions.jsonl
+  train_manifest: /data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+  teacher_targets: /data/sjq/kd/outputs/probe/benchmark500/predictions.jsonl
   max_text_tokens: 256
   audio_sample_rate: 16000
   video_frames: 16
@@ -37,16 +37,16 @@ training:
   early_stopping_patience: 7
 
 cache:
-  encoder_features: /home/wy/sjq/kd/outputs/student/features/benchmark500
+  encoder_features: /data/sjq/kd/outputs/student/features/benchmark500
   dtype: bf16
 
 output:
-  baseline: /home/wy/sjq/kd/outputs/student/baseline_benchmark500_seed2026
-  full_kd: /home/wy/sjq/kd/outputs/student/full_kd_benchmark500_seed2026
-  subset_value: /home/wy/sjq/kd/outputs/student/subset_value_benchmark500_seed2026
-  mobius_full: /home/wy/sjq/kd/outputs/student/mobius_full_benchmark500_seed2026
-  high_order_interaction: /home/wy/sjq/kd/outputs/student/high_order_interaction_benchmark500_seed2026
-  subset_value_4: /home/wy/sjq/kd/outputs/student/subset_value_4_benchmark500_seed2026
+  baseline: /data/sjq/kd/outputs/student/baseline_benchmark500_seed2026
+  full_kd: /data/sjq/kd/outputs/student/full_kd_benchmark500_seed2026
+  subset_value: /data/sjq/kd/outputs/student/subset_value_benchmark500_seed2026
+  mobius_full: /data/sjq/kd/outputs/student/mobius_full_benchmark500_seed2026
+  high_order_interaction: /data/sjq/kd/outputs/student/high_order_interaction_benchmark500_seed2026
+  subset_value_4: /data/sjq/kd/outputs/student/subset_value_4_benchmark500_seed2026
 
 full_kd:
   lambda_full: 1.0

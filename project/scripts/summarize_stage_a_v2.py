@@ -8,7 +8,7 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 STUDENT = ROOT / "outputs/student"
 RELIABILITY = ROOT / "outputs/probe/benchmark500_interaction_reliability.jsonl"
 OUTPUT_JSON = ROOT / "project/reports/stage_a_v2_results.json"

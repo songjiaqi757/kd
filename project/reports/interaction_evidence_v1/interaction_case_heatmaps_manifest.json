@@ -172,20 +172,20 @@
     }
   },
   "outputs": {
-    "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.pdf",
-    "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.svg",
-    "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.png"
+    "pdf": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.pdf",
+    "svg": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.svg",
+    "png": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_heatmaps.png"
   },
   "separate_case_outputs": {
     "125676[7]": {
-      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.pdf",
-      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.svg",
-      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.png"
+      "pdf": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.pdf",
+      "svg": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.svg",
+      "png": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_125676_7.png"
     },
     "130456[11]": {
-      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.pdf",
-      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.svg",
-      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.png"
+      "pdf": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.pdf",
+      "svg": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.svg",
+      "png": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_130456_11.png"
     }
   }
 }

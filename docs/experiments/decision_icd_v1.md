@@ -53,7 +53,7 @@ weight decay=0.01，保持原始 ICD lambda。所有种子均重新跑匹配预�
 ## 运行与监控
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 /home/wy/sjq/miniconda3/envs/kd/bin/python project/scripts/run_decision_icd_screen.py \
   --dataset mosi --device 0 \
   --output-root outputs/experiments/decision_icd_v1/mosi

@@ -32,7 +32,7 @@ candidate or hyperparameters.
 ## Run
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 project/scripts/run_equal_modality_method_extensions.sh \
   0 \
   outputs/experiments/main_table_v1/mosei/assets/protocol.json \

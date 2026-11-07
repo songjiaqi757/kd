@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
 
 
 def main() -> int:

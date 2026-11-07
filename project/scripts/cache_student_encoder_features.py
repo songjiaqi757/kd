@@ -19,11 +19,11 @@ from rdid_mosei.student_data import load_manifest_row, prepare_student_sample
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Cache frozen student encoder sequences")
-    parser.add_argument("--manifest", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl"))
-    parser.add_argument("--output", type=Path, default=Path("/home/wy/sjq/kd/outputs/student/features/benchmark500"))
-    parser.add_argument("--text-model", type=Path, default=Path("/home/wy/sjq/kd/model/Qwen3-0.6B-Base"))
-    parser.add_argument("--audio-model", type=Path, default=Path("/home/wy/sjq/kd/model/WavLM-Base-Plus"))
-    parser.add_argument("--video-model", type=Path, default=Path("/home/wy/sjq/kd/model/VideoMAE-Base"))
+    parser.add_argument("--manifest", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl"))
+    parser.add_argument("--output", type=Path, default=Path("/data/sjq/kd/outputs/student/features/benchmark500"))
+    parser.add_argument("--text-model", type=Path, default=Path("/data/sjq/kd/model/Qwen3-0.6B-Base"))
+    parser.add_argument("--audio-model", type=Path, default=Path("/data/sjq/kd/model/WavLM-Base-Plus"))
+    parser.add_argument("--video-model", type=Path, default=Path("/data/sjq/kd/model/VideoMAE-Base"))
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--video-frames", type=int, default=16)
     parser.add_argument("--limit", type=int)

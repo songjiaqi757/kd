@@ -14,7 +14,7 @@
   ],
   "from_device": 1,
   "to_device": 0,
-  "gpu0_plan": "/home/wy/sjq/kd/outputs/experiments/equal_modality_extensions_v3/mosei/resource_queue_gpu0_20261010/plan.json",
+  "gpu0_plan": "/data/sjq/kd/outputs/experiments/equal_modality_extensions_v3/mosei/resource_queue_gpu0_20261010/plan.json",
   "original_plan_sha256": "1fd71887650dcb32540e2f9ddde79ab7ffc4bc9dedcdff943e608620971a33f4",
   "old_gpu1_scheduler_pid": 2700064,
   "new_gpu1_scheduler_pid": 1710280,

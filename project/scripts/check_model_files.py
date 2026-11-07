@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-MODEL_DIR = Path("/home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct")
+MODEL_DIR = Path("/data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct")
 
 
 def main() -> int:

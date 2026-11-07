@@ -20,12 +20,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=Path("/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl"),
+        default=Path("/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl"),
     )
     parser.add_argument("--row", type=int, default=0)
-    parser.add_argument("--text-model", type=Path, default=Path("/home/wy/sjq/kd/model/Qwen3-0.6B-Base"))
-    parser.add_argument("--audio-model", type=Path, default=Path("/home/wy/sjq/kd/model/WavLM-Base-Plus"))
-    parser.add_argument("--video-model", type=Path, default=Path("/home/wy/sjq/kd/model/VideoMAE-Base"))
+    parser.add_argument("--text-model", type=Path, default=Path("/data/sjq/kd/model/Qwen3-0.6B-Base"))
+    parser.add_argument("--audio-model", type=Path, default=Path("/data/sjq/kd/model/WavLM-Base-Plus"))
+    parser.add_argument("--video-model", type=Path, default=Path("/data/sjq/kd/model/VideoMAE-Base"))
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--video-frames", type=int, default=16)
     return parser.parse_args()

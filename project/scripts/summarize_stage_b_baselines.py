@@ -6,7 +6,7 @@ import statistics
 from pathlib import Path
 
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 STUDENT = ROOT / "outputs/student"
 REPORTS = ROOT / "project/reports"
 SEEDS = (13, 42, 2026)

@@ -7,14 +7,14 @@
   "bootstrap_repetitions": 10000,
   "official_test_evaluated": false,
   "runs": {
-    "B1_seed13": "/home/wy/sjq/kd/outputs/student/fullscale_full_kd_seed13",
-    "B1_seed42": "/home/wy/sjq/kd/outputs/student/fullscale_full_kd_seed42",
-    "B2_seed13": "/home/wy/sjq/kd/outputs/student/fullscale_subset4_seed13",
-    "B2_seed42": "/home/wy/sjq/kd/outputs/student/fullscale_subset4_seed42",
-    "E1_seed13": "/home/wy/sjq/kd/outputs/student/polarity_e1_seed13",
-    "E1_seed42": "/home/wy/sjq/kd/outputs/student/polarity_e1_seed42",
-    "E2_seed13": "/home/wy/sjq/kd/outputs/student/polarity_e2_seed13_detached",
-    "E2_seed42": "/home/wy/sjq/kd/outputs/student/polarity_e2_seed42"
+    "B1_seed13": "/data/sjq/kd/outputs/student/fullscale_full_kd_seed13",
+    "B1_seed42": "/data/sjq/kd/outputs/student/fullscale_full_kd_seed42",
+    "B2_seed13": "/data/sjq/kd/outputs/student/fullscale_subset4_seed13",
+    "B2_seed42": "/data/sjq/kd/outputs/student/fullscale_subset4_seed42",
+    "E1_seed13": "/data/sjq/kd/outputs/student/polarity_e1_seed13",
+    "E1_seed42": "/data/sjq/kd/outputs/student/polarity_e1_seed42",
+    "E2_seed13": "/data/sjq/kd/outputs/student/polarity_e2_seed13_detached",
+    "E2_seed42": "/data/sjq/kd/outputs/student/polarity_e2_seed42"
   },
   "comparisons": [
     {

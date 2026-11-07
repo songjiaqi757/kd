@@ -1,5 +1,5 @@
 {
-  "manifest": "/home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl",
+  "manifest": "/data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl",
   "manifest_sha256": "a7168e20582cad5940964b167cc3db5065e9413f1293f9f8b6681d88b9c5c04e",
   "samples": 500,
   "split": {

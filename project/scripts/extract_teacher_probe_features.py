@@ -18,8 +18,8 @@ import transformers
 from transformers import Qwen3OmniMoeConfig, Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
-OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/probe/features/benchmark500_timing_v2")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
+OUTPUT_ROOT = Path("/data/sjq/kd/outputs/probe/features/benchmark500_timing_v2")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.benchmark import append_jsonl  # noqa: E402
@@ -33,7 +33,7 @@ from rdid_mosei.teacher_video import (  # noqa: E402
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Resumable frozen-Thinker feature extraction for the teacher Probe")
     parser.add_argument(
-        "--model", type=Path, default=Path("/home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct")
+        "--model", type=Path, default=Path("/data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct")
     )
     parser.add_argument(
         "--manifest", type=Path, default=DATASET_ROOT / "manifests/benchmark500_windowed.jsonl"

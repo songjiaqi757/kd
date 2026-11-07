@@ -46,7 +46,7 @@ tmux session：
 
 共 10 个新 run。计划输出：
 
-`/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi`
+`/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi`
 
 删除确认不被项目使用的三个 MOSEI 预计算特征目录后，根分区可用空间约 97 GiB。
 本地 launcher 要求启动时至少有 80 GiB 可用空间，并在项目输出目录运行 MOSI 队列。
@@ -61,7 +61,7 @@ tmux session：
 seed 13 复用已有完整 20-epoch checkpoint，并重新评测 validation-MAE-best；seeds 42/2026
 各新增训练一次，共四个新 run。输出位于：
 
-`/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi_additional_controls`
+`/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosi_additional_controls`
 
 训练 tmux 为 `rdid_ms_mosi_extra_20260924`。四个任务双卡并行，每卡最多两个；逐 epoch
 保留 checkpoint，按 validation MAE 选模后只评测一次 official test。独立 watcher 在新增任务
@@ -77,7 +77,7 @@ Qiii 队列完成后执行：
 ```
 
 脚本要求远端队列为 `complete`，在远端为全部普通文件生成 SHA-256 清单，传回
-`/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei` 后逐文件校验。
+`/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei` 后逐文件校验。
 
 本地 transfer watcher 已配置为等待 Qiii 队列完成，之后自动执行上述回传与汇总。
 
@@ -152,7 +152,7 @@ order-control 实验结束，也不会删除或覆盖此前 checkpoint。
 tmux 为 `rdid_ms_mosei_order_followup_20260924`。Ensemble Full KD 的 seeds 42/2026
 改在本机双卡运行，输出位于：
 
-`/home/wy/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls`
+`/data/sjq/kd/outputs/experiments/multiseed_controls_v1/mosei_ensemble_controls`
 
 本机 tmux 为 `rdid_ms_mosei_ensemble_local_20260924`；每张 GPU 限一项，等待当前 MOSI
 任务释放对应显存后立即启动。所有新增 run 均逐 epoch 保留 checkpoint、按 validation MAE

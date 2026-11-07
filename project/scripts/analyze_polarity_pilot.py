@@ -10,7 +10,7 @@ from typing import Any
 
 import numpy as np
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 PROJECT = ROOT / "project"
 sys.path.insert(0, str(PROJECT / "src"))
 sys.path.insert(0, str(PROJECT / "scripts"))

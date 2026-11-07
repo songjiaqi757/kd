@@ -17,8 +17,8 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-FEATURE_ROOT = Path("/home/wy/sjq/kd/outputs/probe/features/benchmark500")
-OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/probe/benchmark500")
+FEATURE_ROOT = Path("/data/sjq/kd/outputs/probe/features/benchmark500")
+OUTPUT_ROOT = Path("/data/sjq/kd/outputs/probe/benchmark500")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.metrics import sentiment_metrics  # noqa: E402

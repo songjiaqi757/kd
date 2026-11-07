@@ -54,5 +54,5 @@ Corrected minus harmed contrast: +0.418720, cluster-bootstrap 95% CI [+0.220063,
 逐样本任务误差使用 interaction evidence 已保存的同一次七子集 forward 中的 TAV 输出，以确保 interaction 与任务预测逐样本配对；它不是从训练 history 的汇总 MAE 反推得到。
 MOSI validation 只有 10 个原视频 cluster，因此其 cluster bootstrap 区间尤其不精确。
 
-Figure: `/home/wy/sjq/kd/project/reports/paper_figures/fig_interaction_fidelity_task_gain_valid.pdf`
-Caption: `/home/wy/sjq/kd/project/reports/paper_figures/fig_interaction_fidelity_task_gain_valid_caption.md`
+Figure: `/data/sjq/kd/project/reports/paper_figures/fig_interaction_fidelity_task_gain_valid.pdf`
+Caption: `/data/sjq/kd/project/reports/paper_figures/fig_interaction_fidelity_task_gain_valid_caption.md`

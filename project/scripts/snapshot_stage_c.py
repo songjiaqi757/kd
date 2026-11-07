@@ -7,7 +7,7 @@ import subprocess
 from pathlib import Path
 
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 OUTPUT = ROOT / "project/reports/stage_c_v1_freeze.json"
 
 

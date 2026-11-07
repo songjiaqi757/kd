@@ -3,8 +3,8 @@ official_test_evaluated: false
 seeds: [13, 42]
 
 data:
-  features: /home/wy/sjq/kd/outputs/student/features/official_train_valid
-  teacher_targets: /home/wy/sjq/kd/outputs/probe/official_train_valid_seed2026/predictions.jsonl
+  features: /data/sjq/kd/outputs/student/features/official_train_valid
+  teacher_targets: /data/sjq/kd/outputs/probe/official_train_valid_seed2026/predictions.jsonl
   zero_label_policy: exclude_from_binary_task_kd_and_metrics
 
 student:

@@ -2,8 +2,8 @@
 set -euo pipefail
 
 PYTHON=/home/wy/sjq/miniconda3/envs/kd/bin/python
-SCRIPT=/home/wy/sjq/kd/project/scripts/train_student_lora.py
-ROOT=/home/wy/sjq/kd
+SCRIPT=/data/sjq/kd/project/scripts/train_student_lora.py
+ROOT=/data/sjq/kd
 LOG_DIR="$ROOT/outputs/logs/stage_d_attribution"
 ENSEMBLE=(
   "$ROOT/outputs/probe/official_train_valid_seed2026/predictions.jsonl"
@@ -56,7 +56,7 @@ run_one ensemble_pair 42
 if "$PYTHON" -c '
 import json
 from pathlib import Path
-r=Path("/home/wy/sjq/kd/outputs/student")
+r=Path("/data/sjq/kd/outputs/student")
 ok=True
 for s in (13,42):
     d1=json.loads((r/f"stage_d_d1_full_kd_lora_seed{s}/report.json").read_text())["valid_metrics"]["mae"]
@@ -70,7 +70,7 @@ fi
 "$PYTHON" -c '
 import json
 from pathlib import Path
-r=Path("/home/wy/sjq/kd/outputs/student")
+r=Path("/data/sjq/kd/outputs/student")
 out={"status":"complete","pilot_seeds":[13,42],"promotion_rule":"C2 beats same-seed D1 by >=0.005 for 2/2 seeds","official_test_evaluated":False,"runs":{}}
 for p in sorted(r.glob("stage_d_c[02]_*_lora_seed*/report.json")):
     out["runs"][p.parent.name]=json.loads(p.read_text())

@@ -29,7 +29,7 @@
       "status": "running",
       "stage": "teacher_pair",
       "pid": 31762,
-      "current_log": "/home/wy/sjq/kd/outputs/experiments/video_source_v2/logs/teacher_pair.log",
+      "current_log": "/data/sjq/kd/outputs/experiments/video_source_v2/logs/teacher_pair.log",
       "elapsed_seconds": 15,
       "progress": {
         "completed": 0,

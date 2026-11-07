@@ -15,12 +15,12 @@
   ],
   "checkpoint_policy": "validation_mae_minimum_among_completed_epochs",
   "checkpoints": {
-    "full_kd": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_019.pt",
-    "subset7": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/checkpoints/epoch_011.pt",
-    "first_order_interaction": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/first_order_interaction_seed13/checkpoints/epoch_014.pt",
-    "uniform_interaction": "/home/wy/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_015.pt",
-    "first_second_order_interaction": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13/checkpoints/epoch_013.pt",
-    "random_orthogonal": "/home/wy/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13/checkpoints/epoch_016.pt"
+    "full_kd": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/checkpoints/epoch_019.pt",
+    "subset7": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/subset7_seed13/checkpoints/epoch_011.pt",
+    "first_order_interaction": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/first_order_interaction_seed13/checkpoints/epoch_014.pt",
+    "uniform_interaction": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/checkpoints/epoch_015.pt",
+    "first_second_order_interaction": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/first_second_order_interaction_seed13/checkpoints/epoch_013.pt",
+    "random_orthogonal": "/data/sjq/kd/outputs/experiments/interaction_evidence_v1/mosi/students/random_orthogonal_seed13/checkpoints/epoch_016.pt"
   },
   "reused_prediction_methods": [],
   "reconstruction": {

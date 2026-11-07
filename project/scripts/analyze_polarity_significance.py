@@ -10,7 +10,7 @@ from typing import Any
 
 import numpy as np
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 STUDENT = ROOT / "outputs/student"
 SEEDS = (13, 42, 2026)
 METHOD_PATHS = {

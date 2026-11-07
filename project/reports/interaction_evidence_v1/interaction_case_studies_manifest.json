@@ -10,14 +10,14 @@
   ],
   "outputs": {
     "125676[7]": {
-      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.pdf",
-      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.svg",
-      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.png"
+      "pdf": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.pdf",
+      "svg": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.svg",
+      "png": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_strong_ta.png"
     },
     "130456[11]": {
-      "pdf": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.pdf",
-      "svg": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.svg",
-      "png": "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.png"
+      "pdf": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.pdf",
+      "svg": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.svg",
+      "png": "/data/sjq/kd/project/reports/interaction_evidence_v1/interaction_case_study_cross_modal_conflict.png"
     }
   }
 }

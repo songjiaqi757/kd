@@ -27,7 +27,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=Path("/home/wy/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl"),
+        default=Path("/data/sjq/kd/dataset/cmu_mosei/manifests/all.jsonl"),
     )
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--ffmpeg-threads", type=int, default=2)

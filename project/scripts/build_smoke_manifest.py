@@ -30,7 +30,7 @@ SPLIT_SLOTS = ["valid" if index in {3, 8, 13, 18} else "train" for index in rang
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosei_source"))
+    parser.add_argument("--dataset-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosei_source"))
     parser.add_argument(
         "--output",
         type=Path,

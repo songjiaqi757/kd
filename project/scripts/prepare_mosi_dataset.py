@@ -27,10 +27,10 @@ FFMPEG = shutil.which("ffmpeg") or str(Path(sys.executable).with_name("ffmpeg"))
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Prepare CMU-MOSI MP4/WAV media and manifests")
     parser.add_argument(
-        "--source-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosi_source")
+        "--source-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosi_source")
     )
     parser.add_argument(
-        "--output-root", type=Path, default=Path("/home/wy/sjq/kd/dataset/cmu_mosi")
+        "--output-root", type=Path, default=Path("/data/sjq/kd/dataset/cmu_mosi")
     )
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--force", action="store_true")

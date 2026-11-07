@@ -18,7 +18,7 @@
         "f1_weighted_has_zero": 0.8181400840789487,
         "acc7": 0.388646288209607
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -37,7 +37,7 @@
         "f1_weighted_has_zero": 0.8181400840789487,
         "acc7": 0.388646288209607
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -56,7 +56,7 @@
         "f1_weighted_has_zero": 0.815767794245333,
         "acc7": 0.45335276967930027
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -75,7 +75,7 @@
         "f1_weighted_has_zero": 0.815767794245333,
         "acc7": 0.45335276967930027
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -94,7 +94,7 @@
         "f1_weighted_has_zero": 0.8078602620087336,
         "acc7": 0.4410480349344978
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -113,7 +113,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.3318777292576419
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -132,7 +132,7 @@
         "f1_weighted_has_zero": 0.822527052461178,
         "acc7": 0.43731778425655976
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/test/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -151,7 +151,7 @@
         "f1_weighted_has_zero": 0.808133918201138,
         "acc7": 0.37317784256559766
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -170,7 +170,7 @@
         "f1_weighted_has_zero": 0.8176568604918408,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -189,7 +189,7 @@
         "f1_weighted_has_zero": 0.8348236981033696,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -208,7 +208,7 @@
         "f1_weighted_has_zero": 0.8325250671781828,
         "acc7": 0.43002915451895046
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -227,7 +227,7 @@
         "f1_weighted_has_zero": 0.8105525966313138,
         "acc7": 0.43440233236151604
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -246,7 +246,7 @@
         "f1_weighted_has_zero": 0.789106100219392,
         "acc7": 0.3624454148471616
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -265,7 +265,7 @@
         "f1_weighted_has_zero": 0.8263398671350866,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -284,7 +284,7 @@
         "f1_weighted_has_zero": 0.8415064699961765,
         "acc7": 0.4139941690962099
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -303,7 +303,7 @@
         "f1_weighted_has_zero": 0.8183393285727809,
         "acc7": 0.40816326530612246
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -322,7 +322,7 @@
         "f1_weighted_has_zero": 0.8137462903922912,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -341,7 +341,7 @@
         "f1_weighted_has_zero": 0.8356785853924107,
         "acc7": 0.34934497816593885
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -360,7 +360,7 @@
         "f1_weighted_has_zero": 0.8362380393291848,
         "acc7": 0.4446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -379,7 +379,7 @@
         "f1_weighted_has_zero": 0.8261885308568981,
         "acc7": 0.41690962099125367
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -398,7 +398,7 @@
         "f1_weighted_has_zero": 0.8116877659144076,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -417,7 +417,7 @@
         "f1_weighted_has_zero": 0.8226104791151374,
         "acc7": 0.32751091703056767
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -436,7 +436,7 @@
         "f1_weighted_has_zero": 0.837097589414058,
         "acc7": 0.4446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -455,7 +455,7 @@
         "f1_weighted_has_zero": 0.8128672047361465,
         "acc7": 0.38338192419825073
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -474,7 +474,7 @@
         "f1_weighted_has_zero": 0.7945722237768912,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -493,7 +493,7 @@
         "f1_weighted_has_zero": 0.804738305041621,
         "acc7": 0.34497816593886466
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -512,7 +512,7 @@
         "f1_weighted_has_zero": 0.8283706745612398,
         "acc7": 0.446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/test/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -531,7 +531,7 @@
         "f1_weighted_has_zero": 0.8131538233560585,
         "acc7": 0.40233236151603496
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -550,7 +550,7 @@
         "f1_weighted_has_zero": 0.8165938864628821,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -569,7 +569,7 @@
         "f1_weighted_has_zero": 0.8301177601132198,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -588,7 +588,7 @@
         "f1_weighted_has_zero": 0.8485628915783126,
         "acc7": 0.46647230320699706
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/test/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -607,7 +607,7 @@
         "f1_weighted_has_zero": 0.8396501457725947,
         "acc7": 0.4198250728862974
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -626,7 +626,7 @@
         "f1_weighted_has_zero": 0.8214058503754362,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -645,7 +645,7 @@
         "f1_weighted_has_zero": 0.8354600760714297,
         "acc7": 0.3799126637554585
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -664,7 +664,7 @@
         "f1_weighted_has_zero": 0.8429355599030893,
         "acc7": 0.4227405247813411
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/test/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -683,7 +683,7 @@
         "f1_weighted_has_zero": 0.8443626036384241,
         "acc7": 0.46355685131195334
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -702,7 +702,7 @@
         "f1_weighted_has_zero": 0.8010383633820142,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -721,7 +721,7 @@
         "f1_weighted_has_zero": 0.8096827856371454,
         "acc7": 0.26200873362445415
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -740,7 +740,7 @@
         "f1_weighted_has_zero": 0.8225507943378094,
         "acc7": 0.4110787172011662
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/test/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -759,7 +759,7 @@
         "f1_weighted_has_zero": 0.7926999552821683,
         "acc7": 0.3323615160349854
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -778,7 +778,7 @@
         "f1_weighted_has_zero": 0.8000497398093421,
         "acc7": 0.39737991266375544
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -797,7 +797,7 @@
         "f1_weighted_has_zero": 0.830364277223906,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -816,7 +816,7 @@
         "f1_weighted_has_zero": 0.8027377051603198,
         "acc7": 0.40233236151603496
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/test/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -835,7 +835,7 @@
         "f1_weighted_has_zero": 0.8145042969446733,
         "acc7": 0.3848396501457726
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -854,7 +854,7 @@
         "f1_weighted_has_zero": 0.8211166778852368,
         "acc7": 0.37117903930131
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -873,7 +873,7 @@
         "f1_weighted_has_zero": 0.8211166778852368,
         "acc7": 0.37117903930131
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -892,7 +892,7 @@
         "f1_weighted_has_zero": 0.8297580884284477,
         "acc7": 0.42419825072886297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/test/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -911,7 +911,7 @@
         "f1_weighted_has_zero": 0.8297580884284477,
         "acc7": 0.42419825072886297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -930,7 +930,7 @@
         "f1_weighted_has_zero": 0.8132064965205164,
         "acc7": 0.4366812227074236
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -949,7 +949,7 @@
         "f1_weighted_has_zero": 0.8200644446035841,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -968,7 +968,7 @@
         "f1_weighted_has_zero": 0.8383890327470838,
         "acc7": 0.4606413994169096
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/test/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -987,7 +987,7 @@
         "f1_weighted_has_zero": 0.8386119852909522,
         "acc7": 0.40524781341107874
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -1006,7 +1006,7 @@
         "f1_weighted_has_zero": 0.8298426935981521,
         "acc7": 0.4279475982532751
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -1025,7 +1025,7 @@
         "f1_weighted_has_zero": 0.8269691188551169,
         "acc7": 0.35807860262008734
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -1044,7 +1044,7 @@
         "f1_weighted_has_zero": 0.8429355599030893,
         "acc7": 0.4708454810495627
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/test/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -1063,7 +1063,7 @@
         "f1_weighted_has_zero": 0.8202966166486575,
         "acc7": 0.4139941690962099
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -1082,7 +1082,7 @@
         "f1_weighted_has_zero": 0.8176568604918408,
         "acc7": 0.3406113537117904
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -1101,7 +1101,7 @@
         "f1_weighted_has_zero": 0.8348236981033696,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -1120,7 +1120,7 @@
         "f1_weighted_has_zero": 0.8406600485318246,
         "acc7": 0.4314868804664723
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/test/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -1139,7 +1139,7 @@
         "f1_weighted_has_zero": 0.8105525966313138,
         "acc7": 0.43440233236151604
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed13/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -1158,7 +1158,7 @@
         "f1_weighted_has_zero": 0.8116877659144076,
         "acc7": 0.35807860262008734
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -1177,7 +1177,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.35807860262008734
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -1196,7 +1196,7 @@
         "f1_weighted_has_zero": 0.8267413954675944,
         "acc7": 0.446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction",
@@ -1215,7 +1215,7 @@
         "f1_weighted_has_zero": 0.8153113286130779,
         "acc7": 0.4008746355685131
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/decision_icd_v1/mosi/icd_decision_none_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -1234,7 +1234,7 @@
         "f1_weighted_has_zero": 0.8120554387746025,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -1253,7 +1253,7 @@
         "f1_weighted_has_zero": 0.8181400840789487,
         "acc7": 0.32751091703056767
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -1272,7 +1272,7 @@
         "f1_weighted_has_zero": 0.8357234517784046,
         "acc7": 0.4198250728862974
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -1291,7 +1291,7 @@
         "f1_weighted_has_zero": 0.8291102578151714,
         "acc7": 0.3935860058309038
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -1310,7 +1310,7 @@
         "f1_weighted_has_zero": 0.8081868752572166,
         "acc7": 0.38427947598253276
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -1329,7 +1329,7 @@
         "f1_weighted_has_zero": 0.8268982092684742,
         "acc7": 0.34934497816593885
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -1348,7 +1348,7 @@
         "f1_weighted_has_zero": 0.8303114912134013,
         "acc7": 0.4446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -1367,7 +1367,7 @@
         "f1_weighted_has_zero": 0.8170934940539776,
         "acc7": 0.44752186588921283
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -1386,7 +1386,7 @@
         "f1_weighted_has_zero": 0.8174367189563558,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -1405,7 +1405,7 @@
         "f1_weighted_has_zero": 0.8298426935981521,
         "acc7": 0.4148471615720524
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -1424,7 +1424,7 @@
         "f1_weighted_has_zero": 0.832161875497826,
         "acc7": 0.44169096209912534
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -1443,7 +1443,7 @@
         "f1_weighted_has_zero": 0.830954624686403,
         "acc7": 0.39212827988338195
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -1462,7 +1462,7 @@
         "f1_weighted_has_zero": 0.8081868752572166,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -1481,7 +1481,7 @@
         "f1_weighted_has_zero": 0.8204464744765282,
         "acc7": 0.3799126637554585
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -1500,7 +1500,7 @@
         "f1_weighted_has_zero": 0.8468119565808878,
         "acc7": 0.44752186588921283
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/test/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -1519,7 +1519,7 @@
         "f1_weighted_has_zero": 0.837097589414058,
         "acc7": 0.446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -1538,7 +1538,7 @@
         "f1_weighted_has_zero": 0.7937324121065477,
         "acc7": 0.388646288209607
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -1557,7 +1557,7 @@
         "f1_weighted_has_zero": 0.8132064965205164,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -1576,7 +1576,7 @@
         "f1_weighted_has_zero": 0.841519877447872,
         "acc7": 0.40524781341107874
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/test/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -1595,7 +1595,7 @@
         "f1_weighted_has_zero": 0.8349526421633707,
         "acc7": 0.38629737609329445
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -1614,7 +1614,7 @@
         "f1_weighted_has_zero": 0.794938630746491,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -1633,7 +1633,7 @@
         "f1_weighted_has_zero": 0.8093419440511962,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -1652,7 +1652,7 @@
         "f1_weighted_has_zero": 0.8369864112807155,
         "acc7": 0.4067055393586006
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/test/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -1671,7 +1671,7 @@
         "f1_weighted_has_zero": 0.8308876466262438,
         "acc7": 0.4314868804664723
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -1690,7 +1690,7 @@
         "f1_weighted_has_zero": 0.8307731977027382,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -1709,7 +1709,7 @@
         "f1_weighted_has_zero": 0.8307731977027382,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -1728,7 +1728,7 @@
         "f1_weighted_has_zero": 0.8227801839873108,
         "acc7": 0.42419825072886297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/test/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -1747,7 +1747,7 @@
         "f1_weighted_has_zero": 0.8227801839873108,
         "acc7": 0.42419825072886297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -1766,7 +1766,7 @@
         "f1_weighted_has_zero": 0.8002908472053495,
         "acc7": 0.3624454148471616
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -1785,7 +1785,7 @@
         "f1_weighted_has_zero": 0.8171864515263194,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -1804,7 +1804,7 @@
         "f1_weighted_has_zero": 0.8227801839873108,
         "acc7": 0.43731778425655976
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/test/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -1823,7 +1823,7 @@
         "f1_weighted_has_zero": 0.8186921149715974,
         "acc7": 0.45335276967930027
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -1842,7 +1842,7 @@
         "f1_weighted_has_zero": 0.7839264277007112,
         "acc7": 0.4279475982532751
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -1861,7 +1861,7 @@
         "f1_weighted_has_zero": 0.8126939406376525,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -1880,7 +1880,7 @@
         "f1_weighted_has_zero": 0.8182869918965368,
         "acc7": 0.39941690962099125
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/test/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -1899,7 +1899,7 @@
         "f1_weighted_has_zero": 0.823829486147722,
         "acc7": 0.3965014577259475
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -1918,7 +1918,7 @@
         "f1_weighted_has_zero": 0.8250006433032824,
         "acc7": 0.4410480349344978
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -1937,7 +1937,7 @@
         "f1_weighted_has_zero": 0.8354600760714297,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -1956,7 +1956,7 @@
         "f1_weighted_has_zero": 0.8413009420669562,
         "acc7": 0.43731778425655976
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/test/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -1975,7 +1975,7 @@
         "f1_weighted_has_zero": 0.799392864446298,
         "acc7": 0.4329446064139942
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -1994,7 +1994,7 @@
         "f1_weighted_has_zero": 0.804518426591238,
         "acc7": 0.44541484716157204
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -2013,7 +2013,7 @@
         "f1_weighted_has_zero": 0.8180082193215963,
         "acc7": 0.3624454148471616
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -2032,7 +2032,7 @@
         "f1_weighted_has_zero": 0.8364460850565392,
         "acc7": 0.4708454810495627
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/test/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -2051,7 +2051,7 @@
         "f1_weighted_has_zero": 0.8261890656410718,
         "acc7": 0.4096209912536443
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -2070,7 +2070,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -2089,7 +2089,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -2108,7 +2108,7 @@
         "f1_weighted_has_zero": 0.8331575855840061,
         "acc7": 0.4606413994169096
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/test/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -2127,7 +2127,7 @@
         "f1_weighted_has_zero": 0.8331575855840061,
         "acc7": 0.4606413994169096
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -2146,7 +2146,7 @@
         "f1_weighted_has_zero": 0.7738709859108309,
         "acc7": 0.34934497816593885
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -2165,7 +2165,7 @@
         "f1_weighted_has_zero": 0.8053687368638165,
         "acc7": 0.37554585152838427
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -2184,7 +2184,7 @@
         "f1_weighted_has_zero": 0.8313354820851058,
         "acc7": 0.4139941690962099
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/test/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -2203,7 +2203,7 @@
         "f1_weighted_has_zero": 0.812600269658621,
         "acc7": 0.4096209912536443
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed42/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -2222,7 +2222,7 @@
         "f1_weighted_has_zero": 0.7983398434091155,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -2241,7 +2241,7 @@
         "f1_weighted_has_zero": 0.8126939406376525,
         "acc7": 0.4017467248908297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -2260,7 +2260,7 @@
         "f1_weighted_has_zero": 0.8444461003565423,
         "acc7": 0.45335276967930027
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_shared_dropout",
@@ -2279,7 +2279,7 @@
         "f1_weighted_has_zero": 0.8046025678441803,
         "acc7": 0.45335276967930027
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_shared_dropout_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -2298,7 +2298,7 @@
         "f1_weighted_has_zero": 0.8253275109170306,
         "acc7": 0.4104803493449782
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -2317,7 +2317,7 @@
         "f1_weighted_has_zero": 0.8222663572390438,
         "acc7": 0.39737991266375544
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -2336,7 +2336,7 @@
         "f1_weighted_has_zero": 0.838424972191975,
         "acc7": 0.44169096209912534
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_gradient_projected",
@@ -2355,7 +2355,7 @@
         "f1_weighted_has_zero": 0.8167272514225241,
         "acc7": 0.42419825072886297
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -2374,7 +2374,7 @@
         "f1_weighted_has_zero": 0.8169056536546158,
         "acc7": 0.388646288209607
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -2393,7 +2393,7 @@
         "f1_weighted_has_zero": 0.829538653772314,
         "acc7": 0.388646288209607
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -2412,7 +2412,7 @@
         "f1_weighted_has_zero": 0.8310893790681178,
         "acc7": 0.4489795918367347
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "uniform_interaction_coordinate_compatible",
@@ -2431,7 +2431,7 @@
         "f1_weighted_has_zero": 0.8411784775581364,
         "acc7": 0.4358600583090379
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_coordinate_compatible_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -2450,7 +2450,7 @@
         "f1_weighted_has_zero": 0.8081868752572166,
         "acc7": 0.39737991266375544
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -2469,7 +2469,7 @@
         "f1_weighted_has_zero": 0.8266744945919966,
         "acc7": 0.39737991266375544
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -2488,7 +2488,7 @@
         "f1_weighted_has_zero": 0.8341377675444456,
         "acc7": 0.43731778425655976
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "explicit_full_kd",
@@ -2507,7 +2507,7 @@
         "f1_weighted_has_zero": 0.8303114912134013,
         "acc7": 0.4446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_full_kd_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -2526,7 +2526,7 @@
         "f1_weighted_has_zero": 0.8317538052482705,
         "acc7": 0.38427947598253276
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -2545,7 +2545,7 @@
         "f1_weighted_has_zero": 0.8317538052482705,
         "acc7": 0.38427947598253276
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -2564,7 +2564,7 @@
         "f1_weighted_has_zero": 0.832815205630351,
         "acc7": 0.3892128279883382
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "explicit_uniform_interaction",
@@ -2583,7 +2583,7 @@
         "f1_weighted_has_zero": 0.832815205630351,
         "acc7": 0.3892128279883382
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/explicit_uniform_interaction_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -2602,7 +2602,7 @@
         "f1_weighted_has_zero": 0.8258918585964948,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -2621,7 +2621,7 @@
         "f1_weighted_has_zero": 0.8258918585964948,
         "acc7": 0.3930131004366812
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "order_routed",
@@ -2640,7 +2640,7 @@
         "f1_weighted_has_zero": 0.8297871202149103,
         "acc7": 0.44314868804664725
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "order_routed",
@@ -2659,7 +2659,7 @@
         "f1_weighted_has_zero": 0.8297871202149103,
         "acc7": 0.44314868804664725
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/order_routed_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -2678,7 +2678,7 @@
         "f1_weighted_has_zero": 0.8301177601132198,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -2697,7 +2697,7 @@
         "f1_weighted_has_zero": 0.8301177601132198,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -2716,7 +2716,7 @@
         "f1_weighted_has_zero": 0.8318890420289894,
         "acc7": 0.45481049562682213
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "scrambled_routed",
@@ -2735,7 +2735,7 @@
         "f1_weighted_has_zero": 0.8318890420289894,
         "acc7": 0.45481049562682213
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/scrambled_routed_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -2754,7 +2754,7 @@
         "f1_weighted_has_zero": 0.8263398671350866,
         "acc7": 0.42358078602620086
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -2773,7 +2773,7 @@
         "f1_weighted_has_zero": 0.8312636264753746,
         "acc7": 0.32751091703056767
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "fusion_only",
@@ -2792,7 +2792,7 @@
         "f1_weighted_has_zero": 0.847558556950477,
         "acc7": 0.4329446064139942
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "fusion_only",
@@ -2811,7 +2811,7 @@
         "f1_weighted_has_zero": 0.8145201950051195,
         "acc7": 0.358600583090379
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/fusion_only_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -2830,7 +2830,7 @@
         "f1_weighted_has_zero": 0.8169056536546158,
         "acc7": 0.36681222707423583
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -2849,7 +2849,7 @@
         "f1_weighted_has_zero": 0.8220949001490325,
         "acc7": 0.3318777292576419
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "dgl_icd",
@@ -2868,7 +2868,7 @@
         "f1_weighted_has_zero": 0.8093514594844622,
         "acc7": 0.42565597667638483
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "dgl_icd",
@@ -2887,7 +2887,7 @@
         "f1_weighted_has_zero": 0.8164825333015842,
         "acc7": 0.36151603498542273
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/dgl_icd_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -2906,7 +2906,7 @@
         "f1_weighted_has_zero": 0.8204464744765282,
         "acc7": 0.39737991266375544
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -2925,7 +2925,7 @@
         "f1_weighted_has_zero": 0.8298426935981521,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "ensemble_source",
@@ -2944,7 +2944,7 @@
         "f1_weighted_has_zero": 0.8371363271163274,
         "acc7": 0.4446064139941691
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "ensemble_source",
@@ -2963,7 +2963,7 @@
         "f1_weighted_has_zero": 0.8442128513868286,
         "acc7": 0.4518950437317784
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/ensemble_source_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -2982,7 +2982,7 @@
         "f1_weighted_has_zero": 0.8081868752572166,
         "acc7": 0.4279475982532751
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -3001,7 +3001,7 @@
         "f1_weighted_has_zero": 0.8134166025953268,
         "acc7": 0.37117903930131
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_uniform",
@@ -3020,7 +3020,7 @@
         "f1_weighted_has_zero": 0.8346609244911423,
         "acc7": 0.4358600583090379
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "target_uniform",
@@ -3039,7 +3039,7 @@
         "f1_weighted_has_zero": 0.8122767897099327,
         "acc7": 0.36005830903790087
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_uniform_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -3058,7 +3058,7 @@
         "f1_weighted_has_zero": 0.834061135371179,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -3077,7 +3077,7 @@
         "f1_weighted_has_zero": 0.834061135371179,
         "acc7": 0.4192139737991266
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "target_variance",
@@ -3096,7 +3096,7 @@
         "f1_weighted_has_zero": 0.8369138832381828,
         "acc7": 0.41690962099125367
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "target_variance",
@@ -3115,7 +3115,7 @@
         "f1_weighted_has_zero": 0.8369138832381828,
         "acc7": 0.41690962099125367
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/target_variance_seed2026/test/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -3134,7 +3134,7 @@
         "f1_weighted_has_zero": 0.8169056536546158,
         "acc7": 0.42358078602620086
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/validation_postrun/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/validation_postrun/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -3153,7 +3153,7 @@
         "f1_weighted_has_zero": 0.8220949001490325,
         "acc7": 0.3799126637554585
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/validation_postrun/valid_acc2_nonzero/report.json"
     },
     {
       "method": "late_decay",
@@ -3172,7 +3172,7 @@
         "f1_weighted_has_zero": 0.8354771234272114,
         "acc7": 0.44314868804664725
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/test/valid_mae/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/test/valid_mae/report.json"
     },
     {
       "method": "late_decay",
@@ -3191,7 +3191,7 @@
         "f1_weighted_has_zero": 0.8365702026194881,
         "acc7": 0.43002915451895046
       },
-      "source": "/home/wy/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/test/valid_acc2_nonzero/report.json"
+      "source": "/data/sjq/kd/outputs/experiments/mosi_research_v1/late_decay_seed2026/test/valid_acc2_nonzero/report.json"
     }
   ],
   "mosi_aggregates": [

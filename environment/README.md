@@ -9,4 +9,4 @@
 - `nvidia_smi.txt`：GPU 与驱动快照；
 - `ffmpeg_version.txt`：媒体工具构建版本。
 
-运行 `/home/wy/sjq/kd/project/scripts/snapshot_environment.py` 可刷新这些快照。
+运行 `/data/sjq/kd/project/scripts/snapshot_environment.py` 可刷新这些快照。

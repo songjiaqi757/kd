@@ -230,7 +230,7 @@ GPU0 当前运行 M1_seed42、M3_seed42、M0_seed42；GPU1 运行 M0_seed2026、
 实时状态：
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 watch -n 10 /home/wy/sjq/miniconda3/envs/kd/bin/python project/scripts/tav_distillation_status.py
 ```
 
@@ -364,7 +364,7 @@ M3 vs M1 的单 seed 区间不跨 0；M4 vs M3 的区间跨 0，不能据点估�
 在服务器项目目录下，可直接查看持续更新的队列与单任务状态：
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 watch -n 10 cat outputs/experiments/tav_main_v1/status.json
 ## 单任务（按需要替换 run 名称）
 cat outputs/experiments/tav_main_v1/students/M6_seed13/status.json
@@ -516,9 +516,9 @@ P2 再对 M3/M6 的最佳 checkpoint 进行 5 次跨 source 视频交换、frame
 后台服务名为 `rdid-tav-main-v1.service`。状态及日志位于独立目录 `outputs/experiments/tav_main_v1`；旧实验目录保留。
 
 ```bash
-/home/wy/sjq/miniconda3/envs/kd/bin/python /home/wy/sjq/kd/project/scripts/tav_distillation_status.py
+/home/wy/sjq/miniconda3/envs/kd/bin/python /data/sjq/kd/project/scripts/tav_distillation_status.py
 systemctl --user status rdid-tav-main-v1.service --no-pager
-tail -F /home/wy/sjq/kd/outputs/experiments/tav_main_v1/pipeline.log
+tail -F /data/sjq/kd/outputs/experiments/tav_main_v1/pipeline.log
 ```
 
 人工停止和恢复同一冻结队列：

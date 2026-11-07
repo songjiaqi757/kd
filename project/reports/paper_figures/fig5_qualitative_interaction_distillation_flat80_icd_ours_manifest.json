@@ -33,8 +33,8 @@
     }
   },
   "outputs": {
-    "pdf": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.pdf",
-    "svg": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.svg",
-    "png": "/home/wy/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.png"
+    "pdf": "/data/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.pdf",
+    "svg": "/data/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.svg",
+    "png": "/data/sjq/kd/project/reports/paper_figures/fig5_qualitative_interaction_distillation_flat80_icd_ours.png"
   }
 }

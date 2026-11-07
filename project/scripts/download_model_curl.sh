@@ -3,7 +3,7 @@ set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REPO_ID="Qwen/Qwen3-Omni-30B-A3B-Instruct"
-MODEL_DIR="/home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct"
+MODEL_DIR="/data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct"
 BASE_URL="https://huggingface.co/${REPO_ID}/resolve/main"
 HF_BIN="${HF_BIN:-/home/wy/sjq/.local/bin/hf}"
 

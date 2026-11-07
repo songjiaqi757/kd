@@ -2,8 +2,8 @@
 set -euo pipefail
 
 PYTHON=/home/wy/sjq/miniconda3/envs/kd/bin/python
-SCRIPT=/home/wy/sjq/kd/project/scripts/train_student_lora.py
-ROOT=/home/wy/sjq/kd
+SCRIPT=/data/sjq/kd/project/scripts/train_student_lora.py
+ROOT=/data/sjq/kd
 LOG_DIR="$ROOT/outputs/logs/cv2_c1_tempfix"
 mkdir -p "$LOG_DIR"
 cd "$ROOT"

@@ -8,8 +8,8 @@ from collections import defaultdict
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
-OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/teacher_benchmark")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
+OUTPUT_ROOT = Path("/data/sjq/kd/outputs/teacher_benchmark")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.benchmark import parse_sentiment_score, weighted_mean  # noqa: E402

@@ -1,8 +1,8 @@
 {
   "schema": "aggregate-interaction-reconstruction-both-v1",
   "sources": [
-    "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
-    "/home/wy/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json"
+    "/data/sjq/kd/project/reports/interaction_evidence_v1/mosei_interaction_evidence_valid.json",
+    "/data/sjq/kd/project/reports/interaction_evidence_v1/mosi_interaction_evidence_valid.json"
   ],
   "datasets": [
     "mosei",

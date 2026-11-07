@@ -1,9 +1,9 @@
-project_root: /home/wy/sjq/kd/project
-dataset_root: /home/wy/sjq/kd/dataset/cmu_mosei
-model_dir: /home/wy/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct
-source_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl
-prepared_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl
-teacher_manifest: /home/wy/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
+project_root: /data/sjq/kd/project
+dataset_root: /data/sjq/kd/dataset/cmu_mosei
+model_dir: /data/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct
+source_manifest: /data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500.jsonl
+prepared_manifest: /data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_prepared.jsonl
+teacher_manifest: /data/sjq/kd/dataset/cmu_mosei/manifests/benchmark500_windowed.jsonl
 subsets: [t, a, v, ta, tv, av, tav]
 split_counts: {train: 450, valid: 50}
 duration_counts: {lt5: 124, 5to15: 250, 15to30: 110, gt30: 16}

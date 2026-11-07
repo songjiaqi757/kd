@@ -24,7 +24,7 @@ from analyze_interaction_utility import (
 from rdid_mosei.metrics import sentiment_metrics
 
 
-ROOT = Path("/home/wy/sjq/kd")
+ROOT = Path("/data/sjq/kd")
 REPORTS = ROOT / "project/reports"
 CANDIDATES = {
     "C1_uniform_ensemble_pair": ROOT / "outputs/student/fullscale_ensemble_pair_seed13/predictions.jsonl",

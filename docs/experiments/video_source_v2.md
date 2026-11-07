@@ -32,8 +32,8 @@ Mean MAE increase over five cross-source video shuffles:
 The consistent positive shuffle averages show video sensitivity, not net benefit from Video LoRA.
 The same-protocol `frozen_video` and `ta_only` controls remain deferred, so no between-mode causal comparison is reported.
 
-Machine-readable results: /home/wy/sjq/kd/outputs/experiments/video_source_v2/summary.json
-Teacher paired diagnostic: /home/wy/sjq/kd/outputs/experiments/video_source_v2/teacher_pair/summary.json
+Machine-readable results: /data/sjq/kd/outputs/experiments/video_source_v2/summary.json
+Teacher paired diagnostic: /data/sjq/kd/outputs/experiments/video_source_v2/teacher_pair/summary.json
 Wall-clock efficiency is not an exclusive-device benchmark; two student jobs may decode media concurrently.
 
 ## 原文快照：`video_source_v2_execution.md`
@@ -85,13 +85,13 @@ Wall-clock efficiency is not an exclusive-device benchmark; two student jobs may
 推荐总览：
 
 ```bash
-watch -n 15 '/home/wy/sjq/miniconda3/envs/kd/bin/python /home/wy/sjq/kd/project/scripts/video_source_v2_status.py'
+watch -n 15 '/home/wy/sjq/miniconda3/envs/kd/bin/python /data/sjq/kd/project/scripts/video_source_v2_status.py'
 ```
 
 连续查看总日志：
 
 ```bash
-tail -F /home/wy/sjq/kd/outputs/experiments/video_source_v2/pipeline.log
+tail -F /data/sjq/kd/outputs/experiments/video_source_v2/pipeline.log
 ```
 
 查看服务：
@@ -103,7 +103,7 @@ systemctl --user status rdid-video-source-v2.service --no-pager
 总览会打印当前详细日志路径。教师诊断详细日志示例：
 
 ```bash
-tail -F /home/wy/sjq/kd/outputs/experiments/video_source_v2/logs/teacher_pair.log
+tail -F /data/sjq/kd/outputs/experiments/video_source_v2/logs/teacher_pair.log
 ```
 
 异常或重启后手动恢复（服务配置也支持开机后自动启动）：
@@ -259,7 +259,7 @@ V 只有小幅描述性改善，没有显著性结论，TAV MAE 还略升。新 
 - 回归测试：`project/tests/test_teacher_video.py`。
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 OMP_NUM_THREADS=2 /home/wy/sjq/miniconda3/envs/kd/bin/python \
   project/scripts/audit_teacher_video_timing.py
 ```
@@ -407,7 +407,7 @@ Teacher direct V 的 91.6% 零输出仍是生成评分通道的历史问题，�
 复算命令：
 
 ```bash
-cd /home/wy/sjq/kd
+cd /data/sjq/kd
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /home/wy/sjq/miniconda3/envs/kd/bin/python \
   project/scripts/analyze_video_followup_20260911.py
 ```
@@ -433,7 +433,7 @@ Official valid only. All numbers are conditional on validation-selected checkpoi
 
 TA-only uses TA teacher targets. A/B use identical TAV teacher targets.
 Single-seed promotion is an exploratory gate, not a significance claim.
-Machine-readable results: /home/wy/sjq/kd/outputs/student/video_adaptation_v1/summary.json
+Machine-readable results: /data/sjq/kd/outputs/student/video_adaptation_v1/summary.json
 
 ## 原文快照：`video_review_20260909.md`
 

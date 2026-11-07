@@ -13,8 +13,8 @@ from typing import Any, Callable
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = Path("/home/wy/sjq/kd/dataset/cmu_mosei")
-OUTPUT_ROOT = Path("/home/wy/sjq/kd/outputs/teacher_benchmark")
+DATASET_ROOT = Path("/data/sjq/kd/dataset/cmu_mosei")
+OUTPUT_ROOT = Path("/data/sjq/kd/outputs/teacher_benchmark")
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from rdid_mosei.metrics import sentiment_metrics  # noqa: E402

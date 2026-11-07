@@ -136,8 +136,8 @@
     }
   },
   "sources": {
-    "protocol": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/protocol.json",
-    "ensemble_targets": "/home/wy/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/ensemble_targets.jsonl",
-    "interaction_targets": "/home/wy/sjq/kd/outputs/experiments/tav_main_v1/assets/interaction_targets.jsonl"
+    "protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/protocol.json",
+    "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosei/assets/ensemble_targets.jsonl",
+    "interaction_targets": "/data/sjq/kd/outputs/experiments/tav_main_v1/assets/interaction_targets.jsonl"
   }
 }
