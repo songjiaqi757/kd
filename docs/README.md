@@ -8,6 +8,10 @@
 - [ICD 实验结果总汇](paper/icd_experiment_summary.md)：正式结果及明确分开的历史诊断快照。
 - [ICD 补充说明](paper/icd_supplementary_notes.md)：定性选择、训练成本、Teacher Probe 和 ensemble control。
 
+## 汇总报告
+
+- [实验汇总报告（2026-11-07 快照）](reports/实验汇总报告_20261107.md)：全项目实验矩阵、主结果、机制分析、限制与复现索引。
+
 ## 统一实验记录
 
 - [main_table_v1](experiments/main_table_v1.md)：主表对比方案、实现范围与复现命令。
