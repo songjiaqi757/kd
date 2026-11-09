@@ -1,0 +1,174 @@
+{
+  "schema": "icd-confirmatory-student-base-models-v1",
+  "status": "passed",
+  "created_at": "2026-11-08T11:06:46.205508+00:00",
+  "location_policy": "server-only checksums; model files read in place, no model copy",
+  "models": [
+    {
+      "model": "Qwen3-0.6B-Base",
+      "directory": "/data/sjq/kd/model/Qwen3-0.6B-Base",
+      "files": [
+        {
+          "relative_path": ".gitattributes",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/.gitattributes",
+          "bytes": 1519,
+          "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "mtime_ns": 1788266827925791104
+        },
+        {
+          "relative_path": "LICENSE",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/LICENSE",
+          "bytes": 11343,
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "mtime_ns": 1788266827926791099
+        },
+        {
+          "relative_path": "README.md",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/README.md",
+          "bytes": 2973,
+          "sha256": "910d9be25c648ab1cb5a7b1d20d67ca6d43d43559a705010198886f9af68e8f1",
+          "mtime_ns": 1788266828361788965
+        },
+        {
+          "relative_path": "config.json",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/config.json",
+          "bytes": 727,
+          "sha256": "504a6b58c4271583724e66584b6b7698aea18450209df6b2f7582df0e89cee59",
+          "mtime_ns": 1788266827639792506
+        },
+        {
+          "relative_path": "generation_config.json",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/generation_config.json",
+          "bytes": 138,
+          "sha256": "8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+          "mtime_ns": 1788266828976785949
+        },
+        {
+          "relative_path": "merges.txt",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/merges.txt",
+          "bytes": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+          "mtime_ns": 1788266829573783021
+        },
+        {
+          "relative_path": "model.safetensors",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/model.safetensors",
+          "bytes": 1192135096,
+          "sha256": "cd2a512003e2f9f3cd3c32a9c3573f820bb28c940f73c57b1ddaa983d9223eba",
+          "mtime_ns": 1788267667905671693
+        },
+        {
+          "relative_path": "tokenizer.json",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/tokenizer.json",
+          "bytes": 7031645,
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "mtime_ns": 1788266829956781143
+        },
+        {
+          "relative_path": "tokenizer_config.json",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/tokenizer_config.json",
+          "bytes": 9678,
+          "sha256": "3c04ed3ca964ea2f6b2b5faf0dc4d31aec1cb1e8b4bcf63f402d295046b422b5",
+          "mtime_ns": 1788266829814781840
+        },
+        {
+          "relative_path": "vocab.json",
+          "path": "/data/sjq/kd/model/Qwen3-0.6B-Base/vocab.json",
+          "bytes": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "mtime_ns": 1788266831123775420
+        }
+      ],
+      "weight_files": 1,
+      "total_bytes": 1203641805
+    },
+    {
+      "model": "WavLM-Base-Plus",
+      "directory": "/data/sjq/kd/model/WavLM-Base-Plus",
+      "files": [
+        {
+          "relative_path": ".gitattributes",
+          "path": "/data/sjq/kd/model/WavLM-Base-Plus/.gitattributes",
+          "bytes": 1175,
+          "sha256": "fa057bb09b78fe6d33af5a01440be5e8c881cd8055de35ee5588ea759cf57bfc",
+          "mtime_ns": 1788266830553778215
+        },
+        {
+          "relative_path": "README.md",
+          "path": "/data/sjq/kd/model/WavLM-Base-Plus/README.md",
+          "bytes": 3904,
+          "sha256": "d417fc16b08e2f66f0af6b371e47a5f9f1f596f6c1c593f1214d360c41d7a27e",
+          "mtime_ns": 1788266830952776258
+        },
+        {
+          "relative_path": "config.json",
+          "path": "/data/sjq/kd/model/WavLM-Base-Plus/config.json",
+          "bytes": 2232,
+          "sha256": "fea6df1c2700a3954fc07e70588aecc9055eeb28db2ff57151a2db0d19180ed4",
+          "mtime_ns": 1788266831473773703
+        },
+        {
+          "relative_path": "preprocessor_config.json",
+          "path": "/data/sjq/kd/model/WavLM-Base-Plus/preprocessor_config.json",
+          "bytes": 215,
+          "sha256": "99272fe8ccfab114b68b478681ea47ee3a1ce62bb788cb92dd6e4f69fb1f1da2",
+          "mtime_ns": 1788266830020780829
+        },
+        {
+          "relative_path": "pytorch_model.bin",
+          "path": "/data/sjq/kd/model/WavLM-Base-Plus/pytorch_model.bin",
+          "bytes": 377617425,
+          "sha256": "3bb273a6ace99408b50cfc81afdbb7ef2de02da2eab0234e18db608ce692fe51",
+          "mtime_ns": 1788267023003834398
+        }
+      ],
+      "weight_files": 1,
+      "total_bytes": 377624951
+    },
+    {
+      "model": "VideoMAE-Base",
+      "directory": "/data/sjq/kd/model/VideoMAE-Base",
+      "files": [
+        {
+          "relative_path": ".gitattributes",
+          "path": "/data/sjq/kd/model/VideoMAE-Base/.gitattributes",
+          "bytes": 1398,
+          "sha256": "22d9b4fa44b87a30982c12f3a5681a8ce4a668b2c4fc323b60617a6dadf01e6c",
+          "mtime_ns": 1788266828838786626
+        },
+        {
+          "relative_path": "README.md",
+          "path": "/data/sjq/kd/model/VideoMAE-Base/README.md",
+          "bytes": 3768,
+          "sha256": "1cfd632ad35d864085baeb8cc55168ee1b59592a3a92221c3f7d405374bd0376",
+          "mtime_ns": 1788266829022785723
+        },
+        {
+          "relative_path": "config.json",
+          "path": "/data/sjq/kd/model/VideoMAE-Base/config.json",
+          "bytes": 725,
+          "sha256": "5fbedfea3706bd9fe6c0dc706beeb501ae72e4954703e03bebe3406f046f8212",
+          "mtime_ns": 1788266828810786763
+        },
+        {
+          "relative_path": "model.safetensors",
+          "path": "/data/sjq/kd/model/VideoMAE-Base/model.safetensors",
+          "bytes": 376873760,
+          "sha256": "bc053ca2840a038b1068269a4eec06ca569689e9a1ed9376a5b2b8a111be5290",
+          "mtime_ns": 1788267586628070292
+        },
+        {
+          "relative_path": "preprocessor_config.json",
+          "path": "/data/sjq/kd/model/VideoMAE-Base/preprocessor_config.json",
+          "bytes": 271,
+          "sha256": "c3aa722f22a7ff0d234d407862025fe47672f74f46f92c91f757f7a7354107c2",
+          "mtime_ns": 1788266829656782614
+        }
+      ],
+      "weight_files": 1,
+      "total_bytes": 376879922
+    }
+  ],
+  "total_files": 20,
+  "total_bytes": 1958146678
+}

@@ -1,0 +1,665 @@
+{
+  "ce_main_effect": [
+    {
+      "lambda_icd": 0.0,
+      "delta_ce": -0.009509064120496718,
+      "interpretation": "positive favors removing task CE",
+      "paired_analysis": {
+        "left": "F0_full_kd_ce",
+        "right": "F1_full_kd_no_ce",
+        "mae_improvement": -0.009509064120496718,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.012828480113636366
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": -0.006081321022727273
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.007503933376736062
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.03460765165441176
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.02617797851562501
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.0627264404296875
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.029110863095238085
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": -0.02351792279411764
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.10869726562499998
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.03324218749999998
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.034964966292094835,
+            0.026513097104470286
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "lambda_icd": 0.25,
+      "delta_ce": -0.00461284520844705,
+      "interpretation": "positive favors removing task CE",
+      "paired_analysis": {
+        "left": "F6_icd_ce_lambda025",
+        "right": "F7_icd_no_ce_lambda025",
+        "mae_improvement": -0.00461284520844705,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": 0.09774697043678976
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.32420099431818183
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": 0.013943142361111112
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.039433019301470584
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.07076895577566966
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.005488281250000016
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": -0.029085286458333304
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": -0.11318359374999998
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.06348437499999998
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.03597656250000002
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.05173087397916816,
+            0.05952117297114157
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "lambda_icd": 0.5,
+      "delta_ce": -0.005929178962540943,
+      "interpretation": "positive favors removing task CE",
+      "paired_analysis": {
+        "left": "F4_icd_ce_lambda05",
+        "right": "F5_icd_no_ce_lambda05",
+        "mae_improvement": -0.005929178962540943,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.08419744318181817
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.4274680397727273
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.040234374999999996
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.03171243106617649
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.05155639648437498
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": 0.031032714843750017
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": -0.1711978004092262
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": 0.04566291360294116
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.0012307128906249697
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.016187337239583353
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.06107970065530013,
+            0.06091307319818539
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "lambda_icd": 1.0,
+      "delta_ce": 0.007105571630219702,
+      "interpretation": "positive favors removing task CE",
+      "paired_analysis": {
+        "left": "F2_icd_ce_lambda1",
+        "right": "F3_icd_no_ce_lambda1",
+        "mae_improvement": 0.007105571630219702,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.06056768243963066
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.27896839488636366
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.10546874999999993
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.0694623161764706
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.07127685546875
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": 0.04522623697916665
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.1512240455264137
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": -0.07795840992647059
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.06907421874999999
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": 0.10592936197916664
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.04508106007295497,
+            0.07455933071113591
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    }
+  ],
+  "icd_main_effect": [
+    {
+      "ce": 0.0,
+      "lambda_icd": 0.25,
+      "delta_icd": 0.008474771424672496,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F1_full_kd_no_ce",
+        "right": "F7_icd_no_ce_lambda025",
+        "mae_improvement": 0.008474771424672496,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": 0.04812677556818182
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.41772904829545454
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.006719292534722242
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.04991096047794117
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.044814627511160735
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.09140624999999998
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.026148623511904792
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": -0.027967026654411725
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.029193359375000002
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": 0.11421875000000001
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.035053053543030496,
+            0.07895537761427594
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "ce": 0.0,
+      "lambda_icd": 0.5,
+      "delta_icd": -0.009427879366812228,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F1_full_kd_no_ce",
+        "right": "F5_icd_no_ce_lambda05",
+        "mae_improvement": -0.009427879366812228,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.01286399147727272
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.5047496448863636
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.21324055989583338
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.0028837316176470616
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.081756591796875
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.04930582682291667
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": -0.05369640531994045
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": 0.039915556066176486
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": -0.05899414062500001
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.02648681640625002
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.059657830014874055,
+            0.06402483930310959
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "ce": 0.0,
+      "lambda_icd": 1.0,
+      "delta_icd": -0.014864725837540935,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F1_full_kd_no_ce",
+        "right": "F3_icd_no_ce_lambda1",
+        "mae_improvement": -0.014864725837540935,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.01279047185724429
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.5240411931818182
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.3531277126736111
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.08477998621323529
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.07562081473214285
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.08097656250000002
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.0797758556547619
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": 0.01868393841911766
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": -0.0007832031249999715
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.03804687500000002
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.07588567928783478,
+            0.06844220940719282
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "ce": 0.5,
+      "lambda_icd": 0.25,
+      "delta_icd": 0.0035785525126228244,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F0_full_kd_ce",
+        "right": "F6_icd_ce_lambda025",
+        "mae_improvement": 0.0035785525126228244,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": -0.06244867498224433
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.08744673295454546
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.028166368272569416
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.04508559283088235
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.0002236502511160841
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.1486444091796875
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.08434477306547618
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": 0.061698644301470595
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.07440625000000001
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": 0.11695312500000003
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.05052821553160711,
+            0.057082987093784586
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "ce": 0.5,
+      "lambda_icd": 0.5,
+      "delta_icd": -0.013007764524768014,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F0_full_kd_ce",
+        "right": "F4_icd_ce_lambda05",
+        "mae_improvement": -0.013007764524768014,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": 0.05850497159090907
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.07120028409090909
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.1805101182725694
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.005778952205882341
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.05637817382812501
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.14306498209635418
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": 0.1466122581845238
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": -0.029265280330882323
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.048472412109375015
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.04354166666666665
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.06510371365247639,
+            0.04006835222613901
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    },
+    {
+      "ce": 0.5,
+      "lambda_icd": 1.0,
+      "delta_icd": -0.03147936158825736,
+      "interpretation": "positive favors ICD",
+      "paired_analysis": {
+        "left": "F0_full_kd_ce",
+        "right": "F2_icd_ce_lambda1",
+        "mae_improvement": -0.03147936158825736,
+        "source_video_count": 10,
+        "source_video": {
+          "WKA5OygbEKI": {
+            "count": 22,
+            "mae_improvement": 0.03494873046875001
+          },
+          "X3j2zQgwYgE": {
+            "count": 11,
+            "mae_improvement": 0.23899147727272727
+          },
+          "ZAIRrfG22O0": {
+            "count": 9,
+            "mae_improvement": -0.2551628960503472
+          },
+          "ZUXBRvtny7o": {
+            "count": 34,
+            "mae_improvement": -0.04992532169117644
+          },
+          "_dI--eQ6qVU": {
+            "count": 28,
+            "mae_improvement": -0.030521937779017873
+          },
+          "aiEXnCPZubE": {
+            "count": 30,
+            "mae_improvement": -0.18892923990885416
+          },
+          "atnd_PF-Lbs": {
+            "count": 21,
+            "mae_improvement": -0.0423373267764137
+          },
+          "bOL9jKpeJRs": {
+            "count": 34,
+            "mae_improvement": 0.07312442555147058
+          },
+          "bvLlb-M3UXU": {
+            "count": 25,
+            "mae_improvement": 0.03883984375000003
+          },
+          "c5xsKMxpXnc": {
+            "count": 15,
+            "mae_improvement": -0.17721842447916666
+          }
+        },
+        "clustered_bootstrap": {
+          "replicates": 10000,
+          "seed": 20261108,
+          "percentile_95": [
+            -0.10018687815921032,
+            0.03255394599016975
+          ],
+          "description": "paired source-video clustered resampling, pooled utterance MAE",
+          "caution": "Only 10 validation clusters; interval is exploratory and not a robust significance claim."
+        }
+      }
+    }
+  ],
+  "interaction_effect": [
+    {
+      "lambda_icd": 0.25,
+      "icd_gain_no_ce": 0.008474771424672456,
+      "icd_gain_ce": 0.0035785525126228457,
+      "difference_in_differences": 0.00489621891204961,
+      "interpretation": "positive means ICD helps more after removing task CE"
+    },
+    {
+      "lambda_icd": 0.5,
+      "icd_gain_no_ce": -0.00942787936681222,
+      "icd_gain_ce": -0.013007764524767929,
+      "difference_in_differences": 0.003579885157955709,
+      "interpretation": "positive means ICD helps more after removing task CE"
+    },
+    {
+      "lambda_icd": 1.0,
+      "icd_gain_no_ce": -0.014864725837540949,
+      "icd_gain_ce": -0.03147936158825737,
+      "difference_in_differences": 0.016614635750716422,
+      "interpretation": "positive means ICD helps more after removing task CE"
+    }
+  ]
+}

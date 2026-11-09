@@ -1,0 +1,71 @@
+{
+  "raw_minimum_validation_mae": "GP_icd_ce",
+  "engineering_preference_within_0_005": "GP_icd_ce",
+  "within_0_005_candidates": [
+    "GP_icd_ce"
+  ],
+  "interpretation": "Single seed13 development decision; engineering thresholds are not statistical significance.",
+  "minimum_research_advantage_mae": 0.01,
+  "indistinguishability_threshold_mae": 0.005,
+  "deferred": [
+    "MOSEI cross-dataset validation",
+    "multi-seed confirmation"
+  ],
+  "official_test_reporting": "completed after training (reporting only)",
+  "matched_icd_screen": [
+    {
+      "id": "F2_icd_ce_lambda1",
+      "matched_full_kd": "F0_full_kd_ce",
+      "mae_improvement": -0.03147936158825737,
+      "passes_0_01_screen": false,
+      "pearson_change": -0.001889153418163314,
+      "acc2_change": -0.00925925925925919,
+      "f1_change": -0.0127032493573771
+    },
+    {
+      "id": "F3_icd_no_ce_lambda1",
+      "matched_full_kd": "F1_full_kd_no_ce",
+      "mae_improvement": -0.014864725837540949,
+      "passes_0_01_screen": false,
+      "pearson_change": -0.005301036668307169,
+      "acc2_change": 0.02777777777777779,
+      "f1_change": 0.02888818177512842
+    },
+    {
+      "id": "F4_icd_ce_lambda05",
+      "matched_full_kd": "F0_full_kd_ce",
+      "mae_improvement": -0.013007764524767929,
+      "passes_0_01_screen": false,
+      "pearson_change": -0.020420484850566467,
+      "acc2_change": 0.0092592592592593,
+      "f1_change": 0.007193629415851666
+    },
+    {
+      "id": "F5_icd_no_ce_lambda05",
+      "matched_full_kd": "F1_full_kd_no_ce",
+      "mae_improvement": -0.00942787936681222,
+      "passes_0_01_screen": false,
+      "pearson_change": 0.00842876401284487,
+      "acc2_change": 0.01388888888888884,
+      "f1_change": 0.015945608206031636
+    },
+    {
+      "id": "F6_icd_ce_lambda025",
+      "matched_full_kd": "F0_full_kd_ce",
+      "mae_improvement": 0.0035785525126228457,
+      "passes_0_01_screen": false,
+      "pearson_change": -0.009249460290486344,
+      "acc2_change": 0.0185185185185186,
+      "f1_change": 0.01831782055124931
+    },
+    {
+      "id": "F7_icd_no_ce_lambda025",
+      "matched_full_kd": "F1_full_kd_no_ce",
+      "mae_improvement": 0.008474771424672456,
+      "passes_0_01_screen": false,
+      "pearson_change": 0.005532917054195896,
+      "acc2_change": 0.01851851851851849,
+      "f1_change": 0.020181239783873428
+    }
+  ]
+}

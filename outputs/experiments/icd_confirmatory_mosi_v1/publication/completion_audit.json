@@ -1,0 +1,97 @@
+{
+  "schema": "icd-confirmatory-completion-audit-v1",
+  "complete": true,
+  "scope": "Phase0-4 MOSI validation-only seed13",
+  "official_test_used_for_selection": false,
+  "expected_factorial_runs": 8,
+  "actual_factorial_runs": 8,
+  "checkpoint_retention_policy": "user override: MAE-best, Acc2-best, last only",
+  "completed_run_count": 11,
+  "errors": [],
+  "plot_errors": [],
+  "independent_metric_tolerance": 1e-08,
+  "artifacts": [
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/factorial_analysis.json",
+      "bytes": 20412,
+      "sha256": "842905ef2ecdc35e369ff54963b64706ff4d7025ed957a47a17a6bb1170649b4"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/factorial_training_curves.png",
+      "bytes": 225234,
+      "sha256": "1a88100cb4a9c61225c78f15905eab0c842154354f4bf63af870a6e2b8ea74a4"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/final_report.md",
+      "bytes": 4618,
+      "sha256": "25d341969a8d1be4db9c4f5b77df91630275dc8700d8735687708e13af3432b1"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/gradient_diagnostic_manifest.json",
+      "bytes": 201879,
+      "sha256": "59f36b17f2ea50c80c077bdf9a6542fbdd748e907c53b5b92974871201c6debe"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/independent_metrics.json",
+      "bytes": 14454,
+      "sha256": "569e16254ef53cf4d71b64a0f90fa7f703c522e8f2df09ffa059791b6b73f9ba"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/interaction_analysis.json",
+      "bytes": 23464,
+      "sha256": "a908c95dfe98b0786e448230b3e51ce27f128cff288d9aef957e1abfbad8cd91"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/method_selection.json",
+      "bytes": 2366,
+      "sha256": "5d417422a510caa5995e4802687b0753189cb2dfb03eb546c17a26ff1fc1a0a1"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.csv",
+      "bytes": 10209,
+      "sha256": "1e020c7d808232e0e24e419b10c6dde88ed71e29046d74c322b7afa43b62fde3"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.json",
+      "bytes": 27798,
+      "sha256": "73d9241c5e4f3f7231af6604e6d75fa351a8a0058ce8cffb4119b996d2ae0956"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.md",
+      "bytes": 5218,
+      "sha256": "f5cafab9d2270474fd087538eabcea2d8d6753736a9dc3fc42cec8be94203d33"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/paired_source_video_analysis.json",
+      "bytes": 21930,
+      "sha256": "67e1483e5f880526e1aeb94c6a438fb6556c982c907410b2d1adf1c4a4108b12"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/paper_experiment_draft.md",
+      "bytes": 932,
+      "sha256": "0b8577c5502a70634b9b3334f4886a07eaa88fe2be6de241e9fc56e7ed056d9b"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/per_run.csv",
+      "bytes": 3353,
+      "sha256": "d066df33e3b3cbc43a693d2daf5ea4441712e5c197cef0f20d7765055e993a99"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/source_video_error_matrix.csv",
+      "bytes": 2397,
+      "sha256": "30ff3e8be26cfdd8d7d4c9e2efd4e12bc4cd7386adcd891fd296dfd9490f7a2c"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/source_video_error_matrix.json",
+      "bytes": 5877,
+      "sha256": "7f8488996ea6060c5a0c97a90cffd66ae4bb6652b8a76f150efd44478daf50b7"
+    }
+  ],
+  "deferred": [
+    "MOSEI",
+    "additional seeds"
+  ],
+  "official_test_reporting": "completed after training (reporting only)",
+  "github_sync_status": "publication_bundle_ready",
+  "publication_bundle": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication"
+}

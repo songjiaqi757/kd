@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "updated_at_unix": 1794231329.613055,
+  "gpu": 1,
+  "official_test_evaluated": false,
+  "phase": "finalized",
+  "final_report": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/final_report.md",
+  "completion_audit": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/completion_audit.json"
+}

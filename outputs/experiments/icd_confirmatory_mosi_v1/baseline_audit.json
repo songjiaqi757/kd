@@ -1,0 +1,1681 @@
+{
+  "schema": "mosi-confirmatory-baseline-audit-v1",
+  "created_at_utc": "2026-11-08T11:00:35.398627+00:00",
+  "scope": "Remote-only read-only baseline audit; no GPU, training, official-test, source modification, or local artifact creation.",
+  "runs": {
+    "old_full": {
+      "path": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13",
+      "config": {
+        "method": "full_kd",
+        "assets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+        "output": "/var/tmp/kd_experiment_storage/uniform_main_v1/mosi/students/full_kd_seed13",
+        "text_model": "/ai/sjq/kd/model/Qwen3-0.6B-Base",
+        "audio_model": "/ai/sjq/kd/model/WavLM-Base-Plus",
+        "video_model": "/ai/sjq/kd/model/VideoMAE-Base",
+        "seed": 13,
+        "device": "cuda:0",
+        "batch_size": 8,
+        "epochs": 20,
+        "min_epochs": 8,
+        "patience": 7,
+        "save_every_epoch": true,
+        "checkpoint_selection": "test_mae",
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 2,
+        "video_layers": 12,
+        "video_rank": 8,
+        "video_alpha": 16,
+        "video_dropout": 0.05,
+        "video_checkpointing": true,
+        "limit_per_split": null,
+        "lambda_feature": 2.0,
+        "lambda_cafd": 0.1,
+        "cmad_tau": 0.2,
+        "lambda_subset": 1.0,
+        "lambda_interaction": 1.0,
+        "ea_entropy_temperature": 3.0,
+        "rld_temperature": 4.0,
+        "rld_alpha": 1.0,
+        "rld_beta": 8.0,
+        "rld_warmup_epochs": 20,
+        "skd_temperature": 4.0,
+        "skd_tik_factor": 0.1,
+        "manifest": "/ai/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+        "teacher_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+        "teacher_probe_report": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+        "teacher_subset": "tav",
+        "teacher_calibration_temperature": 1.1912176609039307,
+        "mode": "video_lora",
+        "schema": "rdid-msa-fixed-student-main-table-v1",
+        "epoch_checkpoint_pattern": "checkpoints/epoch_{epoch:03d}.pt",
+        "official_test_evaluated": false,
+        "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        "frozen_assets": {
+          "schema": "rdid-msa-main-table-assets-v1",
+          "base_protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+          "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+          "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+          "teacher_temperature": 1.1912176609039307,
+          "probe_seeds": [
+            2026,
+            2027,
+            2028
+          ],
+          "probe_temperatures": {
+            "2026": 1.1912176609039307,
+            "2027": 1.2058717012405396,
+            "2028": 1.180254578590393
+          },
+          "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+          "interaction_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "teacher_features": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+          "teacher_feature_index": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+          "teacher_feature_dimension": 2048,
+          "student_empty_baseline": 0.22526227845205912,
+          "utility_normalized": [
+            1.4489312949400415,
+            1.4868758404711906,
+            0.44785806066300105,
+            1.4602598528440491,
+            0.6796448102064051,
+            0.6678612295896007,
+            0.8085689112857127
+          ],
+          "coarse_utility_normalized": [
+            1.4653556627517603,
+            1.4653556627517603,
+            0.6509832529361798,
+            1.4653556627517603,
+            0.6509832529361798,
+            0.6509832529361798,
+            0.6509832529361798
+          ],
+          "lambda_interaction": 1.0,
+          "lambda_subset": 1.0,
+          "lambda_feature": 2.0,
+          "alpha_ce": 0.5,
+          "lambda_full": 1.0,
+          "kd_temperature": 2.0,
+          "rld": {
+            "alpha": 1.0,
+            "beta": 8.0,
+            "temperature": 4.0,
+            "confidence_temperature": 1.0,
+            "warmup_epochs": 20,
+            "standardize_logits": false
+          },
+          "skd": {
+            "temperature": 4.0,
+            "tik_factor": 0.1,
+            "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+          },
+          "ea_kd": {
+            "entropy_temperature": 3.0,
+            "entropy_upper_bound": "log(7)"
+          },
+          "projector": {
+            "student_dimension": 512,
+            "teacher_dimension": 2048,
+            "normalization": "BatchNorm1d(affine=False)",
+            "distance": "log(sum(abs(delta)^4)+1e-5)"
+          },
+          "cmad_cafd": {
+            "tau": 0.2,
+            "lambda": 0.1,
+            "minimum_relation_batch": 2,
+            "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+          },
+          "seeds": [
+            13,
+            42,
+            2026
+          ],
+          "official_test_evaluated": false,
+          "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+          "input_sha256": {
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+            "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+            "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+          }
+        },
+        "upstream_sources": {
+          "frozen_on": "2026-09-17",
+          "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+          "repositories": [
+            {
+              "method": "Projector-based feature KD",
+              "path": "external/original/Simple-Recipe-Distillation",
+              "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+              "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+              "license_file": null
+            },
+            {
+              "method": "EA-KD",
+              "path": "external/original/EA-KD",
+              "url": "https://github.com/cpsu00/EA-KD.git",
+              "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+              "license_file": null
+            },
+            {
+              "method": "RLD",
+              "path": "external/original/RLD",
+              "url": "https://github.com/zju-SWJ/RLD.git",
+              "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+              "license_file": null
+            },
+            {
+              "method": "SKD",
+              "path": "external/original/StreamLined",
+              "url": "https://github.com/HyunJunSik/StreamLined.git",
+              "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+              "license_file": null
+            },
+            {
+              "method": "DLF",
+              "path": "external/original/DLF",
+              "url": "https://github.com/pwang322/DLF.git",
+              "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+              "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+            },
+            {
+              "method": "GsiT",
+              "path": "external/original/GsiT",
+              "url": "https://github.com/drewjin/GsiT.git",
+              "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+              "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+            },
+            {
+              "method": "DPDF-LQ",
+              "path": "external/original/DPDF-LQ",
+              "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+              "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+              "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+            },
+            {
+              "method": "Light-MER / SWD-H",
+              "path": "external/original/Light-MER",
+              "url": "https://github.com/GAIR-Lab/Light-MER.git",
+              "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+              "license_file": "LICENSE",
+              "purpose": "domain-related adaptation audit; not a main-table implementation",
+              "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+            },
+            {
+              "method": "CMAD / CAFD",
+              "path": "external/original/CMAD",
+              "url": "https://github.com/YetZzzzzz/CMAD.git",
+              "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+              "license_file": "LICENSE",
+              "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+              "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+            }
+          ]
+        },
+        "teacher_subsets": [
+          "tav"
+        ],
+        "probe_count": 1,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 0,
+        "teacher_hidden_features": false,
+        "input_sha256": {
+          "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "62fba8d285008a8f43d03049e01e162b941dbe109156f370971a9b6a19632e25",
+          "/ai/sjq/kd/project/scripts/train_main_table_kd.py": "81ba82e09887050b95702a2c5d63a4648c819dc039c599600d703847ce796ba6",
+          "/ai/sjq/kd/project/src/rdid_mosei/main_table_kd.py": "0bed4d346e65ed3bf423f76735423bf25a80c031ab6e5e30b30efafcac298610"
+        }
+      },
+      "report": {
+        "method": "full_kd",
+        "seed": 13,
+        "best_epoch": 19,
+        "epochs_run": 20,
+        "valid_metrics": {
+          "count": 229,
+          "mae": 0.7311665408649618,
+          "pearson": 0.7964538757319357,
+          "acc2_nonzero": 0.8518518518518519,
+          "f1_weighted_nonzero": 0.8518518518518519,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8209606986899564,
+          "f1_weighted_has_zero": 0.8220949001490325,
+          "acc7": 0.388646288209607
+        },
+        "train_windows": 1286,
+        "valid_windows": 229,
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120,
+        "projector_parameters": 0,
+        "training_only_feature_parameters": 0,
+        "deployed_parameters": 819309176,
+        "elapsed_seconds": 2906.1573374271393,
+        "peak_gpu_memory_gib": 25.03178644180298,
+        "official_test_evaluated": false,
+        "teacher_subsets": [
+          "tav"
+        ],
+        "probe_count": 1,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 0,
+        "teacher_hidden_features": false
+      },
+      "history_valid_min": {
+        "epoch": 19,
+        "mae": 0.7311665408649618
+      },
+      "evidence_sha256": {
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/run_config.json": "b4a484e47db8dab31d5b16dab3b84a13c01c70d51873d639309215c74f13932c",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/report.json": "b0ee00adc2b1a41598cd76fc1fd8d8fbf311c23ad05c0a8ef752074612240efb",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/history.json": "f39483d38ec31ed1a91985b0e0075199a16e166a07d67c5cf6e0ce2def7521e7",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/full_kd_seed13/predictions.jsonl": "59e881e6b63650c874c5d715b9600f4cb6256b8b11360530134a968705787563"
+      }
+    },
+    "old_icd": {
+      "path": "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+      "config": {
+        "method": "uniform_interaction",
+        "assets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+        "output": "/var/tmp/kd_experiment_storage/uniform_main_v1/mosi/students/uniform_interaction_seed13",
+        "text_model": "/ai/sjq/kd/model/Qwen3-0.6B-Base",
+        "audio_model": "/ai/sjq/kd/model/WavLM-Base-Plus",
+        "video_model": "/ai/sjq/kd/model/VideoMAE-Base",
+        "seed": 13,
+        "device": "cuda:0",
+        "batch_size": 8,
+        "epochs": 20,
+        "min_epochs": 8,
+        "patience": 7,
+        "save_every_epoch": true,
+        "checkpoint_selection": "test_mae",
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 2,
+        "video_layers": 12,
+        "video_rank": 8,
+        "video_alpha": 16,
+        "video_dropout": 0.05,
+        "video_checkpointing": true,
+        "limit_per_split": null,
+        "lambda_feature": 2.0,
+        "lambda_cafd": 0.1,
+        "cmad_tau": 0.2,
+        "lambda_subset": 1.0,
+        "lambda_interaction": 1.0,
+        "ea_entropy_temperature": 3.0,
+        "rld_temperature": 4.0,
+        "rld_alpha": 1.0,
+        "rld_beta": 8.0,
+        "rld_warmup_epochs": 20,
+        "skd_temperature": 4.0,
+        "skd_tik_factor": 0.1,
+        "manifest": "/ai/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+        "teacher_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+        "teacher_probe_report": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+        "teacher_subset": "tav",
+        "teacher_calibration_temperature": 1.1912176609039307,
+        "mode": "video_lora",
+        "schema": "rdid-msa-fixed-student-main-table-v1",
+        "epoch_checkpoint_pattern": "checkpoints/epoch_{epoch:03d}.pt",
+        "official_test_evaluated": false,
+        "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        "frozen_assets": {
+          "schema": "rdid-msa-main-table-assets-v1",
+          "base_protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+          "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+          "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+          "teacher_temperature": 1.1912176609039307,
+          "probe_seeds": [
+            2026,
+            2027,
+            2028
+          ],
+          "probe_temperatures": {
+            "2026": 1.1912176609039307,
+            "2027": 1.2058717012405396,
+            "2028": 1.180254578590393
+          },
+          "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+          "interaction_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "teacher_features": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+          "teacher_feature_index": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+          "teacher_feature_dimension": 2048,
+          "student_empty_baseline": 0.22526227845205912,
+          "utility_normalized": [
+            1.4489312949400415,
+            1.4868758404711906,
+            0.44785806066300105,
+            1.4602598528440491,
+            0.6796448102064051,
+            0.6678612295896007,
+            0.8085689112857127
+          ],
+          "coarse_utility_normalized": [
+            1.4653556627517603,
+            1.4653556627517603,
+            0.6509832529361798,
+            1.4653556627517603,
+            0.6509832529361798,
+            0.6509832529361798,
+            0.6509832529361798
+          ],
+          "lambda_interaction": 1.0,
+          "lambda_subset": 1.0,
+          "lambda_feature": 2.0,
+          "alpha_ce": 0.5,
+          "lambda_full": 1.0,
+          "kd_temperature": 2.0,
+          "rld": {
+            "alpha": 1.0,
+            "beta": 8.0,
+            "temperature": 4.0,
+            "confidence_temperature": 1.0,
+            "warmup_epochs": 20,
+            "standardize_logits": false
+          },
+          "skd": {
+            "temperature": 4.0,
+            "tik_factor": 0.1,
+            "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+          },
+          "ea_kd": {
+            "entropy_temperature": 3.0,
+            "entropy_upper_bound": "log(7)"
+          },
+          "projector": {
+            "student_dimension": 512,
+            "teacher_dimension": 2048,
+            "normalization": "BatchNorm1d(affine=False)",
+            "distance": "log(sum(abs(delta)^4)+1e-5)"
+          },
+          "cmad_cafd": {
+            "tau": 0.2,
+            "lambda": 0.1,
+            "minimum_relation_batch": 2,
+            "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+          },
+          "seeds": [
+            13,
+            42,
+            2026
+          ],
+          "official_test_evaluated": false,
+          "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+          "input_sha256": {
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+            "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+            "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+          }
+        },
+        "upstream_sources": {
+          "frozen_on": "2026-09-17",
+          "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+          "repositories": [
+            {
+              "method": "Projector-based feature KD",
+              "path": "external/original/Simple-Recipe-Distillation",
+              "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+              "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+              "license_file": null
+            },
+            {
+              "method": "EA-KD",
+              "path": "external/original/EA-KD",
+              "url": "https://github.com/cpsu00/EA-KD.git",
+              "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+              "license_file": null
+            },
+            {
+              "method": "RLD",
+              "path": "external/original/RLD",
+              "url": "https://github.com/zju-SWJ/RLD.git",
+              "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+              "license_file": null
+            },
+            {
+              "method": "SKD",
+              "path": "external/original/StreamLined",
+              "url": "https://github.com/HyunJunSik/StreamLined.git",
+              "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+              "license_file": null
+            },
+            {
+              "method": "DLF",
+              "path": "external/original/DLF",
+              "url": "https://github.com/pwang322/DLF.git",
+              "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+              "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+            },
+            {
+              "method": "GsiT",
+              "path": "external/original/GsiT",
+              "url": "https://github.com/drewjin/GsiT.git",
+              "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+              "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+            },
+            {
+              "method": "DPDF-LQ",
+              "path": "external/original/DPDF-LQ",
+              "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+              "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+              "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+            },
+            {
+              "method": "Light-MER / SWD-H",
+              "path": "external/original/Light-MER",
+              "url": "https://github.com/GAIR-Lab/Light-MER.git",
+              "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+              "license_file": "LICENSE",
+              "purpose": "domain-related adaptation audit; not a main-table implementation",
+              "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+            },
+            {
+              "method": "CMAD / CAFD",
+              "path": "external/original/CMAD",
+              "url": "https://github.com/YetZzzzzz/CMAD.git",
+              "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+              "license_file": "LICENSE",
+              "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+              "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+            }
+          ]
+        },
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false,
+        "input_sha256": {
+          "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "62fba8d285008a8f43d03049e01e162b941dbe109156f370971a9b6a19632e25",
+          "/ai/sjq/kd/project/scripts/train_main_table_kd.py": "81ba82e09887050b95702a2c5d63a4648c819dc039c599600d703847ce796ba6",
+          "/ai/sjq/kd/project/src/rdid_mosei/main_table_kd.py": "0bed4d346e65ed3bf423f76735423bf25a80c031ab6e5e30b30efafcac298610"
+        }
+      },
+      "report": {
+        "method": "uniform_interaction",
+        "seed": 13,
+        "best_epoch": 15,
+        "epochs_run": 20,
+        "valid_metrics": {
+          "count": 229,
+          "mae": 0.7600951260007425,
+          "pearson": 0.7924093705572607,
+          "acc2_nonzero": 0.8518518518518519,
+          "f1_weighted_nonzero": 0.8501026966143246,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8165938864628821,
+          "f1_weighted_has_zero": 0.8162506754684464,
+          "acc7": 0.39737991266375544
+        },
+        "train_windows": 1286,
+        "valid_windows": 229,
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120,
+        "projector_parameters": 0,
+        "training_only_feature_parameters": 0,
+        "deployed_parameters": 819309176,
+        "elapsed_seconds": 2900.673243522644,
+        "peak_gpu_memory_gib": 25.03315544128418,
+        "official_test_evaluated": false,
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false
+      },
+      "history_valid_min": {
+        "epoch": 15,
+        "mae": 0.7600951260007425
+      },
+      "evidence_sha256": {
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/run_config.json": "39a968db159474d7ef7865805d20e36068802978832009c67feba258ef2fcfd2",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/report.json": "18a38f2c7caa07706ecf2b1a4f75c5b0adc9166302006ebb1a5ca8c51942f891",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/history.json": "fba0fadd0453572228728e52bd3e91d54745b2b100d90f4f12e991621a258041",
+        "/data/sjq/kd/outputs/experiments/uniform_main_v1/mosi/students/uniform_interaction_seed13/predictions.jsonl": "30399997e2484824a180341986ff4de95ebf1a28361ea2065a32d97820bd9f79"
+      }
+    },
+    "first_full": {
+      "path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13",
+      "config": {
+        "method": "full_kd",
+        "assets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+        "output": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13",
+        "text_model": "/data/sjq/kd/model/Qwen3-0.6B-Base",
+        "audio_model": "/data/sjq/kd/model/WavLM-Base-Plus",
+        "video_model": "/data/sjq/kd/model/VideoMAE-Base",
+        "seed": 13,
+        "device": "cuda:0",
+        "batch_size": 8,
+        "epochs": 30,
+        "min_epochs": 1,
+        "patience": 7,
+        "save_every_epoch": true,
+        "retain_best_mae_and_acc2": false,
+        "checkpoint_selection": "valid_mae",
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 2,
+        "video_layers": 12,
+        "video_rank": 8,
+        "video_alpha": 16,
+        "video_dropout": 0.05,
+        "video_checkpointing": true,
+        "limit_per_split": null,
+        "lambda_feature": 2.0,
+        "lambda_cafd": 0.1,
+        "cmad_tau": 0.2,
+        "lambda_subset": 1.0,
+        "lambda_interaction": 1.0,
+        "coordinate_seed": 20260922,
+        "ea_entropy_temperature": 3.0,
+        "rld_temperature": 4.0,
+        "rld_alpha": 1.0,
+        "rld_beta": 8.0,
+        "rld_warmup_epochs": 20,
+        "skd_temperature": 4.0,
+        "skd_tik_factor": 0.1,
+        "experiment_id": "control_full_kd_seed13",
+        "task_regression": "smooth_l1",
+        "task_ce": 0.5,
+        "kd_kl": 1.0,
+        "coordinate_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "icd_warmup": false,
+        "lora_lr": null,
+        "lr_schedule": "constant",
+        "lr_warmup_ratio": 0.1,
+        "diagnostic_every": 100,
+        "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+        "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+        "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+        "teacher_subset": "tav",
+        "teacher_calibration_temperature": 1.1912176609039307,
+        "mode": "video_lora",
+        "schema": "rdid-msa-fixed-student-main-table-v1",
+        "epoch_checkpoint_pattern": "checkpoints/epoch_{epoch:03d}.pt",
+        "official_test_evaluated": false,
+        "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        "fusion_architecture": "subset transformer fusion",
+        "frozen_assets": {
+          "schema": "rdid-msa-main-table-assets-v1",
+          "base_protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+          "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+          "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+          "teacher_temperature": 1.1912176609039307,
+          "probe_seeds": [
+            2026,
+            2027,
+            2028
+          ],
+          "probe_temperatures": {
+            "2026": 1.1912176609039307,
+            "2027": 1.2058717012405396,
+            "2028": 1.180254578590393
+          },
+          "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+          "interaction_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "teacher_features": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+          "teacher_feature_index": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+          "teacher_feature_dimension": 2048,
+          "student_empty_baseline": 0.22526227845205912,
+          "utility_normalized": [
+            1.4489312949400415,
+            1.4868758404711906,
+            0.44785806066300105,
+            1.4602598528440491,
+            0.6796448102064051,
+            0.6678612295896007,
+            0.8085689112857127
+          ],
+          "coarse_utility_normalized": [
+            1.4653556627517603,
+            1.4653556627517603,
+            0.6509832529361798,
+            1.4653556627517603,
+            0.6509832529361798,
+            0.6509832529361798,
+            0.6509832529361798
+          ],
+          "lambda_interaction": 1.0,
+          "lambda_subset": 1.0,
+          "lambda_feature": 2.0,
+          "alpha_ce": 0.5,
+          "lambda_full": 1.0,
+          "kd_temperature": 2.0,
+          "rld": {
+            "alpha": 1.0,
+            "beta": 8.0,
+            "temperature": 4.0,
+            "confidence_temperature": 1.0,
+            "warmup_epochs": 20,
+            "standardize_logits": false
+          },
+          "skd": {
+            "temperature": 4.0,
+            "tik_factor": 0.1,
+            "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+          },
+          "ea_kd": {
+            "entropy_temperature": 3.0,
+            "entropy_upper_bound": "log(7)"
+          },
+          "projector": {
+            "student_dimension": 512,
+            "teacher_dimension": 2048,
+            "normalization": "BatchNorm1d(affine=False)",
+            "distance": "log(sum(abs(delta)^4)+1e-5)"
+          },
+          "cmad_cafd": {
+            "tau": 0.2,
+            "lambda": 0.1,
+            "minimum_relation_batch": 2,
+            "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+          },
+          "seeds": [
+            13,
+            42,
+            2026
+          ],
+          "official_test_evaluated": false,
+          "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+          "input_sha256": {
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+            "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+            "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+          }
+        },
+        "upstream_sources": {
+          "frozen_on": "2026-09-17",
+          "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+          "repositories": [
+            {
+              "method": "Projector-based feature KD",
+              "path": "external/original/Simple-Recipe-Distillation",
+              "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+              "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+              "license_file": null
+            },
+            {
+              "method": "EA-KD",
+              "path": "external/original/EA-KD",
+              "url": "https://github.com/cpsu00/EA-KD.git",
+              "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+              "license_file": null
+            },
+            {
+              "method": "RLD",
+              "path": "external/original/RLD",
+              "url": "https://github.com/zju-SWJ/RLD.git",
+              "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+              "license_file": null
+            },
+            {
+              "method": "SKD",
+              "path": "external/original/StreamLined",
+              "url": "https://github.com/HyunJunSik/StreamLined.git",
+              "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+              "license_file": null
+            },
+            {
+              "method": "DLF",
+              "path": "external/original/DLF",
+              "url": "https://github.com/pwang322/DLF.git",
+              "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+              "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+            },
+            {
+              "method": "GsiT",
+              "path": "external/original/GsiT",
+              "url": "https://github.com/drewjin/GsiT.git",
+              "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+              "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+            },
+            {
+              "method": "DPDF-LQ",
+              "path": "external/original/DPDF-LQ",
+              "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+              "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+              "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+            },
+            {
+              "method": "Light-MER / SWD-H",
+              "path": "external/original/Light-MER",
+              "url": "https://github.com/GAIR-Lab/Light-MER.git",
+              "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+              "license_file": "LICENSE",
+              "purpose": "domain-related adaptation audit; not a main-table implementation",
+              "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+            },
+            {
+              "method": "CMAD / CAFD",
+              "path": "external/original/CMAD",
+              "url": "https://github.com/YetZzzzzz/CMAD.git",
+              "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+              "license_file": "LICENSE",
+              "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+              "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+            }
+          ]
+        },
+        "teacher_subsets": [
+          "tav"
+        ],
+        "probe_count": 1,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 0,
+        "teacher_hidden_features": false,
+        "input_sha256": {
+          "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "12e5dfff4a9a192c1103e20f7cffdfd288557b895b3a96c2b7a6487a5e81f7a5",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/scripts/train_icd_improvement.py": "a9c50d995cc6d8097f43184789863a253edc040e3878f356c802198a0604baf7",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/main_table_kd.py": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/student.py": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/tav_distillation.py": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23"
+        },
+        "campaign_fingerprint_file": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source_fingerprints.json",
+        "campaign_fingerprint_sha256": "b497d4674efe078676559953566f68727d60a356753fab27b21254e563ec5294"
+      },
+      "report": {
+        "method": "full_kd",
+        "seed": 13,
+        "best_epoch": 22,
+        "epochs_run": 29,
+        "checkpoint_selection": "valid_mae",
+        "retained_best_checkpoints": null,
+        "valid_metrics": {
+          "count": 229,
+          "mae": 0.7553130348350082,
+          "pearson": 0.7847863926505022,
+          "acc2_nonzero": 0.8518518518518519,
+          "f1_weighted_nonzero": 0.8507996632996633,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8165938864628821,
+          "f1_weighted_has_zero": 0.8169056536546158,
+          "acc7": 0.388646288209607
+        },
+        "train_windows": 1286,
+        "valid_windows": 229,
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120,
+        "projector_parameters": 0,
+        "training_only_feature_parameters": 0,
+        "deployed_parameters": 819309176,
+        "elapsed_seconds": 4622.310656547546,
+        "peak_gpu_memory_gib": 25.040079593658447,
+        "official_test_evaluated": false,
+        "teacher_subsets": [
+          "tav"
+        ],
+        "probe_count": 1,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 0,
+        "teacher_hidden_features": false
+      },
+      "history_valid_min": {
+        "epoch": 22,
+        "mae": 0.7553130348350082
+      },
+      "evidence_sha256": {
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13/run_config.json": "3c21364cbc15dd7bc5d6ab9410288655dfffe03278f2802f132a4cc06857d6bb",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13/report.json": "205a0f4d51a37535e6b7b3355238f0266a0355f9d5df77ea61df5051ed835d2a",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13/history.json": "028ff2e48fd7709afc7082dbbba77720cd6bb21107c5d3ac6356ba4f483242eb",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/control_full_kd_seed13/predictions.jsonl": "8b3b3059ee250c8453679da1dca8cdfacb7c98f89d6b9d1ed729ba8caf6ca899"
+      }
+    },
+    "first_icd": {
+      "path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13",
+      "config": {
+        "method": "uniform_interaction",
+        "assets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+        "output": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13",
+        "text_model": "/data/sjq/kd/model/Qwen3-0.6B-Base",
+        "audio_model": "/data/sjq/kd/model/WavLM-Base-Plus",
+        "video_model": "/data/sjq/kd/model/VideoMAE-Base",
+        "seed": 13,
+        "device": "cuda:0",
+        "batch_size": 8,
+        "epochs": 30,
+        "min_epochs": 1,
+        "patience": 7,
+        "save_every_epoch": true,
+        "retain_best_mae_and_acc2": false,
+        "checkpoint_selection": "valid_mae",
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 2,
+        "video_layers": 12,
+        "video_rank": 8,
+        "video_alpha": 16,
+        "video_dropout": 0.05,
+        "video_checkpointing": true,
+        "limit_per_split": null,
+        "lambda_feature": 2.0,
+        "lambda_cafd": 0.1,
+        "cmad_tau": 0.2,
+        "lambda_subset": 1.0,
+        "lambda_interaction": 1.0,
+        "coordinate_seed": 20260922,
+        "ea_entropy_temperature": 3.0,
+        "rld_temperature": 4.0,
+        "rld_alpha": 1.0,
+        "rld_beta": 8.0,
+        "rld_warmup_epochs": 20,
+        "skd_temperature": 4.0,
+        "skd_tik_factor": 0.1,
+        "experiment_id": "E0_uniform_seed13",
+        "task_regression": "smooth_l1",
+        "task_ce": 0.5,
+        "kd_kl": 1.0,
+        "coordinate_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "icd_warmup": false,
+        "lora_lr": null,
+        "lr_schedule": "constant",
+        "lr_warmup_ratio": 0.1,
+        "diagnostic_every": 100,
+        "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+        "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+        "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+        "teacher_subset": "tav",
+        "teacher_calibration_temperature": 1.1912176609039307,
+        "mode": "video_lora",
+        "schema": "rdid-msa-fixed-student-main-table-v1",
+        "epoch_checkpoint_pattern": "checkpoints/epoch_{epoch:03d}.pt",
+        "official_test_evaluated": false,
+        "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        "fusion_architecture": "subset transformer fusion",
+        "frozen_assets": {
+          "schema": "rdid-msa-main-table-assets-v1",
+          "base_protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+          "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+          "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+          "teacher_temperature": 1.1912176609039307,
+          "probe_seeds": [
+            2026,
+            2027,
+            2028
+          ],
+          "probe_temperatures": {
+            "2026": 1.1912176609039307,
+            "2027": 1.2058717012405396,
+            "2028": 1.180254578590393
+          },
+          "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+          "interaction_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "teacher_features": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+          "teacher_feature_index": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+          "teacher_feature_dimension": 2048,
+          "student_empty_baseline": 0.22526227845205912,
+          "utility_normalized": [
+            1.4489312949400415,
+            1.4868758404711906,
+            0.44785806066300105,
+            1.4602598528440491,
+            0.6796448102064051,
+            0.6678612295896007,
+            0.8085689112857127
+          ],
+          "coarse_utility_normalized": [
+            1.4653556627517603,
+            1.4653556627517603,
+            0.6509832529361798,
+            1.4653556627517603,
+            0.6509832529361798,
+            0.6509832529361798,
+            0.6509832529361798
+          ],
+          "lambda_interaction": 1.0,
+          "lambda_subset": 1.0,
+          "lambda_feature": 2.0,
+          "alpha_ce": 0.5,
+          "lambda_full": 1.0,
+          "kd_temperature": 2.0,
+          "rld": {
+            "alpha": 1.0,
+            "beta": 8.0,
+            "temperature": 4.0,
+            "confidence_temperature": 1.0,
+            "warmup_epochs": 20,
+            "standardize_logits": false
+          },
+          "skd": {
+            "temperature": 4.0,
+            "tik_factor": 0.1,
+            "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+          },
+          "ea_kd": {
+            "entropy_temperature": 3.0,
+            "entropy_upper_bound": "log(7)"
+          },
+          "projector": {
+            "student_dimension": 512,
+            "teacher_dimension": 2048,
+            "normalization": "BatchNorm1d(affine=False)",
+            "distance": "log(sum(abs(delta)^4)+1e-5)"
+          },
+          "cmad_cafd": {
+            "tau": 0.2,
+            "lambda": 0.1,
+            "minimum_relation_batch": 2,
+            "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+          },
+          "seeds": [
+            13,
+            42,
+            2026
+          ],
+          "official_test_evaluated": false,
+          "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+          "input_sha256": {
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+            "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+            "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+          }
+        },
+        "upstream_sources": {
+          "frozen_on": "2026-09-17",
+          "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+          "repositories": [
+            {
+              "method": "Projector-based feature KD",
+              "path": "external/original/Simple-Recipe-Distillation",
+              "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+              "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+              "license_file": null
+            },
+            {
+              "method": "EA-KD",
+              "path": "external/original/EA-KD",
+              "url": "https://github.com/cpsu00/EA-KD.git",
+              "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+              "license_file": null
+            },
+            {
+              "method": "RLD",
+              "path": "external/original/RLD",
+              "url": "https://github.com/zju-SWJ/RLD.git",
+              "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+              "license_file": null
+            },
+            {
+              "method": "SKD",
+              "path": "external/original/StreamLined",
+              "url": "https://github.com/HyunJunSik/StreamLined.git",
+              "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+              "license_file": null
+            },
+            {
+              "method": "DLF",
+              "path": "external/original/DLF",
+              "url": "https://github.com/pwang322/DLF.git",
+              "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+              "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+            },
+            {
+              "method": "GsiT",
+              "path": "external/original/GsiT",
+              "url": "https://github.com/drewjin/GsiT.git",
+              "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+              "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+            },
+            {
+              "method": "DPDF-LQ",
+              "path": "external/original/DPDF-LQ",
+              "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+              "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+              "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+            },
+            {
+              "method": "Light-MER / SWD-H",
+              "path": "external/original/Light-MER",
+              "url": "https://github.com/GAIR-Lab/Light-MER.git",
+              "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+              "license_file": "LICENSE",
+              "purpose": "domain-related adaptation audit; not a main-table implementation",
+              "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+            },
+            {
+              "method": "CMAD / CAFD",
+              "path": "external/original/CMAD",
+              "url": "https://github.com/YetZzzzzz/CMAD.git",
+              "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+              "license_file": "LICENSE",
+              "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+              "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+            }
+          ]
+        },
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false,
+        "input_sha256": {
+          "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "12e5dfff4a9a192c1103e20f7cffdfd288557b895b3a96c2b7a6487a5e81f7a5",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/scripts/train_icd_improvement.py": "a9c50d995cc6d8097f43184789863a253edc040e3878f356c802198a0604baf7",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/main_table_kd.py": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/student.py": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+          "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/tav_distillation.py": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23"
+        },
+        "campaign_fingerprint_file": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source_fingerprints.json",
+        "campaign_fingerprint_sha256": "b497d4674efe078676559953566f68727d60a356753fab27b21254e563ec5294"
+      },
+      "report": {
+        "method": "uniform_interaction",
+        "seed": 13,
+        "best_epoch": 4,
+        "epochs_run": 11,
+        "checkpoint_selection": "valid_mae",
+        "retained_best_checkpoints": null,
+        "valid_metrics": {
+          "count": 229,
+          "mae": 0.7895494930261928,
+          "pearson": 0.7793859795324728,
+          "acc2_nonzero": 0.8379629629629629,
+          "f1_weighted_nonzero": 0.8369828785249191,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8078602620087336,
+          "f1_weighted_has_zero": 0.8081868752572166,
+          "acc7": 0.4017467248908297
+        },
+        "train_windows": 1286,
+        "valid_windows": 229,
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120,
+        "projector_parameters": 0,
+        "training_only_feature_parameters": 0,
+        "deployed_parameters": 819309176,
+        "elapsed_seconds": 1670.46577334404,
+        "peak_gpu_memory_gib": 25.04122018814087,
+        "official_test_evaluated": false,
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false
+      },
+      "history_valid_min": {
+        "epoch": 4,
+        "mae": 0.7895494930261928
+      },
+      "evidence_sha256": {
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13/run_config.json": "5bcb0f99c4fcf76f5655dd572b264a0c9a03b081f06ceb60bd8cc8679acd8b70",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13/report.json": "0b903816ff73658510e733f92837cc64dc6973d3b9a12fb9080ebf08c7975c92",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13/history.json": "fa8f451167801eb232472a614aec0ad3c35140c9054c258258d73132719b9efa",
+        "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/runs/E0_uniform_seed13/predictions.jsonl": "5e28deb1ef0de926434b6966a3b3128ccc809d882e05d1187a50d0d070417433"
+      }
+    },
+    "historical_gp": {
+      "path": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13",
+      "config": {
+        "method": "uniform_interaction_gradient_projected",
+        "assets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json",
+        "output": "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13",
+        "text_model": "/data/sjq/kd/model/Qwen3-0.6B-Base",
+        "audio_model": "/data/sjq/kd/model/WavLM-Base-Plus",
+        "video_model": "/data/sjq/kd/model/VideoMAE-Base",
+        "seed": 13,
+        "device": "cuda:0",
+        "batch_size": 8,
+        "epochs": 20,
+        "min_epochs": 20,
+        "patience": 20,
+        "save_every_epoch": false,
+        "retain_best_mae_and_acc2": true,
+        "checkpoint_selection": "valid_mae",
+        "learning_rate": 0.0001,
+        "weight_decay": 0.01,
+        "num_workers": 2,
+        "video_layers": 12,
+        "video_rank": 8,
+        "video_alpha": 16,
+        "video_dropout": 0.05,
+        "video_checkpointing": true,
+        "limit_per_split": null,
+        "lambda_feature": 2.0,
+        "lambda_cafd": 0.1,
+        "cmad_tau": 0.2,
+        "lambda_subset": 1.0,
+        "lambda_interaction": 1.0,
+        "coordinate_seed": 20260922,
+        "ea_entropy_temperature": 3.0,
+        "rld_temperature": 4.0,
+        "rld_alpha": 1.0,
+        "rld_beta": 8.0,
+        "rld_warmup_epochs": 20,
+        "skd_temperature": 4.0,
+        "skd_tik_factor": 0.1,
+        "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+        "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+        "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+        "teacher_subset": "tav",
+        "teacher_calibration_temperature": 1.1912176609039307,
+        "mode": "video_lora",
+        "schema": "rdid-msa-fixed-student-main-table-v1",
+        "epoch_checkpoint_pattern": null,
+        "official_test_evaluated": false,
+        "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        "fusion_architecture": "subset transformer fusion",
+        "frozen_assets": {
+          "schema": "rdid-msa-main-table-assets-v1",
+          "base_protocol": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+          "manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+          "teacher_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+          "teacher_probe_report": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+          "teacher_temperature": 1.1912176609039307,
+          "probe_seeds": [
+            2026,
+            2027,
+            2028
+          ],
+          "probe_temperatures": {
+            "2026": 1.1912176609039307,
+            "2027": 1.2058717012405396,
+            "2028": 1.180254578590393
+          },
+          "ensemble_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+          "interaction_targets": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+          "teacher_features": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+          "teacher_feature_index": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+          "teacher_feature_dimension": 2048,
+          "student_empty_baseline": 0.22526227845205912,
+          "utility_normalized": [
+            1.4489312949400415,
+            1.4868758404711906,
+            0.44785806066300105,
+            1.4602598528440491,
+            0.6796448102064051,
+            0.6678612295896007,
+            0.8085689112857127
+          ],
+          "coarse_utility_normalized": [
+            1.4653556627517603,
+            1.4653556627517603,
+            0.6509832529361798,
+            1.4653556627517603,
+            0.6509832529361798,
+            0.6509832529361798,
+            0.6509832529361798
+          ],
+          "lambda_interaction": 1.0,
+          "lambda_subset": 1.0,
+          "lambda_feature": 2.0,
+          "alpha_ce": 0.5,
+          "lambda_full": 1.0,
+          "kd_temperature": 2.0,
+          "rld": {
+            "alpha": 1.0,
+            "beta": 8.0,
+            "temperature": 4.0,
+            "confidence_temperature": 1.0,
+            "warmup_epochs": 20,
+            "standardize_logits": false
+          },
+          "skd": {
+            "temperature": 4.0,
+            "tik_factor": 0.1,
+            "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+          },
+          "ea_kd": {
+            "entropy_temperature": 3.0,
+            "entropy_upper_bound": "log(7)"
+          },
+          "projector": {
+            "student_dimension": 512,
+            "teacher_dimension": 2048,
+            "normalization": "BatchNorm1d(affine=False)",
+            "distance": "log(sum(abs(delta)^4)+1e-5)"
+          },
+          "cmad_cafd": {
+            "tau": 0.2,
+            "lambda": 0.1,
+            "minimum_relation_batch": 2,
+            "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+          },
+          "seeds": [
+            13,
+            42,
+            2026
+          ],
+          "official_test_evaluated": false,
+          "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+          "input_sha256": {
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+            "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+            "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+            "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+          }
+        },
+        "upstream_sources": {
+          "frozen_on": "2026-09-17",
+          "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+          "repositories": [
+            {
+              "method": "Projector-based feature KD",
+              "path": "external/original/Simple-Recipe-Distillation",
+              "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+              "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+              "license_file": null
+            },
+            {
+              "method": "EA-KD",
+              "path": "external/original/EA-KD",
+              "url": "https://github.com/cpsu00/EA-KD.git",
+              "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+              "license_file": null
+            },
+            {
+              "method": "RLD",
+              "path": "external/original/RLD",
+              "url": "https://github.com/zju-SWJ/RLD.git",
+              "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+              "license_file": null
+            },
+            {
+              "method": "SKD",
+              "path": "external/original/StreamLined",
+              "url": "https://github.com/HyunJunSik/StreamLined.git",
+              "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+              "license_file": null
+            },
+            {
+              "method": "DLF",
+              "path": "external/original/DLF",
+              "url": "https://github.com/pwang322/DLF.git",
+              "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+              "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+            },
+            {
+              "method": "GsiT",
+              "path": "external/original/GsiT",
+              "url": "https://github.com/drewjin/GsiT.git",
+              "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+              "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+            },
+            {
+              "method": "DPDF-LQ",
+              "path": "external/original/DPDF-LQ",
+              "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+              "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+              "license_file": "LICENSE",
+              "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+              "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+            },
+            {
+              "method": "Light-MER / SWD-H",
+              "path": "external/original/Light-MER",
+              "url": "https://github.com/GAIR-Lab/Light-MER.git",
+              "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+              "license_file": "LICENSE",
+              "purpose": "domain-related adaptation audit; not a main-table implementation",
+              "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+            },
+            {
+              "method": "CMAD / CAFD",
+              "path": "external/original/CMAD",
+              "url": "https://github.com/YetZzzzzz/CMAD.git",
+              "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+              "license_file": "LICENSE",
+              "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+              "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+            }
+          ]
+        },
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false,
+        "input_sha256": {
+          "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "62fba8d285008a8f43d03049e01e162b941dbe109156f370971a9b6a19632e25",
+          "/data/sjq/kd/project/scripts/train_main_table_kd.py": "4408219d18691ca9d973292098944d489d62f3f78777fbc0dde702c833202f00",
+          "/data/sjq/kd/project/src/rdid_mosei/main_table_kd.py": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+          "/data/sjq/kd/project/src/rdid_mosei/student.py": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+          "/data/sjq/kd/project/src/rdid_mosei/tav_distillation.py": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23"
+        }
+      },
+      "report": {
+        "method": "uniform_interaction_gradient_projected",
+        "seed": 13,
+        "best_epoch": 15,
+        "epochs_run": 20,
+        "checkpoint_selection": "valid_mae",
+        "retained_best_checkpoints": {
+          "valid_mae": {
+            "score": 0.705557975047208,
+            "epoch": 15
+          },
+          "valid_acc2_nonzero": {
+            "score": -0.8703703703703703,
+            "epoch": 17
+          }
+        },
+        "valid_metrics": {
+          "count": 229,
+          "mae": 0.705557975047208,
+          "pearson": 0.8243577225521458,
+          "acc2_nonzero": 0.8472222222222222,
+          "f1_weighted_nonzero": 0.8475123382686408,
+          "nonzero_count": 216,
+          "acc2_has_zero": 0.8122270742358079,
+          "f1_weighted_has_zero": 0.8137462903922912,
+          "acc7": 0.4104803493449782
+        },
+        "train_windows": 1286,
+        "valid_windows": 229,
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120,
+        "projector_parameters": 0,
+        "training_only_feature_parameters": 0,
+        "deployed_parameters": 819309176,
+        "elapsed_seconds": 4392.7396285533905,
+        "peak_gpu_memory_gib": 26.208477020263672,
+        "official_test_evaluated": false,
+        "teacher_subsets": [
+          "t",
+          "a",
+          "v",
+          "ta",
+          "tv",
+          "av",
+          "tav"
+        ],
+        "probe_count": 3,
+        "base_tav_probe_count": 1,
+        "additional_target_probe_count": 3,
+        "teacher_hidden_features": false
+      },
+      "history_valid_min": {
+        "epoch": 15,
+        "mae": 0.705557975047208
+      },
+      "evidence_sha256": {
+        "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/run_config.json": "0298a692337026896fa6d95e54a844e6e7a9d008bede38dc18c5fd3c100c317e",
+        "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/report.json": "e1662995f5a2f6fec05e7ea789d0443df0a54b359664a2419a6cd88bfb510af5",
+        "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/history.json": "46b15f8810eca40257d39fd9013dfccd9c022654d4e3b92766313b382b32aef3",
+        "/data/sjq/kd/outputs/experiments/mosi_research_v1/uniform_interaction_gradient_projected_seed13/predictions.jsonl": "bebf0b386f90169aae3168991ba0215cb827c5fe3d4ff99fec56a23ee67960ff"
+      }
+    }
+  },
+  "source_comparison": {
+    "project/scripts/train_main_table_kd.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "81ba82e09887050b95702a2c5d63a4648c819dc039c599600d703847ce796ba6",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/scripts/train_icd_improvement.py",
+      "first_round_sha256": "a9c50d995cc6d8097f43184789863a253edc040e3878f356c802198a0604baf7",
+      "historical_recorded_in_run_config": true
+    },
+    "project/src/rdid_mosei/main_table_kd.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "0bed4d346e65ed3bf423f76735423bf25a80c031ab6e5e30b30efafcac298610",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/main_table_kd.py",
+      "first_round_sha256": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+      "historical_recorded_in_run_config": true
+    },
+    "project/src/rdid_mosei/student.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "407152e40e89fb10e82be0922c3a6364e0a914fdd563c3d344e15f8923798b72",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/student.py",
+      "first_round_sha256": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+      "historical_recorded_in_run_config": false
+    },
+    "project/src/rdid_mosei/tav_distillation.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "2fa00af5d242b5e6db7eaed6c5d7c3ec19ac8294b3cbdb48369185dcfca92695",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/src/rdid_mosei/tav_distillation.py",
+      "first_round_sha256": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23",
+      "historical_recorded_in_run_config": false
+    },
+    "project/scripts/train_student_baseline.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "b067131f614cd4fa8ddff414ad15e76c77c47ca4dae597ca039a4f0b9df83147",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/scripts/train_student_baseline.py",
+      "first_round_sha256": "26522066e523cc3f907f5a4bb20f1397a22cb95ee65d6db54326a25c42826f93",
+      "historical_recorded_in_run_config": false
+    },
+    "project/scripts/train_tav_distillation.py": {
+      "historical_git_revision": "b50cd6c8abe8c9c311edd84cec6724ceaf6fe699",
+      "historical_sha256": "3a7c2f31691d59f66e5573e8da73ce9fdae62a9baa764917ce491d334687ed48",
+      "first_round_path": "/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107/source/project/scripts/train_tav_distillation.py",
+      "first_round_sha256": "3a7c2f31691d59f66e5573e8da73ce9fdae62a9baa764917ce491d334687ed48",
+      "historical_recorded_in_run_config": false
+    }
+  },
+  "source_diff_path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/protocol_source_diff.patch",
+  "teachers": {
+    "2026": {
+      "directory": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026",
+      "checkpoint": "teacher_probe.pt",
+      "best_epoch": 12,
+      "sha256": {
+        "teacher_probe.pt": "ff525dfaa189a21c55f1f5254d85d4c86ac64d2ed84d8863ba311fd552bb0408",
+        "predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+        "report.json": "6e75843b29fb29a6ec1ad26e4f7b30e697d009d62c984f4bdbdccffc83b10cc6"
+      }
+    },
+    "2027": {
+      "directory": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027",
+      "checkpoint": "teacher_probe.pt",
+      "best_epoch": 10,
+      "sha256": {
+        "teacher_probe.pt": "67b629ee3f6589a53c3bd3bf825a7a5cb7df56f7525f904dd4eb8c34f572d0a2",
+        "predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+        "report.json": "6133cf6acdee0739a4666e7125f517e36d7c44c475a728623ed972d1c7eb2593"
+      }
+    },
+    "2028": {
+      "directory": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028",
+      "checkpoint": "teacher_probe.pt",
+      "best_epoch": 12,
+      "sha256": {
+        "teacher_probe.pt": "b6c36640c689f57d8b45dd9a79d575c91bc73fee0ea7b2b99ee2c4dfb411e8ed",
+        "predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8",
+        "report.json": "9bb83a2efb848dbf7e125a1e84f405ac6b93e33e6fee1ae2bc2b0a44e715dc8f"
+      }
+    }
+  },
+  "frozen_assets_equal_after_path_normalization": true,
+  "manifest": {
+    "path": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+    "sha256": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+    "splits": {
+      "train": {
+        "windows": 1286,
+        "utterances": 1284,
+        "source_videos": 52
+      },
+      "valid": {
+        "windows": 229,
+        "utterances": 229,
+        "source_videos": 10
+      }
+    },
+    "train_valid_source_video_intersection": 0
+  },
+  "actual_small_asset_sha256": {
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "b9622a1e01205d031ddbfa5ef4d3ae1e53c00e12309ea6e24ee0cb9d0b3d2970",
+    "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "6e75843b29fb29a6ec1ad26e4f7b30e697d009d62c984f4bdbdccffc83b10cc6",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+    "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+    "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+  },
+  "stale_recorded_hashes": [
+    {
+      "path": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+      "recorded": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+      "actual": "b9622a1e01205d031ddbfa5ef4d3ae1e53c00e12309ea6e24ee0cb9d0b3d2970",
+      "reverse_path_migration_sha256": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+      "explained_by_path_only_migration": true
+    },
+    {
+      "path": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl",
+      "recorded": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+      "actual": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+      "reverse_path_migration_sha256": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+      "explained_by_path_only_migration": true
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+      "recorded": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+      "actual": "6e75843b29fb29a6ec1ad26e4f7b30e697d009d62c984f4bdbdccffc83b10cc6",
+      "reverse_path_migration_sha256": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+      "explained_by_path_only_migration": true
+    }
+  ],
+  "critical_findings": [
+    "Old config says test_mae but report.valid_metrics and best.pt were selected on validation MAE in matching historical trainer; test_mae disables early stopping and requests separate downstream test sweep.",
+    "Old vs first round: max_epochs20->30, min_epochs8->1, same patience7; first-round actual FullKD29 epochs/best22, ICD11/best4. Old both20/best19,15.",
+    "Old and first-round FullKD use Probe2026 TAV. Their UniformICD common FullKD terms still use Probe2026; interaction supervision is three probes2026/2027/2028.",
+    "Frozen teacher/input assets compare equal after historical path normalization. All three stale recorded hashes (manifest, base protocol, Probe2026 report) match exactly after byte replacement /data/sjq/kd -> /home/wy/sjq/kd. This proves those three current contents differ solely by that prefix migration from recorded content.",
+    "Equal architecture and declared seed do not prove bitwise initialization equality: no historical initial parameter hash exists.",
+    "Uniform ICD reduction order changed mathematically equivalently; BF16 and floating point training trajectories may differ, but audit does not causally attribute MAE differences."
+  ],
+  "unresolved_historical_evidence": [
+    "Historical initial parameter tensors/hash unavailable",
+    "Historical runtime torch/transformers/CUDA versions and full execution environment not retained per run",
+    "Full old transitive dependency source hashes were not recorded; b50cd6c versions provide contextual evidence only",
+    "No causal identification of numerical contribution to old/new MAE differences"
+  ],
+  "phase1_requirements": [
+    "Three-Probe common FullKD target for all8 groups",
+    "Fresh initialization hash and frozen source/asset hashes",
+    "Seed13, train1284/valid229, source_video_overlap0",
+    "valid_MAE-only selection, epochs40/patience8/tie1e-5/all_epoch_checkpoints",
+    "No official-test in development"
+  ]
+}

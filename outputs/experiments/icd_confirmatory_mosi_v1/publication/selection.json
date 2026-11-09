@@ -1,0 +1,27 @@
+{
+  "phase1_best": {
+    "id": "F6_icd_ce_lambda025",
+    "method": "uniform_interaction",
+    "ce": 0.5,
+    "lam": 0.25,
+    "group": "runs",
+    "schedule": "constant",
+    "base_epochs": 40,
+    "budget": 40,
+    "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F6_icd_ce_lambda025"
+  },
+  "best_positive_icd": {
+    "id": "F6_icd_ce_lambda025",
+    "method": "uniform_interaction",
+    "ce": 0.5,
+    "lam": 0.25,
+    "group": "runs",
+    "schedule": "constant",
+    "base_epochs": 40,
+    "budget": 40,
+    "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F6_icd_ce_lambda025"
+  },
+  "criterion": "minimum validation MAE; engineering interpretation occurs in final report",
+  "budget": 40,
+  "official_test_evaluated": false
+}

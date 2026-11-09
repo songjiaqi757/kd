@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Print the saved live experiment status without touching GPUs."""
+import json
+from datetime import datetime
+from pathlib import Path
+import time
+
+ROOT=Path(__file__).resolve().parents[2]
+BASE=ROOT/'outputs/experiments/video_source_v2'
+
+
+def main():
+    path=BASE/'status.json'
+    if not path.exists():
+        print('实验队列尚未启动。');return
+    s=json.loads(path.read_text())
+    print('Video source v2：教师时间修正 + 三模态对等 LoRA')
+    print(f"状态：{s['status']}    阶段：{s['stage']}")
+    print(f"更新：{datetime.fromtimestamp(s['updated_at']).astimezone().isoformat(timespec='seconds')}（{int(time.time()-s['updated_at'])} 秒前）")
+    if 'error' in s:print('错误：',s['error'])
+    if 'progress' in s:print('进度：',json.dumps(s['progress'],ensure_ascii=False))
+    if 'gpus' in s:print('GPU：',json.dumps(s['gpus'],ensure_ascii=False))
+    for job in s.get('active',[]):
+        print(f"GPU{job['gpu']} {job['run']}：{json.dumps(job['progress'],ensure_ascii=False)}")
+        print('  日志：',job['log'])
+    if 'current_log' in s:print('当前详细日志：',s['current_log'])
+    plan_path=BASE/'plan.json'
+    plan=json.loads(plan_path.read_text()) if plan_path.exists() else {}
+    schedule=plan.get('student_schedule',{})
+    modes=plan.get('student_modes',['frozen_video','video_lora','ta_only'])
+    seeds=plan.get('student_seeds',[13,42,2026])
+    if schedule and not schedule.get('controls_enabled',True):
+        modes=schedule['priority_modes']
+        print('本轮仅运行：',', '.join(modes))
+        print('暂缓（不自动启动）：',', '.join(schedule['deferred_modes']))
+    completed=[]
+    for seed in seeds:
+        for mode in modes:
+            p=BASE/'students'/f'{mode}_seed{seed}'/'status.json'
+            if p.exists() and json.loads(p.read_text()).get('status')=='complete':completed.append(f'{mode}_seed{seed}')
+    print(f'本轮学生实验完成：{len(completed)}/{len(seeds)*len(modes)}')
+    if completed:print('已完成：',', '.join(completed))
+    c2_path=ROOT/'outputs/student/cv2_c2_gpu1_status.json'
+    if c2_path.exists():
+        c2=json.loads(c2_path.read_text())
+        print(f"C2：{c2['status']}（physical GPU{c2.get('physical_gpu', 1)}，seed{c2.get('seed', 42)}）")
+        c2_history=ROOT/'outputs/student/stage_d_cv2_c2_uniform_ensemble_pair_tempfix_emptymean_seed42/history.json'
+        if c2_history.exists():
+            history=json.loads(c2_history.read_text())
+            if history:
+                last=history[-1]
+                print(f"  已完成 epoch {last['epoch']}，valid MAE={last['valid_mae']:.6f}")
+    else:
+        print('C2：未运行。')
+    if s['status']=='complete' or s['stage']=='controls_deferred':
+        print('统一记录：',ROOT/'docs/experiments/video_source_v2.md')
+        print('可重生成简表：',ROOT/'docs/experiments/video_source_v2_results.generated.md')
+
+
+if __name__=='__main__':
+    main()

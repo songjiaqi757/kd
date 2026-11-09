@@ -1,0 +1,104 @@
+{
+  "phase1": [
+    {
+      "id": "F0_full_kd_ce",
+      "method": "full_kd",
+      "ce": 0.5,
+      "lam": 0.0,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F0_full_kd_ce"
+    },
+    {
+      "id": "F1_full_kd_no_ce",
+      "method": "full_kd",
+      "ce": 0.0,
+      "lam": 0.0,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F1_full_kd_no_ce"
+    },
+    {
+      "id": "F2_icd_ce_lambda1",
+      "method": "uniform_interaction",
+      "ce": 0.5,
+      "lam": 1.0,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F2_icd_ce_lambda1"
+    },
+    {
+      "id": "F3_icd_no_ce_lambda1",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 1.0,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F3_icd_no_ce_lambda1"
+    },
+    {
+      "id": "F4_icd_ce_lambda05",
+      "method": "uniform_interaction",
+      "ce": 0.5,
+      "lam": 0.5,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F4_icd_ce_lambda05"
+    },
+    {
+      "id": "F5_icd_no_ce_lambda05",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 0.5,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F5_icd_no_ce_lambda05"
+    },
+    {
+      "id": "F6_icd_ce_lambda025",
+      "method": "uniform_interaction",
+      "ce": 0.5,
+      "lam": 0.25,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F6_icd_ce_lambda025"
+    },
+    {
+      "id": "F7_icd_no_ce_lambda025",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 0.25,
+      "group": "runs",
+      "schedule": "constant",
+      "base_epochs": 40,
+      "budget": 40,
+      "output": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/runs/F7_icd_no_ce_lambda025"
+    }
+  ],
+  "gpu": 1,
+  "dependent_phases": [
+    "scheduler",
+    "gradient_projected",
+    "analysis"
+  ],
+  "official_test_evaluated": false,
+  "excluded": [
+    "MOSEI",
+    "official-test",
+    "additional_seeds"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "icd-confirmatory-mosi-v1",
+  "seed": 13,
+  "max_parallel": 2,
+  "stages": [
+    "phase0_audit",
+    "phase1_factorial",
+    "phase2_scheduler",
+    "phase3_gradient_projection",
+    "phase4_selection"
+  ],
+  "deferred": [
+    "mosei",
+    "multiseed"
+  ],
+  "teacher_probes": [
+    2026,
+    2027,
+    2028
+  ],
+  "ce": [
+    0,
+    0.5
+  ],
+  "lambda": [
+    0,
+    0.25,
+    0.5,
+    1
+  ],
+  "epochs": 40,
+  "patience": 8,
+  "extension": {
+    "late_best_epoch": 36,
+    "uniform_budget": 50
+  },
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "checkpoint_selection": "valid_mae",
+  "plan_sha256": "f12dd7ad7ae0401e5d56ca78fe6a135dbb9a96b45e16d91550cde9f35942c545",
+  "gpu_policy": "single physical GPU per run; the index is an execution detail and may change between runs (F0-F4 used GPU0, F5 onward used GPU1)",
+  "official_test_reporting": "completed after training; never used for selection",
+  "official_test_used_for_selection": false
+}

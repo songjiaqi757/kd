@@ -1,0 +1,1365 @@
+{
+  "schema": "icd-confirmatory-publication-manifest-v1",
+  "bundle": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication",
+  "packager": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/prepare_publication.py",
+  "packager_sha256": "c557c452c752ac674b377c6b7fa3aea59881627f559109718466ee80d5124f34",
+  "required_missing": [
+    "budget_extension.json"
+  ],
+  "blockers": [],
+  "checkpoint_bytes_policy": "checkpoints and teacher assets remain on server",
+  "official_test_used_for_selection": false,
+  "official_test_reporting": "completed after training (reporting only)",
+  "files": [
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/plan.md",
+      "bytes": 20589,
+      "sha256": "f12dd7ad7ae0401e5d56ca78fe6a135dbb9a96b45e16d91550cde9f35942c545",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/plan.md"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/plan.json",
+      "bytes": 1022,
+      "sha256": "b57e6ce81798c6521fc317ff21cc1879d574b4c4f2c5bf3bc10df141cb80f591",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/plan.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/protocol_diff.md",
+      "bytes": 11216,
+      "sha256": "94ab3938e7f5111d0c2c50ecbd31037a8923d8ccf450a5d189201ea976395d62",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/protocol_diff.md"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/baseline_audit.json",
+      "bytes": 85260,
+      "sha256": "9e481d2f367812d5d391e9e9c4cb00d61e9d4b3b52d589711bac2c41bd41ad72",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/baseline_audit.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source_fingerprints.json",
+      "bytes": 32932,
+      "sha256": "1129594586fcfb1731504841566b5afaa64ac0b46dbaea08ebd6cd272849fbe7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source_fingerprints.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/completion_audit.json",
+      "bytes": 4135,
+      "sha256": "4255f53416c6776136a6c34e29bc5c4ecfda2e832e8cfb5feb1213d883fb6400",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/completion_audit.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/per_run.csv",
+      "bytes": 3353,
+      "sha256": "d066df33e3b3cbc43a693d2daf5ea4441712e5c197cef0f20d7765055e993a99",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/per_run.csv"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/factorial_analysis.json",
+      "bytes": 20412,
+      "sha256": "842905ef2ecdc35e369ff54963b64706ff4d7025ed957a47a17a6bb1170649b4",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/factorial_analysis.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/interaction_analysis.json",
+      "bytes": 23464,
+      "sha256": "a908c95dfe98b0786e448230b3e51ce27f128cff288d9aef957e1abfbad8cd91",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/interaction_analysis.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/final_report.md",
+      "bytes": 4618,
+      "sha256": "25d341969a8d1be4db9c4f5b77df91630275dc8700d8735687708e13af3432b1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/final_report.md"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/paper_experiment_draft.md",
+      "bytes": 932,
+      "sha256": "0b8577c5502a70634b9b3334f4886a07eaa88fe2be6de241e9fc56e7ed056d9b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/paper_experiment_draft.md"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/paired_source_video_analysis.json",
+      "bytes": 21930,
+      "sha256": "67e1483e5f880526e1aeb94c6a438fb6556c982c907410b2d1adf1c4a4108b12",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/paired_source_video_analysis.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/independent_metrics.json",
+      "bytes": 14454,
+      "sha256": "569e16254ef53cf4d71b64a0f90fa7f703c522e8f2df09ffa059791b6b73f9ba",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/independent_metrics.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/method_selection.json",
+      "bytes": 2366,
+      "sha256": "5d417422a510caa5995e4802687b0753189cb2dfb03eb546c17a26ff1fc1a0a1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/method_selection.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/gradient_diagnostic_manifest.json",
+      "bytes": 201879,
+      "sha256": "59f36b17f2ea50c80c077bdf9a6542fbdd748e907c53b5b92974871201c6debe",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/gradient_diagnostic_manifest.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/selection.json",
+      "bytes": 783,
+      "sha256": "eee38e6d7d82e4371b44129e36d12a66d4ed6a67d285a60b9af09c705988cc8f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/selection.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/official_test_summary.json",
+      "bytes": 27798,
+      "sha256": "73d9241c5e4f3f7231af6604e6d75fa351a8a0058ce8cffb4119b996d2ae0956",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/official_test_summary.csv",
+      "bytes": 10209,
+      "sha256": "1e020c7d808232e0e24e419b10c6dde88ed71e29046d74c322b7afa43b62fde3",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.csv"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/analysis/official_test_summary.md",
+      "bytes": 5218,
+      "sha256": "f5cafab9d2270474fd087538eabcea2d8d6753736a9dc3fc42cec8be94203d33",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/analysis/official_test_summary.md"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/aggregate_teacher_outputs.py",
+      "bytes": 4451,
+      "sha256": "994ccad42ec718a33fa595e655fcf9a2d7bc215a768fba545c0591ad39f59d5c",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/aggregate_teacher_outputs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_fullscale_subset4_pair_snr.py",
+      "bytes": 11198,
+      "sha256": "16d6873f3c9c6c7e751b7d6b895d8afb5cae37b695afb67323f40efb882934df",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_fullscale_subset4_pair_snr.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_interaction_fidelity_task_gain.py",
+      "bytes": 37373,
+      "sha256": "e9ca93b703211551012ca3502b1b1176cd0ab5bb2fbe93a028bd71eefea7d680",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_interaction_fidelity_task_gain.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_interaction_reconstruction.py",
+      "bytes": 17327,
+      "sha256": "8b143de14be3efe8f7a593670a648464ead8199d7e2bcc437f6c2f291ec3a8d2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_interaction_reconstruction.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_interaction_utility.py",
+      "bytes": 13472,
+      "sha256": "0288080c930ca8fc22ad5acfd81f8645f639454fcf5b1868ac3f6b12a0080868",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_interaction_utility.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_main_tables.py",
+      "bytes": 9461,
+      "sha256": "3768113691584a2ad9f63e7c9a3d07e8ee7d4cfa9c1698e5e98849df6c1d1a38",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_main_tables.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_polarity_pilot.py",
+      "bytes": 10922,
+      "sha256": "3c3a1bd46dd83add6baa9620866ea6dc527ee401a2360a475262429a6c5ed548",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_polarity_pilot.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_polarity_significance.py",
+      "bytes": 10839,
+      "sha256": "19d898f997a3cf25046d69a318b7de13d8e162c088f6882c1e30f28ef099fa89",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_polarity_significance.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_rdid_v2_diagnostics.py",
+      "bytes": 5261,
+      "sha256": "1d09ef98248956d8f08d9e7a47aecf28a67c77d692e41d6d5f51d4d837afd679",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_rdid_v2_diagnostics.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_stage_c_seed13_screening.py",
+      "bytes": 8400,
+      "sha256": "637585b83d5021953a1233e5f49bc169a8d1566774c0869531a8becb44259226",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_stage_c_seed13_screening.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_stage_d_significance.py",
+      "bytes": 10577,
+      "sha256": "19e7219aad7bdda83cd1d3caeb1d8f368fa44052fa2f86b25e48a276c3b83e9e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_stage_d_significance.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_teacher_interaction_reliability.py",
+      "bytes": 9032,
+      "sha256": "8f71e505359c2bd8e068de70f0ec4073639a1be27e10086425fe08fd772ea13b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_teacher_interaction_reliability.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_teacher_structure.py",
+      "bytes": 5157,
+      "sha256": "d53fdecd04e1d6fd5d16fa0c0b6f7421f1b8cc1a2489f0fa7d82b55718eaa4d8",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_teacher_structure.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/analyze_video_followup_20260911.py",
+      "bytes": 10216,
+      "sha256": "cd71bfe053decd15110d10cade2c7cfcde8d5dc1113b4b19e8ea5ad4b2a8e2f9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/analyze_video_followup_20260911.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/audit_c_v2_inputs.py",
+      "bytes": 8165,
+      "sha256": "07281d050f5e9e6da483d0cae02b100c1a025d060d218d584149b6cd4b5e3391",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/audit_c_v2_inputs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/audit_prepared_media.py",
+      "bytes": 4330,
+      "sha256": "cfe8d2372f4c7846196906ab56c911d745ae9ea89fb7a6e88600ca00820be34f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/audit_prepared_media.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/audit_student_feature_cache.py",
+      "bytes": 5112,
+      "sha256": "ce2e244a40de123a775f69d4cf7b6481f98f57291771b09648ccb981d6d2def0",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/audit_student_feature_cache.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/audit_tav_seed13_chain.py",
+      "bytes": 4717,
+      "sha256": "60d4225769ef6fda1f0cac8433019b4ba9c01a506d0aa24cecb0fde3c91972a4",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/audit_tav_seed13_chain.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/audit_teacher_video_timing.py",
+      "bytes": 4015,
+      "sha256": "06e74466a9a00327d7f85a3d25a8b08c00a5e873e1f09153bc5aba6690b19081",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/audit_teacher_video_timing.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/benchmark_teacher_student_efficiency.py",
+      "bytes": 27900,
+      "sha256": "b775bf593fb71c3140b95f66000211ef078346d87f9b0af8341c9e0bd0ddee6e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/benchmark_teacher_student_efficiency.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_all_experiment_data_catalog.py",
+      "bytes": 30363,
+      "sha256": "b210f948ec71c61ceb1631edfd26d06df2541a6141f70556f706876c8c26924d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_all_experiment_data_catalog.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_benchmark_manifest.py",
+      "bytes": 7900,
+      "sha256": "3e69dfb0143b9c63149b3065135ec3d142dfc4c9588690ab51e8c173555af14a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_benchmark_manifest.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_full_dataset_manifest.py",
+      "bytes": 11497,
+      "sha256": "dc01ace586dc7b08fd473e5ce83d9cb6b951286cbe22e1620a33732cf9aa6597",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_full_dataset_manifest.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_main_table_plan.py",
+      "bytes": 7233,
+      "sha256": "0401c9466db28a6ab7728ace713ac704ea5437c9f04e2982fd87ac3d52c48870",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_main_table_plan.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_smoke_manifest.py",
+      "bytes": 5756,
+      "sha256": "00d109d44e1b1db3cceb1a42215a67fd66dccf21c4d7aef9aa4c99dd31f5b1a2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_smoke_manifest.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_teacher_interaction_reliability.py",
+      "bytes": 2873,
+      "sha256": "5b0a186841bde68498766517663eca5f5181898da35609895ce378539460977c",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_teacher_interaction_reliability.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/build_windowed_manifest.py",
+      "bytes": 7681,
+      "sha256": "3de7ab8b99fd132ac5fd703dc9fd3d8586787d22f76be367aa2402359dfef2b2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/build_windowed_manifest.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/cache_student_encoder_features.py",
+      "bytes": 6066,
+      "sha256": "966bef2fe31dbde90b81533de9e114a81ccbd384514908ba47c3d2732e9dc788",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/cache_student_encoder_features.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/check_environment.py",
+      "bytes": 1725,
+      "sha256": "c5fd36b35a90e02ebd3781e305cef4ba44ad80b0cad2725ae3c48c1e4b458eeb",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/check_environment.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/check_model_files.py",
+      "bytes": 1215,
+      "sha256": "58df349f05be45d4602eb9fb0a8dc05079dba04110dc28a77408301589b34eea",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/check_model_files.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/compare_student_runs.py",
+      "bytes": 3613,
+      "sha256": "fd2c350cf9cf0be908ce4c790c8f2fbeb34e06f822ee104b4ad75f420abc1e6a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/compare_student_runs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/continue_early_stopped_run.py",
+      "bytes": 8135,
+      "sha256": "e4492fac8506b33751e41f40614a8282bbd23dbb94215c4fbb4773e604181918",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/continue_early_stopped_run.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/diagnose_cached_validation.py",
+      "bytes": 2712,
+      "sha256": "3815c70f085c697c92db30d23f78ece6b25b871ee459ea64509ac7ffbb061078",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/diagnose_cached_validation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/diagnose_teacher_video_pair.py",
+      "bytes": 7899,
+      "sha256": "96ed57bd48bc19c159570519e1e1f7c7b91630214e2d1dab2911aeaa1602f18a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/diagnose_teacher_video_pair.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/download_model.sh",
+      "bytes": 970,
+      "sha256": "c14a300dea89a5d9b3a8a8ec0a6c538ed9d90ea42f0fca6979dbb76b300e88ad",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/download_model.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/download_model_curl.sh",
+      "bytes": 2123,
+      "sha256": "78115e13ed660feebd1ba047719858b0e93b8213b033892d82e017d4ca803d60",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/download_model_curl.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_legacy_selected_test.py",
+      "bytes": 12482,
+      "sha256": "89a607e38455a32e638ed88396cb818b8c6a48714f50e7cb5e6b7e9cf6ac35d0",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_legacy_selected_test.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_main_table_all_epochs.py",
+      "bytes": 10883,
+      "sha256": "8a7268800a5e5407b56e74f2681f1a63d77d3a680f128c75b00ddcac2d6d802d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_main_table_all_epochs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_main_table_checkpoints_live.py",
+      "bytes": 15684,
+      "sha256": "36fb8fff85c9b6abada892cdf9b642b0888b592384ae427e86e27d1a11e21204",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_main_table_checkpoints_live.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_main_table_one_epoch.py",
+      "bytes": 7169,
+      "sha256": "c1152c6531dbd724fdc8a03371f4795c44fc04126dfd283e548d9b0da6c05ae6",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_main_table_one_epoch.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_main_table_test.py",
+      "bytes": 11755,
+      "sha256": "a8a050a4515743e9f20fd768c7572ea2324ceaa38f4f57b6b826167bb8b966ab",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_main_table_test.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_mosi_uniform_sweep.py",
+      "bytes": 10335,
+      "sha256": "493d352274ae66e7630e566e2918951ae54756cfe80ee2899f732f4394729fc9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_mosi_uniform_sweep.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_rdid_v2_development.py",
+      "bytes": 8343,
+      "sha256": "d8bbf2ac5d86137a633730714a0001a71b716a5bb65c88a9fc1a57c2da2ee42d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_rdid_v2_development.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_rdid_v2_epoch_sweep.py",
+      "bytes": 14477,
+      "sha256": "d9826a8f30f11afa14f819c213bf931572fe0e0126b9b17ff3f9346f83f4f878",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_rdid_v2_epoch_sweep.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_rdid_v2_one_epoch.py",
+      "bytes": 5434,
+      "sha256": "b960ffc8d8a6ea607f835e212e5c776376e340ba764139c24aaab9bd4292a4d9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_rdid_v2_one_epoch.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_research_validation.py",
+      "bytes": 5903,
+      "sha256": "83ad5bfdf13f84dd73f21a7c3a285864fd75a61cb984f27e628c2837c0f673de",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_research_validation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_tav_all_checkpoints.py",
+      "bytes": 11930,
+      "sha256": "4e9b621195364acc60c350f84b2e90c4c165ed5d4d7851650ab3904efeb212da",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_tav_all_checkpoints.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_tav_one_checkpoint.py",
+      "bytes": 4362,
+      "sha256": "96b818ab8e122a08b158c0a4f20c1868d31806b70e1382dbfe64cc8a3207b016",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_tav_one_checkpoint.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_tav_streaming_checkpoints.py",
+      "bytes": 8624,
+      "sha256": "51375530c91a768178b31803eead929cb060facc4f4d0bededa825b4eb2403f9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_tav_streaming_checkpoints.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_tav_test.py",
+      "bytes": 11864,
+      "sha256": "a223828d9b4dceeb49a12f6d80b041d0e6d5f11201860cf9387f8fc55a31f0c1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_tav_test.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/evaluate_teacher_benchmark.py",
+      "bytes": 13538,
+      "sha256": "ea4a71fc993c472465abd52bf740001b6be5b1e6a6216099dd591da27fa618a7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/evaluate_teacher_benchmark.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/extract_teacher_probe_features.py",
+      "bytes": 11430,
+      "sha256": "73dfe5028ace95da7997358d1d7860a19aee828ec06bdcd51aaa8a2e8c69d0aa",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/extract_teacher_probe_features.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_fig3_full20.py",
+      "bytes": 6450,
+      "sha256": "6ea8b471ef630c14577c41360a7e8d0ca0ed07fe07b8212d9d23440dfa7892ed",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_fig3_full20.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_full_dataset.py",
+      "bytes": 3082,
+      "sha256": "8324532a71a68893c8fecf6b951804f455885c51f3229a1be8145fffd0edd279",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_full_dataset.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_interaction_evidence_v1.py",
+      "bytes": 4391,
+      "sha256": "9c96f37b96f8fff73b97254d25c7c2ba43f884dee06a7deabcc8f934f999ad75",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_interaction_evidence_v1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_mosei_validation_interaction_evidence.py",
+      "bytes": 5373,
+      "sha256": "18b9263a612b5c13fa20d3d1e647cf5e66d8a15b590dd31aea429592f4ddc51b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_mosei_validation_interaction_evidence.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_mosi_interaction_evidence_v1.py",
+      "bytes": 4148,
+      "sha256": "2b0eb01667178cad47a8b9cf40d41ffdef72adc72bf8ca6d0f2ff4b97bb907ad",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_mosi_interaction_evidence_v1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/finalize_mosi_uniform_when_ready.py",
+      "bytes": 2619,
+      "sha256": "6bd3c19fece23ab8bcbdabd66d8072d05252370503c1a73d12ba2715f1523472",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/finalize_mosi_uniform_when_ready.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/infer_rdid_v2_test_interactions.py",
+      "bytes": 11208,
+      "sha256": "624960ab9a9d649d3e86a854f3144b9002c83e8afe3bb125c86e66e3fb4634b7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/infer_rdid_v2_test_interactions.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/infer_student_all_subsets.py",
+      "bytes": 5425,
+      "sha256": "dbc8ea3d0703a5044c11fe83efd76b0009d3a6218b0777685924c82eea8ba76b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/infer_student_all_subsets.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/manage_checkpoint_archive.py",
+      "bytes": 11672,
+      "sha256": "0d43c1211d0586e798f4e7b7956adfef687a635e5871a44c4e527ac9bd0141fc",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/manage_checkpoint_archive.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/mosi_uniform_status.py",
+      "bytes": 2694,
+      "sha256": "6e7b6f8471dbe87096db0b07011aa0662c836490391b7b96152bea15d01bd1e1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/mosi_uniform_status.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/pause_local_ensemble_after_epoch7.py",
+      "bytes": 5058,
+      "sha256": "3ea7cc014f3809e762225a0998b1f9a8e5043eda26830ae640af9f21c70a20a9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/pause_local_ensemble_after_epoch7.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_efficiency_deployment.py",
+      "bytes": 9741,
+      "sha256": "9e49b571ab09fbfdc4fbce73d2668dfea55df8e88abb0a3c61e2abecd5518810",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_efficiency_deployment.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_fig3_test_mae_vs_epoch.py",
+      "bytes": 10382,
+      "sha256": "5296d44ff6d87522001b6fb38ef6f74585550c7da7dfbf83abfb59df5d0f7c31",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_fig3_test_mae_vs_epoch.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_fig3_validation_mae_vs_epoch.py",
+      "bytes": 8614,
+      "sha256": "7716b4c18ffd7e04bb19a1d3a4d5e80f63174684cb8c0f925016b555fa211cdd",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_fig3_validation_mae_vs_epoch.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_interaction_case_heatmaps.py",
+      "bytes": 13950,
+      "sha256": "dfb9615b226e004bd796f847bd88cb1b17e779a78c1cde336398b2359ba60f74",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_interaction_case_heatmaps.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_interaction_case_studies.py",
+      "bytes": 8308,
+      "sha256": "6982962bf80f2119b66a55cc287c13fc7df40e9b148106694e82ef9ef13580b2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_interaction_case_studies.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_interaction_evidence.py",
+      "bytes": 16510,
+      "sha256": "45944b8f8bda62d4bfd2f6efb96ee1dd47279be893d80645fd377702f1d30778",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_interaction_evidence.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/plot_qualitative_interaction_distillation.py",
+      "bytes": 14647,
+      "sha256": "dacabf6a45d91e6976255e0c7f7d99e9be34710e887655df3bc7bfe51f5ca1ba",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/plot_qualitative_interaction_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/preflight_tav_distillation.py",
+      "bytes": 2905,
+      "sha256": "834b7afa9f6faaaad34ca7740d1011461b47f9947dd298348a98a6ab3a9de68b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/preflight_tav_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_cv2_assets.py",
+      "bytes": 15093,
+      "sha256": "c2ceeaac7071080ff0c272b1159fc4caf4bd10c1a626feea50028e4fb8886ac5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_cv2_assets.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_full_dataset.py",
+      "bytes": 10037,
+      "sha256": "ab17f757425cf63540f9ca35930ae84723accb5b5e09a1f66de7a4a0cbbfa017",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_full_dataset.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_main_table_assets.py",
+      "bytes": 8385,
+      "sha256": "07627b44c5138a8c04352aa2fd5f0ed16c8408835f8e1d0a814681b32c9b2fe4",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_main_table_assets.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_mosi_dataset.py",
+      "bytes": 9883,
+      "sha256": "83339c3d2a4e24032c25c419e9f25eeb63d7d7d788530515d7f1fd3688bc09ae",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_mosi_dataset.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_mosi_main_table.py",
+      "bytes": 21458,
+      "sha256": "05fc3c1a78614a2c8e9775519355624063a87193d7df80a5553a50f2cab67e8f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_mosi_main_table.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_mosi_research_queue.py",
+      "bytes": 8310,
+      "sha256": "d9f0a93c37db345d03003e800bde4610c72adf4c4ae6a18d7c958ebff8df2942",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_mosi_research_queue.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_msa_protocol.py",
+      "bytes": 7712,
+      "sha256": "72306bc425a28a2f747455e4d6abe4999b888872506bc62078f04543d47e7fde",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_msa_protocol.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_qiii_mosei_baselines.py",
+      "bytes": 5604,
+      "sha256": "ef8499a219b2291145d16add85d8af620a9ce55fb45b77fa5dbbd9ad4c76835f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_qiii_mosei_baselines.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_smoke_media.py",
+      "bytes": 6671,
+      "sha256": "bd879165da9285f674ead183a337c0149dc235dd57cec9fd195892abd77c93d6",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_smoke_media.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_tav_protocol.py",
+      "bytes": 8827,
+      "sha256": "c8581db78e98798a658e8d64932a25c81fa736a1f59f8f7ef84b56aa1ee1a7eb",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_tav_protocol.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prepare_utility_crossfit_folds.py",
+      "bytes": 3213,
+      "sha256": "f5ab41a06862788635f747d47f6b407fda96caa687bc1f414f3b3dd24afc9823",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prepare_utility_crossfit_folds.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prioritize_qiii_order_controls.py",
+      "bytes": 12070,
+      "sha256": "f38bd7c36ec73d7ee99cb80d3023f0068d67603e9a756009fe148818b943049d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prioritize_qiii_order_controls.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/prune_evaluated_checkpoints.py",
+      "bytes": 13510,
+      "sha256": "9d9f763e7b090537502a5c1315a20f8572dae421e17dbc1cee071a630239cd75",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/prune_evaluated_checkpoints.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/recover_qiii_multiseed_queues.py",
+      "bytes": 5149,
+      "sha256": "da47f20f766f0fc380f7c8a11ea993dc7d5e79da4667ea299b895c15cf150d63",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/recover_qiii_multiseed_queues.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/refresh_completed_test_summaries.py",
+      "bytes": 913,
+      "sha256": "eef3836c0f4e041f123be7036f07e32af2d24bbb87e5da09c5cb95bceec6d3ad",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/refresh_completed_test_summaries.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/refresh_manifest_checksums.py",
+      "bytes": 603,
+      "sha256": "c15c194664a2447a1ba05ede8f720294564e31aae68937ea3da3c8bb5b9cad5e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/refresh_manifest_checksums.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/restore_mosei_window_media.py",
+      "bytes": 3803,
+      "sha256": "95f5f620d6ad521de7a673128bb77faebf6c61ab50785a0302aceea3fdffa4fb",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/restore_mosei_window_media.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/retire_fixed_tav_test_service.py",
+      "bytes": 1398,
+      "sha256": "b872d20dca3ee5e9f1cd46b0acf7d9bc2c00e1ca8ff1cc02aabb2932e28513da",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/retire_fixed_tav_test_service.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/rewrite_json_path_prefix.py",
+      "bytes": 1398,
+      "sha256": "730f0c950dd2f5110f57b0eba96ba9c7f96ab60f3e48de6db22fccbbb12854dd",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/rewrite_json_path_prefix.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_cv2_c1_remaining_gpu0.sh",
+      "bytes": 865,
+      "sha256": "59b6b30e2bde3cacd4b9b37c1077b40d420391d862ba3489176f942500a2443c",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_cv2_c1_remaining_gpu0.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_cv2_c2_after_idle.py",
+      "bytes": 6400,
+      "sha256": "5093918eb691a92e83160ab13d045e18ff82b8bf3f63a757cdd6448ddea1ad25",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_cv2_c2_after_idle.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_cv2_c2_gpu1.py",
+      "bytes": 5673,
+      "sha256": "4f47a472a325b4c7ecab793182cf8829ea7dc2cb6363c35c4a960cb91b179c93",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_cv2_c2_gpu1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_cv2_cminus1_tempfix_gpu0.sh",
+      "bytes": 947,
+      "sha256": "058496535afc2093345561b74b0697923db72bdfed070beef2f161f177078a44",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_cv2_cminus1_tempfix_gpu0.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_decision_icd_screen.py",
+      "bytes": 5445,
+      "sha256": "24b8a9c9f62b0358a36d166813c79dd6baac5fd784c50afd96388220d5d15b33",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_decision_icd_screen.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_equal_modality_method_extensions.sh",
+      "bytes": 4374,
+      "sha256": "c3e31d484783ff58c93713ff8bbeb41a3991d42d2d2e9349b09e8062344fde4d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_equal_modality_method_extensions.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_external_system.py",
+      "bytes": 11467,
+      "sha256": "3b61c51783f200289ec84df1d9160acd4a9050adedd7eac96d524ea68a4a1dc8",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_external_system.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_fig3_full20_local_mosi.py",
+      "bytes": 3040,
+      "sha256": "d2c19e2f5ac8456fec403fe3249949e79ab62ecd198fa940412c1faf2edf479b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_fig3_full20_local_mosi.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_fig3_full20_remote.py",
+      "bytes": 6057,
+      "sha256": "63299f8717a25a55c6b2900c6a8ef0230af7302a17cb6a21e4a979fd454bc3d2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_fig3_full20_remote.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_fig3_parallel_followup_tests.py",
+      "bytes": 5569,
+      "sha256": "57bb2699921ee3dd6e9d040d60deb51af5e1687b541c9e9dda7cbb6544d04ffa",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_fig3_parallel_followup_tests.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_fullscale_remaining_seeds.sh",
+      "bytes": 1455,
+      "sha256": "d8ec1f8bcd8f11c7f33ab341b291776d28bff48f1dc29bb177c480f3931ee575",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_fullscale_remaining_seeds.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_gpu_resource_queue.py",
+      "bytes": 10385,
+      "sha256": "1354ed20d25bd9b157522a04a99702c940fa9eaf4caee47f5c5cd42d5e731dac",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_gpu_resource_queue.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_interaction_evidence_v1.py",
+      "bytes": 6097,
+      "sha256": "091ea47eb3e86c1ea3c1284130aa813c8820e0d728584d4deb5e3860da98f11e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_interaction_evidence_v1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_local_mosi_when_storage_ready.py",
+      "bytes": 2422,
+      "sha256": "9884ab3cc8794fcaff91bb0000b3a37b13a9162d290b5a4197a327129f54ffd3",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_local_mosi_when_storage_ready.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_local_relocated_random.sh",
+      "bytes": 1755,
+      "sha256": "0f49327f9e8d882124f740cf25ad11bf772e23694febae94bdd87ffb027fab37",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_local_relocated_random.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_mosi_uniform_experiments.py",
+      "bytes": 7537,
+      "sha256": "e2da33147924c919e83593e68d6ecce9fcaddfb524557f61d3eb46498a7465b7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_mosi_uniform_experiments.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_multiseed_control_job.py",
+      "bytes": 5656,
+      "sha256": "726da855be37f3f479b788764bc20e91d92ee852888e12e9d8eec56c3231e97e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_multiseed_control_job.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_multiseed_controls.py",
+      "bytes": 9536,
+      "sha256": "3cb61ba388ef59a1c13f112b21f7c0b6023364722dee1cede4a6b0894ad8c1c5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_multiseed_controls.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_polarity_e1_e2.sh",
+      "bytes": 1401,
+      "sha256": "78f48b8ad00a5187eefe5c5bfefe7cb4c592a2a769481499633df86ac844f933",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_polarity_e1_e2.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_rdid_v2_epoch_test_queue.py",
+      "bytes": 12231,
+      "sha256": "bb10bb4f4a797313e9c52b11191a65e073d49e8cb22431168a1bc89dd0fbf556",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_rdid_v2_epoch_test_queue.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_b_baselines.sh",
+      "bytes": 1082,
+      "sha256": "c673f846b9802c793a167a03d82421fc8f4723adad83600dde2da9fdf82bd301",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_b_baselines.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_c_promoted_multiseed.sh",
+      "bytes": 2632,
+      "sha256": "233a77368f0858fc8eb6a12182a3e9aad598bbc189932bd478e4d19069c2030a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_c_promoted_multiseed.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_c_seed13_screening.sh",
+      "bytes": 1797,
+      "sha256": "29c2bd9a434d70ec8544f65e3b13ab96c5c10d8817e71003b20c3a0086044d0d",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_c_seed13_screening.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_attribution_queue.sh",
+      "bytes": 2455,
+      "sha256": "9c662d3f192483bb2123924f3a3a5fb61c75e5c098c3256a259dbc0b0d9f4540",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_attribution_queue.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_d2_2026_after_seed13.sh",
+      "bytes": 240,
+      "sha256": "a5962e813583cece054fceeef4508a33c0c4f18d5a042b48cd65466624ed74d7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_d2_2026_after_seed13.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_d3_gpu1_queue.sh",
+      "bytes": 406,
+      "sha256": "7003541cd1023d8144a6e048b8cc875c2a31d4fbe359f5edbfca0bfee3e6f466",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_d3_gpu1_queue.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_gpu1_queue.sh",
+      "bytes": 290,
+      "sha256": "7a5db582aaab2a456dccc1bf5180ef58688f33112a6b61a4ebe59507579e3b70",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_gpu1_queue.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_lora_gate.sh",
+      "bytes": 1493,
+      "sha256": "72ea7e06a9056c942d3ebec0fa226d24e62dba63618b4b05af8d952d930ac9be",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_lora_gate.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_online_frozen_queue.sh",
+      "bytes": 884,
+      "sha256": "39a0532405c6899fa4da4f8060a70c2648d73169efe85c8afb77db090bb7f39a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_online_frozen_queue.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_stage_d_seed2026_gpu1.sh",
+      "bytes": 1074,
+      "sha256": "422f0b55f760848c46c908ce44486bfc394e2d7f332708ce0faaa163fe0b8ea9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_stage_d_seed2026_gpu1.sh"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_all_checkpoints_gpu1.py",
+      "bytes": 10858,
+      "sha256": "614304655d196c06a22af3d7330f27f89ce30f489ec1bbf8087be9f4f48e523e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_all_checkpoints_gpu1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_checkpoint_queue_gpu1.py",
+      "bytes": 13191,
+      "sha256": "f45b245f4abd64954a8a8f5c965c1b452d7c15247f359762937c39be6da0b3f6",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_checkpoint_queue_gpu1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_distillation.py",
+      "bytes": 10932,
+      "sha256": "59b50b32a65412efcf7458a39ae81a18a154fd144d2e969dad9cd7ae6b80cc8f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_epoch_checkpoint_retrains.py",
+      "bytes": 12459,
+      "sha256": "250df2f96c6540456b273aee0bb059ab9fea6fd203bd5ad706e56b3c54c336f0",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_epoch_checkpoint_retrains.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_live_queue.py",
+      "bytes": 10921,
+      "sha256": "d03a48a72bc36c0eb9de6ab9932ee221bec11dc272302067dc22af79d8fc7b17",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_live_queue.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_m4_test_extension.py",
+      "bytes": 8305,
+      "sha256": "d0a2bdee616b60e898f195d0713ec498585cebb5b7c55588153f8d42c4552e72",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_m4_test_extension.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_official_test.py",
+      "bytes": 9169,
+      "sha256": "88b86401563a5a0d294bda4d94fc4bec70263a03eb84e557534804e723028617",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_official_test.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_tav_official_test_dynamic.py",
+      "bytes": 10790,
+      "sha256": "9d8626d4f519fa4a545e190162b4a14f694bc8071cefc7555c8b446184f1fe34",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_tav_official_test_dynamic.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_teacher_benchmark.py",
+      "bytes": 9576,
+      "sha256": "55af33b33d6d45076a4f6d4dd72ad0594960ac7cbc4e6103bfdc575a1ce09b72",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_teacher_benchmark.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_uniform_followup_phase1.py",
+      "bytes": 4393,
+      "sha256": "1132e536b76fb19471bb353fb45c38f276f2611e2bb04fec6c5239a935807742",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_uniform_followup_phase1.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_uniform_followup_phase1_tests.py",
+      "bytes": 8887,
+      "sha256": "006c9263d6b76c1be491f46a4572cb4a26340f8a1ab3d398718a797c215a6036",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_uniform_followup_phase1_tests.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_video_adaptation_queue.py",
+      "bytes": 10428,
+      "sha256": "e5b915e5a5edb059d55f995bc9b132c6837bebd00646da344c2980e72ec080be",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_video_adaptation_queue.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_video_promotion_parallel.py",
+      "bytes": 8490,
+      "sha256": "928cd4d88b4387eae429f0bbd95c432e97915c58c93f48b37be4fda5578f8b91",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_video_promotion_parallel.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/run_video_source_v2.py",
+      "bytes": 21125,
+      "sha256": "cd8b091dab88bbf5307dcd1d3bdb293a2c40115f7753ddd843c7bf77f321c38c",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/run_video_source_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/schedule_interaction_live_evaluators.py",
+      "bytes": 2935,
+      "sha256": "fb69b2e91e4bdbd44f529262d911673bca8d54981e237967868c816e56350996",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/schedule_interaction_live_evaluators.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/smoke_student.py",
+      "bytes": 4512,
+      "sha256": "7b80a53ff8293f71c8b7faac6160fdb48082bd788712122a8fc58c984f416444",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/smoke_student.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/smoke_teacher.py",
+      "bytes": 2979,
+      "sha256": "f6004004970b69e10471472027a686e959abd5120caf6a6609fefcd6f63612c2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/smoke_teacher.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/snapshot_environment.py",
+      "bytes": 1825,
+      "sha256": "acb74d04f7582b3e7da8b8181e6ee30b98ddc9e709513cd188860229e6f31775",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/snapshot_environment.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/snapshot_stage_b.py",
+      "bytes": 2361,
+      "sha256": "1d68ca435201629da140065e0af477631f4ec6fbef69b2c2762ba6e97723dbc3",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/snapshot_stage_b.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/snapshot_stage_c.py",
+      "bytes": 2915,
+      "sha256": "5d90ca047014be69760bc998f7b377235c753f8b7e001476728045da74385b3e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/snapshot_stage_c.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_all_dual_checkpoints.py",
+      "bytes": 26764,
+      "sha256": "51bb3971aa42d5e787c6facc64b54d340c1d520780ff8d1e876c2038dbe1f5b6",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_all_dual_checkpoints.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_coordinate_weight_search.py",
+      "bytes": 2183,
+      "sha256": "e07769db5f9705fddd2d980bdefefa7af5398b56561e74902093aa4e55af3469",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_coordinate_weight_search.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_decision_icd.py",
+      "bytes": 5313,
+      "sha256": "9d20d3193e5bbbbd1b912616945fd56089ac77538f821345f7c09d1d4ada2a61",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_decision_icd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_equal_modality_method_extensions.py",
+      "bytes": 5008,
+      "sha256": "fd949455b7c0971f3a0a01a947c897ccdf17960eb4eec91679dcb3a7566293d5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_equal_modality_method_extensions.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_fullscale_subset4_pair_snr.py",
+      "bytes": 8910,
+      "sha256": "cbd1a642a78eda4d1b55159475375da51ebbac3546f70246134fdc40f942feb0",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_fullscale_subset4_pair_snr.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_mosi_research.py",
+      "bytes": 3922,
+      "sha256": "dd597693bf89a68cfc133632454887ef1d115e6bc7a9fd6d7e26669b83060d8a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_mosi_research.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_mosi_seven_controls.py",
+      "bytes": 5531,
+      "sha256": "6091072b6a4d303528862977e2478a3ca3dc29123eb0f932b1535c7d9f6fa731",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_mosi_seven_controls.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_mosi_uniform.py",
+      "bytes": 11266,
+      "sha256": "bfa98631c9ec3d25cc15d148a508e83449c66503fcb87b04f84af69408dae084",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_mosi_uniform.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_multiseed_controls.py",
+      "bytes": 4390,
+      "sha256": "d50035cc14d2d4ea5fc9f77f2cabcd32e7fab57e0d47bfea87a8537fa3d99eb0",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_multiseed_controls.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_rdid_v2_development.py",
+      "bytes": 4413,
+      "sha256": "515357571638e81a8d07fd24fbeed65b281428e1a9e56a97f127acce222147dd",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_rdid_v2_development.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_stage_a.py",
+      "bytes": 8985,
+      "sha256": "47de6c107a322d97c0768df7b1014f4e0fc75982fc09809a39332231482ec666",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_stage_a.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_stage_a_v2.py",
+      "bytes": 12191,
+      "sha256": "1a36d860c9d9dd7d8992217fec4399c50444fd67c44b50a1238386fc66d97104",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_stage_a_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_stage_b_baselines.py",
+      "bytes": 5619,
+      "sha256": "9282453d7f6dc337aeac2caf51170b6e68a8ac2b78fb1c3ee4a4bc64fabcb1c4",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_stage_b_baselines.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_stage_c_multiseed.py",
+      "bytes": 9850,
+      "sha256": "a07a8121f947912473becad8d257eec82052000567e1a89bdf12f57a09a3ee00",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_stage_c_multiseed.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_subset4_interaction4.py",
+      "bytes": 2121,
+      "sha256": "84f86d4294195896e931cc5c5d12ec1f5e4217e189314e403b7fb23948640929",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_subset4_interaction4.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/summarize_tav_distillation.py",
+      "bytes": 7472,
+      "sha256": "8e888ef8ebedea52eb8b9d98018013fb862a7d7988c9cb9a401fd1ab3df73da2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/summarize_tav_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/tav_distillation_status.py",
+      "bytes": 1699,
+      "sha256": "7d18b0b97eb10ed8fd084e83d1b92b0d8ca1f50c387e7066c5e4997844d5a763",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/tav_distillation_status.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_decision_icd.py",
+      "bytes": 8426,
+      "sha256": "308dccd42446e13ad64d53264e3cad3b10a4a31247824994f625d7aa8ef68a3a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_decision_icd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_icd_confirmatory.py",
+      "bytes": 56829,
+      "sha256": "94d19387d5eac331b2be20ff4c5cc62e5c0e18015a2a6f0449fbde9a3cfdc927",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_icd_confirmatory.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_icd_improvement.py",
+      "bytes": 51822,
+      "sha256": "a9c50d995cc6d8097f43184789863a253edc040e3878f356c802198a0604baf7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_icd_improvement.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_main_table_all_epochs.py",
+      "bytes": 4460,
+      "sha256": "1cbb7f41f2898df1738a07d317abf5ca6d620dc1d8084a9e399ea00e09324de1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_main_table_all_epochs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_main_table_all_epochs_relocated.py",
+      "bytes": 6485,
+      "sha256": "1d5fa00fdca56862b5909b9779cfd4f202d472d2e61b30392089b775df8fcd9c",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_main_table_all_epochs_relocated.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_main_table_kd.py",
+      "bytes": 41006,
+      "sha256": "4408219d18691ca9d973292098944d489d62f3f78777fbc0dde702c833202f00",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_main_table_kd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_rdid_v2.py",
+      "bytes": 26275,
+      "sha256": "6fc972123e522bb4826b9ebbf9b12b999d46088029e7d09ece4b364900fbfaa9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_rdid_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_research_icd.py",
+      "bytes": 10225,
+      "sha256": "741b7636d2b288652d6583fc0a1d43b0b75acfd622be46e66aaba2b032cdbfa5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_research_icd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_student_baseline.py",
+      "bytes": 48961,
+      "sha256": "26522066e523cc3f907f5a4bb20f1397a22cb95ee65d6db54326a25c42826f93",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_student_baseline.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_student_hidden_kd.py",
+      "bytes": 15050,
+      "sha256": "a771e78c7bf13d50f2888bc8f2598f876f5b5bd3dbb31160f1893e4881ba85d1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_student_hidden_kd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_student_lora.py",
+      "bytes": 20461,
+      "sha256": "6a0cbd516a691019a2b7116cc57e9d71e707954bd0827e64e42ca06c969cfde5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_student_lora.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_tav_distillation.py",
+      "bytes": 29613,
+      "sha256": "3a7c2f31691d59f66e5573e8da73ce9fdae62a9baa764917ce491d334687ed48",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_tav_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_tav_distillation_all_epochs.py",
+      "bytes": 4734,
+      "sha256": "58863d39dda32308bd694e5ea8232baef6434e964c4a5cc82376f614f40cbf4b",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_tav_distillation_all_epochs.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_teacher_probe.py",
+      "bytes": 13786,
+      "sha256": "4842fc571bdf40b3f39dd306ca070db2e161af5bf76543868358796c1b6581b5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_teacher_probe.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_teacher_probe_v2.py",
+      "bytes": 14471,
+      "sha256": "70732aa478b6b4a35a621ce6f7cdb97b9cbe696b3e1e734c52ad29b30e762ee4",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_teacher_probe_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_video_adaptation.py",
+      "bytes": 24769,
+      "sha256": "7559fbdd5059ddf26778bcd3c937d31cc49aafb1bf7589d36e99997680898265",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_video_adaptation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/train_video_adaptation_v2.py",
+      "bytes": 25649,
+      "sha256": "4cf8be2c85bc3bf3f76004e128da359bfe2508b5a229a8d7d95c89ca3efd23a2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/train_video_adaptation_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/transfer_multiseed_results.py",
+      "bytes": 3539,
+      "sha256": "ed83e9a11193c15bf7f98a0466dc963b4d208a7256d70aa50f652da0aeeb1246",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/transfer_multiseed_results.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/validate_subsets.py",
+      "bytes": 1995,
+      "sha256": "a8e717d30d5288e6f6f5c5b56aae1f3449ff94e3faeb1f14ebfc4779af0ad418",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/validate_subsets.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/video_source_v2_status.py",
+      "bytes": 2997,
+      "sha256": "d2b399dcf98fa1b604007e5fd0eb1c86cbd59614cec73536d19146f606410a40",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/video_source_v2_status.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/watch_mosi_seven_controls.py",
+      "bytes": 1802,
+      "sha256": "77f454a663963fcc045ebc070a23545ccdec5f81a819aaa2358458c650b457ef",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/watch_mosi_seven_controls.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/scripts/watch_qiii_multiseed_transfer.py",
+      "bytes": 4227,
+      "sha256": "27dd8247c32b23294c4b61e9a2525dce2f17e7e70d2325f69a52518f7e6e4144",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/scripts/watch_qiii_multiseed_transfer.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/__init__.py",
+      "bytes": 29,
+      "sha256": "c53d5adabba01bbfe884b51355e742c4837fe3dcace594b6e5349e7b4c165f17",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/__init__.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/benchmark.py",
+      "bytes": 2214,
+      "sha256": "a9dd08d7cfda6285cb1bec8c28f3c69f0dbc1e0471a90e3bb24ff8e097d9f79f",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/benchmark.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/decision_icd.py",
+      "bytes": 6035,
+      "sha256": "aaf2c64072dd7eaaa7230e929d25d25b5fc9f46e9c5054d7812fa183c4347aec",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/decision_icd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/external_systems.py",
+      "bytes": 6198,
+      "sha256": "27ca3c42994623157fc0d59c0936b54475b1acfdf8c6af14d11e1e454e9323b9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/external_systems.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/interaction.py",
+      "bytes": 2935,
+      "sha256": "1e5baa36313ca35b9a3e1d8d431ba4a20db30c58941e4eedaaea35f32f245ef6",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/interaction.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/main_table_kd.py",
+      "bytes": 22277,
+      "sha256": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/main_table_kd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/metrics.py",
+      "bytes": 6788,
+      "sha256": "c90d1cfdc881c469ca2b81e69a728454b30ca3f0dcd8eb246188fc39220be0e2",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/metrics.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/mosei.py",
+      "bytes": 1948,
+      "sha256": "b942322547c3acfae2be6e73e289d647120ef4c77e2258f195a13577689dd89a",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/mosei.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/probe.py",
+      "bytes": 2722,
+      "sha256": "415d1ca6c9bc67911f114b3bd969319a19883166b10dbb95c38357d0fafd7c04",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/probe.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/rdid_v2.py",
+      "bytes": 6231,
+      "sha256": "8c1ddd6c9e48196327ad78400d9d28db51f1bb5b65205f787e14d16d17b4bdd5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/rdid_v2.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/rdid_v2_diagnostics.py",
+      "bytes": 6793,
+      "sha256": "3a0f4181cddfc188b9f5ca1312894cff9e188b1025aef7f059a2499225570c01",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/rdid_v2_diagnostics.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/research_icd.py",
+      "bytes": 3401,
+      "sha256": "401a51ba87e1711c350364fbf809d996da6850609c2cbb94441f0e2b3f977632",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/research_icd.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/student.py",
+      "bytes": 28789,
+      "sha256": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/student.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/student_data.py",
+      "bytes": 2313,
+      "sha256": "6a9cc1e7740b15b05d6be962e997d9525e1c11b0ecece130a12a00046cdd20d1",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/student_data.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/subsets.py",
+      "bytes": 2731,
+      "sha256": "70119c774696559e4931d56d19bf11d6c4552a5b2973098c1d58df48efb2c493",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/subsets.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/tav_distillation.py",
+      "bytes": 3557,
+      "sha256": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/tav_distillation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/teacher_video.py",
+      "bytes": 2285,
+      "sha256": "50ff88e8340deb25bd1281570bf8d09a9bf5f737e8e648d84fb926aacf5dc8ec",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/teacher_video.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/project/src/rdid_mosei/video_adaptation.py",
+      "bytes": 8320,
+      "sha256": "302e55a5e36e73c9b9d224052b40c08fa37c478f715fa6780365d431f99d4fc9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/project/src/rdid_mosei/video_adaptation.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/source_fingerprints.json",
+      "bytes": 32932,
+      "sha256": "1129594586fcfb1731504841566b5afaa64ac0b46dbaea08ebd6cd272849fbe7",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/source_fingerprints.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/source/train_icd_confirmatory.py",
+      "bytes": 56829,
+      "sha256": "94d19387d5eac331b2be20ff4c5cc62e5c0e18015a2a6f0449fbde9a3cfdc927",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/source/train_icd_confirmatory.py"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/interaction_targets.jsonl",
+      "bytes": 672021,
+      "sha256": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/interaction_targets.jsonl"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/official_train_valid_windowed.jsonl",
+      "bytes": 1606867,
+      "sha256": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/official_train_valid_windowed.jsonl"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/protocol.json",
+      "bytes": 7241,
+      "sha256": "34386ce65e1ad71b1b949804e2842f9849314059b48babf8ffb2b64d230a1696",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/protocol.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/student_models_manifest.json",
+      "bytes": 6701,
+      "sha256": "1ecdcadb1461dc564c2be0413f2f84bd1097a5efae22ade7f05c9f7e1d819cd9",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/student_models_manifest.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/teacher_ensemble_confirmatory.jsonl",
+      "bytes": 1121600,
+      "sha256": "2ded7373b55fec3db4fd1851e14b5d40badb8661f9ff6d35d4f34e7b56602510",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/teacher_ensemble_confirmatory.jsonl"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/assets/teacher_manifest.json",
+      "bytes": 6300,
+      "sha256": "5f7151538e64d06c59d58d9a4070d05069c600dfb44f2d4fe705f7949129907e",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/teacher_manifest.json"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/README.md",
+      "bytes": 272,
+      "sha256": "f8cae52b216d7ca874b717c38921814952917aefcad35fb54810f95b6adf55e5",
+      "origin": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/publication/README.md"
+    }
+  ]
+}

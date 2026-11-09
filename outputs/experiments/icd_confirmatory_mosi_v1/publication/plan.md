@@ -1,0 +1,700 @@
+# 执行修订（2026-11-08，用户在本次对话明确要求）
+
+- Checkpoint 仅保留验证 MAE 最优的 best_valid_mae.pt、验证 Acc-2 nonzero 最优的 best_valid_acc2_nonzero.pt，以及 last.pt；替代原方案“每个 epoch 保存”和“best.pt”要求。
+- 第一轮同样按此规则清理，旧的 264-epoch 完整性审计保留，另写 retention audit；训练日志、完整 history、逐样本预测与诊断全部保留。
+- checkpoint selection 与最终指标仍仅使用 validation MAE；Acc-2 最优 checkpoint 只留档，不用于替换主指标。
+- 全部实验、代码、归档和产物仅保存在 Qi /data/sjq/kd；训练使用服务器上的单张物理 GPU（CUDA_VISIBLE_DEVICES=0 或 1，逻辑设备 cuda:0）。具体使用哪张卡属于执行细节，不属于实验协议；本阶段 F0–F4 在 GPU0 完成，F5 之后在 GPU1 完成。
+- 本次立即执行至 Phase 4。MOSEI、Official-test 和扩展种子按原方案留待后续。
+- 统一三 Probe TAV 回归均值和 mean softmax(logits/(Probe 校准温度 × KD温度2))；原 empty-baseline 与 Möbius 定义保持。
+- 若延长固定 LR 训练预算则八组统一 50，已达到共同 patience 的组保留早停；Cosine 延长时重新从 seed13 以新周期训练匹配对照。
+
+---
+
+# MOSI 第二阶段实验方案：ICD 训练目标与交互监督优化
+
+**项目：** Interaction Coordinate Distillation (ICD)  
+**目标：** 确认 ICD 在 MOSI 上的有效训练配置，区分任务损失、交互蒸馏和优化策略的贡献，为 ICLR 2027 论文确定最终方法。  
+**实验阶段：** 第二阶段确认性实验  
+**开发 Seed：** 13  
+**数据集：** CMU-MOSI  
+**主要评价指标：** MAE（越低越好）
+
+---
+
+# 1. 研究目标与当前判断
+
+## 1.1 第一轮实验结论
+
+2026-11-08 第一轮实验完成了 12 个正式 run。
+
+| 方法 | Validation MAE | Pearson | Acc-2 |
+|---|---:|---:|---:|
+| Full KD | 0.7553 | 0.7848 | 85.19% |
+| Uniform ICD | 0.7895 | 0.7794 | 83.80% |
+| No-CE ICD | **0.7192** | **0.8168** | 84.72% |
+| ICD λ=0.25 | 0.7334 | 0.7899 | 83.80% |
+| ICD λ=0.5 | 0.7339 | 0.8069 | **85.65%** |
+| Warm-up + Cosine | 0.7368 | 0.7792 | 84.72% |
+
+目前有三个主要研究信号：
+
+1. 移除真实标签 Task CE 后，ICD 的 MAE 和 Pearson 均明显改善。
+2. 降低整体 ICD 权重也能够改善任务性能。
+3. Warm-up + Cosine 可能改善优化过程，但尚未证明其与 No-CE、低权重 ICD 具有互补性。
+
+当前不能确定：
+
+- No-CE 的收益是否来自 ICD 特有的作用；
+- No-CE 和低权重 ICD 是否存在协同作用；
+- 交互坐标监督是否真正优于同等教师来源下的 Full KD；
+- 新配置是否优于此前的 Gradient Projected ICD。
+
+## 1.2 第二阶段需要回答的核心问题
+
+**RQ1：** 移除 Task CE 是否能够普遍改善学生训练，还是只对 ICD 有效？
+
+**RQ2：** ICD 是否真正提供了超越 Full KD 的额外知识？
+
+**RQ3：** 最合适的 ICD 监督强度是多少？
+
+**RQ4：** 学习率调度是否能够进一步改善最终任务表现？
+
+**RQ5：** 新的训练配置能否超过此前的 Gradient Projected ICD？
+
+第二阶段只研究上述问题，不修改 Möbius 分解定义，不增加推理模块。
+
+---
+
+# 2. Phase 0：实验资产与 Baseline 审计
+
+**优先级：最高。正式训练之前完成。**
+
+## 2.1 归档第一轮实验
+
+现有实验根目录：
+
+`/data/sjq/kd/outputs/experiments/icd_improvement_mosi_20261107`
+
+需要完整保留：
+
+- `research_plan.md`
+- `plan.json`
+- `source/project/scripts/train_icd_improvement.py`
+- `source_fingerprints.json`
+- `git_revision.txt`
+- 每个 run 的 `run_config.json`
+- 每个 run 的 `history.json`
+- 每个 run 的 `report.json`
+- 每个 run 的逐样本 `predictions.jsonl`
+- 全部 epoch checkpoints
+- `best.pt`、`last.pt`
+- `validation_diagnostics.json`
+- `validation_interactions.jsonl`
+- `loss_diagnostics.jsonl`
+- `completion_audit_20261108.json`
+- `report_summary_20261108.json`
+
+第一轮训练源码和原始实验资产目前保存在服务器，不应假设 GitHub 仓库已经包含全部内容。
+
+## 2.2 检查新旧 Baseline 差异
+
+此前 `uniform_main_v1` 和本轮实验的 Validation MAE 存在差异：
+
+| 方法 | 此前 Validation MAE | 本轮 Validation MAE |
+|---|---:|---:|
+| Full KD | 0.7312 | 0.7553 |
+| Uniform ICD | 0.7601 | 0.7895 |
+
+必须比较：
+
+1. Teacher Probe 及其 checkpoint。
+2. Teacher 预测资产和交互目标。
+3. 学生初始化及可训练参数。
+4. LoRA rank、alpha、dropout。
+5. 数据窗口和 utterance 聚合。
+6. Loss 权重、reduction 和样本权重。
+7. Optimizer、学习率和参数分组。
+8. DataLoader 顺序和随机种子。
+9. Early stopping 和 checkpoint selection。
+10. 代码版本及源码 SHA256。
+
+输出：
+
+`protocol_diff.md`
+
+要求逐项说明差异，不能仅凭两个实验的最终 MAE 推断模型性能发生退化。
+
+## 2.3 冻结第二阶段实验协议
+
+确认以下信息：
+
+- Train：1,284 utterances。
+- Validation：229 utterances。
+- Validation source videos：10。
+- Train / Validation source-video intersection：0。
+- Student 总参数：819,309,176。
+- Student 可训练参数：42,650,120。
+- Seed：13。
+- Teacher：固定使用三个 Probe。
+- Official-test：本阶段不使用。
+
+只有上述资产、代码和协议核对完成，才进入正式实验。
+
+---
+
+# 3. Phase 1：CE × ICD 的完整因子实验
+
+**优先级：最高。第二阶段的核心实验。**
+
+第一轮最明显的问题是：No-CE ICD 和 Full KD 的差异不仅包括 ICD，还包括 Task CE 的变化。
+
+因此，必须建立完整的因子实验，独立识别两种因素的贡献。
+
+## 3.1 统一损失定义
+
+定义：
+
+\[
+\begin{aligned}
+\mathcal L(c,\lambda)
+={}&\mathcal L_{\mathrm{task-reg}}
++c\mathcal L_{\mathrm{task-CE}}\\
+&+\mathcal L_{\mathrm{FullKD-reg}}
++\mathcal L_{\mathrm{FullKD-KL}}\\
+&+\lambda\mathcal L_{\mathrm{ICD}}.
+\end{aligned}
+\]
+
+其中：
+
+- \(c\)：真实标签 Task CE 权重。
+- \(\lambda\)：整体 ICD 权重。
+
+固定：
+
+\[
+c\in\{0,0.5\}
+\]
+
+\[
+\lambda\in\{0,0.25,0.5,1.0\}.
+\]
+
+当 \(\lambda=0\) 时，对应 Full KD；当 \(\lambda>0\) 时，对应 ICD。
+
+No-CE 只移除真实标签 Task CE，**保留教师 Full KD KL**。
+
+Task Regression 始终使用 SmoothL1，不在这一轮改变回归损失。
+
+## 3.2 八组实验
+
+| ID | 方法 | Task CE 权重 | ICD 权重 |
+|---|---|---:|---:|
+| F0 | Full KD + CE | 0.5 | 0 |
+| F1 | Full KD - CE | 0 | 0 |
+| F2 | ICD + CE | 0.5 | 1.0 |
+| F3 | ICD - CE | 0 | 1.0 |
+| F4 | ICD + CE | 0.5 | 0.5 |
+| F5 | ICD - CE | 0 | 0.5 |
+| F6 | ICD + CE | 0.5 | 0.25 |
+| F7 | ICD - CE | 0 | 0.25 |
+
+这八组构成一个完整的 \(2\times4\) 因子设计。
+
+第一轮 E0、E2、E4 的结果作为探索性参考，不直接替代本轮确认实验。八组统一在新的冻结协议下执行。
+
+## 3.3 Teacher 来源必须统一
+
+这是本轮最重要的公平性要求。
+
+统一使用：
+
+- Teacher Probe 2026
+- Teacher Probe 2027
+- Teacher Probe 2028
+
+三者为全部八组提供监督。
+
+具体规定：
+
+**Full KD：**
+
+- 使用三个 Probe 的 TAV 回归预测。
+- 使用三个 Probe 的 TAV 分类概率分布。
+- 固定采用预先确定的三 Probe 聚合规则。
+
+**ICD：**
+
+- 使用相同三个 Probe。
+- 使用七个非空模态子集的预测。
+- 计算七个交互坐标。
+- 采用与现有 ICD 一致的 Möbius 分解和 empty-baseline 定义。
+
+教师分类概率聚合方式、KD temperature、概率归一化、empty-baseline 均应在 `run_config.json` 中明确记录。
+
+建议固定为：先对各 Probe 的 temperature-softmax 概率求算术平均，再用于学生 KL；回归分数采用算术平均。
+
+不能出现 Full KD 使用一个 Probe、ICD 使用三个 Probe 的不公平比较。
+
+## 3.4 统一训练设置
+
+| 参数 | 固定设置 |
+|---|---|
+| Dataset | MOSI |
+| Seed | 13 |
+| Batch size | 8 |
+| Optimizer | AdamW |
+| Learning rate | 1e-4 |
+| Weight decay | 0.01 |
+| Gradient clipping | 1.0 |
+| Max epochs | 40 |
+| Early stopping patience | 8 |
+| Scheduler | 无 |
+| Checkpoint selection | Validation MAE |
+| Tie threshold | 1e-5 |
+| Checkpoint saving | 每个 epoch |
+
+将本轮统一设为 40 epochs，是为了给第一轮中 λ=0.25 的较晚最佳轮次留出充分训练空间。
+
+如果任一组最佳轮次达到第 36 轮或以后，则八组统一扩展到 50 epochs，不能只给某个表现较好的方法增加训练预算。
+
+所有组使用相同的学生架构、初始化协议、数据划分和数据采样设置。
+
+保存初始化参数哈希，确认 seed13 初始化一致。
+
+## 3.5 需要计算的效应
+
+除了汇报八组 MAE，还必须计算：
+
+**CE 的主效应：**
+
+\[
+\Delta_{\mathrm{CE}}(\lambda)
+=
+\mathrm{MAE}(0.5,\lambda)
+-
+\mathrm{MAE}(0,\lambda).
+\]
+
+正值表示移除 Task CE 后 MAE 改善。
+
+**ICD 的主效应：**
+
+\[
+\Delta_{\mathrm{ICD}}(c,\lambda)
+=
+\mathrm{MAE}(c,0)
+-
+\mathrm{MAE}(c,\lambda).
+\]
+
+正值表示加入 ICD 后 MAE 改善。
+
+**CE 与 ICD 的交互效应：**
+
+比较不同 \(c\) 下的 ICD 收益是否一致。
+
+如果 ICD 只在 No-CE 条件下有效，就不能把它描述成不受训练目标影响的普遍收益。
+
+本阶段最终必须回答：
+
+- CE 是否应该保留？
+- ICD 是否有独立收益？
+- ICD 是否依赖 No-CE？
+- 哪个 λ 更适合 MOSI？
+
+---
+
+# 4. Phase 2：学习率调度验证
+
+**优先级：第二。**
+
+第一轮 E8b 的 Validation MAE 为 0.7368，值得保留，但不能直接与 No-CE、低权重 ICD 拼接。
+
+## 4.1 实验设计
+
+先根据 Phase 1 确定最优的 \((c,\lambda)\)。
+
+然后运行：
+
+| ID | 训练配置 |
+|---|---|
+| S0 | Phase 1 最优配置，固定 LR |
+| S1 | Phase 1 最优配置，Warm-up + Cosine |
+
+只改变 Scheduler。
+
+S1 设置：
+
+- Warm-up：总 optimizer steps 的前 10%。
+- 后续：Cosine Decay。
+- Scheduler 总周期：与统一的最大训练预算一致。
+- 其余所有设置不变。
+
+如果需要延长训练预算，S0、S1 必须一起延长。
+
+## 4.2 判断标准
+
+- MAE 是否进一步下降？
+- Pearson 是否出现明显退化？
+- Acc-2 和 Weighted F1 是否稳定？
+- 最佳 checkpoint 是否提前出现？
+- 训练曲线是否更加平滑？
+
+如果 Scheduler 的收益很小，就保留固定学习率，避免将优化技巧包装成新的方法创新。
+
+不再优先测试 E8a 分组学习率，因为第一轮没有显示足够的优势。
+
+---
+
+# 5. Phase 3：Gradient Projected ICD 公平比较
+
+**优先级：高。不能忽略此前的结果。**
+
+此前 `mosi_research_v1` 中，Gradient Projected ICD 的三种子结果为：
+
+| 指标 | Validation MAE | Official-test MAE |
+|---|---:|---:|
+| Gradient Projected ICD | 0.7276 ± 0.0324 | 0.7089 ± 0.0109 |
+
+这是此前非常有价值的实验结果。
+
+但是它来自另一轮训练协议，不能直接将历史数值与本轮 No-CE ICD 排名。
+
+## 5.1 本轮需要补充的实验
+
+增加：
+
+`GP-ICD`
+
+要求：
+
+- 保持现有学生架构。
+- 使用同一组三个 Teacher Probe。
+- 使用相同训练集和验证集。
+- 使用相同 optimizer 和训练预算。
+- 使用 Phase 1 确定的 CE 配置。
+- 使用相同的 ICD 权重。
+- 只改变梯度路由机制。
+
+这样才能比较：
+
+- 普通 ICD；
+- No-CE ICD；
+- Gradient Projected ICD；
+- No-CE + Gradient Projected ICD（如果机制上可以独立组合）。
+
+特别注意：梯度投影的实现应与普通 ICD 的损失目标保持一致，否则无法区分收益究竟来自梯度路由还是损失变化。
+
+不要直接复用历史结果作为本轮主表结果。
+
+## 5.2 机制诊断
+
+统一记录：
+
+- Task Regression gradient norm。
+- Full KD Regression gradient norm。
+- Full KD KL gradient norm。
+- First-order ICD gradient norm。
+- Second-order ICD gradient norm。
+- Third-order ICD gradient norm。
+- 不同目标之间的 gradient cosine similarity。
+- 各参数组的梯度关系。
+
+所有方法使用相同的诊断 batch 和训练阶段采样位置。
+
+梯度诊断主要用于解释现象，不作为因果证明。
+
+---
+
+# 6. Phase 4：最终 MOSI 方法选择
+
+完成上述实验后，从以下方法中选择最终候选：
+
+1. Full KD。
+2. Uniform ICD。
+3. No-CE ICD。
+4. Low-weight ICD。
+5. Low-weight No-CE ICD。
+6. Scheduler-enhanced ICD。
+7. Gradient Projected ICD。
+8. 如果独立验证有收益，再考虑 No-CE + Gradient Projected ICD。
+
+## 6.1 选择原则
+
+主指标固定为 MAE。
+
+建议采用以下开发决策标准：
+
+- 相比匹配的 Full KD，MAE 至少改善 0.01，才认为具有值得继续研究的优势。
+- Pearson 不应出现明显退化。
+- Acc-2 和 F1 应作为重要辅助指标。
+- 如果两个配置的 MAE 差异不超过 0.005，视为当前单种子下难以区分，优先参考辅助指标和方法复杂度。
+- 不能为了获得更漂亮的 Acc-2 而事后更换 MAE 主指标。
+
+以上阈值属于工程筛选标准，不是统计显著性阈值。
+
+## 6.2 不允许的做法
+
+- 不允许从不同实验中各自挑选最优指标拼成一个不存在的配置。
+- 不允许根据 Official-test 结果挑选 checkpoint。
+- 不允许事后更换主要评价指标。
+- 不允许根据验证集结果修改测试集预测。
+- 不允许将梯度冲突比例直接写成因果证明。
+
+---
+
+# 7. Phase 5：MOSEI 跨数据集验证
+
+MOSI 上选出最终候选后，再考虑将其迁移到 MOSEI。
+
+建议至少完成：
+
+| 方法 | MOSEI |
+|---|---|
+| Full KD | 对照 |
+| Uniform ICD | 对照 |
+| 最终 ICD 配置 | 新方法 |
+
+使用 MOSEI 原有的官方划分和统一的教师资产。
+
+原则：
+
+1. 不重新定义 ICD。
+2. 不改变模型架构。
+3. 尽量沿用 MOSI 确定的训练目标和 λ。
+4. 不因为 MOSEI 结果不好就反复针对测试集调参。
+5. 记录 MOSI 与 MOSEI 上的差异。
+
+如果新配置只在 MOSI 上有效，就如实定位为数据集相关的训练策略，不能宣称普遍适用。
+
+---
+
+# 8. Phase 6：Official-test 最终评估
+
+本轮所有超参数选择必须只使用 Validation。
+
+在最终方法确定之后：
+
+1. 冻结训练源码。
+2. 冻结教师资产。
+3. 冻结超参数。
+4. 冻结 checkpoint selection policy。
+5. 冻结最终配置及其 SHA256。
+6. 使用 Validation MAE 选择 checkpoint。
+7. 对选中的 checkpoint 进行 Official-test evaluation。
+
+Official-test 只负责最终性能报告，不参与：
+
+- 超参数搜索；
+- Scheduler 选择；
+- λ 选择；
+- 模型结构选择；
+- checkpoint 选择。
+
+此前项目已经进行过 Official-test 实验，所以最终报告应称为协议一致的最终 Official-test 评估，而不是首次盲测。
+
+---
+
+# 9. Phase 7：多种子确认（最终投稿阶段）
+
+本轮开发阶段继续遵守 seed13 单种子要求。
+
+方法冻结后，如果允许扩展种子，建议只对 2–3 个最终候选使用：
+
+\[
+\{13,42,2026\}.
+\]
+
+不需要将全部八组实验重新做三种子。
+
+优先确认：
+
+- Full KD；
+- 最终 ICD；
+- 最强的历史方法或 Gradient Projected ICD。
+
+汇报：
+
+\[
+\mathrm{mean}\pm\mathrm{sample\ SD}.
+\]
+
+这里的 sample SD 不是置信区间。
+
+由于 MOSI validation 只有 10 个 source videos，建议同时做配对的 source-video clustered bootstrap，并说明 cluster 数量较少带来的不确定性。
+
+如果最终仍只使用 seed13，则论文必须如实报告单种子结果，不得写成多种子均值。
+
+---
+
+# 10. 统一评价和数据分析规范
+
+## 10.1 主要指标
+
+| 指标 | 用途 |
+|---|---|
+| MAE | 主要指标 |
+| Pearson | 连续情感相关性 |
+| Acc-2 nonzero | 极性分类准确率 |
+| Weighted F1 nonzero | 分类综合性能 |
+| Acc-7 | 七级情感分类 |
+| Interaction Coordinate MAE | 交互结构重建 |
+| Prediction Bias | 预测偏移 |
+| Prediction Std | 预测分布尺度 |
+
+Acc-2 和 F1 沿用现有 non-zero 标签协议，不改变阈值。
+
+所有指标必须来自同一个 Validation-MAE-selected checkpoint。
+
+## 10.2 必须保留的分析
+
+1. 整体 MAE 对比。
+2. 各种子或单种子逐组结果。
+3. Teacher–Student 七坐标重建误差。
+4. 一阶、二阶、三阶交互误差。
+5. 不同情感区间的 MAE。
+6. 不同高阶交互强度区间的 MAE。
+7. Source-video 配对误差。
+8. 梯度范数及梯度方向。
+9. 训练和验证曲线。
+10. 最终 checkpoint 的逐样本预测。
+
+交互坐标重建误差与最终任务 MAE 必须分开报告。
+
+---
+
+# 11. 代码和实验资产要求
+
+新增独立实验入口：
+
+`project/scripts/train_icd_confirmatory.py`
+
+不要直接修改原始主实验训练脚本，避免影响已有结果的可复现性。
+
+建议新增目录：
+
+`outputs/experiments/icd_confirmatory_mosi_v1/`
+
+目录结构：
+
+```text
+icd_confirmatory_mosi_v1/
+├── plan.md
+├── plan.json
+├── protocol_diff.md
+├── source/
+│   ├── train_icd_confirmatory.py
+│   └── source_fingerprints.json
+├── assets/
+│   └── teacher_manifest.json
+├── runs/
+│   ├── F0_full_kd_ce/
+│   ├── F1_full_kd_no_ce/
+│   ├── F2_icd_ce_lambda1/
+│   ├── F3_icd_no_ce_lambda1/
+│   ├── F4_icd_ce_lambda05/
+│   ├── F5_icd_no_ce_lambda05/
+│   ├── F6_icd_ce_lambda025/
+│   └── F7_icd_no_ce_lambda025/
+├── scheduler/
+├── gradient_projected/
+├── analysis/
+│   ├── per_run.csv
+│   ├── factorial_analysis.json
+│   ├── interaction_analysis.json
+│   └── final_report.md
+└── completion_audit.json
+```
+
+每个 run 必须保存：
+
+```text
+run_config.json
+history.json
+report.json
+predictions.jsonl
+checkpoints/
+    epoch_001.pt
+    epoch_002.pt
+    ...
+    best_valid_mae.pt
+    last.pt
+diagnostics/
+```
+
+要求：
+
+- 每个 epoch 保存 checkpoint。
+- 保留 best 和 last。
+- 保留完整训练日志。
+- 保留初始化哈希。
+- 保留源码哈希。
+- 保留 Teacher 资产哈希。
+- 记录实际运行轮数。
+- 记录早停原因。
+- 独立重算最终指标。
+- 完成后生成 completion audit。
+
+所有实验结束后，将代码、实验协议、汇总 CSV 和报告同步到 GitHub。大型 checkpoint 和数据资产保留在服务器，并记录其位置与哈希。
+
+---
+
+# 12. 暂时不开展的方向
+
+| 方向 | 当前决定 | 原因 |
+|---|---|---|
+| Quality-aware Fusion | 暂停 | 先确认训练目标 |
+| Context Encoder | 暂停 | 尚无必要的机制证据 |
+| 动态模态权重 | 暂停 | 当前没有稳定支持 |
+| Video Coordinate Masking | 暂停 | 第一轮结果不支持 |
+| Order-aware ICD | 暂停 | 没有超过 Full KD |
+| 新的 Möbius 分解定义 | 不修改 | 保持理论贡献稳定 |
+| Prediction Calibration | 暂停 | 留一视频校准未改善 MAE |
+| 复杂样本级动态权重 | 暂停 | 目前只有探索性分组现象 |
+
+---
+
+# 13. 最终交付物
+
+第二阶段结束后必须得到：
+
+1. 一份新旧 Baseline 差异审计。
+2. 一份八组因子实验的完整结果。
+3. 一份 CE 主效应、ICD 主效应和交互效应分析。
+4. 一份 ICD 权重分析。
+5. 一份 Scheduler 对照结果。
+6. 一份 Gradient Projected ICD 公平对比结果。
+7. 一份最终 MOSI 方法选择报告。
+8. 一份 MOSEI 跨数据集验证报告。
+9. 一份 Official-test 最终评估报告。
+10. 可直接用于 ICLR 论文的主表、消融表、交互重建分析及实验文字。
+
+---
+
+# 14. 实际执行顺序
+
+| 顺序 | 任务 | 是否立即执行 |
+|---:|---|---|
+| 1 | 归档第一轮全部实验资产 | 是 |
+| 2 | 审计新旧 Baseline 差异 | 是 |
+| 3 | 冻结 Teacher 三 Probe 公共资产 | 是 |
+| 4 | 完成八组 CE × ICD 因子实验 | 是 |
+| 5 | 分析 CE 与 ICD 的交互效应 | 是 |
+| 6 | 对选中配置进行 Warm-up + Cosine 对照 | 是 |
+| 7 | 复现 Gradient Projected ICD | 是 |
+| 8 | 确定最终 MOSI 方法 | 是 |
+| 9 | 将最终配置迁移到 MOSEI | 后续 |
+| 10 | 锁定 checkpoint 并进行 Official-test | 后续 |
+| 11 | 最终多种子确认 | 投稿前决定 |
+| 12 | 更新 ICLR 主表、消融表和实验章节 | 最后 |
+
+**最终研究目标：**
+
+不是找到一个在 MOSI validation 上 MAE 最低的偶然配置，而是通过严格控制变量，证明：
+
+1. ICD 是否提供了 Full KD 无法获得的交互结构知识；
+2. 交互知识在什么训练条件下能够真正转化为下游任务收益；
+3. 最终收益是否能够在不同训练配置和数据集上得到验证。
+
+只有完成这条证据链，才值得将新配置确定为论文的最终方法。

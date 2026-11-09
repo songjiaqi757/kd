@@ -1,8 +1,21 @@
 # Large local assets: never commit datasets, model weights, caches, or run outputs.
 /dataset/
 /model/
-/outputs/
 /transfer/
+# Run outputs stay local, except the text-only publication bundle of the MOSI ICD
+# phase-2 campaign together with its orchestration scripts and audit records.
+/outputs/*
+!/outputs/experiments/
+/outputs/experiments/*
+!/outputs/experiments/icd_confirmatory_mosi_v1/
+/outputs/experiments/icd_confirmatory_mosi_v1/*
+!/outputs/experiments/icd_confirmatory_mosi_v1/*.py
+!/outputs/experiments/icd_confirmatory_mosi_v1/*.json
+!/outputs/experiments/icd_confirmatory_mosi_v1/*.md
+!/outputs/experiments/icd_confirmatory_mosi_v1/publication/
+!/outputs/experiments/icd_confirmatory_mosi_v1/preflight/
+/outputs/experiments/icd_confirmatory_mosi_v1/preflight/*
+!/outputs/experiments/icd_confirmatory_mosi_v1/preflight/phase0_complete.json
 
 # Upstream repositories are cloned locally for source inspection and commit
 # pinning.  Only their metadata and our clean-room adapters are versioned.

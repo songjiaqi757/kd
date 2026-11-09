@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "created_unix": 1794136064.2381694,
+  "gpu": 1,
+  "max_parallel": 2,
+  "memory_reservation_mib": 38000,
+  "smoke_peak_gpu_memory_gib": 7.211348056793213,
+  "memory_note": "small first8-utterance smoke peak; reserve38GiB per full-data worker based on prior campaign conservative reservation",
+  "seed": 13,
+  "train_utterances": 1284,
+  "valid_utterances": 229,
+  "valid_source_videos": 10,
+  "train_valid_source_video_intersection": 0,
+  "total_parameters": 819309176,
+  "trainable_parameters": 42650120,
+  "initialization_sha256": "6a49b3bc2c92e41774d2dc9c7c63fdb7be175a52fb55de95dc72b64f68b19626",
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "checks": {
+    "all_protocol_input_hashes_match": true,
+    "all_source_hashes_match": true,
+    "smoke_loss_orchestration_passed": true,
+    "same_initialization_and_sampler": true,
+    "baseline_and_retention_audits_exist": true
+  },
+  "frozen_artifact_sha256": {
+    "plan.md": "f12dd7ad7ae0401e5d56ca78fe6a135dbb9a96b45e16d91550cde9f35942c545",
+    "plan.json": "b57e6ce81798c6521fc317ff21cc1879d574b4c4f2c5bf3bc10df141cb80f591",
+    "protocol_diff.md": "94ab3938e7f5111d0c2c50ecbd31037a8923d8ccf450a5d189201ea976395d62",
+    "baseline_audit.json": "9e481d2f367812d5d391e9e9c4cb00d61e9d4b3b52d589711bac2c41bd41ad72",
+    "assets/protocol.json": "34386ce65e1ad71b1b949804e2842f9849314059b48babf8ffb2b64d230a1696",
+    "assets/teacher_manifest.json": "5f7151538e64d06c59d58d9a4070d05069c600dfb44f2d4fe705f7949129907e",
+    "assets/student_models_manifest.json": "1ecdcadb1461dc564c2be0413f2f84bd1097a5efae22ade7f05c9f7e1d819cd9",
+    "source_fingerprints.json": "1129594586fcfb1731504841566b5afaa64ac0b46dbaea08ebd6cd272849fbe7",
+    "preflight/smoke_complete.json": "2c4172db36410cfc5ea3b21e162d2e1e00930ad4d60030a515b31e9c94c4c521",
+    "preflight/loss_checks.json": "8593bbb7a74baa8331117ca6c1d6f06acac91fc850a47612c299beec23df3e42",
+    "preflight/orchestration_checks.json": "083ec3854a5f9aa5592bc353928f9d012842220ce7b750745aa95f7570611aa8"
+  },
+  "trainer_sha256": "ba91440a4ea812deb5db8bcdacef61b815742bbb96fc388028be0f4580e17428",
+  "official_test_evaluated": false,
+  "trainer_sha256_before_gpu0_revision": "94d19387d5eac331b2be20ff4c5cc62e5c0e18015a2a6f0449fbde9a3cfdc927",
+  "execution_revision": "execution/gpu_revision_20261108.json",
+  "amendments": [
+    {
+      "schema": "icd-confirmatory-amendment-v1",
+      "created_unix": 1794234382.5280747,
+      "created_local": "2026-11-09 22:26:22",
+      "change": "Removed the 'all runs on physical GPU1' execution requirement.",
+      "reason": "F0-F4 were executed on GPU0 because GPU1 was occupied by an external job; F5 onward ran on GPU1. GPU index is an execution detail and does not affect the training protocol, data, seeds, or selection.",
+      "previous_hashes": {
+        "plan.md": "a9e6843afa99ba76ebad02efda9d917f147331e87bea18ef099ddf878de1a730",
+        "plan.json": "57822012903c377089c8dda9e8ca47ccd6a58e7316e2234df1ddad6dd99f0870"
+      },
+      "refreshed_hashes": {
+        "plan.md": "f12dd7ad7ae0401e5d56ca78fe6a135dbb9a96b45e16d91550cde9f35942c545",
+        "plan.json": "b57e6ce81798c6521fc317ff21cc1879d574b4c4f2c5bf3bc10df141cb80f591"
+      },
+      "scientific_scope_unchanged": true,
+      "note": "official_test_evaluated renamed to official_test_used_for_selection for clarity"
+    }
+  ]
+}
