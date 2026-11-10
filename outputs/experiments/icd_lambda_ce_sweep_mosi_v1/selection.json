@@ -1,0 +1,41 @@
+{
+  "best_overall": {
+    "id": "A6_ce050_lambda010",
+    "method": "uniform_interaction",
+    "ce": 0.5,
+    "lam": 0.1,
+    "group": "runs",
+    "schedule": "constant",
+    "base_epochs": 40,
+    "budget": 40,
+    "output": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/runs/A6_ce050_lambda010"
+  },
+  "best_no_ce": {
+    "id": "A1_no_ce_lambda005",
+    "method": "uniform_interaction",
+    "ce": 0.0,
+    "lam": 0.05,
+    "group": "runs",
+    "schedule": "constant",
+    "base_epochs": 40,
+    "budget": 40,
+    "output": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/runs/A1_no_ce_lambda005"
+  },
+  "best_ce_sweep_at_lambda010": {
+    "id": "A6_ce050_lambda010",
+    "method": "uniform_interaction",
+    "ce": 0.5,
+    "lam": 0.1,
+    "group": "runs",
+    "schedule": "constant",
+    "base_epochs": 40,
+    "budget": 40,
+    "output": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/runs/A6_ce050_lambda010"
+  },
+  "equivalence_band_0p005": [
+    "A6_ce050_lambda010"
+  ],
+  "criterion": "minimum validation MAE; no test-set or auxiliary-metric selection",
+  "budget": 40,
+  "official_test_evaluated": false
+}

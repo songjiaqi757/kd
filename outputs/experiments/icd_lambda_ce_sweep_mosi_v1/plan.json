@@ -1,0 +1,72 @@
+{
+  "schema": "icd-lambda-ce-sweep-mosi-v1",
+  "created": "2026-11-10",
+  "objective": "Refine CE x ICD-strength grid around the confirmatory low-lambda/No-CE signals.",
+  "seed": 13,
+  "max_parallel": 2,
+  "gpu": 1,
+  "reference_campaign": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1",
+  "trainer": "/data/sjq/kd/project/scripts/train_icd_confirmatory.py",
+  "assets": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/assets/protocol.json",
+  "runs": [
+    {
+      "id": "A1_no_ce_lambda005",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 0.05
+    },
+    {
+      "id": "A2_no_ce_lambda010",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 0.1
+    },
+    {
+      "id": "A3_no_ce_lambda015",
+      "method": "uniform_interaction",
+      "ce": 0.0,
+      "lam": 0.15
+    },
+    {
+      "id": "A4_ce010_lambda010",
+      "method": "uniform_interaction",
+      "ce": 0.1,
+      "lam": 0.1
+    },
+    {
+      "id": "A5_ce025_lambda010",
+      "method": "uniform_interaction",
+      "ce": 0.25,
+      "lam": 0.1
+    },
+    {
+      "id": "A6_ce050_lambda010",
+      "method": "uniform_interaction",
+      "ce": 0.5,
+      "lam": 0.1
+    }
+  ],
+  "epochs": 40,
+  "patience": 8,
+  "lr_schedule": "constant",
+  "checkpoint_selection": "valid_mae",
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "official_test_used_for_selection": false,
+  "official_test_evaluated": true,
+  "budget_extension": "none; patience=8 is binding at the common 40-epoch cap",
+  "plan_sha256": "587d22cffbe1e5c17ce87bf89b6fb7d6d03948e0a11adb7d92adb21ba75ea37a",
+  "official_test_manifest": "/data/sjq/kd/dataset/cmu_mosi/manifests/official_test_windowed.jsonl",
+  "official_test_output": "/data/sjq/kd/outputs/experiments/official_test_a_series_v1",
+  "amendments": [
+    {
+      "created": "2026-11-10",
+      "change": "Added reporting-only official-test evaluation of both retained validation-selected checkpoints for all A runs.",
+      "reason": "User request during the A-series training; test metrics are never used for training, early stopping, checkpoint selection or hyperparameter decisions.",
+      "scientific_scope_unchanged": true
+    }
+  ]
+}

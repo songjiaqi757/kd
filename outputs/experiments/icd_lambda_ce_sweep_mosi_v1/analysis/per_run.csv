@@ -1,0 +1,7 @@
+id,task_ce,lambda_icd,best_epoch,epochs_run,stop_reason,mae,pearson,acc2_nonzero,f1_weighted_nonzero,acc7,elapsed_seconds,peak_gpu_memory_gib
+A1_no_ce_lambda005,0.0,0.05,29,37,early_stopping,0.749398,0.791630,0.837963,0.836983,0.419214,6047.4,25.03
+A2_no_ce_lambda010,0.0,0.1,6,14,early_stopping,0.783336,0.787492,0.856481,0.857027,0.371179,2291.0,25.03
+A3_no_ce_lambda015,0.0,0.15,12,20,early_stopping,0.749998,0.793320,0.833333,0.833333,0.445415,3278.1,25.03
+A4_ce010_lambda010,0.1,0.1,26,34,early_stopping,0.746038,0.799026,0.865741,0.864929,0.427948,5565.1,25.03
+A5_ce025_lambda010,0.25,0.1,13,21,early_stopping,0.775739,0.779962,0.824074,0.819911,0.393013,3449.4,25.03
+A6_ce050_lambda010,0.5,0.1,32,40,early_stopping,0.721208,0.808672,0.837963,0.838073,0.423581,6897.7,25.03

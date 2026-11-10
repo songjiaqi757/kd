@@ -1,0 +1,65 @@
+{
+  "schema": "icd-asweep-smoke-v1",
+  "created_unix": 1794288895.6718423,
+  "passed": true,
+  "runs": [
+    {
+      "id": "A1_no_ce_lambda005",
+      "task_ce": 0.0,
+      "lambda_interaction": 0.05,
+      "initialization": {
+        "seed": 13,
+        "initialization_sha256": "6a49b3bc2c92e41774d2dc9c7c63fdb7be175a52fb55de95dc72b64f68b19626",
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120
+      },
+      "retained": [
+        "best_valid_acc2_nonzero.pt",
+        "best_valid_mae.pt",
+        "last.pt"
+      ],
+      "finite": true,
+      "peak_gpu_memory_gib": 7.211348056793213,
+      "valid_metrics": {
+        "count": 8,
+        "mae": 4.199999999999999,
+        "pearson": 0.11111111111111112,
+        "acc2_nonzero": 0.0,
+        "f1_weighted_nonzero": 0.0,
+        "nonzero_count": 7,
+        "acc2_has_zero": 0.0,
+        "f1_weighted_has_zero": 0.0,
+        "acc7": 0.0
+      }
+    },
+    {
+      "id": "A4_ce010_lambda010",
+      "task_ce": 0.1,
+      "lambda_interaction": 0.1,
+      "initialization": {
+        "seed": 13,
+        "initialization_sha256": "6a49b3bc2c92e41774d2dc9c7c63fdb7be175a52fb55de95dc72b64f68b19626",
+        "total_parameters": 819309176,
+        "trainable_parameters": 42650120
+      },
+      "retained": [
+        "best_valid_acc2_nonzero.pt",
+        "best_valid_mae.pt",
+        "last.pt"
+      ],
+      "finite": true,
+      "peak_gpu_memory_gib": 7.211348056793213,
+      "valid_metrics": {
+        "count": 8,
+        "mae": 4.199999999999999,
+        "pearson": 0.11111111111111112,
+        "acc2_nonzero": 0.0,
+        "f1_weighted_nonzero": 0.0,
+        "nonzero_count": 7,
+        "acc2_has_zero": 0.0,
+        "f1_weighted_has_zero": 0.0,
+        "acc7": 0.0
+      }
+    }
+  ]
+}

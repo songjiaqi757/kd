@@ -1,0 +1,68 @@
+{
+  "schema": "icd-asweep-completion-audit-v1",
+  "complete": true,
+  "scope": "A-series MOSI validation-only seed13",
+  "official_test_used_for_selection": false,
+  "expected_runs": 6,
+  "actual_runs": 6,
+  "checkpoint_retention_policy": "MAE-best, Acc2-best, last only",
+  "independent_metric_tolerance": 1e-08,
+  "errors": [],
+  "artifacts": [
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/summary.json",
+      "bytes": 13515,
+      "sha256": "8f2c78bae903500b7c7ab36c2f319c1ddb2c66066a4ab592745e9cd6542eb3d7"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/per_run.csv",
+      "bytes": 787,
+      "sha256": "33590b2d48ffb0cd69cca48249462651e632852c924bccb67a4422cd03466c2c"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/report.md",
+      "bytes": 4670,
+      "sha256": "2181598613f4ecacccd0fe54d1c69149951c8d3282983859d94493ca41e2b96e"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/training_curves.png",
+      "bytes": 147048,
+      "sha256": "7dcbbba980e89dc4f970e7a9ac80e2a810d5d257e1911a798d65ac5bf24b350f"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/official_test_summary.json",
+      "bytes": 7550,
+      "sha256": "bd12e77ccf5dfa14715b0a14df3dde2ab161cc39e0632b3c14601a25e8a3dae5"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/official_test_summary.csv",
+      "bytes": 2730,
+      "sha256": "1b0e61d4982062ebd6cc49e1c99b8a29cbef74bb7d776a5579eb4e911e5a697e"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/official_test_summary.md",
+      "bytes": 1449,
+      "sha256": "cd88503168c55fda1ea353a505e15f5c13b7238ab9a99941640efdf2a782efd0"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/selection.json",
+      "bytes": 1160,
+      "sha256": "0cc12089487df8e45f7e0d0dcf3d028a65a152c328f6cf842260f019b99017b6"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/campaign_jobs.json",
+      "bytes": 2046,
+      "sha256": "635e0869d870444711c3a73767b08fbfa4883fa47fbcf4c525545c22d8014617"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/plan.json",
+      "bytes": 2257,
+      "sha256": "9facabde312dfd127292ce8f36c6cafd754e754f8344510fc0dcc52394511a87"
+    },
+    {
+      "path": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/plan.md",
+      "bytes": 4647,
+      "sha256": "587d22cffbe1e5c17ce87bf89b6fb7d6d03948e0a11adb7d92adb21ba75ea37a"
+    }
+  ]
+}

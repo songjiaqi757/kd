@@ -1,0 +1,83 @@
+{
+  "schema": "icd-asweep-phase0-v1",
+  "passed": true,
+  "created_unix": 1794288895.672395,
+  "gpu": 1,
+  "max_parallel": 2,
+  "memory_reservation_mib": 38000,
+  "reference_campaign": "/data/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1",
+  "reference_initialization": {
+    "initialization_sha256": "6a49b3bc2c92e41774d2dc9c7c63fdb7be175a52fb55de95dc72b64f68b19626",
+    "total_parameters": 819309176,
+    "trainable_parameters": 42650120
+  },
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "checks": {
+    "assets_protocol_sha256_match": true,
+    "asset_present::official_train_valid_windowed.jsonl": true,
+    "asset_present::teacher_ensemble_confirmatory.jsonl": true,
+    "asset_present::interaction_targets.jsonl": true,
+    "asset_present::teacher_manifest.json": true,
+    "asset_present::student_models_manifest.json": true,
+    "trainer_sha256_match": true,
+    "source_fingerprints_sha256_match": true,
+    "all_frozen_source_files_match": true,
+    "split_counts_match": true,
+    "no_video_leakage": true,
+    "gpu1_has_room_for_one_worker": true,
+    "disk_headroom": true,
+    "all_configurations_dry_run": true,
+    "smoke_runs_passed": true
+  },
+  "details": {
+    "assets_protocol_sha256": "34386ce65e1ad71b1b949804e2842f9849314059b48babf8ffb2b64d230a1696",
+    "trainer_sha256": "ba91440a4ea812deb5db8bcdacef61b815742bbb96fc388028be0f4580e17428",
+    "source_file_count": 180,
+    "source_file_mismatches": [],
+    "train_windows": 1286,
+    "valid_windows": 229,
+    "train_utterances": 1284,
+    "valid_utterances": 229,
+    "valid_source_videos": 10,
+    "gpu1_free_mib": 85027,
+    "disk_required_bytes": 30700754480,
+    "disk_free_bytes": 225851170816,
+    "dry_runs": [
+      {
+        "id": "A1_no_ce_lambda005",
+        "returncode": 0,
+        "stderr": ""
+      },
+      {
+        "id": "A2_no_ce_lambda010",
+        "returncode": 0,
+        "stderr": ""
+      },
+      {
+        "id": "A3_no_ce_lambda015",
+        "returncode": 0,
+        "stderr": ""
+      },
+      {
+        "id": "A4_ce010_lambda010",
+        "returncode": 0,
+        "stderr": ""
+      },
+      {
+        "id": "A5_ce025_lambda010",
+        "returncode": 0,
+        "stderr": ""
+      },
+      {
+        "id": "A6_ce050_lambda010",
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "official_test_evaluated": false
+}

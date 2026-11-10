@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "updated_at_unix": 1794306148.2111993,
+  "gpu": 1,
+  "official_test_evaluated": true,
+  "phase": "finalized",
+  "final_report": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/report.md",
+  "completion_audit": "/data/sjq/kd/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/completion_audit.json",
+  "audit_errors": [],
+  "official_test_used_for_selection": false,
+  "official_test_stage": "complete",
+  "official_test_summary": "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/summary.json",
+  "official_test_runs": 12
+}

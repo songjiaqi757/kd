@@ -56,3 +56,28 @@ runs/
 *.log
 *.tmp
 *.bak
+
+# MOSI A-series CE x ICD-strength sweep: text-only scripts, plans, summaries and
+# analysis figures.  Checkpoints, assets, per-run artifacts and logs stay local.
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/
+/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/*
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/*.py
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/*.json
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/*.md
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/git_revision.txt
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/
+/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/*
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/*.json
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/*.csv
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/*.md
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/analysis/*.png
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/preflight/
+/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/preflight/*
+!/outputs/experiments/icd_lambda_ce_sweep_mosi_v1/preflight/*.json
+
+# Reporting-only official-test stage for the A-series (summaries only).
+!/outputs/experiments/official_test_a_series_v1/
+/outputs/experiments/official_test_a_series_v1/*
+!/outputs/experiments/official_test_a_series_v1/*.json
+!/outputs/experiments/official_test_a_series_v1/*.csv
+!/outputs/experiments/official_test_a_series_v1/*.md

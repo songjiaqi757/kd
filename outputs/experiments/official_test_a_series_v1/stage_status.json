@@ -1,0 +1,22 @@
+{
+  "campaign_status": "complete",
+  "completed": [
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A1_no_ce_lambda005/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A1_no_ce_lambda005/valid_acc2_nonzero",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A2_no_ce_lambda010/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A2_no_ce_lambda010/valid_acc2_nonzero",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A3_no_ce_lambda015/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A3_no_ce_lambda015/valid_acc2_nonzero",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A4_ce010_lambda010/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A4_ce010_lambda010/valid_acc2_nonzero",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A5_ce025_lambda010/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A5_ce025_lambda010/valid_acc2_nonzero",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A6_ce050_lambda010/valid_mae",
+    "/data/sjq/kd/outputs/experiments/official_test_a_series_v1/A6_ce050_lambda010/valid_acc2_nonzero"
+  ],
+  "failed": [],
+  "active": [],
+  "updated_unix": 1794306148.2329175,
+  "summary_runs": 12,
+  "finished": true
+}
