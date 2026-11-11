@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "prediction_exports": 72,
+  "expected_exports": 72,
+  "gradient_cases": 12,
+  "expected_gradient_cases": 12,
+  "optimizer_steps": 0,
+  "official_test_predictions_used": false
+}

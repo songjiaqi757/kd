@@ -1,0 +1,23 @@
+[
+  {
+    "alias": "Q",
+    "port": 36222,
+    "cwd": "/ai/sjq/kd",
+    "plan_sha256": "0aeb1486efd2ef49e0284f3b4417946afb7b941f765311d623e2207629c44c66",
+    "gpu": "GPU-ddfc96eb-5dfe-ba88-cf3c-a2ef64258793, NVIDIA A800-SXM4-80GB"
+  },
+  {
+    "alias": "Qiii",
+    "port": 34989,
+    "cwd": "/ai/sjq/kd",
+    "plan_sha256": "0aeb1486efd2ef49e0284f3b4417946afb7b941f765311d623e2207629c44c66",
+    "gpu": "GPU-be2112e9-43e2-43e7-da85-ff9198a7c875, NVIDIA A800-SXM4-80GB"
+  },
+  {
+    "alias": "Qiii-A100",
+    "port": 31764,
+    "cwd": "/ai/sjq/kd",
+    "plan_sha256": "0aeb1486efd2ef49e0284f3b4417946afb7b941f765311d623e2207629c44c66",
+    "gpu": "GPU-93c26c4a-fb4d-1fda-fe6d-3d33d69f00b0, NVIDIA A100 80GB PCIe"
+  }
+]

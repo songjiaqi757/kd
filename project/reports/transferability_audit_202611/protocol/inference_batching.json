@@ -1,0 +1,32 @@
+{
+  "batch_size_by_dataset": {
+    "mosei": 32,
+    "mosi": 16,
+    "sims": 16,
+    "sims_v2": 16
+  },
+  "allocator_cap_mib_by_dataset": {
+    "mosei": 32768,
+    "mosi": 16384,
+    "sims": 16384,
+    "sims_v2": 16384
+  },
+  "num_workers": 2,
+  "ordering": "descending window_duration; sample_id tie break",
+  "same_within_dataset_for_all_methods_and_seeds": true,
+  "unchanged_sample_ids_weights_windows": true,
+  "parallel_workers": {
+    "Q": 3,
+    "Qiii": 3,
+    "A100": 3
+  },
+  "reason": "user requested parallel exports utilizing remaining VRAM",
+  "prefetch_factor": 1,
+  "multiprocessing_context": "spawn",
+  "host_memory_limit_bytes_A100": 34359738368,
+  "worker_cap_overrides_mib": {
+    "Q_p2": 12288,
+    "Qiii_p2": 12288
+  },
+  "host_memory_limit_bytes_A800": 137438953472
+}

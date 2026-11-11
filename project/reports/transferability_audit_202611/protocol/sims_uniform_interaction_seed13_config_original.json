@@ -1,0 +1,262 @@
+{
+  "method": "uniform_interaction",
+  "assets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/protocol.json",
+  "output": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/students/uniform_interaction_seed13",
+  "text_model": "/data/sjq/kd/model/Qwen3-0.6B-Base",
+  "audio_model": "/data/sjq/kd/model/WavLM-Base-Plus",
+  "video_model": "/data/sjq/kd/model/VideoMAE-Base",
+  "seed": 13,
+  "device": "cuda:0",
+  "batch_size": 8,
+  "epochs": 20,
+  "min_epochs": 20,
+  "patience": 20,
+  "save_every_epoch": false,
+  "retain_best_mae_and_acc2": true,
+  "checkpoint_selection": "valid_mae",
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "num_workers": 2,
+  "video_layers": 12,
+  "video_rank": 8,
+  "video_alpha": 16,
+  "video_dropout": 0.05,
+  "video_checkpointing": true,
+  "limit_per_split": null,
+  "lambda_feature": 2.0,
+  "lambda_cafd": 0.1,
+  "cmad_tau": 0.2,
+  "lambda_subset": 1.0,
+  "lambda_interaction": 1.0,
+  "coordinate_seed": 20260922,
+  "ea_entropy_temperature": 3.0,
+  "rld_temperature": 4.0,
+  "rld_alpha": 1.0,
+  "rld_beta": 8.0,
+  "rld_warmup_epochs": 20,
+  "skd_temperature": 4.0,
+  "skd_tik_factor": 0.1,
+  "manifest": "/data/sjq/kd/dataset/ch_sims/manifests/official_train_valid_windowed.jsonl",
+  "teacher_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/predictions.jsonl",
+  "teacher_probe_report": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/report.json",
+  "teacher_subset": "tav",
+  "teacher_calibration_temperature": 1.0402129888534546,
+  "mode": "video_lora",
+  "schema": "rdid-msa-fixed-student-main-table-v1",
+  "dataset": "sims",
+  "native_label_range": [
+    -1.0,
+    1.0
+  ],
+  "sentiment_scale": 1.0,
+  "classification_classes": 5,
+  "epoch_checkpoint_pattern": null,
+  "official_test_evaluated": false,
+  "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+  "fusion_architecture": "subset transformer fusion",
+  "frozen_assets": {
+    "schema": "rdid-msa-main-table-assets-v1",
+    "dataset": "sims",
+    "native_label_range": [
+      -1.0,
+      1.0
+    ],
+    "sentiment_scale": 1.0,
+    "classification_classes": 5,
+    "base_protocol": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/protocol.json",
+    "manifest": "/data/sjq/kd/dataset/ch_sims/manifests/official_train_valid_windowed.jsonl",
+    "teacher_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/predictions.jsonl",
+    "teacher_probe_report": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/report.json",
+    "teacher_temperature": 1.0402129888534546,
+    "probe_seeds": [
+      2026,
+      2027,
+      2028
+    ],
+    "probe_temperatures": {
+      "2026": 1.0402129888534546,
+      "2027": 1.2975727319717407,
+      "2028": 1.1614083051681519
+    },
+    "ensemble_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/ensemble_targets.jsonl",
+    "interaction_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/interaction_targets.jsonl",
+    "teacher_features": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/features.npy",
+    "teacher_feature_index": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/teacher_feature_index.jsonl",
+    "teacher_feature_dimension": 2048,
+    "student_empty_baseline": -0.2536608964526051,
+    "utility_normalized": [
+      0.9821145552964331,
+      1.075357627959632,
+      1.021117711830618,
+      1.0021620647125387,
+      0.9528190417062242,
+      1.0152564904971326,
+      0.951172507997421
+    ],
+    "coarse_utility_normalized": [
+      1.019878082656201,
+      1.019878082656201,
+      0.9850914380078488,
+      1.019878082656201,
+      0.9850914380078488,
+      0.9850914380078488,
+      0.9850914380078488
+    ],
+    "lambda_interaction": 1.0,
+    "lambda_subset": 1.0,
+    "lambda_feature": 2.0,
+    "alpha_ce": 0.5,
+    "lambda_full": 1.0,
+    "kd_temperature": 2.0,
+    "rld": {
+      "alpha": 1.0,
+      "beta": 8.0,
+      "temperature": 4.0,
+      "confidence_temperature": 1.0,
+      "warmup_epochs": 20,
+      "standardize_logits": false
+    },
+    "skd": {
+      "temperature": 4.0,
+      "tik_factor": 0.1,
+      "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+    },
+    "ea_kd": {
+      "entropy_temperature": 3.0,
+      "entropy_upper_bound": "log(5)"
+    },
+    "projector": {
+      "student_dimension": 512,
+      "teacher_dimension": 2048,
+      "normalization": "BatchNorm1d(affine=False)",
+      "distance": "log(sum(abs(delta)^4)+1e-5)"
+    },
+    "cmad_cafd": {
+      "tau": 0.2,
+      "lambda": 0.1,
+      "minimum_relation_batch": 2,
+      "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+    },
+    "seeds": [
+      13,
+      42,
+      2026
+    ],
+    "official_test_evaluated": false,
+    "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+    "input_sha256": {
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/protocol.json": "852a44bd66a39e454c1270fa7d083ceac99779e1b9cab2ae3ec27542e6aca648",
+      "/data/sjq/kd/dataset/ch_sims/manifests/official_train_valid_windowed.jsonl": "d8a5afe2ec88259780635d05cd2e82f85f22159e732056f92dc2439045dc0fd8",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/predictions.jsonl": "c3d83ddd9eeda563aadc37c5f2593ad5dc3bc7c8b1d3937acfe2c40a81b179bf",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/report.json": "3f355d7015ca2fe93979eb3448486afa55c9479437d04c3b82af05f3653e26f9",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/interaction_targets.jsonl": "225db139dd0ae2999345112f546409d37849d4019c045ed18b37420e178870f5",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/ensemble_targets.jsonl": "90891de30e0abb956d61ec934852fed75cf8e88352a40727f14be003381376bc",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/index.jsonl": "b311f3f4eb8dfbf46af535c589f017fddd0a28a9278dd9d67ba68a2f7080b57d",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/features.npy": "fd41188dc983ceecde93e7c004a725a1148758a26981c55613cdc8f2fc01129b",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/teacher_feature_index.jsonl": "080780e60ea551f9ca744594e587bb3a467acada4e80628df5b9e5ae59db37fc",
+      "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2027/predictions.jsonl": "2c0224558e35849e15d297192110ec0035f7b664d4e2c018ce03b273dd477f28",
+      "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2028/predictions.jsonl": "8c8b5d3b3a5fd88d7721753585b36c2232ace329d36ca3edb6257035326ffd93"
+    }
+  },
+  "upstream_sources": {
+    "frozen_on": "2026-09-17",
+    "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+    "repositories": [
+      {
+        "method": "Projector-based feature KD",
+        "path": "external/original/Simple-Recipe-Distillation",
+        "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+        "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+        "license_file": null
+      },
+      {
+        "method": "EA-KD",
+        "path": "external/original/EA-KD",
+        "url": "https://github.com/cpsu00/EA-KD.git",
+        "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+        "license_file": null
+      },
+      {
+        "method": "RLD",
+        "path": "external/original/RLD",
+        "url": "https://github.com/zju-SWJ/RLD.git",
+        "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+        "license_file": null
+      },
+      {
+        "method": "SKD",
+        "path": "external/original/StreamLined",
+        "url": "https://github.com/HyunJunSik/StreamLined.git",
+        "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+        "license_file": null
+      },
+      {
+        "method": "DLF",
+        "path": "external/original/DLF",
+        "url": "https://github.com/pwang322/DLF.git",
+        "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+        "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+      },
+      {
+        "method": "GsiT",
+        "path": "external/original/GsiT",
+        "url": "https://github.com/drewjin/GsiT.git",
+        "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+        "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+      },
+      {
+        "method": "DPDF-LQ",
+        "path": "external/original/DPDF-LQ",
+        "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+        "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+        "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+      },
+      {
+        "method": "Light-MER / SWD-H",
+        "path": "external/original/Light-MER",
+        "url": "https://github.com/GAIR-Lab/Light-MER.git",
+        "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+        "license_file": "LICENSE",
+        "purpose": "domain-related adaptation audit; not a main-table implementation",
+        "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+      },
+      {
+        "method": "CMAD / CAFD",
+        "path": "external/original/CMAD",
+        "url": "https://github.com/YetZzzzzz/CMAD.git",
+        "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+        "license_file": "LICENSE",
+        "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+        "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+      }
+    ]
+  },
+  "teacher_subsets": [
+    "t",
+    "a",
+    "v",
+    "ta",
+    "tv",
+    "av",
+    "tav"
+  ],
+  "probe_count": 3,
+  "base_tav_probe_count": 1,
+  "additional_target_probe_count": 3,
+  "teacher_hidden_features": false,
+  "input_sha256": {
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/protocol.json": "9b4619928db5a2e21babd86586980db11a32e0605ce523edc8d887e8c39108f7",
+    "/data/sjq/kd/project/sims_native/scripts/train_main_table_kd.py": "a98d81662eb1cd46647bed63cd80ab6260f302984d355007fb68874e6a0f600d",
+    "/data/sjq/kd/project/sims_native/src/rdid_sims/main_table_kd.py": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+    "/data/sjq/kd/project/sims_native/src/rdid_sims/metrics.py": "65c42a16957683aded4b9be4cd46c872d2866364ef887337f81e900bc7c214a7",
+    "/data/sjq/kd/project/sims_native/src/rdid_sims/student.py": "098d790ccf24560f88409d68dfb9bc2b3bc4eac853116be8f36db4b4f6aac72e",
+    "/data/sjq/kd/project/sims_native/src/rdid_sims/tav_distillation.py": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23"
+  }
+}

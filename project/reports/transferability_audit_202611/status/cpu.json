@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "quality_rows": 112,
+  "agreement_rows": 112,
+  "official_test_predictions_used": false,
+  "teacher_target_reconstruction_passed": true
+}

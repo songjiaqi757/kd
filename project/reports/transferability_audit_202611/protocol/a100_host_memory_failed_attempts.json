@@ -1,0 +1,48 @@
+{
+  "memory_limit_bytes": 34359738368,
+  "max_usage_bytes_snapshot": 34359730176,
+  "oom_kill_counter_snapshot": 6,
+  "reason": "32GiB host cgroup OOM with 8 loader workers and 2 prefetch batches per process; retained orphan fork workers cleaned",
+  "resolution": "2 loader workers, prefetch_factor=1, spawn, isolated child process groups with failure cleanup",
+  "attempts": [
+    {
+      "id": "mosei_export_seed42",
+      "dataset": "mosei",
+      "mode": "export",
+      "seed": 42,
+      "state": "failed",
+      "worker": "A100",
+      "started_unix": 1794400832.1739671,
+      "pid": 4130586,
+      "restart_reason": "freeze batch32 duration-descending inference; reduce audio padding, identical sample IDs and weights",
+      "exit_code": -9,
+      "finished_unix": 1794402835.0039208
+    },
+    {
+      "id": "sims_v2_export_seed42",
+      "dataset": "sims_v2",
+      "mode": "export",
+      "seed": 42,
+      "state": "failed",
+      "worker": "A100_p2",
+      "started_unix": 1794402331.8028657,
+      "pid": 1708428,
+      "exit_code": -9,
+      "finished_unix": 1794402835.010558,
+      "retry_reason": "native class_5_index field preserved; CPU aggregation smoke passed"
+    },
+    {
+      "id": "sims_export_seed13",
+      "dataset": "sims",
+      "mode": "export",
+      "seed": 13,
+      "state": "failed",
+      "worker": "A100_p1",
+      "started_unix": 1794402332.1299944,
+      "pid": 1709652,
+      "exit_code": -9,
+      "finished_unix": 1794402835.0161824,
+      "retry_reason": "native class_5_index field preserved; CPU aggregation smoke passed"
+    }
+  ]
+}

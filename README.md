@@ -9,6 +9,7 @@
 - [ICD 实验结果总汇](docs/paper/icd_experiment_summary.md)
 - [实验汇总报告（2026-11-11 全量快照）](docs/reports/实验汇总报告_20261111.md)
 - [MOSI First 复现包（2026-11-11）](project/reports/mosi_first_20261111_v1/README.md)：几何矩阵、`diagonal_mse` 损失、matched-spectrum 校验、完整配置、逐 checkpoint 指标与 SHA256。
+- [四数据集 Transferability Audit（2026-11）](project/reports/transferability_audit_202611/four_dataset_transferability_audit.md)：Phase 0 教师/学生可靠性、交互吸收与梯度兼容性审计。
 - [主表方案、实现与复现命令](docs/experiments/main_table_v1.md)
 - [代码与复现命令](project/README.md)
 

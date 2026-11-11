@@ -1,0 +1,13 @@
+dataset,probe_seed,sampled_train_parents,sampled_valid_parents,subset_pairs,cpu_replay_max_score_error,cpu_replay_max_logit_error,tolerance,passed,scope,checkpoint_sha256
+mosi,2026,16,16,224,7.152557373046875e-07,3.814697265625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",ff525dfaa189a21c55f1f5254d85d4c86ac64d2ed84d8863ba311fd552bb0408
+mosi,2027,16,16,224,7.152557373046875e-07,3.814697265625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",67b629ee3f6589a53c3bd3bf825a7a5cb7df56f7525f904dd4eb8c34f572d0a2
+mosi,2028,16,16,224,8.046627044677734e-07,3.814697265625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",b6c36640c689f57d8b45dd9a79d575c91bc73fee0ea7b2b99ee2c4dfb411e8ed
+mosei,2026,16,16,224,4.768371583141473e-07,3.814697265625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",36011f3a81f977416f8bec7a2222108d374d91eecdf29ac5003b766cdca32b83
+mosei,2027,16,16,224,3.5762786865234375e-07,3.814697266513178e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",03264f5acb6201879e415ee38da882e8b4eae6ca08383c4a9d27a593607f17a4
+mosei,2028,16,16,224,5.364418029785156e-07,5.245208740234375e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",435d8486ae7eef6e5a76515ed0f7f64290b0fec576737f80aedece31c096438b
+sims,2026,16,16,224,3.427267074584961e-07,2.86102294921875e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",c1a245c3171acc713942b1f7960ce1adc7f7027e32ca4127c697b2acb5f8f903
+sims,2027,16,16,224,4.172325134277344e-07,1.9073486328125e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",e6b5291081859005f702d6afeac5465f0b78598e71899827117212a947801934
+sims,2028,16,16,224,3.2782554626464844e-07,1.9073486328125e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",78ccdda639a36904ef3ad7cb967a1704229f93787e3862857e1f16ae75799784
+sims_v2,2026,16,16,224,3.5762786865234375e-07,2.384185791015625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",dbdca041e72548c01aa64e3d1f737f380791003d12c26c8eaa87fdbb95c1ce20
+sims_v2,2027,16,16,224,3.203749656677246e-07,2.384185791015625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",583bbeec7b6d6c3f51d8f7a9e5940fa6ab95f8b4f68e231dd744d7b652137219
+sims_v2,2028,16,16,224,3.278255463201596e-07,2.384185791015625e-06,0.0001,True,"32 deterministic train/valid parents x 7 subsets, all windows per parent",2adeb856d3c6c975264e703ebf5f86a9b20eed763d537b3f550836625bea7eb3

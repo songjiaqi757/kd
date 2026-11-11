@@ -1,0 +1,53 @@
+{
+  "reason": "native aggregate_windows requires class_5_index; fixed by preserving both native and compatibility fields",
+  "attempts": [
+    {
+      "id": "sims_v2_export_seed13",
+      "dataset": "sims_v2",
+      "mode": "export",
+      "seed": 13,
+      "state": "failed",
+      "worker": "Qiii_p1",
+      "started_unix": 1794401649.8395903,
+      "pid": 3401452,
+      "exit_code": 1,
+      "finished_unix": 1794401833.3592613
+    },
+    {
+      "id": "sims_v2_export_seed42",
+      "dataset": "sims_v2",
+      "mode": "export",
+      "seed": 42,
+      "state": "failed",
+      "worker": "A100_p2",
+      "started_unix": 1794401962.3255658,
+      "pid": 741244,
+      "exit_code": 1,
+      "finished_unix": 1794402229.9956462
+    },
+    {
+      "id": "sims_v2_export_seed2026",
+      "dataset": "sims_v2",
+      "mode": "export",
+      "seed": 2026,
+      "state": "failed",
+      "worker": "Q_p1",
+      "started_unix": 1794401650.2587433,
+      "pid": 3358765,
+      "exit_code": 1,
+      "finished_unix": 1794401819.108616
+    },
+    {
+      "id": "sims_export_seed13",
+      "dataset": "sims",
+      "mode": "export",
+      "seed": 13,
+      "state": "failed",
+      "worker": "A100_p1",
+      "started_unix": 1794401962.9718413,
+      "pid": 746121,
+      "exit_code": 1,
+      "finished_unix": 1794402180.7626529
+    }
+  ]
+}

@@ -12,6 +12,7 @@
 
 - [实验汇总报告（2026-11-11 全量快照）](reports/实验汇总报告_20261111.md)：截至 2026-11-11 的全项目实验矩阵；合并 11-07 全量报告、11-08 MOSI 第一轮，以及 11-09 至 11-11 的确认性实验、A 系列、方法搜索、EA-N2 迁移、MOSI First 18 组几何矩阵与 SIMS v2 N2 结果。
 - [MOSI First 复现包（2026-11-11）](../project/reports/mosi_first_20261111_v1/README.md)：几何矩阵公式、`diagonal_mse` 完整损失、matched-spectrum 校验、18 方法完整配置、54 checkpoint 指标与 SHA256。
+- [四数据集 Transferability Audit（2026-11）](../project/reports/transferability_audit_202611/four_dataset_transferability_audit.md)：Phase 0 教师/学生可靠性、交互吸收与梯度兼容性审计；仅描述性证据，未启动 Phase 1–5。
 - [实验汇总报告（2026-11-07 快照）](reports/实验汇总报告_20261107.md)：全项目实验矩阵、主结果、机制分析、限制与复现索引（数据截止 2026-10-30）。
 - [MOSI ICD 第一轮实验汇总报告（2026-11-08）](reports/MOSI_ICD_第一轮实验汇总报告_20261108.md)：E0–E8 seed13 初筛与 Full KD 对照，共 12 个 validation run；未运行本轮 official-test。
 

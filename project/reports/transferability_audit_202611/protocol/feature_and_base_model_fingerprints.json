@@ -1,0 +1,155 @@
+{
+  "features": {
+    "mosi": {
+      "path": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+      "sha256": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+      "bytes": 43438208,
+      "status": "matches_frozen_teacher_feature_cache"
+    },
+    "mosei": {
+      "path": "/ai/sjq/kd/outputs/experiments/video_source_v2/teacher_features/features.npy",
+      "sha256": "fbbdef379d7f5dba4a11712a452d6c5809e954c312a48c70cf89c678c7a53e52",
+      "bytes": 524066944,
+      "status": "matches_frozen_teacher_feature_cache"
+    },
+    "sims": {
+      "path": "/ai/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/features.npy",
+      "sha256": "fd41188dc983ceecde93e7c004a725a1148758a26981c55613cdc8f2fc01129b",
+      "bytes": 52297856,
+      "status": "matches_frozen_teacher_feature_cache"
+    },
+    "sims_v2": {
+      "path": "/ai/sjq/kd/outputs/experiments/sims_native_v1/sims_v2/teacher_features/features.npy",
+      "sha256": "466b84b07be79a7f3811667940c7da05fa4a21b2fcfca257540eddebccd68b5d",
+      "bytes": 96624768,
+      "status": "matches_frozen_teacher_feature_cache"
+    }
+  },
+  "models": {
+    "Qwen3-0.6B-Base": {
+      "path": "/ai/sjq/kd/model/Qwen3-0.6B-Base",
+      "config_sha256": {
+        "config.json": "504a6b58c4271583724e66584b6b7698aea18450209df6b2f7582df0e89cee59",
+        "generation_config.json": "8c970692323e3ea0e9b8b0a4dca79388d31226e41f83c9fd6014804280ebf6e8",
+        "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "tokenizer_config.json": "3c04ed3ca964ea2f6b2b5faf0dc4d31aec1cb1e8b4bcf63f402d295046b422b5",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+      },
+      "weights": {
+        "model.safetensors": {
+          "bytes": 1192135096,
+          "mtime_ns": 1788267667905671693,
+          "sha256": "cd2a512003e2f9f3cd3c32a9c3573f820bb28c940f73c57b1ddaa983d9223eba"
+        }
+      },
+      "scope": "base encoder weight SHA256 + config"
+    },
+    "WavLM-Base-Plus": {
+      "path": "/ai/sjq/kd/model/WavLM-Base-Plus",
+      "config_sha256": {
+        "config.json": "fea6df1c2700a3954fc07e70588aecc9055eeb28db2ff57151a2db0d19180ed4",
+        "preprocessor_config.json": "99272fe8ccfab114b68b478681ea47ee3a1ce62bb788cb92dd6e4f69fb1f1da2"
+      },
+      "weights": {
+        "pytorch_model.bin": {
+          "bytes": 377617425,
+          "mtime_ns": 1788267023003834398,
+          "sha256": "3bb273a6ace99408b50cfc81afdbb7ef2de02da2eab0234e18db608ce692fe51"
+        }
+      },
+      "scope": "base encoder weight SHA256 + config"
+    },
+    "VideoMAE-Base": {
+      "path": "/ai/sjq/kd/model/VideoMAE-Base",
+      "config_sha256": {
+        "config.json": "5fbedfea3706bd9fe6c0dc706beeb501ae72e4954703e03bebe3406f046f8212",
+        "preprocessor_config.json": "c3aa722f22a7ff0d234d407862025fe47672f74f46f92c91f757f7a7354107c2"
+      },
+      "weights": {
+        "model.safetensors": {
+          "bytes": 376873760,
+          "mtime_ns": 1788267586628070292,
+          "sha256": "bc053ca2840a038b1068269a4eec06ca569689e9a1ed9376a5b2b8a111be5290"
+        }
+      },
+      "scope": "base encoder weight SHA256 + config"
+    },
+    "Qwen3-Omni-30B-A3B-Instruct": {
+      "path": "/ai/sjq/kd/model/Qwen3-Omni-30B-A3B-Instruct",
+      "config_sha256": {
+        "chat_template.json": "90c1b81f29e41b7642b0cc02c877a10c8bf6751a8d8fa1d16ac9a718cf1c3d86",
+        "config.json": "eab5093d47807aaf894119506b238b2b1cee70d08456e894fee9a012d88f2e0d",
+        "generation_config.json": "7fa40989be8e43c078907810c41c25d33747523afce3d5a34d5850f930c886cb",
+        "model.safetensors.index.json": "03ffe9a54efe9007ceb788c2b036f5c589094918c4582add4e92bc17e1cba838",
+        "preprocessor_config.json": "b10e27fd4542cf89ec7145942b87f3e65408d4e9f9d031a29acdd293c15fb3fc",
+        "tokenizer_config.json": "dc3c31c3bdaedd5016382bb3cbe07323026775ad51f5a4fb564505992ae4a670",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+      },
+      "weights": {
+        "model-00001-of-00015.safetensors": {
+          "bytes": 4997899632,
+          "mtime_ns": 1788179373040686233
+        },
+        "model-00002-of-00015.safetensors": {
+          "bytes": 4997754216,
+          "mtime_ns": 1788179903067086885
+        },
+        "model-00003-of-00015.safetensors": {
+          "bytes": 4997754216,
+          "mtime_ns": 1788180409053605451
+        },
+        "model-00004-of-00015.safetensors": {
+          "bytes": 4997755648,
+          "mtime_ns": 1788181060550410393
+        },
+        "model-00005-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788181583471845909
+        },
+        "model-00006-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788182090436359655
+        },
+        "model-00007-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788182626563730387
+        },
+        "model-00008-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788183120627307405
+        },
+        "model-00009-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788184187502075309
+        },
+        "model-00010-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788185082494686113
+        },
+        "model-00011-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788185948697438101
+        },
+        "model-00012-of-00015.safetensors": {
+          "bytes": 4997755792,
+          "mtime_ns": 1788186634970072488
+        },
+        "model-00013-of-00015.safetensors": {
+          "bytes": 4999771808,
+          "mtime_ns": 1788189105971954226
+        },
+        "model-00014-of-00015.safetensors": {
+          "bytes": 4996618552,
+          "mtime_ns": 1788238435703031822
+        },
+        "model-00015-of-00015.safetensors": {
+          "bytes": 553698794,
+          "mtime_ns": 1788238521288612097
+        }
+      },
+      "scope": "30B shard metadata + config; actual frozen hidden arrays verified byte-for-byte"
+    }
+  }
+}

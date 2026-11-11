@@ -1,0 +1,12 @@
+predictions/
+archive/
+logs/
+status/
+!status/
+!status/*.json
+__pycache__/
+source/__pycache__/
+protocol/*_train_valid_mapped.jsonl
+protocol/queue.lock
+
+._*

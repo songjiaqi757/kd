@@ -1,0 +1,143 @@
+[
+  {
+    "id": "mosei_gradients_seed13",
+    "dataset": "mosei",
+    "mode": "gradients",
+    "seed": 13,
+    "state": "complete",
+    "worker": "Qiii",
+    "started_unix": 1794399528.3876238,
+    "pid": 816101,
+    "exit_code": 0,
+    "finished_unix": 1794399753.792472
+  },
+  {
+    "id": "sims_gradients_seed13",
+    "dataset": "sims",
+    "mode": "gradients",
+    "seed": 13,
+    "state": "complete",
+    "worker": "Q",
+    "started_unix": 1794399530.9236798,
+    "pid": 278039,
+    "exit_code": 0,
+    "finished_unix": 1794399760.4449487
+  },
+  {
+    "id": "sims_v2_gradients_seed13",
+    "dataset": "sims_v2",
+    "mode": "gradients",
+    "seed": 13,
+    "state": "complete",
+    "worker": "A100",
+    "started_unix": 1794400052.6436858,
+    "pid": 1878853,
+    "exit_code": 0,
+    "finished_unix": 1794400257.1821675
+  },
+  {
+    "id": "mosi_gradients_seed13",
+    "dataset": "mosi",
+    "mode": "gradients",
+    "seed": 13,
+    "state": "complete",
+    "worker": "Qiii",
+    "started_unix": 1794399753.798527,
+    "pid": 816101,
+    "exit_code": 0,
+    "finished_unix": 1794399825.1330526
+  },
+  {
+    "id": "mosei_export_seed13",
+    "dataset": "mosei",
+    "mode": "export",
+    "seed": 13,
+    "state": "running",
+    "worker": "Q",
+    "started_unix": 1794399760.4530778,
+    "pid": 278039
+  },
+  {
+    "id": "mosei_export_seed42",
+    "dataset": "mosei",
+    "mode": "export",
+    "seed": 42,
+    "state": "running",
+    "worker": "Qiii",
+    "started_unix": 1794399825.1406684,
+    "pid": 816101
+  },
+  {
+    "id": "mosei_export_seed2026",
+    "dataset": "mosei",
+    "mode": "export",
+    "seed": 2026,
+    "state": "running",
+    "worker": "A100",
+    "started_unix": 1794400257.1862023,
+    "pid": 1878853
+  },
+  {
+    "id": "sims_v2_export_seed13",
+    "dataset": "sims_v2",
+    "mode": "export",
+    "seed": 13,
+    "state": "pending"
+  },
+  {
+    "id": "sims_v2_export_seed42",
+    "dataset": "sims_v2",
+    "mode": "export",
+    "seed": 42,
+    "state": "pending"
+  },
+  {
+    "id": "sims_v2_export_seed2026",
+    "dataset": "sims_v2",
+    "mode": "export",
+    "seed": 2026,
+    "state": "pending"
+  },
+  {
+    "id": "sims_export_seed13",
+    "dataset": "sims",
+    "mode": "export",
+    "seed": 13,
+    "state": "pending"
+  },
+  {
+    "id": "sims_export_seed42",
+    "dataset": "sims",
+    "mode": "export",
+    "seed": 42,
+    "state": "pending"
+  },
+  {
+    "id": "sims_export_seed2026",
+    "dataset": "sims",
+    "mode": "export",
+    "seed": 2026,
+    "state": "pending"
+  },
+  {
+    "id": "mosi_export_seed13",
+    "dataset": "mosi",
+    "mode": "export",
+    "seed": 13,
+    "state": "pending"
+  },
+  {
+    "id": "mosi_export_seed42",
+    "dataset": "mosi",
+    "mode": "export",
+    "seed": 42,
+    "state": "pending"
+  },
+  {
+    "id": "mosi_export_seed2026",
+    "dataset": "mosi",
+    "mode": "export",
+    "seed": 2026,
+    "state": "pending"
+  }
+]

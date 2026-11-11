@@ -1,0 +1,8 @@
+{
+  "batch_size": 32,
+  "num_workers": 8,
+  "allocator_cap_mib": 32768,
+  "ordering": "descending window_duration; sample_id tie break",
+  "same_order_all_methods": true,
+  "unchanged_sample_ids_weights_windows": true
+}

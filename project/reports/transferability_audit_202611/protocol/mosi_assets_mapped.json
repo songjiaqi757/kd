@@ -1,0 +1,98 @@
+{
+  "schema": "rdid-msa-main-table-assets-v1",
+  "base_protocol": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+  "manifest": "/ai/sjq/kd/project/reports/transferability_audit_202611/protocol/mosi_train_valid_mapped.jsonl",
+  "teacher_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+  "teacher_probe_report": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+  "teacher_temperature": 1.1912176609039307,
+  "probe_seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "probe_temperatures": {
+    "2026": 1.1912176609039307,
+    "2027": 1.2058717012405396,
+    "2028": 1.180254578590393
+  },
+  "ensemble_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl",
+  "interaction_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl",
+  "teacher_features": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+  "teacher_feature_index": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+  "teacher_feature_dimension": 2048,
+  "student_empty_baseline": 0.22526227845205912,
+  "utility_normalized": [
+    1.4489312949400415,
+    1.4868758404711906,
+    0.44785806066300105,
+    1.4602598528440491,
+    0.6796448102064051,
+    0.6678612295896007,
+    0.8085689112857127
+  ],
+  "coarse_utility_normalized": [
+    1.4653556627517603,
+    1.4653556627517603,
+    0.6509832529361798,
+    1.4653556627517603,
+    0.6509832529361798,
+    0.6509832529361798,
+    0.6509832529361798
+  ],
+  "lambda_interaction": 1.0,
+  "lambda_subset": 1.0,
+  "lambda_feature": 2.0,
+  "alpha_ce": 0.5,
+  "lambda_full": 1.0,
+  "kd_temperature": 2.0,
+  "rld": {
+    "alpha": 1.0,
+    "beta": 8.0,
+    "temperature": 4.0,
+    "confidence_temperature": 1.0,
+    "warmup_epochs": 20,
+    "standardize_logits": false
+  },
+  "skd": {
+    "temperature": 4.0,
+    "tik_factor": 0.1,
+    "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+  },
+  "ea_kd": {
+    "entropy_temperature": 3.0,
+    "entropy_upper_bound": "log(7)"
+  },
+  "projector": {
+    "student_dimension": 512,
+    "teacher_dimension": 2048,
+    "normalization": "BatchNorm1d(affine=False)",
+    "distance": "log(sum(abs(delta)^4)+1e-5)"
+  },
+  "cmad_cafd": {
+    "tau": 0.2,
+    "lambda": 0.1,
+    "minimum_relation_batch": 2,
+    "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+  },
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "official_test_evaluated": false,
+  "upstream_sources": "/ai/sjq/kd/external/SOURCES.json",
+  "input_sha256": {
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "a2403723386b781a6b5b80c036f0d47cc3f9cf83efdf27dfa441cbbd870ae8be",
+    "/ai/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "0f64f372da77e42685eb0e490fdb653a1d05ae1d3dfbddcd3bc9e56e3b360c7c",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "d2d5104980364ce54dee6c01d8e6d941be223a1ee37a92008fc1de5517ccd99e",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/index.jsonl": "1c8b72baf4365807c22ed6460b16206900614300a6b2085f5269199bb18aff5d",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy": "13521c945179a8843441560fdfa6620736b3b10f427ac29f324c4741e2f985fb",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl": "dc8eec5431de858d70c0dabb9dee9ca9bbb66cb480858cccff03709c06917db8",
+    "/ai/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8"
+  }
+}

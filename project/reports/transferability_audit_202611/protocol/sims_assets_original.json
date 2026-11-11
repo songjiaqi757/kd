@@ -1,0 +1,105 @@
+{
+  "schema": "rdid-msa-main-table-assets-v1",
+  "dataset": "sims",
+  "native_label_range": [
+    -1.0,
+    1.0
+  ],
+  "sentiment_scale": 1.0,
+  "classification_classes": 5,
+  "base_protocol": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/protocol.json",
+  "manifest": "/data/sjq/kd/dataset/ch_sims/manifests/official_train_valid_windowed.jsonl",
+  "teacher_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/predictions.jsonl",
+  "teacher_probe_report": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/report.json",
+  "teacher_temperature": 1.0402129888534546,
+  "probe_seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "probe_temperatures": {
+    "2026": 1.0402129888534546,
+    "2027": 1.2975727319717407,
+    "2028": 1.1614083051681519
+  },
+  "ensemble_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/ensemble_targets.jsonl",
+  "interaction_targets": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/interaction_targets.jsonl",
+  "teacher_features": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/features.npy",
+  "teacher_feature_index": "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/teacher_feature_index.jsonl",
+  "teacher_feature_dimension": 2048,
+  "student_empty_baseline": -0.2536608964526051,
+  "utility_normalized": [
+    0.9821145552964331,
+    1.075357627959632,
+    1.021117711830618,
+    1.0021620647125387,
+    0.9528190417062242,
+    1.0152564904971326,
+    0.951172507997421
+  ],
+  "coarse_utility_normalized": [
+    1.019878082656201,
+    1.019878082656201,
+    0.9850914380078488,
+    1.019878082656201,
+    0.9850914380078488,
+    0.9850914380078488,
+    0.9850914380078488
+  ],
+  "lambda_interaction": 1.0,
+  "lambda_subset": 1.0,
+  "lambda_feature": 2.0,
+  "alpha_ce": 0.5,
+  "lambda_full": 1.0,
+  "kd_temperature": 2.0,
+  "rld": {
+    "alpha": 1.0,
+    "beta": 8.0,
+    "temperature": 4.0,
+    "confidence_temperature": 1.0,
+    "warmup_epochs": 20,
+    "standardize_logits": false
+  },
+  "skd": {
+    "temperature": 4.0,
+    "tik_factor": 0.1,
+    "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+  },
+  "ea_kd": {
+    "entropy_temperature": 3.0,
+    "entropy_upper_bound": "log(5)"
+  },
+  "projector": {
+    "student_dimension": 512,
+    "teacher_dimension": 2048,
+    "normalization": "BatchNorm1d(affine=False)",
+    "distance": "log(sum(abs(delta)^4)+1e-5)"
+  },
+  "cmad_cafd": {
+    "tau": 0.2,
+    "lambda": 0.1,
+    "minimum_relation_batch": 2,
+    "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+  },
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "official_test_evaluated": false,
+  "upstream_sources": "/data/sjq/kd/external/SOURCES.json",
+  "input_sha256": {
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/protocol.json": "852a44bd66a39e454c1270fa7d083ceac99779e1b9cab2ae3ec27542e6aca648",
+    "/data/sjq/kd/dataset/ch_sims/manifests/official_train_valid_windowed.jsonl": "d8a5afe2ec88259780635d05cd2e82f85f22159e732056f92dc2439045dc0fd8",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/predictions.jsonl": "c3d83ddd9eeda563aadc37c5f2593ad5dc3bc7c8b1d3937acfe2c40a81b179bf",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2026/report.json": "3f355d7015ca2fe93979eb3448486afa55c9479437d04c3b82af05f3653e26f9",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/base_assets/interaction_targets.jsonl": "225db139dd0ae2999345112f546409d37849d4019c045ed18b37420e178870f5",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/ensemble_targets.jsonl": "90891de30e0abb956d61ec934852fed75cf8e88352a40727f14be003381376bc",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/index.jsonl": "b311f3f4eb8dfbf46af535c589f017fddd0a28a9278dd9d67ba68a2f7080b57d",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/teacher_features/features.npy": "fd41188dc983ceecde93e7c004a725a1148758a26981c55613cdc8f2fc01129b",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/assets/teacher_feature_index.jsonl": "080780e60ea551f9ca744594e587bb3a467acada4e80628df5b9e5ae59db37fc",
+    "/data/sjq/kd/external/SOURCES.json": "0b67562912e8df3d890f4cb4aa425cd1dd88d7d07c8c4cb2add56551ea2b026c",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2027/predictions.jsonl": "2c0224558e35849e15d297192110ec0035f7b664d4e2c018ce03b273dd477f28",
+    "/data/sjq/kd/outputs/experiments/sims_native_v1/sims/probes/seed2028/predictions.jsonl": "8c8b5d3b3a5fd88d7721753585b36c2232ace329d36ca3edb6257035326ffd93"
+  }
+}

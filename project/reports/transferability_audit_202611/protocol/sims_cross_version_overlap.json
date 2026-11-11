@@ -1,0 +1,9 @@
+{
+  "scope": "Train/Validation metadata only",
+  "sims_parents": 1824,
+  "sims_v2_parents": 3369,
+  "shared_parent_ids": 1824,
+  "same_split": 1824,
+  "same_label": 1824,
+  "interpretation": "These overlapping official Train/Validation cohorts are not independent benchmark replicates. No test labels were inspected for this check."
+}
