@@ -1,0 +1,1110 @@
+#!/usr/bin/env python3
+"""Train one fixed-student main-table or mechanism-ablation experiment."""
+from __future__ import annotations
+
+import argparse
+from contextlib import contextmanager
+import fcntl
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import random
+import sys
+import time
+
+import numpy as np
+import torch
+from torch.nn import functional as F
+from torch.utils.data import DataLoader
+
+ROOT = Path("/ai/sjq/kd")
+CAMPAIGN = Path(__file__).resolve().parent
+SOURCE = CAMPAIGN / "source"
+sys.path[:0] = [str(SOURCE / "project/src"), str(SOURCE / "project/scripts")]
+
+from rdid_mosei.main_table_kd import (
+    COORDINATE_COMPATIBLE_METHODS,
+    GRADIENT_PROJECTED_METHODS,
+    EXPLICIT_FUSION_METHODS,
+    MAIN_TABLE_METHODS,
+    SUBSET_METHODS,
+    MainTableKDStudent,
+    adapted_interaction_coordinate_losses,
+    adapted_interaction_loss,
+    entropy_adaptive_weights,
+    kd_per_sample,
+    probability_kd_per_sample,
+    rld_per_sample,
+    skd_losses,
+    subset_regression_loss,
+    teacher_supervision_metadata,
+    weighted_mean,
+)
+from train_student_baseline import (
+    aggregate_windows,
+    seed_everything,
+    weighted_full_kd_loss,
+    weighted_task_loss,
+)
+from train_tav_distillation import (
+    Collator,
+    VideoDataset,
+    atomic_json,
+    atomic_save,
+    batch_inputs,
+    load_rows as load_base_rows,
+    restore_rng,
+    rng_state,
+    sha256,
+)
+from rdid_mosei.metrics import sentiment_metrics
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--method", choices=MAIN_TABLE_METHODS, required=True)
+    parser.add_argument("--mechanism", choices=MECHANISMS, required=True)
+    parser.add_argument("--loss-kind", choices=("huber", "mse"), default="huber")
+    parser.add_argument("--matrix-seed", type=int, default=20261111)
+    parser.add_argument("--assets", type=Path, default=ROOT / "outputs/experiments/main_table_v1/mosei/assets/protocol.json")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--text-model", type=Path, default=ROOT / "model/Qwen3-0.6B-Base")
+    parser.add_argument("--audio-model", type=Path, default=ROOT / "model/WavLM-Base-Plus")
+    parser.add_argument("--video-model", type=Path, default=ROOT / "model/VideoMAE-Base")
+    parser.add_argument("--seed", type=int, default=13)
+    parser.add_argument("--device", default="cuda:0")
+    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--budget-epochs", type=int)
+    parser.add_argument("--min-epochs", type=int, default=1)
+    parser.add_argument("--patience", type=int, default=7)
+    parser.add_argument("--save-every-epoch", action="store_true")
+    parser.add_argument(
+        "--retain-best-mae-and-acc2",
+        action="store_true",
+        help="Retain only validation-MAE best, validation-Acc-2 best, and resumable last.pt.",
+    )
+    parser.add_argument(
+        "--checkpoint-selection",
+        choices=(
+            "valid_mae",
+            "valid_acc2_nonzero",
+            "valid_f1_weighted_nonzero",
+            "test_mae",
+        ),
+        default="valid_mae",
+    )
+    parser.add_argument("--learning-rate", type=float, default=1e-4)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--num-workers", type=int, default=2)
+    parser.add_argument("--video-layers", type=int, default=12)
+    parser.add_argument("--video-rank", type=int, default=8)
+    parser.add_argument("--video-alpha", type=float, default=16)
+    parser.add_argument("--video-dropout", type=float, default=0.05)
+    parser.add_argument("--video-checkpointing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--limit-per-split", type=int)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--stop-after-epoch", type=int)
+    parser.add_argument("--progress-every", type=int, default=100)
+    parser.add_argument("--lambda-feature", type=float)
+    parser.add_argument("--lambda-cafd", type=float)
+    parser.add_argument("--cmad-tau", type=float)
+    parser.add_argument("--lambda-subset", type=float)
+    parser.add_argument("--lambda-interaction", type=float)
+    parser.add_argument("--coordinate-seed", type=int, default=20260922)
+    parser.add_argument("--ea-entropy-temperature", type=float)
+    parser.add_argument("--rld-temperature", type=float)
+    parser.add_argument("--rld-alpha", type=float)
+    parser.add_argument("--rld-beta", type=float)
+    parser.add_argument("--rld-warmup-epochs", type=int)
+    parser.add_argument("--skd-temperature", type=float)
+    parser.add_argument("--skd-tik-factor", type=float)
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--experiment-id", required=True)
+    parser.add_argument("--task-regression", choices=("smooth_l1","l1"), default="smooth_l1")
+    parser.add_argument("--task-ce",type=float,default=0.5)
+    parser.add_argument("--kd-kl",type=float,default=1.0)
+    parser.add_argument("--coordinate-weights",type=float,nargs=7,default=[1.0]*7)
+    parser.add_argument("--icd-warmup",action="store_true")
+    parser.add_argument("--lora-lr",type=float)
+    parser.add_argument("--lr-schedule",choices=("constant","warmup_cosine"),default="constant")
+    parser.add_argument("--lr-warmup-ratio",type=float,default=0.1)
+    parser.add_argument("--diagnostic-every",type=int,default=100)
+    args = parser.parse_args()
+    if args.method not in {"uniform_interaction","full_kd","uniform_interaction_gradient_projected"}:
+        parser.error("This campaign only supports Uniform ICD and Full KD")
+    if args.checkpoint_selection != "valid_mae" or args.save_every_epoch or not args.retain_best_mae_and_acc2:
+        parser.error("Campaign requires validation-MAE selection and only MAE-best, Acc2-best, last retention")
+    if args.budget_epochs is not None and args.budget_epochs < args.epochs:
+        parser.error("budget-epochs cannot be below initial epochs")
+    if args.seed not in {13,42,2026} or args.task_regression != "smooth_l1" or args.kd_kl != 1.0:
+        parser.error("Frozen seed13/42/2026, SmoothL1 task and full-KD KL required")
+    if args.task_ce < 0 or args.kd_kl < 0 or min(args.coordinate_weights)<0 or sum(args.coordinate_weights)<=0:
+        parser.error("Invalid loss weights")
+    if args.diagnostic_every <= 0 or not 0 < args.lr_warmup_ratio < 1 or (args.lora_lr is not None and args.lora_lr<=0):
+        parser.error("Invalid optimization arguments")
+    args.assets = args.assets.resolve()
+    assets = json.loads(args.assets.read_text())
+    args.manifest = Path(assets["manifest"])
+    args.teacher_targets = Path(assets["teacher_targets"])
+    args.teacher_probe_report = Path(assets["teacher_probe_report"])
+    args.teacher_subset = "tav"
+    args.teacher_calibration_temperature = float(assets["teacher_temperature"])
+    args.mode = "video_lora"
+    defaults = {
+        "lambda_feature": assets["lambda_feature"],
+        "lambda_cafd": assets["cmad_cafd"]["lambda"],
+        "cmad_tau": assets["cmad_cafd"]["tau"],
+        "lambda_subset": assets["lambda_subset"],
+        "lambda_interaction": assets["lambda_interaction"],
+        "ea_entropy_temperature": assets["ea_kd"]["entropy_temperature"],
+        "rld_temperature": assets["rld"]["temperature"],
+        "rld_alpha": assets["rld"]["alpha"],
+        "rld_beta": assets["rld"]["beta"],
+        "rld_warmup_epochs": assets["rld"]["warmup_epochs"],
+        "skd_temperature": assets["skd"]["temperature"],
+        "skd_tik_factor": assets["skd"]["tik_factor"],
+    }
+    for name, value in defaults.items():
+        if getattr(args, name) is None:
+            setattr(args, name, value)
+    if args.seed not in assets["seeds"]:
+        parser.error(f"seed must be one of frozen seeds {assets['seeds']}")
+    if min(args.batch_size, args.epochs, args.patience, args.video_layers, args.video_rank, args.progress_every) <= 0:
+        parser.error("counts must be positive")
+    if not 1 <= args.min_epochs <= args.epochs:
+        parser.error("min-epochs must be between 1 and epochs")
+    if args.checkpoint_selection == "test_mae" and not args.save_every_epoch:
+        parser.error("test-MAE selection requires --save-every-epoch")
+    if args.retain_best_mae_and_acc2 and args.checkpoint_selection != "valid_mae":
+        parser.error("dual best-checkpoint retention requires valid_mae as the primary policy")
+    if args.num_workers < 0 or args.learning_rate <= 0:
+        parser.error("invalid worker count or learning rate")
+    positive = (args.lambda_feature, args.lambda_cafd, args.cmad_tau, args.lambda_subset, args.lambda_interaction,
+                args.ea_entropy_temperature, args.rld_temperature, args.rld_alpha,
+                args.rld_beta, args.rld_warmup_epochs, args.skd_temperature, args.skd_tik_factor)
+    if args.lambda_interaction < 0 or any(value <= 0 for value in positive if value != args.lambda_interaction):
+        parser.error("method hyperparameters must be positive")
+    if args.limit_per_split is not None and args.limit_per_split <= 0:
+        parser.error("limit-per-split must be positive")
+    return args
+
+
+def load_rows(args: argparse.Namespace) -> tuple[list[dict], list[dict]]:
+    train, valid = load_base_rows(args)
+    assets = json.loads(args.assets.read_text())
+    ensemble = {}
+    for line in Path(assets["ensemble_targets"]).open():
+        item = json.loads(line)
+        ensemble[item["parent_sample_id"]] = item
+    feature_index = {
+        item["sample_id"]: int(item["job_index"])
+        for item in (json.loads(line) for line in Path(assets["teacher_feature_index"]).open())
+    }
+    for row in train + valid:
+        target = ensemble[row["parent_sample_id"]]
+        if target["split"] != row["split"] or target["video_id"] != row["video_id"]:
+            raise ValueError("ensemble/manifest identity mismatch")
+        row["teacher_subset_scores"] = target["subset_score_mean"]
+        row["teacher_ensemble_probabilities"] = target["tav_kd_probability_mean"]
+        row["teacher_feature_index"] = feature_index[row["sample_id"]]
+        row["weight_interaction_mean"] = row["interaction_mean"]
+        row["weight_interaction_variance"] = row["interaction_variance"]
+
+    if args.method == "shuffled_r_u_interaction":
+        # Shuffle whole seven-dimensional reliability vectors between train
+        # utterances while forbidding same-video donors. All windows of one
+        # utterance receive the same donor vector.
+        parents = {}
+        for row in train:
+            parents.setdefault(row["parent_sample_id"], row)
+        rng = np.random.default_rng(args.seed + 31000)
+        groups = {}
+        for key, row in parents.items():
+            groups.setdefault(row["video_id"], []).append(key)
+        video_order = list(groups)
+        rng.shuffle(video_order)
+        keys = []
+        for video in video_order:
+            group = groups[video]
+            rng.shuffle(group)
+            keys.extend(group)
+        maximum_group = max(map(len, groups.values()))
+        if maximum_group * 2 > len(keys):
+            raise ValueError("one source video owns too many utterances for cross-video shuffling")
+        donor_keys = keys[maximum_group:] + keys[:maximum_group]
+        donors = {key: parents[donor] for key, donor in zip(keys, donor_keys)}
+        for row in train:
+            donor = donors[row["parent_sample_id"]]
+            row["weight_interaction_mean"] = donor["interaction_mean"]
+            row["weight_interaction_variance"] = donor["interaction_variance"]
+            row["reliability_donor_parent"] = donor["parent_sample_id"]
+            if donor["video_id"] == row["video_id"]:
+                raise AssertionError("reliability donor must come from another source video")
+    return train, valid
+
+
+class MainTableCollator(Collator):
+    def __init__(self, tokenizer, audio_processor, teacher_features: Path | None):
+        super().__init__(tokenizer, audio_processor)
+        self.teacher_features_path = teacher_features
+        self._teacher_features = None
+
+    def __call__(self, items):
+        batch = super().__call__(items)
+        rows = batch["rows"]
+        batch["teacher_subset_scores"] = torch.tensor([row["teacher_subset_scores"] for row in rows], dtype=torch.float32)
+        batch["teacher_ensemble_probabilities"] = torch.tensor([row["teacher_ensemble_probabilities"] for row in rows], dtype=torch.float32)
+        batch["interaction_mean"] = torch.tensor([row["interaction_mean"] for row in rows], dtype=torch.float32)
+        batch["interaction_variance"] = torch.tensor([row["interaction_variance"] for row in rows], dtype=torch.float32)
+        batch["weight_interaction_mean"] = torch.tensor([row["weight_interaction_mean"] for row in rows], dtype=torch.float32)
+        batch["weight_interaction_variance"] = torch.tensor([row["weight_interaction_variance"] for row in rows], dtype=torch.float32)
+        if self.teacher_features_path is not None:
+            if self._teacher_features is None:
+                self._teacher_features = np.load(self.teacher_features_path, mmap_mode="r")
+            indices = [row["teacher_feature_index"] for row in rows]
+            batch["teacher_features"] = torch.from_numpy(np.asarray(self._teacher_features[indices], dtype=np.float32))
+        return batch
+
+
+def regression_kd(output, scores, weights):
+    return weighted_mean(F.smooth_l1_loss(output["regression"].float(), scores.float(), reduction="none"), weights)
+
+
+def checkpoint_selection_score(metrics: dict, policy: str) -> float:
+    """Convert every validation selection policy to a lower-is-better score."""
+    if policy in {"valid_mae", "test_mae"}:
+        return float(metrics["mae"])
+    if policy == "valid_acc2_nonzero":
+        return -float(metrics["acc2_nonzero"])
+    if policy == "valid_f1_weighted_nonzero":
+        return -float(metrics["f1_weighted_nonzero"])
+    raise ValueError(f"unsupported checkpoint selection policy: {policy}")
+
+
+def checkpoint_state(model):
+    state = {name: parameter.detach().cpu().clone() for name, parameter in model.named_parameters() if parameter.requires_grad}
+    if model.feature_loss is not None:
+        state.update({f"__buffer__.{name}": value.detach().cpu().clone() for name, value in model.feature_loss.named_buffers()})
+    return state
+
+
+def load_checkpoint_state(model, state):
+    parameters = {name for name, value in model.named_parameters() if value.requires_grad}
+    buffer_names = {f"__buffer__.{name}" for name, _ in model.feature_loss.named_buffers()} if model.feature_loss is not None else set()
+    if set(state) != parameters | buffer_names:
+        raise ValueError("main-table checkpoint keys differ from active trainable state")
+    model.load_state_dict({name: value for name, value in state.items() if not name.startswith("__buffer__.")}, strict=False)
+    if model.feature_loss is not None:
+        buffers = dict(model.feature_loss.named_buffers())
+        for name in buffer_names:
+            buffers[name.removeprefix("__buffer__.")].copy_(state[name])
+
+
+def original_compute_loss(model, outputs, batch, device, args, assets, epoch):
+    method = args.method
+    output = outputs["tav"] if method in SUBSET_METHODS else outputs
+    weights = batch["weights"].to(device)
+    sentiment = batch["sentiment"].to(device)
+    classes = batch["classes"].to(device)
+    teacher_scores = batch["teacher_scores"].to(device)
+    teacher_logits = batch["teacher_logits"].to(device)
+    task, _, _ = weighted_task_loss(output, sentiment, classes, weights, assets["alpha_ce"])
+    if method == "adapted_student":
+        return task
+
+    if method == "ensemble_full":
+        ensemble_scores = batch["teacher_subset_scores"].to(device)[:, -1]
+        regression = regression_kd(output, ensemble_scores, weights)
+        classification = weighted_mean(
+            probability_kd_per_sample(output["classification_logits"], batch["teacher_ensemble_probabilities"].to(device), assets["kd_temperature"]),
+            weights,
+        )
+        return task + regression + classification
+
+    if method in {"ea_kd", "ea_kd_full"}:
+        per_regression = F.smooth_l1_loss(output["regression"].float(), teacher_scores, reduction="none")
+        per_classification = kd_per_sample(output["classification_logits"], teacher_logits, assets["kd_temperature"], args.teacher_calibration_temperature)
+        adaptive = entropy_adaptive_weights(output["classification_logits"], teacher_logits / args.teacher_calibration_temperature, args.ea_entropy_temperature)
+        regression = weighted_mean(per_regression * (adaptive if method == "ea_kd_full" else 1.0), weights)
+        classification = weighted_mean(per_classification * adaptive, weights)
+        return task + regression + classification
+
+    if method == "rld":
+        settings = assets["rld"]
+        regression = regression_kd(output, teacher_scores, weights)
+        refined = rld_per_sample(
+            output["classification_logits"], teacher_logits / args.teacher_calibration_temperature, classes,
+            alpha=args.rld_alpha, beta=args.rld_beta, temperature=args.rld_temperature,
+            confidence_temperature=settings["confidence_temperature"], standardize_logits=settings["standardize_logits"],
+        )
+        warmup = min(epoch / args.rld_warmup_epochs, 1.0)
+        return task + regression + warmup * weighted_mean(refined, weights)
+
+    if method == "skd":
+        settings = assets["skd"]
+        regression = regression_kd(output, teacher_scores, weights)
+        instance, direction, mask = skd_losses(
+            output["classification_logits"], teacher_logits / args.teacher_calibration_temperature,
+            temperature=args.skd_temperature, tik_factor=args.skd_tik_factor,
+        )
+        selected = weights * mask.to(weights)
+        instance_loss = (instance * selected).sum() / selected.sum().clamp_min(1e-8)
+        direction_loss = weighted_mean(direction, weights)
+        return task + regression + instance_loss + direction_loss
+
+    full, _, _ = weighted_full_kd_loss(
+        output, teacher_scores, teacher_logits, weights, assets["kd_temperature"],
+        args.teacher_calibration_temperature, 1.0, 1.0,
+    )
+    loss = task + full
+    if method == "projector":
+        loss = loss + args.lambda_feature * model.feature_loss(
+            output["fused"], batch["teacher_features"].to(device)
+        )
+    elif method == "cmad_cafd":
+        loss = loss + args.lambda_cafd * model.feature_loss(
+            output["fused"], batch["teacher_features"].to(device)
+        )
+    elif method == "subset7":
+        loss = loss + args.lambda_subset * subset_regression_loss(
+            outputs, batch["teacher_subset_scores"].to(device), weights
+        )
+    elif method == "random_orthogonal":
+        from rdid_mosei.main_table_kd import random_orthogonal_loss
+        loss = loss + args.lambda_interaction * random_orthogonal_loss(
+            outputs,
+            batch["teacher_subset_scores"].to(device),
+            weights,
+            args.coordinate_seed,
+        )
+    elif method in SUBSET_METHODS:
+        utility_key = "coarse_utility_normalized" if method == "coarse_u_interaction" else "utility_normalized"
+        interaction, _ = adapted_interaction_loss(
+            outputs,
+            batch["interaction_mean"].to(device),
+            batch["interaction_variance"].to(device),
+            torch.tensor(assets[utility_key], device=device),
+            weights,
+            assets["student_empty_baseline"],
+            method,
+            batch["weight_interaction_mean"].to(device),
+            batch["weight_interaction_variance"].to(device),
+        )
+        loss = loss + args.lambda_interaction * interaction
+    return loss
+
+
+def uniform_interaction_components(outputs, batch, device, args, assets):
+    regression, ce, kd_regression, kl, coordinates = loss_terms(outputs, batch, device, args, assets)
+    return regression + args.task_ce * ce + kd_regression + args.kd_kl * kl, coordinates
+
+def _gradient_geometry(left, right) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    dot = torch.zeros((), dtype=torch.float32, device=next(
+        value.device for value in (*left, *right) if value is not None
+    ))
+    left_norm = torch.zeros_like(dot)
+    right_norm = torch.zeros_like(dot)
+    for left_value, right_value in zip(left, right):
+        if left_value is not None:
+            left_norm = left_norm + left_value.float().square().sum()
+        if right_value is not None:
+            right_norm = right_norm + right_value.float().square().sum()
+        if left_value is not None and right_value is not None:
+            dot = dot + (left_value.float() * right_value.float()).sum()
+    return dot, left_norm, right_norm
+
+
+def projected_auxiliary_backward(
+    base_loss: torch.Tensor,
+    auxiliary_loss: torch.Tensor,
+    parameters: list[torch.nn.Parameter],
+) -> dict[str, float | bool]:
+    """Backpropagate base + PCGrad-projected auxiliary gradients."""
+    base_gradients = torch.autograd.grad(
+        base_loss, parameters, retain_graph=True, allow_unused=True
+    )
+    auxiliary_gradients = torch.autograd.grad(
+        auxiliary_loss, parameters, allow_unused=True
+    )
+    dot, base_norm, auxiliary_norm = _gradient_geometry(
+        base_gradients, auxiliary_gradients
+    )
+    conflict = bool(dot.detach() < 0)
+    coefficient = dot / base_norm.clamp_min(1e-12) if conflict else dot.new_zeros(())
+    for parameter, base_gradient, auxiliary_gradient in zip(
+        parameters, base_gradients, auxiliary_gradients
+    ):
+        if base_gradient is None and auxiliary_gradient is None:
+            parameter.grad = None
+            continue
+        base_value = torch.zeros_like(parameter) if base_gradient is None else base_gradient
+        auxiliary_value = (
+            torch.zeros_like(parameter) if auxiliary_gradient is None else auxiliary_gradient
+        )
+        if conflict and base_gradient is not None:
+            auxiliary_value = auxiliary_value - coefficient.to(auxiliary_value) * base_value
+        parameter.grad = (base_value + auxiliary_value).detach()
+    cosine = dot / (base_norm.sqrt() * auxiliary_norm.sqrt()).clamp_min(1e-12)
+    return {
+        "base_auxiliary_gradient_cosine": float(cosine.detach()),
+        "auxiliary_gradient_projected": conflict,
+    }
+
+
+def coordinate_compatibility_weights(
+    base_loss: torch.Tensor,
+    coordinate_losses: torch.Tensor,
+    parameters: list[torch.nn.Parameter],
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Map per-coordinate task compatibility to detached mean-one weights."""
+    if coordinate_losses.ndim != 1:
+        raise ValueError("coordinate losses must be a vector")
+    base_gradients = torch.autograd.grad(
+        base_loss, parameters, retain_graph=True, allow_unused=True
+    )
+    cosines = []
+    for coordinate_loss in coordinate_losses:
+        coordinate_gradients = torch.autograd.grad(
+            coordinate_loss, parameters, retain_graph=True, allow_unused=True
+        )
+        dot, base_norm, coordinate_norm = _gradient_geometry(
+            base_gradients, coordinate_gradients
+        )
+        cosine = dot / (base_norm.sqrt() * coordinate_norm.sqrt()).clamp_min(1e-12)
+        cosines.append(cosine.clamp(-1.0, 1.0))
+    cosine_tensor = torch.stack(cosines).detach()
+    weights = ((cosine_tensor + 1.0) / 2.0).clamp(0.0, 1.0)
+    if float(weights.sum()) <= 1e-8:
+        weights = torch.ones_like(weights)
+    weights = (weights / weights.mean().clamp_min(1e-8)).detach()
+    return weights, cosine_tensor
+
+
+@torch.inference_mode()
+def evaluate(model, loader, device, timing=None):
+    model.eval()
+    records = []
+    for batch in loader:
+        if timing is not None:
+            if device.type == "cuda":
+                torch.cuda.synchronize(device)
+            model_started = time.perf_counter()
+        with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=device.type == "cuda"):
+            raw = model(**batch_inputs(batch, device))
+            output = raw["tav"] if model.training and model.comparison_method in SUBSET_METHODS else raw
+        if timing is not None:
+            if device.type == "cuda":
+                torch.cuda.synchronize(device)
+            timing["model_only_seconds"] = timing.get("model_only_seconds", 0.0) + time.perf_counter() - model_started
+            timing["model_batches"] = timing.get("model_batches", 0) + 1
+            timing["model_windows"] = timing.get("model_windows", 0) + len(batch["rows"])
+        for row, prediction, logits in zip(batch["rows"], output["regression"].float().cpu().tolist(), output["classification_logits"].float().cpu().tolist()):
+            records.append({"parent_sample_id": row["parent_sample_id"], "split": row["split"], "target_sentiment": row["sentiment"], "class_7_index": row["class_7_index"], "prediction": prediction, "classification_logits": logits, "aggregation_weight": row["aggregation_weight"]})
+    utterances = aggregate_windows(records)
+    videos = {row["parent_sample_id"]: row["video_id"] for row in loader.dataset.rows}
+    for row in utterances:
+        row["video_id"] = videos[row["parent_sample_id"]]
+    metrics = sentiment_metrics([row["target_sentiment"] for row in utterances], [row["prediction"] for row in utterances])
+    return metrics, utterances
+
+
+def build_model(args, assets, device):
+    from transformers import AutoModel
+    dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
+    text = AutoModel.from_pretrained(args.text_model, local_files_only=True, dtype=dtype)
+    audio = AutoModel.from_pretrained(args.audio_model, local_files_only=True, dtype=dtype)
+    with torch.random.fork_rng(devices=[]):
+        torch.random.default_generator.manual_seed(args.seed + 100000)
+        video = AutoModel.from_pretrained(args.video_model, local_files_only=True, dtype=dtype, attn_implementation="sdpa")
+    text.config.use_cache = False
+    return MainTableKDStudent(
+        text, audio, video, comparison_method=args.method,
+        teacher_feature_dim=assets["teacher_feature_dimension"],
+        cmad_tau=args.cmad_tau,
+        video_layers=args.video_layers, video_rank=args.video_rank, video_alpha=args.video_alpha,
+        video_dropout=args.video_dropout, video_seed=args.seed + 100000,
+        video_checkpointing=args.video_checkpointing,
+    ).to(device)
+
+
+def run_protocol(args, assets):
+    excluded = {"resume", "stop_after_epoch", "dry_run", "progress_every", "_diagnostic_step", "budget_epochs"}
+    config = {key: str(value.resolve()) if isinstance(value, Path) else value for key, value in vars(args).items() if key not in excluded}
+    config.update(
+        schema="rdid-msa-fixed-student-main-table-v1",
+        checkpoint_selection=args.checkpoint_selection,
+        epoch_checkpoint_pattern="checkpoints/epoch_{epoch:03d}.pt" if args.save_every_epoch else None,
+        official_test_evaluated=False,
+        common_student="Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+        fusion_architecture=(
+            "shared-order explicit interaction fusion"
+            if args.method in EXPLICIT_FUSION_METHODS
+            else "subset transformer fusion"
+        ),
+        frozen_assets=assets,
+        upstream_sources=json.loads(Path(assets["upstream_sources"]).read_text()),
+        **teacher_supervision_metadata(args.method),
+    )
+    paths = [
+        args.assets,
+        Path(__file__),
+        SOURCE / "project/src/rdid_mosei/main_table_kd.py",
+        SOURCE / "project/src/rdid_mosei/student.py",
+        SOURCE / "project/src/rdid_mosei/tav_distillation.py",
+    ]
+    config["input_sha256"] = {str(path.resolve()): sha256(path) for path in paths}
+    campaign = CAMPAIGN
+    config["campaign_fingerprint_file"] = str(campaign/"source_fingerprints.json")
+    config["campaign_fingerprint_sha256"] = sha256(campaign/"source_fingerprints.json")
+    config.update(
+        schema="icd-confirmatory-mosi-v1", probe_count=3, base_tav_probe_count=3,
+        additional_target_probe_count=3 if args.method in SUBSET_METHODS else 0,
+        teacher_subsets=["t","a","v","ta","tv","av","tav"] if args.method in SUBSET_METHODS else ["tav"],
+        teacher_regression_aggregation="arithmetic mean of three TAV scores",
+        teacher_probability_aggregation=assets["teacher_probability_rule"],
+        checkpoint_retention=["best_valid_mae.pt","best_valid_acc2_nonzero.pt","last.pt"],
+        selection_tie_threshold=1e-5,
+        gradient_diagnostic_protocol="fixed first 8 train windows before each epoch; seed130013; all trainable parameters, fusion/encoder_lora/other groups; diagnostic RNG restored",
+    )
+    config.update(schema="mosi-first-20261111-v1", mechanism=args.mechanism, loss_kind=args.loss_kind,
+                  transform=transform_metadata(args), experiment_scope="exploratory MOSI mechanisms; official-test never selects methods",
+                  gradient_diagnostic_protocol="fixed first 8 train windows; seed130013; base/weighted auxiliary gradients; all/fusion/LoRA; seven-coordinate fusion.final_norm diagnostics; RNG restored")
+    for path in (CAMPAIGN/"mechanisms.py", CAMPAIGN/"assets/normalization.json", CAMPAIGN/"plan.json"):
+        config["input_sha256"][str(path)] = sha256(path)
+    return json.loads(json.dumps(config))
+
+
+@contextmanager
+def run_lock(output: Path, resume: bool):
+    output.mkdir(parents=True, exist_ok=True)
+    with (output / ".lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        if (output / "run_config.json").exists() and not resume:
+            raise FileExistsError(f"existing run: use --resume or a new output: {output}")
+        yield
+
+
+def atomic_alias(target: Path, alias: Path) -> None:
+    temporary = alias.with_name(f".{alias.name}.tmp")
+    if temporary.exists() or temporary.is_symlink():
+        temporary.unlink()
+    os.symlink(os.path.relpath(target, alias.parent), temporary)
+    os.replace(temporary, alias)
+
+
+def checkpoint_inventory(output: Path, history: list[dict], best_epoch: int) -> dict:
+    files = sorted((output / "checkpoints").glob("epoch_*.pt"))
+    expected = [row["epoch"] for row in history]
+    actual = [int(path.stem.rsplit("_", 1)[1]) for path in files]
+    if actual != expected:
+        raise ValueError(f"epoch checkpoint coverage differs: {actual} != {expected}")
+    return {
+        "schema": "rdid-msa-epoch-checkpoint-inventory-v1",
+        "coverage_complete": True,
+        "history_epoch_count": len(history),
+        "checkpoint_epoch_count": len(files),
+        "epochs": [
+            {"epoch": epoch, "path": str(path.resolve()), "bytes": path.stat().st_size,
+             "sha256": sha256(path), "valid_mae": history[index]["valid_metrics"]["mae"],
+             "is_best_valid_epoch": epoch == best_epoch,
+             "is_selected_epoch": epoch == best_epoch}
+            for index, (path, epoch) in enumerate(zip(files, actual))
+        ],
+    }
+
+
+
+def icd_scale(epoch, args):
+    if not args.icd_warmup:
+        return args.lambda_interaction
+    return args.lambda_interaction * max(0.0, min(1.0, (epoch - 2) / 6.0))
+
+
+def loss_terms(outputs, batch, device, args, assets):
+    output = outputs["tav"] if args.method in SUBSET_METHODS else outputs
+    weights = batch["weights"].to(device)
+    _, regression, ce = weighted_task_loss(
+        output, batch["sentiment"].to(device), batch["classes"].to(device),
+        weights, assets["alpha_ce"])
+    if args.task_regression == "l1":
+        regression = weighted_mean(F.l1_loss(output["regression"].float(),
+            batch["sentiment"].to(device), reduction="none"), weights)
+    kd_regression = regression_kd(output, batch["teacher_subset_scores"].to(device)[:, -1], weights)
+    kl = weighted_mean(probability_kd_per_sample(
+        output["classification_logits"], batch["teacher_ensemble_probabilities"].to(device),
+        assets["kd_temperature"]), weights)
+    coordinates = regression.new_zeros(7)
+    if args.method in SUBSET_METHODS:
+        coordinates, _ = adapted_interaction_coordinate_losses(
+            outputs, batch["interaction_mean"].to(device),
+            batch["interaction_variance"].to(device),
+            torch.tensor(assets["utility_normalized"], device=device), weights,
+            assets["student_empty_baseline"], "uniform_interaction")
+    return regression, ce, kd_regression, kl, coordinates
+
+
+def legacy_compute_loss(model, outputs, batch, device, args, assets, epoch):
+    regression, ce, kd_regression, kl, coordinates = loss_terms(outputs, batch, device, args, assets)
+    interaction = coordinates.mean()
+    scale = args.lambda_interaction if args.method in SUBSET_METHODS else 0.0
+    loss = regression + args.task_ce * ce + kd_regression + args.kd_kl * kl + scale * interaction
+    step = getattr(args, "_diagnostic_step", 0) + 1
+    args._diagnostic_step = step
+    if step == 1 or step % args.diagnostic_every == 0:
+        row = {"epoch":epoch,"step":step,"task_ce_weight":args.task_ce,"effective_lambda_icd":scale,
+               "raw_losses":dict(zip(["task_reg","task_ce","full_kd_reg","full_kd_kl"], [float(t.detach()) for t in (regression,ce,kd_regression,kl)])),
+               "coordinate_losses":coordinates.detach().float().cpu().tolist(),"total_loss":float(loss.detach())}
+        with (args.output/"loss_diagnostics.jsonl").open("a") as h:
+            h.write(json.dumps(row)+"\n")
+    return loss
+
+def make_optimizer(model, args):
+    if args.lora_lr is None:
+        groups = [p for p in model.parameters() if p.requires_grad]
+    else:
+        lora, new = [], []
+        for name, p in model.named_parameters():
+            if p.requires_grad:
+                (lora if ".lora_A." in name or ".lora_B." in name else new).append(p)
+        if not lora or not new:
+            raise ValueError("Expected both LoRA and newly initialized parameter groups")
+        groups = [{"params":lora,"lr":args.lora_lr,"group_name":"encoder_lora"},
+                  {"params":new,"lr":args.learning_rate,"group_name":"pools_fusion"}]
+    optimizer = torch.optim.AdamW(groups, lr=args.learning_rate, weight_decay=args.weight_decay)
+    for group in optimizer.param_groups:
+        group["reference_lr"] = group["lr"]
+    return optimizer
+
+
+def set_schedule(optimizer, args, step, total):
+    if args.lr_schedule == "constant":
+        return
+    warmup = max(1, round(total * args.lr_warmup_ratio))
+    if step < warmup:
+        factor = (step+1)/warmup
+    else:
+        progress = min(1.0, (step-warmup)/max(1,total-warmup-1))
+        factor = 0.5*(1+math.cos(math.pi*progress))
+    for group in optimizer.param_groups:
+        group["lr"] = group["reference_lr"]*factor
+
+
+@torch.inference_mode()
+def postrun_diagnostics(model, loader, device, args, assets, predictions, epoch):
+    from rdid_mosei.tav_distillation import TAVDistillationStudent
+    from rdid_mosei.interaction import mobius_transform
+    from rdid_mosei.student import SUBSETS
+    model.eval()
+    grouped = {}
+    for batch in loader:
+        with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=device.type=="cuda"):
+            outputs = TAVDistillationStudent.forward(model, **batch_inputs(batch,device), all_subsets=True)
+        coordinates = mobius_transform(torch.stack(
+            [outputs[s]["regression"].float() for s in SUBSETS],-1),
+            assets["student_empty_baseline"]).cpu().numpy()
+        targets = batch["interaction_mean"].numpy()
+        for row, student, teacher in zip(batch["rows"],coordinates,targets):
+            key = row["parent_sample_id"]
+            entry = grouped.setdefault(key,{"student":np.zeros(7),"teacher":np.zeros(7),"weight":0.0})
+            weight = row["aggregation_weight"]
+            entry["student"] += weight*student
+            entry["teacher"] += weight*teacher
+            entry["weight"] += weight
+    records = []
+    for item in predictions:
+        entry=grouped[item["parent_sample_id"]]
+        student=entry["student"]/entry["weight"]
+        teacher=entry["teacher"]/entry["weight"]
+        records.append(dict(item, student_interactions=student.tolist(),
+            teacher_interactions=teacher.tolist(), interaction_strength=float(np.abs(teacher[3:]).sum())))
+    target=np.array([r["target_sentiment"] for r in records])
+    prediction=np.array([r["prediction"] for r in records])
+    coordinate_error=np.array([np.array(r["student_interactions"])-r["teacher_interactions"] for r in records])
+    design=np.column_stack([prediction,np.ones(len(prediction))])
+    slope,intercept=np.linalg.lstsq(design,target,rcond=None)[0]
+    clusters=sorted({r["video_id"] for r in records})
+    crossfit=np.empty_like(prediction)
+    for video in clusters:
+        held=np.array([r["video_id"]==video for r in records])
+        coeff=np.linalg.lstsq(design[~held],target[~held],rcond=None)[0]
+        crossfit[held]=design[held]@coeff
+    def group_stats(indices):
+        return {"count":int(np.sum(indices)), "mae":float(np.abs(prediction[indices]-target[indices]).mean())} if np.any(indices) else {"count":0,"mae":None}
+    strength=np.array([r["interaction_strength"] for r in records])
+    cuts=np.quantile(strength,[1/3,2/3])
+    label_cuts=[-float("inf"),-1,0,1,float("inf")]
+    report={"checkpoint_selection":"valid_mae","selected_epoch":epoch,
+        "official_test_evaluated":False,"scope":"validation only; diagnostics do not select configurations",
+        "prediction_mean":float(prediction.mean()),"prediction_std":float(prediction.std()),
+        "target_mean":float(target.mean()),"target_std":float(target.std()),
+        "prediction_target_bias":float((prediction-target).mean()),
+        "calibration":{"fit":"validation labels; in-sample diagnostic, not held-out performance",
+            "slope":float(slope),"intercept":float(intercept),
+            "in_sample_mae":float(np.abs(design@np.array([slope,intercept])-target).mean()),
+            "leave_one_source_video_out_mae":float(np.abs(crossfit-target).mean())},
+        "coordinate_order":list(SUBSETS),
+        "coordinate_mae":np.abs(coordinate_error).mean(0).tolist(),
+        "coordinate_smooth_l1":np.where(np.abs(coordinate_error)<1,0.5*coordinate_error**2,np.abs(coordinate_error)-0.5).mean(0).tolist(),
+        "label_strata":{str((lo,hi)):group_stats((target>=lo)&(target<hi)) for lo,hi in zip(label_cuts[:-1],label_cuts[1:])},
+        "source_video":{v:group_stats(np.array([r["video_id"]==v for r in records])) for v in clusters},
+        "interaction_strength_cutpoints":cuts.tolist(),
+        "interaction_strength_strata":{str(i):group_stats(np.digitize(strength,cuts)==i) for i in range(3)}}
+    atomic_json(report,args.output/"validation_diagnostics.json")
+    (args.output/"validation_interactions.jsonl").write_text("".join(json.dumps(r)+"\n" for r in records))
+
+
+def initialization_record(model, seed):
+    h=hashlib.sha256()
+    for name,p in model.named_parameters():
+        if p.requires_grad:
+            v=p.detach().cpu().contiguous()
+            h.update(name.encode()); h.update(str((tuple(v.shape),str(v.dtype))).encode())
+            h.update(v.view(torch.uint8).numpy().tobytes())
+    return {"seed":seed,"initialization_sha256":h.hexdigest(),
+            "total_parameters":sum(p.numel() for p in model.parameters()),
+            "trainable_parameters":sum(p.numel() for p in model.parameters() if p.requires_grad)}
+
+def legacy_fixed_gradient_diagnostics(model, dataset, collator, device, args, assets, epoch, generator):
+    from rdid_mosei.tav_distillation import TAVDistillationStudent
+    import copy
+    saved_rng=rng_state(generator)
+    was_training=model.training
+    try:
+        seed_everything(130013, True)
+        model.train()
+        batch=collator([dataset[i] for i in range(min(8,len(dataset)))])
+        with torch.autocast(device_type=device.type,dtype=torch.bfloat16,enabled=device.type=="cuda"):
+            outputs=TAVDistillationStudent.forward(model,**batch_inputs(batch,device),all_subsets=True)
+            diagnostic_args=copy.copy(args); diagnostic_args.method="uniform_interaction"
+            reg,ce,kreg,kl,coords=loss_terms(outputs,batch,device,diagnostic_args,assets)
+            terms=[reg,ce,kreg,kl,coords[:3].sum()/7,coords[3:6].sum()/7,coords[6]/7]
+        named=[(n,p) for n,p in model.named_parameters() if p.requires_grad]
+        parameters=[p for _,p in named]
+        gradients=[torch.autograd.grad(t,parameters,retain_graph=True,allow_unused=True) for t in terms]
+        scopes={"all":list(range(len(named))),"fusion":[i for i,(n,p) in enumerate(named) if n.startswith("fusion.")],
+                "encoder_lora":[i for i,(n,p) in enumerate(named) if "lora_" in n],
+                "pools_other":[i for i,(n,p) in enumerate(named) if not n.startswith("fusion.") and "lora_" not in n]}
+        geometry={}
+        for scope,indices in scopes.items():
+            gs=[tuple(g[i] for i in indices) for g in gradients]
+            norms=[]; cosines=[]
+            for g in gs:
+                norms.append(float(_gradient_geometry(g,g)[1].sqrt()))
+                cosines.append([float((lambda z:z[0]/(z[1]*z[2]).sqrt().clamp_min(1e-12))(_gradient_geometry(g,j))) for j in gs])
+            geometry[scope]={"gradient_norms":norms,"gradient_cosines":cosines}
+        row={"epoch":epoch,"position":"before_training_epoch","diagnostic_seed":130013,
+             "sample_ids":[r["sample_id"] for r in batch["rows"]],
+             "terms":["task_reg","task_ce","full_kd_reg","full_kd_kl","icd_order1","icd_order2","icd_order3"],
+             "raw_losses":[float(t.detach()) for t in terms],"loss_weights":[1,args.task_ce,1,args.kd_kl,args.lambda_interaction,args.lambda_interaction,args.lambda_interaction],
+             "parameter_groups":geometry}
+        with (args.output/"diagnostics/gradient_geometry.jsonl").open("a") as h:h.write(json.dumps(row)+"\n")
+    finally:
+        model.zero_grad(set_to_none=True)
+        model.train(was_training)
+        restore_rng(saved_rng,generator)
+
+def retention_inventory(output, history, retained):
+    result={"policy":"validation MAE best + validation Acc2 nonzero best + resumable last; user override 2026-11-08",
+            "history_epoch_count":len(history),"checkpoints":[]}
+    for filename in ("best_valid_mae.pt","best_valid_acc2_nonzero.pt","last.pt"):
+        p=output/filename
+        if not p.is_file():raise FileNotFoundError(p)
+        checkpoint=torch.load(p,map_location="cpu",weights_only=False)
+        expected=history[-1]["epoch"] if filename=="last.pt" else retained[filename.removeprefix("best_").removesuffix(".pt")]["epoch"]
+        if checkpoint["epoch"]!=expected:raise ValueError("retained checkpoint epoch mismatch")
+        result["checkpoints"].append({"path":str(p),"bytes":p.stat().st_size,"epoch":expected,"sha256":sha256(p)})
+    if len(list(output.glob("*.pt")))!=3 or list((output/"checkpoints").glob("*.pt")):
+        raise ValueError("retention must contain only the three authorized checkpoints")
+    return result
+
+def validate_budget_amendment(previous, current, output):
+    """Permit only the user-authorized 40/8 -> 30/7 continuation and source hashes."""
+    audit_path = CAMPAIGN / "maintenance/30epochs_patience7/amendment.json"
+    audit = json.loads(audit_path.read_text())
+    record = audit["runs"][output.name]
+    canonical = lambda value: hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    if canonical(previous) != record["previous_config_canonical_sha256"]:
+        raise ValueError("Previous run config differs from the recorded amendment source")
+    if (previous["epochs"], previous["patience"], current["epochs"], current["patience"]) != (40, 8, 30, 7):
+        raise ValueError("Only the authorized 40/8 to 30/7 amendment is supported")
+    if previous["lr_schedule"] != "constant" or current["lr_schedule"] != "constant":
+        raise ValueError("Budget amendment requires an unchanged constant learning rate schedule")
+    allowed = {"epochs", "patience", "input_sha256", "campaign_fingerprint_sha256"}
+    changed = {key for key in set(previous) | set(current) if previous.get(key) != current.get(key)}
+    if changed != allowed:
+        raise ValueError(f"Unexpected amended config fields: {changed}")
+    old_inputs, new_inputs = previous["input_sha256"], current["input_sha256"]
+    if set(old_inputs) != set(new_inputs):
+        raise ValueError("Amendment cannot change input inventory")
+    changed_inputs = {key for key in old_inputs if old_inputs[key] != new_inputs[key]}
+    expected = {str(CAMPAIGN/"train_mosi.py"), str(CAMPAIGN/"plan.json")}
+    if changed_inputs != expected:
+        raise ValueError(f"Amendment changes scientific input assets: {changed_inputs}")
+    for path in expected:
+        if old_inputs[path] != audit["previous_input_hashes"][path] or new_inputs[path] != audit["new_input_hashes"][path]:
+            raise ValueError(f"Amended source hash mismatch: {path}")
+    if previous["campaign_fingerprint_sha256"] != audit["previous_fingerprints_sha256"] or current["campaign_fingerprint_sha256"] != audit["new_fingerprints_sha256"]:
+        raise ValueError("Amendment fingerprint chain differs")
+    return dict(schema="explicit-user-training-budget-amendment-v1", source=str(audit_path),
+                source_sha256=sha256(audit_path), previous_config_sha256=canonical(previous),
+                new_config_sha256=canonical(current), resumed_after_epoch=record["completed_epoch"],
+                previous_epochs=40, previous_patience=8, epochs=30, patience=7,
+                optimizer_and_rng_restored=True, stale_counter_policy="preserve saved count; apply patience7 on resume")
+
+
+def train(args, output):
+    seed_everything(args.seed, True)
+    device = torch.device(args.device)
+    if device.type == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA unavailable")
+    assets = json.loads(args.assets.read_text())
+    train_rows, valid_rows = load_rows(args)
+    config = run_protocol(args, assets)
+    config_path = output / "run_config.json"
+    if config_path.exists() and json.loads(config_path.read_text()) != config:
+        if not args.resume:
+            raise ValueError("resume protocol/input fingerprint differs")
+        previous_config = json.loads(config_path.read_text())
+        amendment = validate_budget_amendment(previous_config, config, output)
+        original = output/"run_config.original_40epochs_patience8.json"
+        if original.exists() and json.loads(original.read_text()) != previous_config:
+            raise ValueError("Original protocol audit already exists with different contents")
+        atomic_json(previous_config, original)
+        atomic_json(amendment, output/"protocol_amendment.json")
+    if args.resume and not config_path.exists():
+        raise FileNotFoundError("--resume requires an existing configured run")
+    atomic_json(config, config_path)
+    atomic_json(transform_metadata(args), output/"transform_metadata.json")
+
+    model = build_model(args, assets, device)
+    initialization=initialization_record(model,args.seed)
+    if initialization["total_parameters"] != 819309176 or initialization["trainable_parameters"] != 42650120:
+        raise ValueError("student parameter count differs from frozen protocol")
+    init_path=output/"initialization.json"
+    if init_path.exists() and json.loads(init_path.read_text()) != initialization:
+        raise ValueError("initialization fingerprint differs")
+    atomic_json(initialization,init_path)
+    (output/"diagnostics").mkdir(exist_ok=True)
+    from transformers import AutoFeatureExtractor, AutoImageProcessor, AutoTokenizer
+    tokenizer = AutoTokenizer.from_pretrained(args.text_model, local_files_only=True)
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    audio_processor = AutoFeatureExtractor.from_pretrained(args.audio_model, local_files_only=True)
+    video_processor = AutoImageProcessor.from_pretrained(args.video_model, local_files_only=True, use_fast=False)
+    feature_path = Path(assets["teacher_features"]) if args.method in {"projector", "cmad_cafd"} else None
+    collator = MainTableCollator(tokenizer, audio_processor, feature_path)
+    generator = torch.Generator().manual_seed(args.seed)
+    loader_args = dict(batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collator, pin_memory=device.type == "cuda")
+    train_loader = DataLoader(VideoDataset(train_rows, video_processor, mode="video_lora"), shuffle=True, generator=generator, **loader_args)
+    valid_loader = DataLoader(VideoDataset(valid_rows, video_processor, mode="video_lora"), shuffle=False, **loader_args)
+    parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
+    optimizer = make_optimizer(model, args)
+    best_score, best_mae, best_epoch, stale = math.inf, math.inf, 0, 0
+    retained_best = {
+        "valid_mae": {"score": math.inf, "epoch": 0},
+        "valid_acc2_nonzero": {"score": math.inf, "epoch": 0},
+    }
+    history, start_epoch, elapsed_before, global_step = [], 1, 0.0, 0
+    last = output / "last.pt"
+    if args.resume:
+        saved = torch.load(last, map_location="cpu", weights_only=False)
+        load_checkpoint_state(model, saved["model"])
+        optimizer.load_state_dict(saved["optimizer"])
+        best_mae, best_epoch, stale = saved["best_mae"], saved["best_epoch"], saved["stale"]
+        best_score = saved.get("best_selection_score")
+        if best_score is None:
+            if args.checkpoint_selection != "valid_mae":
+                raise ValueError("legacy checkpoints may only resume under valid_mae selection")
+            best_score = best_mae
+        history, start_epoch, elapsed_before = saved["history"], saved["epoch"] + 1, saved["elapsed_seconds"]
+        global_step = saved.get("global_step", len(history) * len(train_loader))
+        if args.retain_best_mae_and_acc2:
+            retained_best = saved.get("retained_best_checkpoints")
+            if retained_best is None:
+                raise ValueError("resume checkpoint lacks dual best-checkpoint state")
+        restore_rng(saved["rng"], generator)
+    args._diagnostic_step = global_step
+    started = time.time()
+    if device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
+    atomic_json({"status": "training", "start_epoch": start_epoch}, output / "status.json")
+    effective_epochs=args.budget_epochs or args.epochs
+    for epoch in range(start_epoch, effective_epochs + 1):
+        if stale >= args.patience and epoch > args.min_epochs:
+            break
+        fixed_gradient_diagnostics(model, train_loader.dataset, collator, device, args, assets, epoch, generator)
+        model.train()
+        order_hash=hashlib.sha256()
+        total_loss = total_weight = 0.0
+        for step, batch in enumerate(train_loader, 1):
+            order_hash.update(json.dumps([r["sample_id"] for r in batch["rows"]]).encode())
+            optimizer.zero_grad(set_to_none=True)
+            gradient_diagnostics = {}
+            with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=device.type == "cuda"):
+                outputs = model(**batch_inputs(batch, device))
+                if args.method in GRADIENT_PROJECTED_METHODS | COORDINATE_COMPATIBLE_METHODS:
+                    base_loss, coordinate_losses = uniform_interaction_components(
+                        outputs, batch, device, args, assets
+                    )
+                    if args.method in COORDINATE_COMPATIBLE_METHODS:
+                        compatibility_parameters = [
+                            parameter
+                            for parameter in model.fusion.parameters()
+                            if parameter.requires_grad
+                        ]
+                        coordinate_weights, coordinate_cosines = coordinate_compatibility_weights(
+                            base_loss, coordinate_losses, compatibility_parameters
+                        )
+                        interaction_loss = (coordinate_weights * coordinate_losses).mean()
+                        loss = base_loss + args.lambda_interaction * interaction_loss
+                        gradient_diagnostics = {
+                            "coordinate_gradient_cosines": coordinate_cosines.cpu().tolist(),
+                            "coordinate_compatibility_weights": coordinate_weights.cpu().tolist(),
+                        }
+                    else:
+                        interaction_loss = coordinate_losses.mean()
+                        loss = base_loss + args.lambda_interaction * interaction_loss
+                else:
+                    loss = compute_loss(model, outputs, batch, device, args, assets, epoch)
+            if not torch.isfinite(loss):
+                raise FloatingPointError("non-finite loss")
+            if args.method in GRADIENT_PROJECTED_METHODS:
+                gradient_diagnostics = projected_auxiliary_backward(
+                    base_loss,
+                    args.lambda_interaction * interaction_loss,
+                    parameters,
+                )
+            else:
+                loss.backward()
+            norm = torch.nn.utils.clip_grad_norm_(parameters, 1.0, error_if_nonfinite=True)
+            set_schedule(optimizer, args, global_step, effective_epochs*len(train_loader))
+            optimizer.step()
+            global_step += 1
+            weight = float(batch["weights"].sum())
+            total_loss += float(loss.detach()) * weight
+            total_weight += weight
+            if step == 1 or step % args.progress_every == 0:
+                progress = {"status": "training", "method": args.method, "epoch": epoch, "step": step, "steps": len(train_loader), "loss": float(loss.detach()), "elapsed_seconds": elapsed_before + time.time() - started, **gradient_diagnostics}
+                atomic_json(progress, output / "status.json")
+                print(json.dumps(progress), flush=True)
+        metrics, _ = evaluate(model, valid_loader, device)
+        row = {"dataloader_order_sha256":order_hash.hexdigest(), "learning_rates": [g["lr"] for g in optimizer.param_groups], "epoch": epoch, "train_loss": total_loss / total_weight, "valid_metrics": metrics, "gradient_norm_last": float(norm), "elapsed_seconds": elapsed_before + time.time() - started, **gradient_diagnostics}
+        history.append(row)
+        selection_score = checkpoint_selection_score(metrics, args.checkpoint_selection)
+        improved = selection_score < best_score - 1e-5
+        if improved:
+            best_score, best_mae, best_epoch, stale = (
+                selection_score, metrics["mae"], epoch, 0
+            )
+        else:
+            stale += 1
+        retained_improvements = []
+        if args.retain_best_mae_and_acc2:
+            for policy in retained_best:
+                score = checkpoint_selection_score(metrics, policy)
+                if score < float(retained_best[policy]["score"]) - 1e-5:
+                    retained_best[policy] = {"score": score, "epoch": epoch}
+                    retained_improvements.append(policy)
+        payload = {"model": checkpoint_state(model), "protocol": config,
+                   "optimizer": optimizer.state_dict(), "epoch": epoch,
+                   "global_step": global_step, "best_mae": best_mae,
+                   "best_selection_score": best_score,
+                   "best_epoch": best_epoch, "stale": stale, "history": history,
+                   "rng": rng_state(generator), "elapsed_seconds": row["elapsed_seconds"],
+                   "seed": args.seed, "method_config": {"method": args.method},
+                   "run_config": config,
+                   "retained_best_checkpoints": retained_best}
+        for policy in retained_improvements:
+            atomic_save(
+                {
+                    "model": payload["model"],
+                    "epoch": epoch,
+                    "protocol": config,
+                    "valid_metrics": metrics,
+                    "checkpoint_selection": policy,
+                },
+                output / f"best_{policy}.pt",
+            )
+        if args.save_every_epoch:
+            epoch_path = output / "checkpoints" / f"epoch_{epoch:03d}.pt"
+            epoch_path.parent.mkdir(parents=True, exist_ok=True)
+            atomic_save(payload, epoch_path)
+            atomic_alias(epoch_path, last)
+            if improved:
+                atomic_alias(epoch_path, output / "best.pt")
+        else:
+            if improved and not args.retain_best_mae_and_acc2:
+                atomic_save({"model": payload["model"], "epoch": epoch, "protocol": config}, output / "best.pt")
+            atomic_save(payload, last)
+            if args.retain_best_mae_and_acc2:
+                pass  # Exactly three retained checkpoint files; no best.pt alias.
+        atomic_json(history, output / "history.json")
+        print(json.dumps(row), flush=True)
+        if args.stop_after_epoch is not None and epoch >= args.stop_after_epoch:
+            if args.save_every_epoch:
+                atomic_json(checkpoint_inventory(output, history, best_epoch), output / "checkpoint_inventory.json")
+            atomic_json({"status": "paused", "epoch": epoch}, output / "status.json")
+            return
+
+    if args.save_every_epoch:
+        atomic_json(checkpoint_inventory(output, history, best_epoch), output / "checkpoint_inventory.json")
+    atomic_json(retention_inventory(output,history,retained_best),output/"checkpoint_inventory.json")
+    load_checkpoint_state(model, torch.load(output / "best_valid_mae.pt", map_location="cpu", weights_only=False)["model"])
+    metrics, predictions = evaluate(model, valid_loader, device)
+    temporary = output / "predictions.jsonl.tmp"
+    temporary.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in predictions))
+    os.replace(temporary, output / "predictions.jsonl")
+    report = {
+        "method": args.method, "seed": args.seed, "best_epoch": best_epoch, "epochs_run": len(history),
+        "effective_max_epochs":effective_epochs,"patience":args.patience,"protocol_amendment":str(output/"protocol_amendment.json") if (output/"protocol_amendment.json").exists() else None,"stop_reason":"early_stopping" if stale >= args.patience else "max_epochs",
+        "initialization_sha256":initialization["initialization_sha256"],"task_ce":args.task_ce,"lambda_interaction":args.lambda_interaction,
+        "checkpoint_selection": args.checkpoint_selection,
+        "retained_best_checkpoints": retained_best if args.retain_best_mae_and_acc2 else None,
+        "valid_metrics": metrics, "train_windows": len(train_rows), "valid_windows": len(valid_rows),
+        "total_parameters": sum(parameter.numel() for parameter in model.parameters()),
+        "trainable_parameters": sum(parameter.numel() for parameter in parameters),
+        "projector_parameters": 0 if args.method != "projector" else sum(parameter.numel() for parameter in model.feature_loss.parameters()),
+        "training_only_feature_parameters": 0 if model.feature_loss is None else sum(parameter.numel() for parameter in model.feature_loss.parameters()),
+        "deployed_parameters": sum(parameter.numel() for parameter in model.parameters()) - (0 if model.feature_loss is None else sum(parameter.numel() for parameter in model.feature_loss.parameters())),
+        "elapsed_seconds": elapsed_before + time.time() - started,
+        "peak_gpu_memory_gib": torch.cuda.max_memory_allocated(device) / 1024**3 if device.type == "cuda" else None,
+        "official_test_evaluated": False,
+        **teacher_supervision_metadata(args.method),
+    }
+    report.update(probe_count=3,base_tav_probe_count=3,additional_target_probe_count=3 if args.method in SUBSET_METHODS else 0,
+                  teacher_probability_aggregation=assets["teacher_probability_rule"])
+    atomic_json(report, output / "report.json")
+    postrun_diagnostics(model, valid_loader, device, args, assets, predictions, best_epoch)
+    atomic_json({"status": "complete", "best_epoch": best_epoch}, output / "status.json")
+    print(json.dumps(report), flush=True)
+
+
+def main():
+    args = parse_args()
+    visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES")
+    if visible_devices not in {"0", "1"} or args.device != "cuda:0":
+        raise RuntimeError(
+            "This campaign must expose exactly one physical GPU via "
+            "CUDA_VISIBLE_DEVICES=0 or 1 and use logical cuda:0; got "
+            f"{visible_devices!r} and {args.device!r}")
+    if args.dry_run:
+        train_rows, valid_rows = load_rows(args)
+        assets = json.loads(args.assets.read_text())
+        print(json.dumps({"method": args.method, "seed": args.seed, "train_windows": len(train_rows), "valid_windows": len(valid_rows), "protocol": run_protocol(args, assets)}, ensure_ascii=False, indent=2))
+        return
+    output = args.output.resolve()
+    with run_lock(output, args.resume):
+        try:
+            train(args, output)
+        except Exception as error:
+            atomic_json({"status": "failed", "error": repr(error)}, output / "status.json")
+            raise
+
+
+from mechanisms import MECHANISMS, compute_loss, fixed_gradient_diagnostics, transform_metadata
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,249 @@
+{
+  "schema": "mosi-first-20261111-v1",
+  "dataset": "mosi",
+  "jobs": [
+    {
+      "id": "A_full_no_ce_seed13",
+      "name": "A_full_no_ce",
+      "mechanism": "none",
+      "task_ce": 0,
+      "lambda_interaction": 0,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "B_N2_icd030_seed13",
+      "name": "B_N2_icd030",
+      "mechanism": "icd",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "C_full_ce_seed13",
+      "name": "C_full_ce",
+      "mechanism": "none",
+      "task_ce": 0.5,
+      "lambda_interaction": 0,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "D_icd030_ce_seed13",
+      "name": "D_icd030_ce",
+      "mechanism": "icd",
+      "task_ce": 0.5,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "subset7_seed13",
+      "name": "subset7",
+      "mechanism": "subset",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "matched0_huber_seed13",
+      "name": "matched0_huber",
+      "mechanism": "matched",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "matched1_huber_seed13",
+      "name": "matched1_huber",
+      "mechanism": "matched",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261112,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "matched2_huber_seed13",
+      "name": "matched2_huber",
+      "mechanism": "matched",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261113,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "diagonal_mse_seed13",
+      "name": "diagonal_mse",
+      "mechanism": "diagonal",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "mse",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "weighted_mse_seed13",
+      "name": "weighted_mse",
+      "mechanism": "weighted",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "mse",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "weighted_huber_seed13",
+      "name": "weighted_huber",
+      "mechanism": "weighted",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "normalized_icd_seed13",
+      "name": "normalized_icd",
+      "mechanism": "normalized_icd",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "normalized_subset_seed13",
+      "name": "normalized_subset",
+      "mechanism": "normalized_subset",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "orthogonal_huber_seed13",
+      "name": "orthogonal_huber",
+      "mechanism": "orthogonal",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "icd_mse_seed13",
+      "name": "icd_mse",
+      "mechanism": "icd",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "mse",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "matched0_mse_seed13",
+      "name": "matched0_mse",
+      "mechanism": "matched",
+      "task_ce": 0,
+      "lambda_interaction": 0.3,
+      "loss_kind": "mse",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "F7_icd025_seed13",
+      "name": "F7_icd025",
+      "mechanism": "icd",
+      "task_ce": 0,
+      "lambda_interaction": 0.25,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    },
+    {
+      "id": "E4_icd050_ce_seed13",
+      "name": "E4_icd050_ce",
+      "mechanism": "icd",
+      "task_ce": 0.5,
+      "lambda_interaction": 0.5,
+      "loss_kind": "huber",
+      "matrix_seed": 20261111,
+      "seed": 13,
+      "stage": "phase2"
+    }
+  ],
+  "epochs": 30,
+  "patience": 7,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "student_seeds": [
+    13
+  ],
+  "teacher_seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "test_checkpoints": [
+    "valid_mae",
+    "valid_acc2_nonzero",
+    "last"
+  ],
+  "official_test_selects_nothing": true,
+  "phase3_gate": "disabled by user: seed13 only",
+  "max_processes_per_gpu": 2,
+  "minimum_free_mib": 38000,
+  "skipped_missing_weights": [
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/teacher_probe.pt",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/teacher_probe.pt",
+    "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/teacher_probe.pt"
+  ],
+  "deferred": [
+    "all additional student seeds per user instruction",
+    "checkpoint diagnostics requiring absent checkpoints",
+    "optional normalized multiseed pending validation evidence",
+    "adaptive residual methods pending controls",
+    "MOSEI and other datasets"
+  ],
+  "protocol_amendment": {
+    "requested_by": "user",
+    "previous_epochs": 40,
+    "previous_patience": 8,
+    "application": "saved-epoch resume, preserve optimizer, RNG and stale counter"
+  }
+}
