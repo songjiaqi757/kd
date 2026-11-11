@@ -7,7 +7,7 @@
 - [文档导航与版本地位](docs/README.md)
 - [ICD 提交版本](ICD/ICD.pdf)
 - [ICD 实验结果总汇](docs/paper/icd_experiment_summary.md)
-- [实验汇总报告（2026-11-07 快照）](docs/reports/实验汇总报告_20261107.md)
+- [实验汇总报告（2026-11-11 全量快照）](docs/reports/实验汇总报告_20261111.md)
 - [主表方案、实现与复现命令](docs/experiments/main_table_v1.md)
 - [代码与复现命令](project/README.md)
 
