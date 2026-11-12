@@ -81,3 +81,6 @@ runs/
 !/outputs/experiments/official_test_a_series_v1/*.json
 !/outputs/experiments/official_test_a_series_v1/*.csv
 !/outputs/experiments/official_test_a_series_v1/*.md
+
+# Full Phase A archive is versioned as verified 40 MiB parts.
+/project/reports/phaseA_20261112_results.tar.gz

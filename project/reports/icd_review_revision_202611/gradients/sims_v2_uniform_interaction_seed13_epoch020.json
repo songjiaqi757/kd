@@ -1,0 +1,3933 @@
+{
+  "status": "complete",
+  "case": "sims_v2_uniform_interaction_seed13_epoch020",
+  "dataset": "sims_v2",
+  "method": "uniform_interaction",
+  "seed": 13,
+  "epoch": 20,
+  "stage": "late",
+  "checkpoint_sha256": "b006b60b2b9f6b91f55be66cbbb2525dd7a4e69b55199c2c3ac7e9a1ce9a2bba",
+  "device": "NVIDIA A800-SXM4-80GB",
+  "worker": "Qiii",
+  "teacher_target": "original FullKD single probe2026; subset/ICD ensemble3; N2 objective uses exact historical ensemble3 TAV score and q",
+  "inference_batching": "descending window duration; sample_id tie break; common across methods",
+  "audit_script_sha256": "3007c54d7147ee360877cd920f127f3d771d7f473580b820246cc7bfe1bc3241",
+  "parameter_counts": {
+    "fusion": 39172608,
+    "text_lora": 2293760,
+    "audio_lora": 589824,
+    "video_lora": 589824,
+    "prediction_head": 3078,
+    "other": 0
+  },
+  "trainable_parameters": 42649094,
+  "samples": [
+    {
+      "sample_id": "video_xjzw[00072]",
+      "losses": {
+        "task": 0.04225251078605652,
+        "kd": 0.48341190814971924,
+        "base": 0.5256644487380981,
+        "icd": 0.1736423671245575,
+        "coordinates": [
+          0.3456289768218994,
+          0.1178789883852005,
+          0.46551042795181274,
+          0.2053501009941101,
+          0.01023203693330288,
+          0.0012289718724787235,
+          0.0696670264005661
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 0.27538445005359363,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 0.7847188195558464,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 0.2469759993547286,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 0.0588628199624626,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 1.105220932505054,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 1.4062700688612348,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 0.27538445005359363,
+              "cosine": -0.8295646660504432,
+              "norm_ratio": 0.0804301774094796
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 0.7847188195558464,
+              "cosine": -0.9348346743099148,
+              "norm_ratio": 0.07694674939795079
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 0.2469759993547286,
+              "cosine": -0.8232726174149051,
+              "norm_ratio": 0.08723640588863553
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 0.0588628199624626,
+              "cosine": -0.9662731006948218,
+              "norm_ratio": 0.1373144667257035
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 1.105220932505054,
+              "cosine": -0.9013015919620375,
+              "norm_ratio": 0.10643732902241744
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 1.4062700688612348,
+              "cosine": -0.8971911252658092,
+              "norm_ratio": 0.09237631020985895
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 3.423894599306659,
+              "cosine": -0.8295646660504432,
+              "norm_ratio": 12.433144277537536
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 10.198206236074537,
+              "cosine": -0.9348346743099148,
+              "norm_ratio": 12.99600058253574
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 2.831111585110623,
+              "cosine": -0.8232726174149051,
+              "norm_ratio": 11.463104076944465
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 0.4286716568622426,
+              "cosine": -0.9662731006948218,
+              "norm_ratio": 7.282553862278613
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 10.383771771201403,
+              "cosine": -0.9013015919620375,
+              "norm_ratio": 9.395200059834117
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 15.223276028956928,
+              "cosine": -0.8971911252658092,
+              "norm_ratio": 10.825286241983651
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 3.423894599306659,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 10.198206236074537,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 2.831111585110623,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 0.4286716568622426,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 10.383771771201403,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 15.223276028956928,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 0.9829433692972191,
+              "cosine": -0.13359673478732592,
+              "norm_ratio": 3.569349573318046
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 0.4291282334725011,
+              "cosine": -0.8832023493911967,
+              "norm_ratio": 0.5468560492985108
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 0.18090623226872227,
+              "cosine": -0.6193223529518859,
+              "norm_ratio": 0.7324850703767732
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 1.370332269630008,
+              "cosine": 0.0352447028051957,
+              "norm_ratio": 23.280098889313873
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 2.586175025285907,
+              "cosine": 0.07330833061717236,
+              "norm_ratio": 2.3399620376571915
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 3.122365699831484,
+              "cosine": -0.03390388638028004,
+              "norm_ratio": 2.220317255532505
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 0.9829433692972191,
+              "cosine": 0.13071395850495465,
+              "norm_ratio": 0.2870834194184207
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 0.4291282334725011,
+              "cosine": 0.9697384244922113,
+              "norm_ratio": 0.04207879538212593
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 0.18090623226872227,
+              "cosine": 0.9519138000215064,
+              "norm_ratio": 0.06389936490675395
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 1.370332269630008,
+              "cosine": -0.2909273243470491,
+              "norm_ratio": 3.1966943643077768
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 2.586175025285907,
+              "cosine": -0.027287931794098587,
+              "norm_ratio": 0.2490593093020848
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 3.122365699831484,
+              "cosine": 0.08978386778722253,
+              "norm_ratio": 0.20510471556137336
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 0.9111825281103074,
+              "cosine": -0.17011458158137246,
+              "norm_ratio": 3.308765356696715
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 0.5772751266418245,
+              "cosine": -0.8266932634799852,
+              "norm_ratio": 0.7356458291245828
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 0.8337974637906124,
+              "cosine": -0.14367470849736083,
+              "norm_ratio": 3.3760262777317047
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 1.2300755994563772,
+              "cosine": 0.04391929338408754,
+              "norm_ratio": 20.897327043468334
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 1.557904767717947,
+              "cosine": -0.017129890486831452,
+              "norm_ratio": 1.409586736822706
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 2.408084638805862,
+              "cosine": -0.13969878723708337,
+              "norm_ratio": 1.7123913052888011
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 0.9111825281103074,
+              "cosine": 0.20054762803965154,
+              "norm_ratio": 0.2661245846454568
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 0.5772751266418245,
+              "cosine": 0.9339716926026042,
+              "norm_ratio": 0.056605555259296995
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 0.8337974637906124,
+              "cosine": 0.6732827158406834,
+              "norm_ratio": 0.2945123986549024
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 1.2300755994563772,
+              "cosine": -0.2992074887674712,
+              "norm_ratio": 2.869505318966476
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 1.557904767717947,
+              "cosine": 0.006394106674771012,
+              "norm_ratio": 0.15003264729283408
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 2.408084638805862,
+              "cosine": 0.20892904464556553,
+              "norm_ratio": 0.15818439041802357
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 3.194738386792146,
+              "cosine": -0.8017889213540419,
+              "norm_ratio": 11.601012279997674
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 9.418462670054293,
+              "cosine": -0.9239989767022897,
+              "norm_ratio": 12.002340756126094
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 2.610825567447636,
+              "cosine": -0.7872287071399807,
+              "norm_ratio": 10.571171183713844
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 0.37159198595668697,
+              "cosine": -0.9551044697175058,
+              "norm_ratio": 6.312847162158641
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 9.38791123110287,
+              "cosine": -0.8780846377725873,
+              "norm_ratio": 8.494148957009498
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 13.928429935135632,
+              "cosine": -0.8767895096891046,
+              "norm_ratio": 9.904519937919574
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 3.194738386792146,
+              "cosine": 0.998838619205489,
+              "norm_ratio": 0.9330714758097642
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 9.418462670054293,
+              "cosine": 0.9994581649966005,
+              "norm_ratio": 0.9235411063504457
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 2.610825567447636,
+              "cosine": 0.9974592413959593,
+              "norm_ratio": 0.9221909801007087
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 0.37159198595668697,
+              "cosine": 0.9991547543565532,
+              "norm_ratio": 0.8668452415926844
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 9.38791123110287,
+              "cosine": 0.9987007128081632,
+              "norm_ratio": 0.9040945273026441
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 13.928429935135632,
+              "cosine": 0.9989434654383064,
+              "norm_ratio": 0.9149430062649915
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 3.460187393550535,
+              "cosine": -0.7781931883699899,
+              "norm_ratio": 12.564933832963824
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 9.861414000021409,
+              "cosine": -0.9238028844714372,
+              "norm_ratio": 12.566812155216315
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 2.7952118156589973,
+              "cosine": -0.7811000307021947,
+              "norm_ratio": 11.31774675661609
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 1.2931731556697925,
+              "cosine": -0.2428042711757707,
+              "norm_ratio": 21.96926950653166
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 9.684099831855658,
+              "cosine": -0.8316313373016819,
+              "norm_ratio": 8.762139357880262
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 14.576957101418516,
+              "cosine": -0.8463301915602083,
+              "norm_ratio": 10.365688230300314
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 3.460187393550535,
+              "cosine": 0.9592013253529628,
+              "norm_ratio": 1.0105998573236528
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 9.861414000021409,
+              "cosine": 0.9993750897810433,
+              "norm_ratio": 0.9669753456385517
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 2.7952118156589973,
+              "cosine": 0.995792011504918,
+              "norm_ratio": 0.9873195498049496
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 1.2931731556697925,
+              "cosine": -0.01462483244519897,
+              "norm_ratio": 3.016698526642654
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 9.684099831855658,
+              "cosine": 0.9608607080908854,
+              "norm_ratio": 0.932618709774975
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 14.576957101418516,
+              "cosine": 0.9750108910458493,
+              "norm_ratio": 0.9575440315009057
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.27538445005359363,
+              "aux_norm": 3.4925507395935766,
+              "cosine": -0.777668997484724,
+              "norm_ratio": 12.68245443384286
+            },
+            "text_lora": {
+              "base_norm": 0.7847188195558464,
+              "aux_norm": 9.953642866075972,
+              "cosine": -0.9213779060729219,
+              "norm_ratio": 12.68434325521818
+            },
+            "audio_lora": {
+              "base_norm": 0.2469759993547286,
+              "aux_norm": 3.249836369259489,
+              "cosine": -0.6608010003374162,
+              "norm_ratio": 13.158510858343723
+            },
+            "video_lora": {
+              "base_norm": 0.0588628199624626,
+              "aux_norm": 1.155248632409577,
+              "cosine": -0.26601406322713256,
+              "norm_ratio": 19.626117694434118
+            },
+            "prediction_head": {
+              "base_norm": 1.105220932505054,
+              "aux_norm": 9.524115319561062,
+              "cosine": -0.8683062224404426,
+              "norm_ratio": 8.617385935655458
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 1.4062700688612348,
+              "aux_norm": 14.624558982204022,
+              "cosine": -0.8573897044281054,
+              "norm_ratio": 10.39953797356055
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 3.423894599306659,
+              "aux_norm": 3.4925507395935766,
+              "cosine": 0.965886237303146,
+              "norm_ratio": 1.0200520601016223
+            },
+            "text_lora": {
+              "base_norm": 10.198206236074537,
+              "aux_norm": 9.953642866075972,
+              "cosine": 0.9991251061811811,
+              "norm_ratio": 0.9760189817368606
+            },
+            "audio_lora": {
+              "base_norm": 2.831111585110623,
+              "aux_norm": 3.249836369259489,
+              "cosine": 0.9647347068684345,
+              "norm_ratio": 1.147901194128491
+            },
+            "video_lora": {
+              "base_norm": 0.4286716568622426,
+              "aux_norm": 1.155248632409577,
+              "cosine": 0.009379878169450613,
+              "norm_ratio": 2.694949885107114
+            },
+            "prediction_head": {
+              "base_norm": 10.383771771201403,
+              "aux_norm": 9.524115319561062,
+              "cosine": 0.9854556839168608,
+              "norm_ratio": 0.9172115421465126
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 15.223276028956928,
+              "aux_norm": 14.624558982204022,
+              "cosine": 0.9850681912914044,
+              "norm_ratio": 0.9606709458848373
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "aqgy5_0031[00006]",
+      "losses": {
+        "task": 0.14636224508285522,
+        "kd": 0.21363534033298492,
+        "base": 0.35999757051467896,
+        "icd": 0.04438210278749466,
+        "coordinates": [
+          0.0412355437874794,
+          0.038303520530462265,
+          0.023200836032629013,
+          0.0013410000829026103,
+          0.07900875806808472,
+          0.03417268022894859,
+          0.0934123769402504
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 0.9576163556931631,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 3.1664231626852657,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 1.2611962331481232,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.3201345564665389,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 3.943976687360688,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 5.309549784405119,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 0.9576163556931631,
+              "cosine": -0.9902157613395706,
+              "norm_ratio": 0.4217230236713401
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 3.1664231626852657,
+              "cosine": -0.9950965310185798,
+              "norm_ratio": 0.43556436663072534
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 1.2611962331481232,
+              "cosine": -0.9984610476441672,
+              "norm_ratio": 0.49183424232569073
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.3201345564665389,
+              "cosine": -0.9992515814344459,
+              "norm_ratio": 0.4424700499761856
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 3.943976687360688,
+              "cosine": -0.9665048530513852,
+              "norm_ratio": 0.42273534588796874
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 5.309549784405119,
+              "cosine": -0.9784900208228421,
+              "norm_ratio": 0.43045431402718226
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 2.2707234415530952,
+              "cosine": -0.9902157613395706,
+              "norm_ratio": 2.3712245807554635
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 7.269702035496817,
+              "cosine": -0.9950965310185798,
+              "norm_ratio": 2.295871922984479
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 2.564270895788838,
+              "cosine": -0.9984610476441672,
+              "norm_ratio": 2.033205323955065
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.7235168944966309,
+              "cosine": -0.9992515814344459,
+              "norm_ratio": 2.260039973448647
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 9.32965914897947,
+              "cosine": -0.9665048530513852,
+              "norm_ratio": 2.365546221122033
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 12.334757978682571,
+              "cosine": -0.9784900208228421,
+              "norm_ratio": 2.3231269089728586
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 2.2707234415530952,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 7.269702035496817,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 2.564270895788838,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.7235168944966309,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 9.32965914897947,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 12.334757978682571,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 0.11619998205774074,
+              "cosine": -0.028557484276148085,
+              "norm_ratio": 0.12134293798024189
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 0.10996428272211277,
+              "cosine": 0.5776644013375276,
+              "norm_ratio": 0.034728233426911344
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 0.5089072550750869,
+              "cosine": -0.9235639221052624,
+              "norm_ratio": 0.4035115564885433
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.025876376683190812,
+              "cosine": 0.6306911821993814,
+              "norm_ratio": 0.08082968914321333
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 0.8997022373164747,
+              "cosine": -0.2136400477685472,
+              "norm_ratio": 0.22812057692931145
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 1.0462862305676148,
+              "cosine": -0.20658947115526177,
+              "norm_ratio": 0.1970574291704924
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 0.11619998205774074,
+              "cosine": 0.02003004316077463,
+              "norm_ratio": 0.05117311070619151
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 0.10996428272211277,
+              "cosine": -0.4956779789303015,
+              "norm_ratio": 0.015126380996796623
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 0.5089072550750869,
+              "cosine": 0.9051289879595515,
+              "norm_ratio": 0.19846080065520283
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.025876376683190812,
+              "cosine": -0.6015527772955478,
+              "norm_ratio": 0.03576471659475715
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 0.8997022373164747,
+              "cosine": 0.04755554807681272,
+              "norm_ratio": 0.09643463099237545
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 1.0462862305676148,
+              "cosine": 0.09128711649071304,
+              "norm_ratio": 0.08482422049754436
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 0.2582621978505919,
+              "cosine": 0.16312003298172434,
+              "norm_ratio": 0.2696927598564781
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 0.26516451766337773,
+              "cosine": 0.36076786731673255,
+              "norm_ratio": 0.08374260294334968
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 0.15598813688594101,
+              "cosine": -0.9784930610188733,
+              "norm_ratio": 0.12368268536338131
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.11032114179184241,
+              "cosine": 0.7288737310575961,
+              "norm_ratio": 0.3446086639615033
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 1.8444319490441918,
+              "cosine": 0.2647828398731947,
+              "norm_ratio": 0.46765792377907967
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 1.8908844100305626,
+              "cosine": 0.209430435687673,
+              "norm_ratio": 0.35612895383038906
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 0.2582621978505919,
+              "cosine": -0.09738000927138886,
+              "norm_ratio": 0.11373564614894256
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 0.26516451766337773,
+              "cosine": -0.26862475678563275,
+              "norm_ratio": 0.03647529381102842
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 0.15598813688594101,
+              "cosine": 0.96833457444981,
+              "norm_ratio": 0.06083137984450544
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.11032114179184241,
+              "cosine": -0.7025742397189021,
+              "norm_ratio": 0.15247901276527293
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 1.8444319490441918,
+              "cosine": -0.058940949304175934,
+              "norm_ratio": 0.19769553416599855
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 1.8908844100305626,
+              "cosine": -0.05393365847587603,
+              "norm_ratio": 0.15329724452627816
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 1.3284766018588747,
+              "cosine": -0.9710698088700402,
+              "norm_ratio": 1.3872743442203088
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 4.126643943686741,
+              "cosine": -0.9845322306401879,
+              "norm_ratio": 1.3032509338351244
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 1.2862739641551446,
+              "cosine": -0.9955657952050673,
+              "norm_ratio": 1.019884083339215
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.40409719418085016,
+              "cosine": -0.9975810492167995,
+              "norm_ratio": 1.262272959973589
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 5.612882546027023,
+              "cosine": -0.9041771022982291,
+              "norm_ratio": 1.423153073905
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 7.21916103493723,
+              "cosine": -0.935544848175255,
+              "norm_ratio": 1.3596559648316893
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 1.3284766018588747,
+              "cosine": 0.99487499305814,
+              "norm_ratio": 0.5850455311062641
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 4.126643943686741,
+              "cosine": 0.9969138353615786,
+              "norm_ratio": 0.5676496675567972
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 1.2862739641551446,
+              "cosine": 0.9986265711395674,
+              "norm_ratio": 0.5016139153891745
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.40409719418085016,
+              "cosine": 0.9994916454305968,
+              "norm_ratio": 0.5585179796831017
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 5.612882546027023,
+              "cosine": 0.9835173876916745,
+              "norm_ratio": 0.6016171069487561
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 7.21916103493723,
+              "cosine": 0.9882154123298886,
+              "norm_ratio": 0.5852697756545915
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 1.3351161527481932,
+              "cosine": -0.96874285024571,
+              "norm_ratio": 1.3942077584731516
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 4.08051172971104,
+              "cosine": -0.9797882441365062,
+              "norm_ratio": 1.2886817459516646
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 1.7922190901209725,
+              "cosine": -0.9983816306178053,
+              "norm_ratio": 1.4210469735128701
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.39042600339469136,
+              "cosine": -0.9924672291975439,
+              "norm_ratio": 1.2195684455436147
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 5.620667052296203,
+              "cosine": -0.9370988432058264,
+              "norm_ratio": 1.425126844767827
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 7.306811271787948,
+              "cosine": -0.955054401879468,
+              "norm_ratio": 1.3761640004297657
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 1.3351161527481932,
+              "cosine": 0.9916739012968795,
+              "norm_ratio": 0.5879695115293391
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 4.08051172971104,
+              "cosine": 0.9946169193654865,
+              "norm_ratio": 0.561303848464014
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 1.7922190901209725,
+              "cosine": 0.9948533178018603,
+              "norm_ratio": 0.6989195615269184
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.39042600339469136,
+              "cosine": 0.9963760042465721,
+              "norm_ratio": 0.5396225110490621
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 5.620667052296203,
+              "cosine": 0.9897622482757356,
+              "norm_ratio": 0.6024514896571568
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 7.306811271787948,
+              "cosine": 0.9904435518788285,
+              "norm_ratio": 0.5923757307938977
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.9576163556931631,
+              "aux_norm": 1.3414365215559538,
+              "cosine": -0.9306982261082488,
+              "norm_ratio": 1.4008078637973616
+            },
+            "text_lora": {
+              "base_norm": 3.1664231626852657,
+              "aux_norm": 4.09474353738232,
+              "cosine": -0.9716454258405801,
+              "norm_ratio": 1.2931763466225399
+            },
+            "audio_lora": {
+              "base_norm": 1.2611962331481232,
+              "aux_norm": 1.4567688895225663,
+              "cosine": -0.9978742237960386,
+              "norm_ratio": 1.1550691726110427
+            },
+            "video_lora": {
+              "base_norm": 0.3201345564665389,
+              "aux_norm": 0.3394385737275932,
+              "cosine": -0.9524449588171006,
+              "norm_ratio": 1.0602996985833737
+            },
+            "prediction_head": {
+              "base_norm": 3.943976687360688,
+              "aux_norm": 6.060476743965176,
+              "cosine": -0.7569442053635219,
+              "norm_ratio": 1.5366411174252788
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.309549784405119,
+              "aux_norm": 7.585060915065626,
+              "cosine": -0.8398437230101716,
+              "norm_ratio": 1.4285695064662542
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.2707234415530952,
+              "aux_norm": 1.3414365215559538,
+              "cosine": 0.966917058676752,
+              "norm_ratio": 0.5907529279032141
+            },
+            "text_lora": {
+              "base_norm": 7.269702035496817,
+              "aux_norm": 4.09474353738232,
+              "cosine": 0.9900945833611082,
+              "norm_ratio": 0.563261536358482
+            },
+            "audio_lora": {
+              "base_norm": 2.564270895788838,
+              "aux_norm": 1.4567688895225663,
+              "cosine": 0.9996693936049752,
+              "norm_ratio": 0.5681025713449146
+            },
+            "video_lora": {
+              "base_norm": 0.7235168944966309,
+              "aux_norm": 0.3394385737275932,
+              "cosine": 0.96327362310443,
+              "norm_ratio": 0.46915086062191985
+            },
+            "prediction_head": {
+              "base_norm": 9.32965914897947,
+              "aux_norm": 6.060476743965176,
+              "cosine": 0.8929706497472245,
+              "norm_ratio": 0.64959251428045
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 12.334757978682571,
+              "aux_norm": 7.585060915065626,
+              "cosine": 0.9285962033396243,
+              "norm_ratio": 0.6149339069460816
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "video_0009[0032]",
+      "losses": {
+        "task": 0.004628495313227177,
+        "kd": 0.002025372814387083,
+        "base": 0.00665386812761426,
+        "icd": 0.015948709100484848,
+        "coordinates": [
+          0.0035928066354244947,
+          0.0015103374607861042,
+          0.07768616080284119,
+          5.329557825461961e-05,
+          0.0148847084492445,
+          0.012907431460916996,
+          0.0010062207002192736
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.0351605170347866,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.048215574150168125,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.010995953038667447,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.008966309431981423,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 0.1353408677373318,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 0.148591586964863,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.0351605170347866,
+              "cosine": 0.9736753619771166,
+              "norm_ratio": 0.29185659216110726
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.048215574150168125,
+              "cosine": 0.9832004582688544,
+              "norm_ratio": 0.2871084360468281
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.010995953038667447,
+              "cosine": 0.9984138795644102,
+              "norm_ratio": 0.2673292053691235
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.008966309431981423,
+              "cosine": 0.99821511084507,
+              "norm_ratio": 0.3309937914151712
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 0.1353408677373318,
+              "cosine": 0.955135737737264,
+              "norm_ratio": 0.3220803237767738
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 0.148591586964863,
+              "cosine": 0.9590138329328453,
+              "norm_ratio": 0.3155696393971943
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.12047189605838232,
+              "cosine": 0.9736753619771166,
+              "norm_ratio": 3.4263402878629914
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.1679350659773161,
+              "cosine": 0.9832004582688544,
+              "norm_ratio": 3.483004587983954
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.04113262904995519,
+              "cosine": 0.9984138795644102,
+              "norm_ratio": 3.7407061402783035
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.027089056243761463,
+              "cosine": 0.99821511084507,
+              "norm_ratio": 3.0212047051531634
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 0.420208431705171,
+              "cosine": 0.955135737737264,
+              "norm_ratio": 3.1048155574169014
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 0.47086781620914103,
+              "cosine": 0.9590138329328453,
+              "norm_ratio": 3.1688726517234502
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.12047189605838232,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.1679350659773161,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.04113262904995519,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.027089056243761463,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 0.420208431705171,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 0.47086781620914103,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.2613210386297039,
+              "cosine": -0.05676252395157819,
+              "norm_ratio": 7.432229690227875
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.013540049457849746,
+              "cosine": -0.06624797133253062,
+              "norm_ratio": 0.2808231509528241
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.06788073594575335,
+              "cosine": -0.8419876187969109,
+              "norm_ratio": 6.173247167121362
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.36769607326281606,
+              "cosine": -0.28841269311129614,
+              "norm_ratio": 41.008630814290406
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 1.4266208277380723,
+              "cosine": 0.03207989213306142,
+              "norm_ratio": 10.54094636445544
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 1.4978408463222392,
+              "cosine": 0.01819618914661401,
+              "norm_ratio": 10.080253377174236
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.2613210386297039,
+              "cosine": -0.0663862239222259,
+              "norm_ratio": 2.16914522954851
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.013540049457849746,
+              "cosine": -0.14330542615383385,
+              "norm_ratio": 0.08062669567580764
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.06788073594575335,
+              "cosine": -0.8707934624725288,
+              "norm_ratio": 1.6502892597337464
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.36769607326281606,
+              "cosine": -0.3440289840280254,
+              "norm_ratio": 13.573602193967
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 1.4266208277380723,
+              "cosine": 0.002079228369600979,
+              "norm_ratio": 3.395031417977415
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 1.4978408463222392,
+              "cosine": -0.009963959659392414,
+              "norm_ratio": 3.1810219232672234
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.24420315609702528,
+              "cosine": -0.07876776277138572,
+              "norm_ratio": 6.945380122124459
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.010793580380032426,
+              "cosine": -0.04331390733055502,
+              "norm_ratio": 0.22386087006691363
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.01016586993404209,
+              "cosine": -0.6473397624647785,
+              "norm_ratio": 0.9245101264341202
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.35399865598170754,
+              "cosine": -0.31374405238370257,
+              "norm_ratio": 39.480976946774746
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 1.2595773458096766,
+              "cosine": 0.025049785742707952,
+              "norm_ratio": 9.306703635551175
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 1.3310541560171356,
+              "cosine": 0.012656386897172592,
+              "norm_ratio": 8.95780294971805
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.24420315609702528,
+              "cosine": -0.08034899763838257,
+              "norm_ratio": 2.0270549737067403
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.010793580380032426,
+              "cosine": 0.02382759920556809,
+              "norm_ratio": 0.06427234429699377
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.01016586993404209,
+              "cosine": -0.6889448285615355,
+              "norm_ratio": 0.24714855745534126
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.35399865598170754,
+              "cosine": -0.3688871514570553,
+              "norm_ratio": 13.067958248387944
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 1.2595773458096766,
+              "cosine": 0.0016237083413194115,
+              "norm_ratio": 2.9975061202328
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 1.3310541560171356,
+              "cosine": -0.00843519445916062,
+              "norm_ratio": 2.826810646633648
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.1550907998714116,
+              "cosine": 0.9840745501412896,
+              "norm_ratio": 4.4109362703048465
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.21575154670495245,
+              "cosine": 0.9898772492936504,
+              "norm_ratio": 4.474727315970376
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.052158816193566306,
+              "cosine": 0.9990411635050264,
+              "norm_ratio": 4.743455706854056
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.03602946301325557,
+              "cosine": 0.9989127428725144,
+              "norm_ratio": 4.018315817290904
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 0.55152527631191,
+              "cosine": 0.9740612413100225,
+              "norm_ratio": 4.075083051649297
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 0.6154678552394105,
+              "cosine": 0.9760926386404128,
+              "norm_ratio": 4.142010108452158
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.1550907998714116,
+              "cosine": 0.9986766214416541,
+              "norm_ratio": 1.2873608280909972
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.21575154670495245,
+              "cosine": 0.9989372376077627,
+              "norm_ratio": 1.2847319614242756
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.052158816193566306,
+              "cosine": 0.9999161990498221,
+              "norm_ratio": 1.268064244816929
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.03602946301325557,
+              "cosine": 0.9998718016735418,
+              "norm_ratio": 1.3300375874686685
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 0.55152527631191,
+              "cosine": 0.9973756799778749,
+              "norm_ratio": 1.3125040686924487
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 0.6154678552394105,
+              "cosine": 0.9976452869133984,
+              "norm_ratio": 1.3070926363037811
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.29514952443861714,
+              "cosine": 0.4670231893862136,
+              "norm_ratio": 8.39434540017163
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.21509408012863862,
+              "cosine": 0.9917425569589501,
+              "norm_ratio": 4.461091336561189
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.034507963151173764,
+              "cosine": -0.1538702375055655,
+              "norm_ratio": 3.1382421359772956
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.35733867562700905,
+              "cosine": -0.19331994411326123,
+              "norm_ratio": 39.85348468484011
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 1.5336811516876567,
+              "cosine": 0.38010407036079297,
+              "norm_ratio": 11.331988462377895
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 1.616922480746808,
+              "cosine": 0.3885446227874405,
+              "norm_ratio": 10.88165564265194
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.29514952443861714,
+              "cosine": 0.46613678111868084,
+              "norm_ratio": 2.4499450419173585
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.21509408012863862,
+              "cosine": 0.9963125529070643,
+              "norm_ratio": 1.280816956702137
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.034507963151173764,
+              "cosine": -0.20883166340798986,
+              "norm_ratio": 0.8389437764667113
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.35733867562700905,
+              "cosine": -0.2504780477808656,
+              "norm_ratio": 13.191255996941686
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 1.5336811516876567,
+              "cosine": 0.3605980503798304,
+              "norm_ratio": 3.6498105129973375
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 1.616922480746808,
+              "cosine": 0.37070036564649295,
+              "norm_ratio": 3.4339201471961176
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.0351605170347866,
+              "aux_norm": 0.2785863566495388,
+              "cosine": 0.4788632232468699,
+              "norm_ratio": 7.923272469910357
+            },
+            "text_lora": {
+              "base_norm": 0.048215574150168125,
+              "aux_norm": 0.21613968160124947,
+              "cosine": 0.9860028814629467,
+              "norm_ratio": 4.482777306106097
+            },
+            "audio_lora": {
+              "base_norm": 0.010995953038667447,
+              "aux_norm": 0.04585184380016405,
+              "cosine": 0.9926153733745322,
+              "norm_ratio": 4.1698835597901605
+            },
+            "video_lora": {
+              "base_norm": 0.008966309431981423,
+              "aux_norm": 0.3419998245268239,
+              "cosine": -0.22158279485123986,
+              "norm_ratio": 38.14276399016123
+            },
+            "prediction_head": {
+              "base_norm": 0.1353408677373318,
+              "aux_norm": 1.378571192339409,
+              "cosine": 0.412555847667606,
+              "norm_ratio": 10.185919562854629
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.148591586964863,
+              "aux_norm": 1.4641897158422832,
+              "cosine": 0.42175854706928134,
+              "norm_ratio": 9.853786110976227
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.12047189605838232,
+              "aux_norm": 0.2785863566495388,
+              "cosine": 0.4856234542195939,
+              "norm_ratio": 2.3124593018319564
+            },
+            "text_lora": {
+              "base_norm": 0.1679350659773161,
+              "aux_norm": 0.21613968160124947,
+              "cosine": 0.9984319640822841,
+              "norm_ratio": 1.2870431815023349
+            },
+            "audio_lora": {
+              "base_norm": 0.04113262904995519,
+              "aux_norm": 0.04585184380016405,
+              "cosine": 0.9842657791063414,
+              "norm_ratio": 1.1147316585204756
+            },
+            "video_lora": {
+              "base_norm": 0.027089056243761463,
+              "aux_norm": 0.3419998245268239,
+              "cosine": -0.2783806814227956,
+              "norm_ratio": 12.625018068157528
+            },
+            "prediction_head": {
+              "base_norm": 0.420208431705171,
+              "aux_norm": 1.378571192339409,
+              "cosine": 0.400502263570663,
+              "norm_ratio": 3.280684270768393
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 0.47086781620914103,
+              "aux_norm": 1.4641897158422832,
+              "cosine": 0.4116705450053486,
+              "norm_ratio": 3.10955572973785
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "video_0030[0017]",
+      "losses": {
+        "task": 0.821253776550293,
+        "kd": 0.47591057419776917,
+        "base": 1.2971643209457397,
+        "icd": 0.01189454086124897,
+        "coordinates": [
+          0.03443095460534096,
+          5.930326665293251e-07,
+          0.0005359956412576139,
+          0.025260865688323975,
+          4.3270858441246673e-05,
+          0.0021575065329670906,
+          0.020832596346735954
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 2.493417473839847,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 4.230461044576509,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.6420664045639893,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.35134604096070543,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 12.452077294934062,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 13.40536659759479,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 2.493417473839847,
+              "cosine": -0.8663082053373105,
+              "norm_ratio": 0.9546447728036113
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 4.230461044576509,
+              "cosine": -0.9677679906153851,
+              "norm_ratio": 0.9773552640649257
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.6420664045639893,
+              "cosine": -0.4183889955397424,
+              "norm_ratio": 1.0836940181601935
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.35134604096070543,
+              "cosine": -0.9810850404993138,
+              "norm_ratio": 1.3061344896911853
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 12.452077294934062,
+              "cosine": -0.6278199616219036,
+              "norm_ratio": 1.3726133975160644
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 13.40536659759479,
+              "cosine": -0.6777097481806676,
+              "norm_ratio": 1.288271275038764
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 2.6118798791692446,
+              "cosine": -0.8663082053373105,
+              "norm_ratio": 1.0475100566079558
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 4.328478292511124,
+              "cosine": -0.9677679906153851,
+              "norm_ratio": 1.023169400900234
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.5924794211322093,
+              "cosine": -0.4183889955397424,
+              "norm_ratio": 0.9227696962817215
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.26899683281755743,
+              "cosine": -0.9810850404993138,
+              "norm_ratio": 0.7656179420209891
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 9.071802240505473,
+              "cosine": -0.6278199616219036,
+              "norm_ratio": 0.7285372573294415
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 10.4057017006697,
+              "cosine": -0.6777097481806676,
+              "norm_ratio": 0.776234027239263
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 2.6118798791692446,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 4.328478292511124,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.5924794211322093,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.26899683281755743,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 9.071802240505473,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 10.4057017006697,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 0.23995797471812194,
+              "cosine": -0.5536189153283891,
+              "norm_ratio": 0.09623658181419102
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 0.31671268142627845,
+              "cosine": -0.879302745193398,
+              "norm_ratio": 0.07486481451762975
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.016338497074545873,
+              "cosine": -0.9761978657275916,
+              "norm_ratio": 0.025446740334655764
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.14766247931039556,
+              "cosine": -0.8887025833671052,
+              "norm_ratio": 0.4202764855600297
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 2.4605978258818904,
+              "cosine": -0.5123444043619905,
+              "norm_ratio": 0.19760540892907458
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 2.4968979889503853,
+              "cosine": -0.5157684585744629,
+              "norm_ratio": 0.18626107468022415
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 0.23995797471812194,
+              "cosine": 0.5404985690149035,
+              "norm_ratio": 0.09187174978140454
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 0.31671268142627845,
+              "cosine": 0.8526956508365068,
+              "norm_ratio": 0.0731695205620497
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.016338497074545873,
+              "cosine": 0.21466773195375155,
+              "norm_ratio": 0.027576480282342167
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.14766247931039556,
+              "cosine": 0.9515427775140478,
+              "norm_ratio": 0.5489376129961543
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 2.4605978258818904,
+              "cosine": 0.34448123874167497,
+              "norm_ratio": 0.27123583171768834
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 2.4968979889503853,
+              "cosine": 0.35551967138617085,
+              "norm_ratio": 0.2399547921683828
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 0.22309299381400197,
+              "cosine": -0.38062779487988097,
+              "norm_ratio": 0.08947278029235921
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 0.23753509641663675,
+              "cosine": -0.7390576868111537,
+              "norm_ratio": 0.05614874925302976
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.12967902606037013,
+              "cosine": -0.8918305243959476,
+              "norm_ratio": 0.20197136174478988
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.0763782522462174,
+              "cosine": -0.939663302736481,
+              "norm_ratio": 0.2173875420294249
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 2.267644672692814,
+              "cosine": -0.5069844756603444,
+              "norm_ratio": 0.18210974915931263
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 2.29587805746011,
+              "cosine": -0.4993822628361653,
+              "norm_ratio": 0.171265592831459
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 0.22309299381400197,
+              "cosine": 0.386558380095382,
+              "norm_ratio": 0.0854147220143067
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 0.23753509641663675,
+              "cosine": 0.7145396515277734,
+              "norm_ratio": 0.05487727565311021
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.12967902606037013,
+              "cosine": -0.030416322570451373,
+              "norm_ratio": 0.21887515656249734
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.0763782522462174,
+              "cosine": 0.9823334141604877,
+              "norm_ratio": 0.283937366273824
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 2.267644672692814,
+              "cosine": 0.3408824204638915,
+              "norm_ratio": 0.24996628151436237
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 2.29587805746011,
+              "cosine": 0.3344573376879664,
+              "norm_ratio": 0.22063654364725346
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 1.3236180787446268,
+              "cosine": 0.1755543981950063,
+              "norm_ratio": 0.5308449518107625
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 1.0911489174151279,
+              "cosine": 0.05959936611850142,
+              "norm_ratio": 0.25792671435043496
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.6682027823590744,
+              "cosine": 0.5923548778768635,
+              "norm_ratio": 1.0407066583912508
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.10139655829127639,
+              "cosine": 0.8608647413326105,
+              "norm_ratio": 0.28859456624022867
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 9.764977639037596,
+              "cosine": 0.6916419112786488,
+              "norm_ratio": 0.7842047079976229
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 9.937511524000653,
+              "cosine": 0.6398555925835528,
+              "norm_ratio": 0.7413084492432797
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 1.3236180787446268,
+              "cosine": 0.3396495431325557,
+              "norm_ratio": 0.5067683584153293
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 1.0911489174151279,
+              "cosine": 0.19330534343247582,
+              "norm_ratio": 0.25208603201336804
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.6682027823590744,
+              "cosine": 0.48384282164118914,
+              "norm_ratio": 1.1278075803580825
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.10139655829127639,
+              "cosine": -0.7462885773769135,
+              "norm_ratio": 0.37694331650383
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 9.764977639037596,
+              "cosine": 0.12792898503665281,
+              "norm_ratio": 1.0764098885927103
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 9.937511524000653,
+              "cosine": 0.13143338827383597,
+              "norm_ratio": 0.9550063811036487
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 1.3504096430165176,
+              "cosine": 0.07362871217882282,
+              "norm_ratio": 0.5415898689989107
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 1.1218201876038365,
+              "cosine": -0.1904939000372624,
+              "norm_ratio": 0.2651768154305595
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.6532875442308699,
+              "cosine": 0.5797464647660238,
+              "norm_ratio": 1.017476603022861
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.12412975279183472,
+              "cosine": -0.352748982682041,
+              "norm_ratio": 0.3532977131389319
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 9.240965917775933,
+              "cosine": 0.5945319191276129,
+              "norm_ratio": 0.7421224345865151
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 9.429725904910452,
+              "cosine": 0.5378099892674211,
+              "norm_ratio": 0.7034291704191326
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 1.3504096430165176,
+              "cosine": 0.42902979523367757,
+              "norm_ratio": 0.5170259374432027
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 1.1218201876038365,
+              "cosine": 0.42930940912847965,
+              "norm_ratio": 0.2591719564690305
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.6532875442308699,
+              "cosine": 0.49711180515035835,
+              "norm_ratio": 1.1026333083138282
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.12412975279183472,
+              "cosine": 0.5210186284909707,
+              "norm_ratio": 0.4614543282597815
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 9.240965917775933,
+              "cosine": 0.22684626639484562,
+              "norm_ratio": 1.0186471963106896
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 9.429725904910452,
+              "cosine": 0.23261332888406988,
+              "norm_ratio": 0.9062075942753158
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 2.493417473839847,
+              "aux_norm": 1.3517910780696336,
+              "cosine": 0.10877201604660115,
+              "norm_ratio": 0.5421439017943047
+            },
+            "text_lora": {
+              "base_norm": 4.230461044576509,
+              "aux_norm": 1.103693388623251,
+              "cosine": -0.10019923348507542,
+              "norm_ratio": 0.2608919871838074
+            },
+            "audio_lora": {
+              "base_norm": 0.6420664045639893,
+              "aux_norm": 0.5568389501946598,
+              "cosine": 0.5026448797006932,
+              "norm_ratio": 0.8672606855560284
+            },
+            "video_lora": {
+              "base_norm": 0.35134604096070543,
+              "aux_norm": 0.07782587869431981,
+              "cosine": 0.20055118361582516,
+              "norm_ratio": 0.22150777188641738
+            },
+            "prediction_head": {
+              "base_norm": 12.452077294934062,
+              "aux_norm": 9.266551119016489,
+              "cosine": 0.6042130271054095,
+              "norm_ratio": 0.7441771280030879
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 13.40536659759479,
+              "aux_norm": 9.446193642946005,
+              "cosine": 0.551235604228522,
+              "norm_ratio": 0.7046576141111168
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.6118798791692446,
+              "aux_norm": 1.3517910780696336,
+              "cosine": 0.3965601794735914,
+              "norm_ratio": 0.5175548419552874
+            },
+            "text_lora": {
+              "base_norm": 4.328478292511124,
+              "aux_norm": 1.103693388623251,
+              "cosine": 0.3449271988836986,
+              "norm_ratio": 0.25498415702645333
+            },
+            "audio_lora": {
+              "base_norm": 0.5924794211322093,
+              "aux_norm": 0.5568389501946598,
+              "cosine": 0.5744612027193304,
+              "norm_ratio": 0.9398452171225765
+            },
+            "video_lora": {
+              "base_norm": 0.26899683281755743,
+              "aux_norm": 0.07782587869431981,
+              "cosine": -0.009213446665114408,
+              "norm_ratio": 0.28931894059549723
+            },
+            "prediction_head": {
+              "base_norm": 9.071802240505473,
+              "aux_norm": 9.266551119016489,
+              "cosine": 0.2186082047481753,
+              "norm_ratio": 1.0214674960220655
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 10.4057017006697,
+              "aux_norm": 9.446193642946005,
+              "cosine": 0.21989528499428806,
+              "norm_ratio": 0.9077901629967018
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "csbgs2_0003[00013]::w00",
+      "losses": {
+        "task": 0.2139177918434143,
+        "kd": 0.08787214010953903,
+        "base": 0.30178993940353394,
+        "icd": 0.10753683000802994,
+        "coordinates": [
+          0.014298461377620697,
+          0.014007414691150188,
+          0.49730294942855835,
+          0.00908022653311491,
+          0.07218791544437408,
+          0.14563345909118652,
+          0.0002473511849530041
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 0.7348527644241657,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 1.7266736282333177,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 0.278710136426296,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 0.048966810488603095,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 4.655296099219773,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 5.02725265566644,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 0.7348527644241657,
+              "cosine": -0.5201301647777165,
+              "norm_ratio": 0.7643488644057908
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 1.7266736282333177,
+              "cosine": -0.051748473259981796,
+              "norm_ratio": 0.8308455089553817
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 0.278710136426296,
+              "cosine": 0.8134653359348175,
+              "norm_ratio": 2.4754831161965627
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 0.048966810488603095,
+              "cosine": -0.5438338544898601,
+              "norm_ratio": 0.3292042714443591
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 4.655296099219773,
+              "cosine": -0.8670742073677681,
+              "norm_ratio": 0.9521084770271601
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 5.02725265566644,
+              "cosine": -0.7462729263846213,
+              "norm_ratio": 0.930575570219266
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 0.9614101605232901,
+              "cosine": -0.5201301647777165,
+              "norm_ratio": 1.308303114674483
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 2.0782126275247688,
+              "cosine": -0.051748473259981796,
+              "norm_ratio": 1.203593194187564
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 0.11258817909229697,
+              "cosine": 0.8134653359348175,
+              "norm_ratio": 0.4039615513663622
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 0.14874293785364595,
+              "cosine": -0.5438338544898601,
+              "norm_ratio": 3.037627657783949
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 4.889459774326717,
+              "cosine": -0.8670742073677681,
+              "norm_ratio": 1.0503004900474946
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 5.402304569936107,
+              "cosine": -0.7462729263846213,
+              "norm_ratio": 1.0746037527767638
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 0.9614101605232901,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 2.0782126275247688,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 0.11258817909229697,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 0.14874293785364595,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 4.889459774326717,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 5.402304569936107,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 1.1652044101329977,
+              "cosine": 0.07232050360494108,
+              "norm_ratio": 1.5856297567936042
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 0.11828932069340256,
+              "cosine": 0.7186723403094294,
+              "norm_ratio": 0.06850705238049692
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 0.8008899640281747,
+              "cosine": 0.9430939105902688,
+              "norm_ratio": 2.873558795878124
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 1.4475722978369556,
+              "cosine": 0.08585389930986899,
+              "norm_ratio": 29.562315441678084
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 5.290886592076072,
+              "cosine": 0.3309759991160364,
+              "norm_ratio": 1.1365306264756874
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 5.665868415604077,
+              "cosine": 0.3011352815526432,
+              "norm_ratio": 1.1270307668379917
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 1.1652044101329977,
+              "cosine": 0.04398440662776013,
+              "norm_ratio": 1.2119743039732216
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 0.11828932069340256,
+              "cosine": -0.600412791494431,
+              "norm_ratio": 0.056918776802106955
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 0.8008899640281747,
+              "cosine": 0.6993849058897703,
+              "norm_ratio": 7.11344628259442
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 1.4475722978369556,
+              "cosine": 0.7825554921488284,
+              "norm_ratio": 9.732040517185961
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 5.290886592076072,
+              "cosine": -0.29213250287495496,
+              "norm_ratio": 1.082100443868491
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 5.665868415604077,
+              "cosine": -0.24254864457782363,
+              "norm_ratio": 1.0487872985049207
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 1.0535020731440878,
+              "cosine": 0.04903767876382972,
+              "norm_ratio": 1.43362333809769
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 0.054836284634170715,
+              "cosine": -0.30524054096082703,
+              "norm_ratio": 0.03175833796122641
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 0.7622578007647659,
+              "cosine": 0.928324562319859,
+              "norm_ratio": 2.7349482531875644
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 1.2765402475302283,
+              "cosine": 0.19538733179118664,
+              "norm_ratio": 26.06949962214386
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 4.73780477714189,
+              "cosine": 0.3331667525674637,
+              "norm_ratio": 1.017723615461527
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 5.076441637695756,
+              "cosine": 0.29649763497234,
+              "norm_ratio": 1.009784465870016
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 1.0535020731440878,
+              "cosine": 0.07988805233446351,
+              "norm_ratio": 1.0957883704606084
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 0.054836284634170715,
+              "cosine": 0.8514612870339269,
+              "norm_ratio": 0.02638627246697218
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 0.7622578007647659,
+              "cosine": 0.6822569878630871,
+              "norm_ratio": 6.770318224437097
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 1.2765402475302283,
+              "cosine": 0.7065793144196697,
+              "norm_ratio": 8.582190630026863
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 4.73780477714189,
+              "cosine": -0.2940683826565448,
+              "norm_ratio": 0.9689832815516495
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 5.076441637695756,
+              "cosine": -0.2348821239125922,
+              "norm_ratio": 0.9396807551255472
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 0.853888093231569,
+              "cosine": 0.27516333969722095,
+              "norm_ratio": 1.1619852772829669
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 2.6347551957793724,
+              "cosine": 0.6165599269368227,
+              "norm_ratio": 1.525913845383263
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 0.3764333420374856,
+              "cosine": 0.9828962951510598,
+              "norm_ratio": 1.3506266649079417
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 0.12905927597477587,
+              "cosine": -0.24853578701312984,
+              "norm_ratio": 2.635647996816417
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 2.470813684321077,
+              "cosine": 0.16803406160562542,
+              "norm_ratio": 0.530753282210166
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 3.7328726790221474,
+              "cosine": 0.2670750259348253,
+              "norm_ratio": 0.7425273672717962
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 0.853888093231569,
+              "cosine": 0.6779826483045148,
+              "norm_ratio": 0.8881621271474835
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 2.6347551957793724,
+              "cosine": 0.7541936105539326,
+              "norm_ratio": 1.2677986654895208
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 0.3764333420374856,
+              "cosine": 0.9059764018023405,
+              "norm_ratio": 3.3434535052644816
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 0.12905927597477587,
+              "cosine": 0.947987268367899,
+              "norm_ratio": 0.8676665785757331
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 2.470813684321077,
+              "cosine": 0.3453938104545397,
+              "norm_ratio": 0.5053346992022877
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 3.7328726790221474,
+              "cosine": 0.44210339557283834,
+              "norm_ratio": 0.6909778282023621
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 1.5201445992188614,
+              "cosine": 0.2098845609765625,
+              "norm_ratio": 2.0686383352045414
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 2.6352971370085068,
+              "cosine": 0.6466632385882156,
+              "norm_ratio": 1.5262277096945451
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 1.1477224763398892,
+              "cosine": 0.9786650137131181,
+              "norm_ratio": 4.11797895496851
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 1.5677274252197084,
+              "cosine": 0.05830331071022814,
+              "norm_ratio": 32.01612295300698
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 5.927165352175173,
+              "cosine": 0.36475945365104856,
+              "norm_ratio": 1.2732090990234897
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 6.939881546349846,
+              "cosine": 0.3886435013157546,
+              "norm_ratio": 1.3804521120551994
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 1.5201445992188614,
+              "cosine": 0.41481376993822294,
+              "norm_ratio": 1.5811613623798766
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 2.6352971370085068,
+              "cosine": 0.7279473469517269,
+              "norm_ratio": 1.2680594382429708
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 1.1477224763398892,
+              "cosine": 0.7876879554031567,
+              "norm_ratio": 10.193987375877311
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 1.5677274252197084,
+              "cosine": 0.8002260453207045,
+              "norm_ratio": 10.539844431217686
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 5.927165352175173,
+              "cosine": -0.11614301087068596,
+              "norm_ratio": 1.2122331762083773
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 6.939881546349846,
+              "cosine": 0.04042233356406484,
+              "norm_ratio": 1.2846150113361572
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7348527644241657,
+              "aux_norm": 1.4412980035273257,
+              "cosine": 0.1989632351429289,
+              "norm_ratio": 1.9613425618079208
+            },
+            "text_lora": {
+              "base_norm": 1.7266736282333177,
+              "aux_norm": 2.6589524029719858,
+              "cosine": 0.6033594082493,
+              "norm_ratio": 1.5399276154420387
+            },
+            "audio_lora": {
+              "base_norm": 0.278710136426296,
+              "aux_norm": 1.112461169401076,
+              "cosine": 0.9700136783846423,
+              "norm_ratio": 3.9914629000056583
+            },
+            "video_lora": {
+              "base_norm": 0.048966810488603095,
+              "aux_norm": 1.3928805048050639,
+              "cosine": 0.1564735357481086,
+              "norm_ratio": 28.44539987200623
+            },
+            "prediction_head": {
+              "base_norm": 4.655296099219773,
+              "aux_norm": 5.445949302509301,
+              "cosine": 0.36644479538875785,
+              "norm_ratio": 1.1698395089029978
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.02725265566644,
+              "aux_norm": 6.479461210304072,
+              "cosine": 0.38627757720717243,
+              "norm_ratio": 1.2888672310910778
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 0.9614101605232901,
+              "aux_norm": 1.4412980035273257,
+              "cosine": 0.459901923767363,
+              "norm_ratio": 1.4991499598286286
+            },
+            "text_lora": {
+              "base_norm": 2.0782126275247688,
+              "aux_norm": 2.6589524029719858,
+              "cosine": 0.7649251047044512,
+              "norm_ratio": 1.279441943406388
+            },
+            "audio_lora": {
+              "base_norm": 0.11258817909229697,
+              "aux_norm": 1.112461169401076,
+              "cosine": 0.7730335377787917,
+              "norm_ratio": 9.880799017888975
+            },
+            "video_lora": {
+              "base_norm": 0.14874293785364595,
+              "aux_norm": 1.3928805048050639,
+              "cosine": 0.7352743665475253,
+              "norm_ratio": 9.364347140807277
+            },
+            "prediction_head": {
+              "base_norm": 4.889459774326717,
+              "aux_norm": 5.445949302509301,
+              "cosine": -0.09944709836758697,
+              "norm_ratio": 1.1138141131878343
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 5.402304569936107,
+              "aux_norm": 6.479461210304072,
+              "cosine": 0.07042780998051959,
+              "norm_ratio": 1.1993883585095062
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "video_0059[0014]",
+      "losses": {
+        "task": 0.15481314063072205,
+        "kd": 0.3298909068107605,
+        "base": 0.48470404744148254,
+        "icd": 0.03369388356804848,
+        "coordinates": [
+          0.07973717153072357,
+          0.017122555524110794,
+          0.0021210163831710815,
+          0.010282314382493496,
+          0.029520658776164055,
+          3.0333918402902782e-05,
+          0.09704313427209854
+        ]
+      },
+      "geometry": {
+        "task": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 0.7445700033401318,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 1.6667615382812027,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 0.6762364317807497,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.05799463828348241,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 3.67399787670508,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 4.158292678869307,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 0.7445700033401318,
+              "cosine": -0.9212868394008873,
+              "norm_ratio": 0.31931002321966095
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 1.6667615382812027,
+              "cosine": -0.9400899064288885,
+              "norm_ratio": 0.2856308860625591
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 0.6762364317807497,
+              "cosine": -0.9832363139720711,
+              "norm_ratio": 0.2939003718156557
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.05799463828348241,
+              "cosine": -0.8475507876216453,
+              "norm_ratio": 0.4285313617169694
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 3.67399787670508,
+              "cosine": -0.9175159131766085,
+              "norm_ratio": 0.39167344589077446
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 4.158292678869307,
+              "cosine": -0.9161468540923521,
+              "norm_ratio": 0.36085392755532175
+            }
+          }
+        },
+        "full_kd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 2.33180905451228,
+              "cosine": -0.9212868394008873,
+              "norm_ratio": 3.1317526143301686
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 5.8353687210008065,
+              "cosine": -0.9400899064288885,
+              "norm_ratio": 3.50102194403787
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 2.300903627998498,
+              "cosine": -0.9832363139720711,
+              "norm_ratio": 3.4025135586668602
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.13533347489695732,
+              "cosine": -0.8475507876216453,
+              "norm_ratio": 2.3335514954923333
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 9.380257751069609,
+              "cosine": -0.9175159131766085,
+              "norm_ratio": 2.5531472978100966
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 11.523479062679199,
+              "cosine": -0.9161468540923521,
+              "norm_ratio": 2.7712044227277866
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 2.33180905451228,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 5.8353687210008065,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 2.300903627998498,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.13533347489695732,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 9.380257751069609,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 11.523479062679199,
+              "cosine": 1.0,
+              "norm_ratio": 1.0
+            }
+          }
+        },
+        "subset7_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 0.16048232826322095,
+              "cosine": -0.39184386861048015,
+              "norm_ratio": 0.2155369240545539
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 0.28522725984879227,
+              "cosine": -0.8550099021200728,
+              "norm_ratio": 0.17112661487432942
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 0.36038678248752914,
+              "cosine": 0.523897942466233,
+              "norm_ratio": 0.53293014920612
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.040566794434376816,
+              "cosine": 0.41779204304820866,
+              "norm_ratio": 0.6994921536726049
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 0.6303618983910475,
+              "cosine": 0.07096481569701492,
+              "norm_ratio": 0.1715738330682895
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 0.7974895536564692,
+              "cosine": -0.04833462898017313,
+              "norm_ratio": 0.19178292997724175
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 0.16048232826322095,
+              "cosine": 0.49527920112891716,
+              "norm_ratio": 0.06882310022455392
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 0.28522725984879227,
+              "cosine": 0.9795977280626318,
+              "norm_ratio": 0.04887904663544102
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 0.36038678248752914,
+              "cosine": -0.6696898951804072,
+              "norm_ratio": 0.15662836900345153
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.040566794434376816,
+              "cosine": 0.12784782162515537,
+              "norm_ratio": 0.29975432512365696
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 0.6303618983910475,
+              "cosine": 0.23195950423905592,
+              "norm_ratio": 0.06720091442254546
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 0.7974895536564692,
+              "cosine": 0.28648337633590326,
+              "norm_ratio": 0.06920562352035495
+            }
+          }
+        },
+        "icd_aux": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 0.21916182121030545,
+              "cosine": -0.23721220028854148,
+              "norm_ratio": 0.2943468313619247
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 0.3213677116243178,
+              "cosine": -0.6343195913958112,
+              "norm_ratio": 0.19280965167681904
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 0.25880065424992227,
+              "cosine": 0.6329624539833292,
+              "norm_ratio": 0.38270735217328694
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.10979440872117242,
+              "cosine": 0.43898480283106006,
+              "norm_ratio": 1.8931820590808517
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 1.5939539625985932,
+              "cosine": 0.0743672598776665,
+              "norm_ratio": 0.43384727375729604
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 1.6646413835001357,
+              "cosine": 0.024645953010494,
+              "norm_ratio": 0.40031847492581335
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 0.21916182121030545,
+              "cosine": 0.4149178239360323,
+              "norm_ratio": 0.0939878935568098
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 0.3213677116243178,
+              "cosine": 0.8505252935546069,
+              "norm_ratio": 0.05507239164986322
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 0.25880065424992227,
+              "cosine": -0.7631528881562656,
+              "norm_ratio": 0.11247783310031412
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.10979440872117242,
+              "cosine": 0.1042976726754393,
+              "norm_ratio": 0.8112878857560534
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 1.5939539625985932,
+              "cosine": 0.24308753123884128,
+              "norm_ratio": 0.1699264567028383
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 1.6646413835001357,
+              "cosine": 0.2600663806041897,
+              "norm_ratio": 0.14445649394993634
+            }
+          }
+        },
+        "full_kd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 1.6709900723826134,
+              "cosine": -0.8402453057286172,
+              "norm_ratio": 2.2442350146884413
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 4.309151187679263,
+              "cosine": -0.8878593671545048,
+              "norm_ratio": 2.5853435471776876
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 1.634951158329542,
+              "cosine": -0.9652655007599517,
+              "norm_ratio": 2.4177212014800586
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.09153423668226683,
+              "cosine": -0.6236939224090914,
+              "norm_ratio": 1.5783223999922231
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 6.188178204065821,
+              "cosine": -0.7973704894526016,
+              "norm_ratio": 1.6843173054894391
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 7.89531412118367,
+              "cosine": -0.8108587500877014,
+              "norm_ratio": 1.8986912973452623
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 1.6709900723826134,
+              "cosine": 0.9849537418595081,
+              "norm_ratio": 0.7166067346505424
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 4.309151187679263,
+              "cosine": 0.9914267757001838,
+              "norm_ratio": 0.7384539681564825
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 1.634951158329542,
+              "cosine": 0.9964537035377607,
+              "norm_ratio": 0.710569160061583
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.09153423668226683,
+              "cosine": 0.9434217393258684,
+              "norm_ratio": 0.6763606472970626
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 6.188178204065821,
+              "cosine": 0.9716035836023794,
+              "norm_ratio": 0.6597023630145129
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 7.89531412118367,
+              "cosine": 0.9774110477785007,
+              "norm_ratio": 0.6851502118621472
+            }
+          }
+        },
+        "subset7_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 1.7599162462406737,
+              "cosine": -0.8337125526919505,
+              "norm_ratio": 2.363667940349076
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 4.596556580968791,
+              "cosine": -0.8852073086028105,
+              "norm_ratio": 2.7577769677291992
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 1.3760198002914101,
+              "cosine": -0.9948338085379612,
+              "norm_ratio": 2.034820568107968
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.11574733925478384,
+              "cosine": -0.3463926058243924,
+              "norm_ratio": 1.9958282813835586
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 6.4656688383933325,
+              "cosine": -0.7561563409247546,
+              "norm_ratio": 1.7598455566315903
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 8.242410998059883,
+              "cosine": -0.7808984361309054,
+              "norm_ratio": 1.9821623042419183
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 1.7599162462406737,
+              "cosine": 0.9806883315218816,
+              "norm_ratio": 0.7547428649164316
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 4.596556580968791,
+              "cosine": 0.9906628034854993,
+              "norm_ratio": 0.7877062788554087
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 1.3760198002914101,
+              "cosine": 0.9957107777784839,
+              "norm_ratio": 0.5980345215450755
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.11574733925478384,
+              "cosine": 0.7913820275433509,
+              "norm_ratio": 0.8552750111745352
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 6.4656688383933325,
+              "cosine": 0.9527623068222073,
+              "norm_ratio": 0.6892847734014631
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 8.242410998059883,
+              "cosine": 0.963835370712803,
+              "norm_ratio": 0.7152710525378029
+            }
+          }
+        },
+        "icd_total": {
+          "task": {
+            "fusion": {
+              "base_norm": 0.7445700033401318,
+              "aux_norm": 1.7842606217115378,
+              "cosine": -0.815772377517402,
+              "norm_ratio": 2.396363825707948
+            },
+            "text_lora": {
+              "base_norm": 1.6667615382812027,
+              "aux_norm": 4.604338737794788,
+              "cosine": -0.8752956483125128,
+              "norm_ratio": 2.7624459960498444
+            },
+            "audio_lora": {
+              "base_norm": 0.6762364317807497,
+              "aux_norm": 1.413922179204754,
+              "cosine": -0.9862724904116793,
+              "norm_ratio": 2.090869572763832
+            },
+            "video_lora": {
+              "base_norm": 0.05799463828348241,
+              "aux_norm": 0.17017672737593195,
+              "cosine": -0.05173564494826576,
+              "norm_ratio": 2.934352767993733
+            },
+            "prediction_head": {
+              "base_norm": 3.67399787670508,
+              "aux_norm": 6.990199244916319,
+              "cosine": -0.6890797930439112,
+              "norm_ratio": 1.9026138499528147
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 4.158292678869307,
+              "aux_norm": 8.67609028938521,
+              "cosine": -0.7329047221323104,
+              "norm_ratio": 2.0864549370162058
+            }
+          },
+          "full_kd_aux": {
+            "fusion": {
+              "base_norm": 2.33180905451228,
+              "aux_norm": 1.7842606217115378,
+              "cosine": 0.9729683050481258,
+              "norm_ratio": 0.7651829888295604
+            },
+            "text_lora": {
+              "base_norm": 5.8353687210008065,
+              "aux_norm": 4.604338737794788,
+              "cosine": 0.9875542115647065,
+              "norm_ratio": 0.7890398975516858
+            },
+            "audio_lora": {
+              "base_norm": 2.300903627998498,
+              "aux_norm": 1.413922179204754,
+              "cosine": 0.9994878514975737,
+              "norm_ratio": 0.6145073448533312
+            },
+            "video_lora": {
+              "base_norm": 0.13533347489695732,
+              "aux_norm": 0.17017672737593195,
+              "cosine": 0.5736349787905335,
+              "norm_ratio": 1.257462187426313
+            },
+            "prediction_head": {
+              "base_norm": 9.380257751069609,
+              "aux_norm": 6.990199244916319,
+              "cosine": 0.9150554153917116,
+              "norm_ratio": 0.7452033228105319
+            },
+            "other": {
+              "base_norm": 0.0,
+              "aux_norm": 0.0,
+              "cosine": null,
+              "norm_ratio": null
+            },
+            "all": {
+              "base_norm": 11.523479062679199,
+              "aux_norm": 8.67609028938521,
+              "cosine": 0.938665692648616,
+              "norm_ratio": 0.7529054586894893
+            }
+          }
+        }
+      }
+    }
+  ],
+  "mode": "eval/autograd; dropout disabled; FP32 Mobius; microbatch=1",
+  "base_definition": "SmoothL1 task + alpha_ce CE + seed2026 TAV SmoothL1 KD + calibrated KL; unit KD coefficients",
+  "icd_definition": "mean of seven SmoothL1 anchored interaction errors; raw unweighted; lambda is not applied",
+  "parameter_updates": 0,
+  "parameter_versions_unchanged": true,
+  "peak_allocated_mib": 5067.82421875,
+  "elapsed_seconds": 23.125332832336426
+}

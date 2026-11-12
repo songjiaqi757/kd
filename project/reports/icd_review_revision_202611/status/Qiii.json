@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "dataset": "sims_v2",
+  "mode": "trajectory",
+  "cases": 8,
+  "parameter_updates": 0
+}

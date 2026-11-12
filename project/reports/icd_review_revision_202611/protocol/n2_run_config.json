@@ -1,0 +1,309 @@
+{
+  "method": "uniform_interaction",
+  "assets": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/protocol.json",
+  "output": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/runs/N2_no_ce_l030",
+  "text_model": "/ai/sjq/kd/model/Qwen3-0.6B-Base",
+  "audio_model": "/ai/sjq/kd/model/WavLM-Base-Plus",
+  "video_model": "/ai/sjq/kd/model/VideoMAE-Base",
+  "seed": 13,
+  "device": "cuda:0",
+  "batch_size": 8,
+  "epochs": 40,
+  "min_epochs": 1,
+  "patience": 8,
+  "save_every_epoch": false,
+  "retain_best_mae_and_acc2": true,
+  "checkpoint_selection": "valid_mae",
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "num_workers": 2,
+  "video_layers": 12,
+  "video_rank": 8,
+  "video_alpha": 16,
+  "video_dropout": 0.05,
+  "video_checkpointing": true,
+  "limit_per_split": null,
+  "lambda_feature": 2.0,
+  "lambda_cafd": 0.1,
+  "cmad_tau": 0.2,
+  "lambda_subset": 1.0,
+  "lambda_interaction": 0.3,
+  "coordinate_seed": 20260922,
+  "ea_entropy_temperature": 3.0,
+  "rld_temperature": 4.0,
+  "rld_alpha": 1.0,
+  "rld_beta": 8.0,
+  "rld_warmup_epochs": 20,
+  "skd_temperature": 4.0,
+  "skd_tik_factor": 0.1,
+  "experiment_id": "N2_no_ce_l030",
+  "variant": "plain",
+  "correction_alpha": 0.5,
+  "lambda_consistency": 0.0,
+  "task_regression": "smooth_l1",
+  "task_ce": 0.0,
+  "kd_kl": 1.0,
+  "coordinate_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "icd_warmup": false,
+  "lora_lr": null,
+  "lr_schedule": "constant",
+  "lr_warmup_ratio": 0.1,
+  "diagnostic_every": 100,
+  "manifest": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/official_train_valid_windowed.jsonl",
+  "teacher_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+  "teacher_probe_report": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+  "teacher_subset": "tav",
+  "teacher_calibration_temperature": 1.1912176609039307,
+  "mode": "video_lora",
+  "schema": "mosi-method-search-20261110-v1",
+  "epoch_checkpoint_pattern": null,
+  "official_test_evaluated": false,
+  "common_student": "Qwen3-0.6B + WavLM-Base-Plus + VideoMAE-Base; T/A/V LoRA adaptation",
+  "fusion_architecture": "subset transformer fusion",
+  "frozen_assets": {
+    "schema": "icd-confirmatory-mosi-frozen-assets-v1",
+    "base_protocol": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json",
+    "manifest": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/official_train_valid_windowed.jsonl",
+    "teacher_targets": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl",
+    "teacher_probe_report": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json",
+    "teacher_temperature": 1.1912176609039307,
+    "probe_seeds": [
+      2026,
+      2027,
+      2028
+    ],
+    "probe_temperatures": {
+      "2026": 1.1912176609039307,
+      "2027": 1.2058717012405396,
+      "2028": 1.180254578590393
+    },
+    "ensemble_targets": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/teacher_ensemble_confirmatory.jsonl",
+    "interaction_targets": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/interaction_targets.jsonl",
+    "teacher_features": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/teacher_features/features.npy",
+    "teacher_feature_index": "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/teacher_feature_index.jsonl",
+    "teacher_feature_dimension": 2048,
+    "student_empty_baseline": 0.22526227845205912,
+    "utility_normalized": [
+      1.4489312949400415,
+      1.4868758404711906,
+      0.44785806066300105,
+      1.4602598528440491,
+      0.6796448102064051,
+      0.6678612295896007,
+      0.8085689112857127
+    ],
+    "coarse_utility_normalized": [
+      1.4653556627517603,
+      1.4653556627517603,
+      0.6509832529361798,
+      1.4653556627517603,
+      0.6509832529361798,
+      0.6509832529361798,
+      0.6509832529361798
+    ],
+    "lambda_interaction": 1.0,
+    "lambda_subset": 1.0,
+    "lambda_feature": 2.0,
+    "alpha_ce": 0.5,
+    "lambda_full": 1.0,
+    "kd_temperature": 2.0,
+    "rld": {
+      "alpha": 1.0,
+      "beta": 8.0,
+      "temperature": 4.0,
+      "confidence_temperature": 1.0,
+      "warmup_epochs": 20,
+      "standardize_logits": false
+    },
+    "skd": {
+      "temperature": 4.0,
+      "tik_factor": 0.1,
+      "mask_policy": "per_sample_low_confidence_kl_and_unmasked_direction_loss"
+    },
+    "ea_kd": {
+      "entropy_temperature": 3.0,
+      "entropy_upper_bound": "log(7)"
+    },
+    "projector": {
+      "student_dimension": 512,
+      "teacher_dimension": 2048,
+      "normalization": "BatchNorm1d(affine=False)",
+      "distance": "log(sum(abs(delta)^4)+1e-5)"
+    },
+    "cmad_cafd": {
+      "tau": 0.2,
+      "lambda": 0.1,
+      "minimum_relation_batch": 2,
+      "adaptation": "student fused 512->2048 linear projection; official CAFD weighted MSE and cross-sample correlation terms; a final batch of one has zero CAFD gradient while common task/full-KD terms remain active"
+    },
+    "seeds": [
+      13
+    ],
+    "official_test_evaluated": false,
+    "upstream_sources": "/ai/sjq/kd/external/SOURCES.json",
+    "input_sha256": {
+      "/ai/sjq/kd/dataset/cmu_mosi/manifests/official_train_valid_windowed.jsonl": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/ensemble_targets.jsonl": "b750f1089a0648a3daae0b96fcc7aaefded2fc21823bc9b461f9fcf6b362d135",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/assets/protocol.json": "12e5dfff4a9a192c1103e20f7cffdfd288557b895b3a96c2b7a6487a5e81f7a5",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/base_assets/protocol.json": "b9622a1e01205d031ddbfa5ef4d3ae1e53c00e12309ea6e24ee0cb9d0b3d2970",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/predictions.jsonl": "860c87e36aeaaa0578d9477df13cb934106c11d88a37a6f6b2727bd133183ffb",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/report.json": "6e75843b29fb29a6ec1ad26e4f7b30e697d009d62c984f4bdbdccffc83b10cc6",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2026/teacher_probe.pt": "ff525dfaa189a21c55f1f5254d85d4c86ac64d2ed84d8863ba311fd552bb0408",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/predictions.jsonl": "dee515299207effd6dde2f45d5ea006a9fc0927466d383650ffd1b61f54f79fb",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/report.json": "6133cf6acdee0739a4666e7125f517e36d7c44c475a728623ed972d1c7eb2593",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2027/teacher_probe.pt": "67b629ee3f6589a53c3bd3bf825a7a5cb7df56f7525f904dd4eb8c34f572d0a2",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/predictions.jsonl": "c06831d7a2e1c490837bf2a8a6818564119efb8b19ee35bdb1cda1bb2c4fdcb8",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/report.json": "9bb83a2efb848dbf7e125a1e84f405ac6b93e33e6fee1ae2bc2b0a44e715dc8f",
+      "/ai/sjq/kd/outputs/experiments/main_table_v1/mosi/probes/seed2028/teacher_probe.pt": "b6c36640c689f57d8b45dd9a79d575c91bc73fee0ea7b2b99ee2c4dfb411e8ed",
+      "/ai/sjq/kd/project/scripts/prepare_cv2_assets.py": "c2ceeaac7071080ff0c272b1159fc4caf4bd10c1a626feea50028e4fb8886ac5",
+      "/ai/sjq/kd/project/scripts/prepare_main_table_assets.py": "07627b44c5138a8c04352aa2fd5f0ed16c8408835f8e1d0a814681b32c9b2fe4",
+      "/ai/sjq/kd/project/scripts/prepare_tav_protocol.py": "c8581db78e98798a658e8d64932a25c81fa736a1f59f8f7ef84b56aa1ee1a7eb",
+      "/ai/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/official_train_valid_windowed.jsonl": "ff94c37bcab1729a2e948c3f161c90fd92168229e203144f70de00e0440d7d3e",
+      "/ai/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+      "/ai/sjq/kd/outputs/experiments/icd_confirmatory_mosi_v1/assets/teacher_ensemble_confirmatory.jsonl": "2ded7373b55fec3db4fd1851e14b5d40badb8661f9ff6d35d4f34e7b56602510",
+      "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/official_train_valid_windowed.jsonl": "ba93c84cd206204744f43ba67a2be9ad9936572453c02eb9c9f5c183b261b498",
+      "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/interaction_targets.jsonl": "f49fa257f21cd2bfc14dd883113b38c2c5ce778b42dff290eb16f60da2892231",
+      "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/teacher_ensemble_confirmatory.jsonl": "2ded7373b55fec3db4fd1851e14b5d40badb8661f9ff6d35d4f34e7b56602510"
+    },
+    "teacher_supervision_policy": "identical three-probe arithmetic-mean TAV regression and temperature-softmax probability supervision for ALL F0-F7/S0-S1/GP",
+    "teacher_targets_role": "seed2026 file is retained ONLY for legacy load_base_rows identity/metadata compatibility. Its scores/logits MUST NOT supply any training loss; use subset_score_mean[-1] and tav_kd_probability_mean from ensemble_targets",
+    "teacher_probability_rule": "q=normalize(mean_seed softmax(raw_TAV_logits_seed/(probe_calibration_temperature_seed*kd_temperature))); student KL uses log_softmax(student_logits/kd_temperature), per-sample sum over seven classes, multiplied by kd_temperature**2; do NOT temperature-soften q again",
+    "teacher_regression_rule": "arithmetic mean of the three raw TAV regression predictions; SmoothL1 reduction none then inverse-window sample-weighted mean",
+    "teacher_empty_baseline_definition": "per_probe_official_train_TAV_utterance_mean",
+    "per_probe_empty_baseline": [
+      0.2844906165580065,
+      0.19138739822610829,
+      0.19990882057206258
+    ],
+    "interaction_definition": "unchanged existing Mobius transform per probe with per-probe train-TAV mean empty baseline; mean and sample variance (ddof=1) across three probes",
+    "created_at": "2026-11-08T10:58:53.567610+00:00"
+  },
+  "upstream_sources": {
+    "frozen_on": "2026-09-17",
+    "clone_policy": "shallow clone of the official repository at the recorded commit; native-system clones carry the auditable local protocol patches recorded below",
+    "repositories": [
+      {
+        "method": "Projector-based feature KD",
+        "path": "external/original/Simple-Recipe-Distillation",
+        "url": "https://github.com/roymiles/Simple-Recipe-Distillation.git",
+        "commit": "31e8477cfdd6bb6ec7cdc332915fd4496b6de7b6",
+        "license_file": null
+      },
+      {
+        "method": "EA-KD",
+        "path": "external/original/EA-KD",
+        "url": "https://github.com/cpsu00/EA-KD.git",
+        "commit": "6fb4c0657d0af422e446a508f86705455f4c4a4b",
+        "license_file": null
+      },
+      {
+        "method": "RLD",
+        "path": "external/original/RLD",
+        "url": "https://github.com/zju-SWJ/RLD.git",
+        "commit": "d54578fd77cd669d6209be4d05ae773bca4109b5",
+        "license_file": null
+      },
+      {
+        "method": "SKD",
+        "path": "external/original/StreamLined",
+        "url": "https://github.com/HyunJunSik/StreamLined.git",
+        "commit": "17f42c65020ae97d6bbb0b07c8427685ba393bbb",
+        "license_file": null
+      },
+      {
+        "method": "DLF",
+        "path": "external/original/DLF",
+        "url": "https://github.com/pwang322/DLF.git",
+        "commit": "251bf2cb6ac3774b3c6a2159131e2bfbd4afdecf",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/DLF-valid-only.patch",
+        "local_protocol_diff_sha256": "088d4c646600cd81eba845c0307e8f142846c8bf4034d39c4a76e80d90f68c03"
+      },
+      {
+        "method": "GsiT",
+        "path": "external/original/GsiT",
+        "url": "https://github.com/drewjin/GsiT.git",
+        "commit": "76332ba433ea93fba1b2ebe9f1c85587f5b99a13",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/GsiT-valid-only.patch",
+        "local_protocol_diff_sha256": "66ef401433d51b22895c549fc4175e826aeb3ca09e9322f4d11f8104e5f33c18"
+      },
+      {
+        "method": "DPDF-LQ",
+        "path": "external/original/DPDF-LQ",
+        "url": "https://github.com/ZhouMiaoGX/DPDF-LQ.git",
+        "commit": "5cebfb9fc277a30940a1e21b0b4e63313e735080",
+        "license_file": "LICENSE",
+        "local_protocol_patch": "external/patches/DPDF-LQ-valid-only.patch",
+        "local_protocol_diff_sha256": "f5fc4e440e5769364a2758392b4167ef14c733da220796ca929afa99d6e29c7b"
+      },
+      {
+        "method": "Light-MER / SWD-H",
+        "path": "external/original/Light-MER",
+        "url": "https://github.com/GAIR-Lab/Light-MER.git",
+        "commit": "94410c114b63cb9805b17e7937d6ffcc907c0c8e",
+        "license_file": "LICENSE",
+        "purpose": "domain-related adaptation audit; not a main-table implementation",
+        "audit": "external/LIGHT_MER_ADAPTATION_AUDIT.md"
+      },
+      {
+        "method": "CMAD / CAFD",
+        "path": "external/original/CMAD",
+        "url": "https://github.com/YetZzzzzz/CMAD.git",
+        "commit": "efc812bee1549922528179cc2e94bfa066a3b2b6",
+        "license_file": "LICENSE",
+        "purpose": "source for the minimum-set CMAD-style CAFD component adaptation; full CMAD remains a conditional missing-modality audit",
+        "audit": "external/CMAD_ADAPTATION_AUDIT.md"
+      }
+    ]
+  },
+  "teacher_subsets": [
+    "t",
+    "a",
+    "v",
+    "ta",
+    "tv",
+    "av",
+    "tav"
+  ],
+  "probe_count": 3,
+  "base_tav_probe_count": 3,
+  "additional_target_probe_count": 3,
+  "teacher_hidden_features": false,
+  "input_sha256": {
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/assets/protocol.json": "dc942f53213d935ca1b04e2e7396dfe805d44d95ad9e5f4ea7318e34b0478adf",
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/train_search.py": "385f5a3f999882795e35977053fc4066f09b0ad1f90d5e1ee199018d4fa0b541",
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/main_table_kd.py": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/student.py": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/tav_distillation.py": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23",
+    "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/search_objectives.py": "4bb8430aa19754a17c828d7fb5ecd8a8df7cdbb1df332909d9a9d25481ff364f"
+  },
+  "campaign_fingerprint_file": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source_fingerprints.json",
+  "campaign_fingerprint_sha256": "a7bde546c74d401eb999f907269a31f3a01e7dc057aee868cb09f0d6d211642e",
+  "git_commit": "47d7ed01df6fbc7d1dbdb6c250fb9d367282cb71",
+  "runtime": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:19:41) [GCC 14.3.0]"
+  },
+  "target_correction_policy": "training interaction coordinates only; full KD targets unchanged; q variance+1e-6",
+  "external_teacher_logits": "kd_temperature * log(fixed ensemble probability); equivalent logits for the same three-probe mixture",
+  "test_policy": "evaluate validation-MAE best and validation-Acc2 best after training; last is saved and NOT tested",
+  "teacher_regression_aggregation": "arithmetic mean of three TAV scores",
+  "teacher_probability_aggregation": "q=normalize(mean_seed softmax(raw_TAV_logits_seed/(probe_calibration_temperature_seed*kd_temperature))); student KL uses log_softmax(student_logits/kd_temperature), per-sample sum over seven classes, multiplied by kd_temperature**2; do NOT temperature-soften q again",
+  "checkpoint_retention": [
+    "best_valid_mae.pt",
+    "best_valid_acc2_nonzero.pt",
+    "last.pt"
+  ],
+  "selection_tie_threshold": 1e-05,
+  "gradient_diagnostic_protocol": "three fixed train batches per epoch; seven coordinates; task regression gradients on fusion.final_norm; seed130013; RNG restored"
+}

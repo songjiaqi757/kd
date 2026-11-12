@@ -1,0 +1,99 @@
+{
+  "status": "complete",
+  "prediction_files": 72,
+  "gradient_checkpoints": 36,
+  "missing_stages": [
+    {
+      "case": "mosi_full_kd_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_full_kd_seed13",
+      "dataset": "mosi",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_subset7_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_uniform_interaction_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosei_full_kd_seed13",
+      "dataset": "mosei",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosei_uniform_interaction_seed13",
+      "dataset": "mosei",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_full_kd_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_subset7_seed13",
+      "dataset": "sims",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_subset7_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_uniform_interaction_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_full_kd_seed13",
+      "dataset": "sims_v2",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_subset7_seed13",
+      "dataset": "sims_v2",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_uniform_interaction_seed13",
+      "dataset": "sims_v2",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    }
+  ],
+  "test_predictions_used": false
+}

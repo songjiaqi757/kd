@@ -1,0 +1,2 @@
+comparison,shared_parent_ids,sims_parent_fraction,sims_v2_parent_fraction,shared_source_video_ids,sims_video_fraction,sims_v2_video_fraction,shared_parent_cross_split,identifier_scope
+SIMS_vs_SIMSv2_train_valid,1824,1.0,0.5414069456812111,60,1.0,0.46153846153846156,0,"official source-video IDs; parent matches audited upstream, ID overlap not proof all distinct IDs are independent media"

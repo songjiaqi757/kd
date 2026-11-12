@@ -1,0 +1,148 @@
+{
+  "status": "complete_with_limitations",
+  "items": [
+    {
+      "task": "A1",
+      "status": "完成",
+      "evidence": "四数据集逐样本 Acc-2 四象限、子集/阶数误差、source-video 汇总、固定规则案例"
+    },
+    {
+      "task": "A2",
+      "status": "完成",
+      "evidence": "Teacher各Probe/ensemble与Student分开；Pearson/Spearman、原始/标准化谱、秩、条件数"
+    },
+    {
+      "task": "A3",
+      "status": "完成（解释受限）",
+      "evidence": "127+empty组合、5外层/3内层 grouped CV、两utility、Shapley与去TAV敏感性；受Probe既有拟合及官方split重叠限制"
+    },
+    {
+      "task": "A4",
+      "status": "完成",
+      "evidence": "Probe-head方差、ICC、差值分布和尺度；不解释为独立Teacher不确定性"
+    },
+    {
+      "task": "A5",
+      "status": "受限",
+      "evidence": "36/36 checkpoint完成；13个预定阶段缺少历史权重"
+    },
+    {
+      "task": "A6",
+      "status": "完成（解释受限）",
+      "evidence": "归一化fidelity、两种精确reconstruction、grouped CV阶数utility及fidelity-task关联；无训练消融"
+    },
+    {
+      "task": "A7",
+      "status": "完成（历史记录受限）",
+      "evidence": "数据指纹、source/parent重叠、Teacher target、Student seed、checkpoint/config与N2审计；历史缺失git信息保留缺失"
+    },
+    {
+      "task": "A8",
+      "status": "完成",
+      "evidence": "本报告与phaseB_decision.md；未启动Phase B训练"
+    }
+  ],
+  "gradient_completed": 36,
+  "gradient_expected": 36,
+  "missing_checkpoint_stages": [
+    {
+      "case": "mosi_full_kd_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_full_kd_seed13",
+      "dataset": "mosi",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_subset7_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosi_uniform_interaction_seed13",
+      "dataset": "mosi",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosei_full_kd_seed13",
+      "dataset": "mosei",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "mosei_uniform_interaction_seed13",
+      "dataset": "mosei",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_full_kd_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_subset7_seed13",
+      "dataset": "sims",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_subset7_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_uniform_interaction_seed13",
+      "dataset": "sims",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_full_kd_seed13",
+      "dataset": "sims_v2",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_subset7_seed13",
+      "dataset": "sims_v2",
+      "stage": "early",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    },
+    {
+      "case": "sims_v2_uniform_interaction_seed13",
+      "dataset": "sims_v2",
+      "stage": "middle",
+      "available_epochs": "",
+      "status": "missing_weights; no retraining permitted"
+    }
+  ],
+  "analysis_datasets": [
+    "mosi",
+    "mosei",
+    "sims",
+    "sims_v2"
+  ],
+  "parameter_updates": 0,
+  "test_predictions_used": false
+}

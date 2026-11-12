@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "dataset": "mosei",
+  "elapsed_seconds": 309.0264689922333,
+  "samples": 18197,
+  "cases": 9,
+  "parameter_updates": 0,
+  "test_predictions_used": false
+}

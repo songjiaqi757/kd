@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "checkpoints": 36,
+  "expected": 36,
+  "sample_scope": "six pre-frozen Train windows per checkpoint; no full-split temporal inference",
+  "parameter_updates": 0
+}

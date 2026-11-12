@@ -1,0 +1,17 @@
+{
+  "status": "failed",
+  "worker": "Qiii",
+  "errors": [
+    {
+      "dataset": "mosei",
+      "exit_code": 1,
+      "log": "/ai/sjq/kd/project/reports/icd_review_revision_202611/logs/Qiii_mosei_gradients.log"
+    },
+    {
+      "dataset": "sims_v2",
+      "exit_code": 1,
+      "log": "/ai/sjq/kd/project/reports/icd_review_revision_202611/logs/Qiii_sims_v2_gradients.log"
+    }
+  ],
+  "finished_unix": 1794419485.3399916
+}

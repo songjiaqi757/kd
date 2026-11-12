@@ -1,0 +1,33 @@
+{
+  "archive_name": "phaseA_20261112_results.tar.gz",
+  "archive_bytes": 117562995,
+  "archive_sha256": "6739230383d8682ff076f93419ac6feec61f4bac93ac59a70b059b6b2ec982f8",
+  "part_bytes_limit": 41943040,
+  "parts": [
+    {
+      "name": "phaseA_20261112_results.tar.gz.part001",
+      "bytes": 41943040,
+      "sha256": "ae94089719c54f68c5bf18e1824460293ae02bee0b88259bcd4a06569b56d565"
+    },
+    {
+      "name": "phaseA_20261112_results.tar.gz.part002",
+      "bytes": 41943040,
+      "sha256": "36d7b89093a4630e8e7ed7e758b38ed9afa4c40b5eca49ad96d8fa0865e7a680"
+    },
+    {
+      "name": "phaseA_20261112_results.tar.gz.part003",
+      "bytes": 33676915,
+      "sha256": "129da779a1d266d87a9744e55b3f098e47dd19c94743e4614b751017d5f2842a"
+    }
+  ],
+  "raw_quadrant_tables_verified_against_archive": [
+    "icd_review_revision_202611/phase0_5/sample_quadrants/by_dataset/mosi/mosi_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/by_dataset/sims/sims_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/by_dataset/sims_v2/sims_v2_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/by_dataset/mosei/mosei_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/mosei_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/mosi_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/sims_quadrants.csv",
+    "icd_review_revision_202611/phase0_5/sample_quadrants/sims_v2_quadrants.csv"
+  ]
+}

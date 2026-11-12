@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "worker": "A100",
+  "errors": [
+    {
+      "dataset": "sims",
+      "exit_code": 1,
+      "log": "/ai/sjq/kd/project/reports/icd_review_revision_202611/logs/A100_sims_gradients.log"
+    }
+  ],
+  "finished_unix": 1794419789.3367145
+}

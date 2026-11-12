@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "tests": [
+    "source_group_disjointness",
+    "training_only_scaling_translation_invariance",
+    "ridge_known_linear_signal",
+    "empty_baseline",
+    "Mobius_inverse",
+    "official_Acc2_zero_rules",
+    "Spearman_tie_ranks"
+  ],
+  "parameter_updates": 0
+}

@@ -1,0 +1,9 @@
+# Runtime files stay in the complete result archive.
+__pycache__/
+*.py[cod]
+logs/
+protocol/*.lock
+
+# Detailed quadrant rows are included losslessly in ../phaseA_20261112_results_upload/.
+phase0_5/sample_quadrants/*_quadrants.csv
+phase0_5/sample_quadrants/by_dataset/*/*_quadrants.csv

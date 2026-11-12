@@ -1,0 +1,37 @@
+case,dataset,stage,available_epochs,status
+mosi_full_kd_seed13,mosi,early,,missing_weights; no retraining permitted
+mosi_full_kd_seed13,mosi,middle,,missing_weights; no retraining permitted
+mosi_full_kd_seed13,mosi,late,"16,19,20",available
+mosi_subset7_seed13,mosi,early,,missing_weights; no retraining permitted
+mosi_subset7_seed13,mosi,middle,"9,11",available
+mosi_subset7_seed13,mosi,late,20,available
+mosi_uniform_interaction_seed13,mosi,early,,missing_weights; no retraining permitted
+mosi_uniform_interaction_seed13,mosi,middle,13,available
+mosi_uniform_interaction_seed13,mosi,late,"15,20",available
+mosei_full_kd_seed13,mosei,early,"6,5",available
+mosei_full_kd_seed13,mosei,middle,,missing_weights; no retraining permitted
+mosei_full_kd_seed13,mosei,late,20,available
+mosei_subset7_seed13,mosei,early,5,available
+mosei_subset7_seed13,mosei,middle,9,available
+mosei_subset7_seed13,mosei,late,20,available
+mosei_uniform_interaction_seed13,mosei,early,"6,4",available
+mosei_uniform_interaction_seed13,mosei,middle,,missing_weights; no retraining permitted
+mosei_uniform_interaction_seed13,mosei,late,20,available
+sims_full_kd_seed13,sims,early,4,available
+sims_full_kd_seed13,sims,middle,,missing_weights; no retraining permitted
+sims_full_kd_seed13,sims,late,"15,20",available
+sims_subset7_seed13,sims,early,,missing_weights; no retraining permitted
+sims_subset7_seed13,sims,middle,,missing_weights; no retraining permitted
+sims_subset7_seed13,sims,late,"17,16,20",available
+sims_uniform_interaction_seed13,sims,early,4,available
+sims_uniform_interaction_seed13,sims,middle,,missing_weights; no retraining permitted
+sims_uniform_interaction_seed13,sims,late,"18,20",available
+sims_v2_full_kd_seed13,sims_v2,early,1,available
+sims_v2_full_kd_seed13,sims_v2,middle,,missing_weights; no retraining permitted
+sims_v2_full_kd_seed13,sims_v2,late,"17,20",available
+sims_v2_subset7_seed13,sims_v2,early,,missing_weights; no retraining permitted
+sims_v2_subset7_seed13,sims_v2,middle,13,available
+sims_v2_subset7_seed13,sims_v2,late,"16,20",available
+sims_v2_uniform_interaction_seed13,sims_v2,early,4,available
+sims_v2_uniform_interaction_seed13,sims_v2,middle,,missing_weights; no retraining permitted
+sims_v2_uniform_interaction_seed13,sims_v2,late,20,available

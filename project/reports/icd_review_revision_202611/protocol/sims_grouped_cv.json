@@ -1,0 +1,19 @@
+{
+  "train_parents": 1368,
+  "valid_parents": 456,
+  "train_groups": 60,
+  "valid_groups": 59,
+  "shared_train_valid_groups": 59,
+  "novel_valid_parents": 0,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "alphas": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "standardization": "training fold only",
+  "group_disjoint_assertions": true
+}

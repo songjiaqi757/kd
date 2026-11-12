@@ -1,0 +1,20 @@
+{
+  "shards": {
+    "Q": [
+      "mosi"
+    ],
+    "Qiii": [
+      "mosei",
+      "sims_v2"
+    ],
+    "A100": [
+      "sims"
+    ]
+  },
+  "parallelism_per_gpu": 1,
+  "a100_host_limit_gib": 32,
+  "gpu_cap_mib": 12288,
+  "data_loader_workers": 0,
+  "automatic_finalizer": true,
+  "parameter_updates": 0
+}

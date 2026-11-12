@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-11-12T04:32:53.785419+08:00",
+  "reason": "Supplement A6 with six pre-frozen Train-window trajectories across every retained checkpoint; no training or optimizer steps. Do not infer temporal causality from sparse retention.",
+  "trajectory_cases": 36,
+  "teacher_target": "unchanged",
+  "validation_reporting_rule": "stable_positive is a conservative candidate screen requiring all outer-fold Shapley positive, positive novel-source validation, >=30 novel parents and >=5 novel groups; not significance and not independently preregistered",
+  "initial_failures": "Default SSH python lacked torch; switched GPU child interpreter to existing /ai/sjq/miniconda3/envs/kd/bin/python. Original failure records retained."
+}

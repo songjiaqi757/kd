@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "worker": "Q",
+  "errors": [
+    {
+      "dataset": "mosi",
+      "exit_code": 1,
+      "log": "/ai/sjq/kd/project/reports/icd_review_revision_202611/logs/Q_mosi_gradients.log"
+    }
+  ],
+  "finished_unix": 1794419478.748787
+}

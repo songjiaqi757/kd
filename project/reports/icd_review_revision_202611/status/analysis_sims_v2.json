@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "dataset": "sims_v2",
+  "elapsed_seconds": 20.61513590812683,
+  "samples": 3369,
+  "cases": 9,
+  "parameter_updates": 0,
+  "test_predictions_used": false
+}

@@ -1,0 +1,67 @@
+{
+  "run": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/runs/N2_no_ce_l030",
+  "checkpoint": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/runs/N2_no_ce_l030/best_valid_mae.pt",
+  "checkpoint_sha256": "a6751171214d4f772011dae5f3adf71405c6ff2a8e7834771b20110cb3cc16e6",
+  "config_sha256": "3ee08e38c8ff34d60b05d90042af3b888a1dd8f7d171168a4b099671c24836c5",
+  "assets_sha256": "dc942f53213d935ca1b04e2e7396dfe805d44d95ad9e5f4ea7318e34b0478adf",
+  "definition": "SmoothL1 task regression + ensemble3 TAV SmoothL1 KD + ensemble3 calibrated KL + 0.30 mean SmoothL1 Mobius errors; task CE=0; seed13; historical epoch23; not a 20-epoch result",
+  "student_seed": 13,
+  "probe_seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "historical_best_epoch": 23,
+  "configured_max_epochs": 40,
+  "training_loss_implementation": [
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/train_search.py",
+      "sha256": "385f5a3f999882795e35977053fc4066f09b0ad1f90d5e1ee199018d4fa0b541"
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/search_objectives.py",
+      "sha256": "4bb8430aa19754a17c828d7fb5ecd8a8df7cdbb1df332909d9a9d25481ff364f"
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/git_revision.txt",
+      "sha256": "f56c46f792fc1ae909f1a6cd6400617a0fcbac5b75c671fd4bc408ac78082237"
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source_fingerprints.json",
+      "sha256": "a7bde546c74d401eb999f907269a31f3a01e7dc057aee868cb09f0d6d211642e"
+    }
+  ],
+  "implementation_hash_checks": [
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/train_search.py",
+      "expected_sha256": "385f5a3f999882795e35977053fc4066f09b0ad1f90d5e1ee199018d4fa0b541",
+      "current_sha256": "385f5a3f999882795e35977053fc4066f09b0ad1f90d5e1ee199018d4fa0b541",
+      "match": true
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/main_table_kd.py",
+      "expected_sha256": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+      "current_sha256": "1eec0626e0069a7dc9c4d350591c7620c65bcb32f743126000224bf2a92a1e85",
+      "match": true
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/student.py",
+      "expected_sha256": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+      "current_sha256": "43aa48f30abc8855b38556ffd01310eaa2d159756c7d3c03ff63878ee1a6a0dc",
+      "match": true
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/source/project/src/rdid_mosei/tav_distillation.py",
+      "expected_sha256": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23",
+      "current_sha256": "3b8b5838ad16dc53d52a9a2167c1d449fb505469822e58bd8bee64312dd5cb23",
+      "match": true
+    },
+    {
+      "path": "/ai/sjq/kd/outputs/experiments/mosi_method_search_20261110_v1/search_objectives.py",
+      "expected_sha256": "4bb8430aa19754a17c828d7fb5ecd8a8df7cdbb1df332909d9a9d25481ff364f",
+      "current_sha256": "4bb8430aa19754a17c828d7fb5ecd8a8df7cdbb1df332909d9a9d25481ff364f",
+      "match": true
+    }
+  ],
+  "loss_implementation_scope": "historical frozen source copied verbatim; no student retraining"
+}

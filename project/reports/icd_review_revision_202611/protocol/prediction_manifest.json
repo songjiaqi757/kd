@@ -1,0 +1,506 @@
+[
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed13_train.jsonl",
+    "sha256": "391666cc520aa7379c447d763b78d8869c97c5ba658dd63efd616e5354af5cd2",
+    "case": "mosi_full_kd_seed13",
+    "split": "train",
+    "checkpoint_sha256": "fdec6d9791344e471bfe519fe7c7a73bf56cbe7810e32225112a0e547d4549cd"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed13_valid.jsonl",
+    "sha256": "9ad1fe6d7457b04c28a6474392034d30a79b4e8c49c9db8ecab626aeecdce421",
+    "case": "mosi_full_kd_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "fdec6d9791344e471bfe519fe7c7a73bf56cbe7810e32225112a0e547d4549cd"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed42_train.jsonl",
+    "sha256": "4395586da32a3e9289d0a14109afdec37a480c7a4d5f6cb271feaaebe39fecc2",
+    "case": "mosi_full_kd_seed42",
+    "split": "train",
+    "checkpoint_sha256": "a9298c7c454482585766a3786712179c494484757ac10014818b96b7222ad6b1"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed42_valid.jsonl",
+    "sha256": "410c5ea6a1840ebf589abe2e1d283f86530b224c38168a31be66d56a73c6981f",
+    "case": "mosi_full_kd_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "a9298c7c454482585766a3786712179c494484757ac10014818b96b7222ad6b1"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed2026_train.jsonl",
+    "sha256": "a656fa665b916ca7c98683a6d7ac28b04e6a43518d0b7938ae9f4b81c014e315",
+    "case": "mosi_full_kd_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "eaca487a43631e4ee9333552577e05acfc97330b271fe469ab9e7095206bd927"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_full_kd_seed2026_valid.jsonl",
+    "sha256": "42d3297f74ff0e520fc82084b2038af8ce9d6ec21a096a2b890dca4ea0aabb45",
+    "case": "mosi_full_kd_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "eaca487a43631e4ee9333552577e05acfc97330b271fe469ab9e7095206bd927"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed13_train.jsonl",
+    "sha256": "e8dc84c1daddfbf15696ce6c25d12a29a43c735baecd411c31aaf4d6b8ae5baa",
+    "case": "mosi_subset7_seed13",
+    "split": "train",
+    "checkpoint_sha256": "2200623a03013c455f1bb54448841962ca0393002ec949d15511c9b9ee21dea9"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed13_valid.jsonl",
+    "sha256": "496a4b21971e4cb9a522ba0eece4afe53e2db831faab7dba831300e2731e24a3",
+    "case": "mosi_subset7_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "2200623a03013c455f1bb54448841962ca0393002ec949d15511c9b9ee21dea9"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed42_train.jsonl",
+    "sha256": "390e6f4089c5a6ac2af5f914756b173b5bccdf3550e6d286bdd28b0b61d0dc4c",
+    "case": "mosi_subset7_seed42",
+    "split": "train",
+    "checkpoint_sha256": "4bffcbd62a5e4c52450f713e8ba02c288d8e603d133b42ffdef3f7cacde90398"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed42_valid.jsonl",
+    "sha256": "a54cfe05ce068c925c3baa7b735250653e7e68699a99ce25c131e3dec62b1628",
+    "case": "mosi_subset7_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "4bffcbd62a5e4c52450f713e8ba02c288d8e603d133b42ffdef3f7cacde90398"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed2026_train.jsonl",
+    "sha256": "1c4efeebd5a0db742c2b45bef0216663bcb7b5a0401d11bb490d206cdace9772",
+    "case": "mosi_subset7_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "f53f413b7697205ba1b885a759ca9e40398f5b6f907eb9bce74cc3c159c35012"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_subset7_seed2026_valid.jsonl",
+    "sha256": "4b83170a198a61b57878e6caddf1cfd151dcc1385267cfed85933eaf39a07c7a",
+    "case": "mosi_subset7_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "f53f413b7697205ba1b885a759ca9e40398f5b6f907eb9bce74cc3c159c35012"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed13_train.jsonl",
+    "sha256": "d49ee650314715e507e5caad385d2d65ef00689b1331226ca74ef9da09badea1",
+    "case": "mosi_uniform_interaction_seed13",
+    "split": "train",
+    "checkpoint_sha256": "32a4b521111b7b23a711f8ae2e91ec020552beaa55c61c3a1acd89e89c06e77b"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed13_valid.jsonl",
+    "sha256": "100fa257f0012745a97c329066813739f2ceaa1514b0b8a86d023822f0a442e9",
+    "case": "mosi_uniform_interaction_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "32a4b521111b7b23a711f8ae2e91ec020552beaa55c61c3a1acd89e89c06e77b"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed42_train.jsonl",
+    "sha256": "96c70db5113df2aa6c5bc67c7e31154d5b73cba18a46f2153215e2f0d3edaebb",
+    "case": "mosi_uniform_interaction_seed42",
+    "split": "train",
+    "checkpoint_sha256": "c8cf24aadb4306e5a485993c1e0467db5860cdd66d52e2ea6aeebdef0d6d675c"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed42_valid.jsonl",
+    "sha256": "8fddaf3119c5ca1d9545683d21e5ab1ccd9184ed0b709f35b2ec724ff4e7f856",
+    "case": "mosi_uniform_interaction_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "c8cf24aadb4306e5a485993c1e0467db5860cdd66d52e2ea6aeebdef0d6d675c"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed2026_train.jsonl",
+    "sha256": "34ee3391b844031d22dd784af7252776a3c39a8c1a98cfc3421c408d851cc544",
+    "case": "mosi_uniform_interaction_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "cf9b7ef5da350782bc9550e99d3e462ddbc7f47be6658de36546ac211e58d181"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosi_uniform_interaction_seed2026_valid.jsonl",
+    "sha256": "61c6fce4f9761c5ff6fc9172c6bb4cffecd00e2f3730a0bd402dcd601c42fe14",
+    "case": "mosi_uniform_interaction_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "cf9b7ef5da350782bc9550e99d3e462ddbc7f47be6658de36546ac211e58d181"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed13_train.jsonl",
+    "sha256": "6b77b30f73bdf997a724b18a1fff12aef7fb49dcd6b524a2f093b99cfe8f02fd",
+    "case": "mosei_full_kd_seed13",
+    "split": "train",
+    "checkpoint_sha256": "dcfbf5c31d8b7f537a51b512aca226f5beb4b27cf26f6fddd56e384baca6a34e"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed13_valid.jsonl",
+    "sha256": "aa241525139b1e977ec2da67a20923b01313482c8eb2a585389f01b49c74c52a",
+    "case": "mosei_full_kd_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "dcfbf5c31d8b7f537a51b512aca226f5beb4b27cf26f6fddd56e384baca6a34e"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed42_train.jsonl",
+    "sha256": "c0876e8fdf07e4865ae868385bd1d00e82c0416977342961bce0484d167aab87",
+    "case": "mosei_full_kd_seed42",
+    "split": "train",
+    "checkpoint_sha256": "48e55ae2428ed09c0e6223fb7d96a2c33cb1b67b0ab08fdbb96ed56c0a3ba1d3"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed42_valid.jsonl",
+    "sha256": "46f0cb96725bc8cee37079a24e28d5cf4fce7b6b1741a4912245c451b5b09e90",
+    "case": "mosei_full_kd_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "48e55ae2428ed09c0e6223fb7d96a2c33cb1b67b0ab08fdbb96ed56c0a3ba1d3"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed2026_train.jsonl",
+    "sha256": "45456f40b923410f25d6b3f0ba85d16e0e885f8615301bcb1de6e098820fb942",
+    "case": "mosei_full_kd_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "aea2799a9cc33829fb89b9a043d9a000aded5709f14476e12e8896fecddaaf2a"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_full_kd_seed2026_valid.jsonl",
+    "sha256": "b3831815e135a701c89aed4b3cfa64780e3088d048d48a7f3ed9209790848db0",
+    "case": "mosei_full_kd_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "aea2799a9cc33829fb89b9a043d9a000aded5709f14476e12e8896fecddaaf2a"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed13_train.jsonl",
+    "sha256": "9e78576738b014db76032281eccc21ea5d04a56a1d3416b1af5f4c6e724ad707",
+    "case": "mosei_subset7_seed13",
+    "split": "train",
+    "checkpoint_sha256": "dd2bc071280aa3fd32e8d6e80bd4a56698c577334aedfcc6e1dbcea2caa80baf"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed13_valid.jsonl",
+    "sha256": "f6f163fa4f6821d622558d4912cbac4e588b2830a7a293b04128a6b71d156c21",
+    "case": "mosei_subset7_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "dd2bc071280aa3fd32e8d6e80bd4a56698c577334aedfcc6e1dbcea2caa80baf"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed42_train.jsonl",
+    "sha256": "c5bec04413d4602dd4830ecf361037c49a62cb8cde3ff854e75a4b6f676aac9b",
+    "case": "mosei_subset7_seed42",
+    "split": "train",
+    "checkpoint_sha256": "37a9d2912536ea1002c4bd2cb08ca7b8d484a09ee7ef5db6b7fb4afd8862a48c"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed42_valid.jsonl",
+    "sha256": "23f3c169e9a60ce70a3496621e756ad823de4da101419fe45241a87921256df9",
+    "case": "mosei_subset7_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "37a9d2912536ea1002c4bd2cb08ca7b8d484a09ee7ef5db6b7fb4afd8862a48c"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed2026_train.jsonl",
+    "sha256": "40b25d6b662a8294d5b822e745cffff6388d84808685bba9d0d1f088a5f55c91",
+    "case": "mosei_subset7_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "81c3506828a65f2abf2e74cc72eb5a6881fbfd5779859b33d346e36829e20fbd"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_subset7_seed2026_valid.jsonl",
+    "sha256": "597017bda0fcf550059ab5cc004c11653e2ec3948c818589a5ca6acb94ef6526",
+    "case": "mosei_subset7_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "81c3506828a65f2abf2e74cc72eb5a6881fbfd5779859b33d346e36829e20fbd"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed13_train.jsonl",
+    "sha256": "0604e47acbaa33db0067d73f94709c5be0ced128feffb145a3d23b362310e445",
+    "case": "mosei_uniform_interaction_seed13",
+    "split": "train",
+    "checkpoint_sha256": "3aee9b74f1d2ce40f05af648cd8e60160d3239b4fa8fc12964f1e561cd0b6250"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed13_valid.jsonl",
+    "sha256": "8eff36a21eaac72d3bbf6602ff7004edf698ccda6f684b36251b87d04558e8dc",
+    "case": "mosei_uniform_interaction_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "3aee9b74f1d2ce40f05af648cd8e60160d3239b4fa8fc12964f1e561cd0b6250"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed42_train.jsonl",
+    "sha256": "5e3580c25122f6c8cde25b6f190351a59044380653af8259c0de582fa56c4db4",
+    "case": "mosei_uniform_interaction_seed42",
+    "split": "train",
+    "checkpoint_sha256": "ee52b1c6668430f809dde3207ae6c2572f7950ed7ea0613f9b48a39850c2124f"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed42_valid.jsonl",
+    "sha256": "4aeb83394eb191fece645f6d76327dcdcc1a94daaaa2d710edba96efff039848",
+    "case": "mosei_uniform_interaction_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "ee52b1c6668430f809dde3207ae6c2572f7950ed7ea0613f9b48a39850c2124f"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed2026_train.jsonl",
+    "sha256": "4c424ea874cfd5a4632f42511540ecaa3260d0d1ab76ecd2bef20220142352f7",
+    "case": "mosei_uniform_interaction_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "23a17fbfe5eebbf2cbd10261eecc5223b74d4793218f10ab523bd797e4719aaa"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/mosei_uniform_interaction_seed2026_valid.jsonl",
+    "sha256": "44f75506328c3ed36b372981f218aa208df6c6e77be7885615e6ed87235cd4c4",
+    "case": "mosei_uniform_interaction_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "23a17fbfe5eebbf2cbd10261eecc5223b74d4793218f10ab523bd797e4719aaa"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed13_train.jsonl",
+    "sha256": "03163838a8a1ae2a0a2f41306ecb18a4a1777fe566ed54f2782f984c361b82c9",
+    "case": "sims_full_kd_seed13",
+    "split": "train",
+    "checkpoint_sha256": "90fb5c47b0d860d048f8d9999cc5ea6e854c4d42d4847d135657230cd0b1c452"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed13_valid.jsonl",
+    "sha256": "691cd71eb3f366a39164f92d25908401aacde3ce8c9d5b2d5ca62860afba386b",
+    "case": "sims_full_kd_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "90fb5c47b0d860d048f8d9999cc5ea6e854c4d42d4847d135657230cd0b1c452"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed42_train.jsonl",
+    "sha256": "b882deefefb798e962f4d21245cf598ec7f991009e1bbe3a81402529ec1fc002",
+    "case": "sims_full_kd_seed42",
+    "split": "train",
+    "checkpoint_sha256": "6bc587910814a9d16f56687768b3eada11fae62e7e9c3fb2f7b1f463f96bead8"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed42_valid.jsonl",
+    "sha256": "5414c739f0d077321469ad83d3dcc18b1cfd4ab6471e539c679495a5ae26a894",
+    "case": "sims_full_kd_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "6bc587910814a9d16f56687768b3eada11fae62e7e9c3fb2f7b1f463f96bead8"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed2026_train.jsonl",
+    "sha256": "89fd0fd6b34cad418e672ed3fa89ae160ac02f94ab7e40c9bcd0f6470145c8c7",
+    "case": "sims_full_kd_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "d434ce6929f56998cd87f0431b06409346733aa4152d5ddd20ec07003a474f40"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_full_kd_seed2026_valid.jsonl",
+    "sha256": "4ae9dfd93e148cc14d5504279aa6db9bb134f34b9916ed8010660fc1f05c3fc1",
+    "case": "sims_full_kd_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "d434ce6929f56998cd87f0431b06409346733aa4152d5ddd20ec07003a474f40"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed13_train.jsonl",
+    "sha256": "90d9e7704f3bf5a26efd76571ceb89181f627c778fe89b0deb754c7999107b12",
+    "case": "sims_subset7_seed13",
+    "split": "train",
+    "checkpoint_sha256": "c4a66eb719617c3f7e48fe6cea85d5cda4cbb059412cdc6545f15f75ef8c4825"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed13_valid.jsonl",
+    "sha256": "12179bd5bd6cd48d43d839ff20be97c6bb539e2496aa99480a665f83f0666369",
+    "case": "sims_subset7_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "c4a66eb719617c3f7e48fe6cea85d5cda4cbb059412cdc6545f15f75ef8c4825"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed42_train.jsonl",
+    "sha256": "ac080b7d0d9118428c746adb5efd4cdd10c8a216331138d985522b077a6d8d51",
+    "case": "sims_subset7_seed42",
+    "split": "train",
+    "checkpoint_sha256": "1b6669a9181a1f05c00deca3091c2a5ad689fe080ee5b268ea6c4069a8c4a3f7"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed42_valid.jsonl",
+    "sha256": "8bb3090d7ce08cda5e9d1b5bd97d78adb91cdafa697f1781a03f9898923818b5",
+    "case": "sims_subset7_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "1b6669a9181a1f05c00deca3091c2a5ad689fe080ee5b268ea6c4069a8c4a3f7"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed2026_train.jsonl",
+    "sha256": "04f34efd30dfd5ad340b6a46c0e591a0425c11ff3e4060e4ee5198c78f608a59",
+    "case": "sims_subset7_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "b1ea7d6d59c9e546803ddf56016c38333b971fe7cd98d7357ea860b7c0f20c30"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_subset7_seed2026_valid.jsonl",
+    "sha256": "e62593a221b9233a64ddf65cf9678c7ef5d755ee81803ef3cd0eeb89e91c4be5",
+    "case": "sims_subset7_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "b1ea7d6d59c9e546803ddf56016c38333b971fe7cd98d7357ea860b7c0f20c30"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed13_train.jsonl",
+    "sha256": "ea6e27adfaa2be23d63bfe0b7c1ebff3ea68cdf0afe08a6ddb4d7ad53a40187a",
+    "case": "sims_uniform_interaction_seed13",
+    "split": "train",
+    "checkpoint_sha256": "3963c11fa474c0392c5fa755bf4d872e9294893254e998df5e73a56fadb04027"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed13_valid.jsonl",
+    "sha256": "1e045d3b8dc141f672b916d0112593155b66b5bfab177eb12dc9e1be006403c3",
+    "case": "sims_uniform_interaction_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "3963c11fa474c0392c5fa755bf4d872e9294893254e998df5e73a56fadb04027"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed42_train.jsonl",
+    "sha256": "805478cc1004d8190d3b71e55ff3e14469c3e7cb1f56bd0ebc278267331773ea",
+    "case": "sims_uniform_interaction_seed42",
+    "split": "train",
+    "checkpoint_sha256": "df5ee0a28d18faa9f74106446d678100c26de081eb162e36de0549d880b359e9"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed42_valid.jsonl",
+    "sha256": "82fbda4d81974796902b8a76e48176ff277921b58643dfcdf9195e336a3d65a4",
+    "case": "sims_uniform_interaction_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "df5ee0a28d18faa9f74106446d678100c26de081eb162e36de0549d880b359e9"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed2026_train.jsonl",
+    "sha256": "d698877bad5ddbd5d2a3f9ae8d27062a4cad024bd8ed256986a9782415fba4ea",
+    "case": "sims_uniform_interaction_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "1a2c51b2f1a5cc989d73acf592975162e3c4e4f9dd8f1bdda75b4c4e9f0f9049"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_uniform_interaction_seed2026_valid.jsonl",
+    "sha256": "7f2ea9796bde462f15f1006c7c3d5eaeb8edaf2728f971d74be27ac9214b4fce",
+    "case": "sims_uniform_interaction_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "1a2c51b2f1a5cc989d73acf592975162e3c4e4f9dd8f1bdda75b4c4e9f0f9049"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed13_train.jsonl",
+    "sha256": "35b43242112273861ea3c5c7e86ca5a4b20f92599f95371f1a1e4aea9c176ff2",
+    "case": "sims_v2_full_kd_seed13",
+    "split": "train",
+    "checkpoint_sha256": "58909253c2450ea64b344ed8ecc7c02adc79802306511bb3c51324e0789a1c63"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed13_valid.jsonl",
+    "sha256": "b5294332a1503ed9a1aeebf387dc150a539966808e56306ea0f01fdd9533b1ce",
+    "case": "sims_v2_full_kd_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "58909253c2450ea64b344ed8ecc7c02adc79802306511bb3c51324e0789a1c63"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed42_train.jsonl",
+    "sha256": "18fcb73c69d27ac9b4bc80186cb63ee13cc6aadc79793c8d132f5ff70c895d0d",
+    "case": "sims_v2_full_kd_seed42",
+    "split": "train",
+    "checkpoint_sha256": "47812fc1c74b98a765e2b795867b2a8db041b520de32197a6a2cf35ed685e6e4"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed42_valid.jsonl",
+    "sha256": "e01a4d831ba45ebd46278a2d60f7b53ab67a3d9f1afbce0def6d37497281f0c1",
+    "case": "sims_v2_full_kd_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "47812fc1c74b98a765e2b795867b2a8db041b520de32197a6a2cf35ed685e6e4"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed2026_train.jsonl",
+    "sha256": "4afe48a1df194fa54500e9f5ade6c36adfce3d39291bab5b8a931ab9cd45fe0b",
+    "case": "sims_v2_full_kd_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "0c276f7e18477b12c3a9b903cd7c626fcf278e26d33fda99bacbdb9e9f1e39fc"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_full_kd_seed2026_valid.jsonl",
+    "sha256": "0d4686b95a8a5f30039ad9d0fdafcc3512829a2c14ae93603c2a2190e5f2271f",
+    "case": "sims_v2_full_kd_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "0c276f7e18477b12c3a9b903cd7c626fcf278e26d33fda99bacbdb9e9f1e39fc"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed13_train.jsonl",
+    "sha256": "c21bde45601f6c30debb5d822abcbbc07a482b8a4fa1fa56e5fe2024e79d520a",
+    "case": "sims_v2_subset7_seed13",
+    "split": "train",
+    "checkpoint_sha256": "d0ef9b9d9385ee4455f32a20e74ec22fc6f47c8753ff4a62bf5b0fcf774ae1cf"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed13_valid.jsonl",
+    "sha256": "a49c44c4849fb05add9422b6ed84837f06bdbbe4932336dc7153b6c07e0eee3e",
+    "case": "sims_v2_subset7_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "d0ef9b9d9385ee4455f32a20e74ec22fc6f47c8753ff4a62bf5b0fcf774ae1cf"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed42_train.jsonl",
+    "sha256": "0ea3b9d29fe9c7f7f2f62888fdfb04f5b553acf71d96d0577e59880b1cb18edf",
+    "case": "sims_v2_subset7_seed42",
+    "split": "train",
+    "checkpoint_sha256": "061f06b0cbc2c136e5898fdb6fc983d204447e1c56da6743f5e55c933acc18d6"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed42_valid.jsonl",
+    "sha256": "42b1e7942cded6d6411b440d328fc6995276266705d8bcaa71192fb3d958a3eb",
+    "case": "sims_v2_subset7_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "061f06b0cbc2c136e5898fdb6fc983d204447e1c56da6743f5e55c933acc18d6"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed2026_train.jsonl",
+    "sha256": "354179cc3fceee776787a51ba3377437d6e5493ec358ee242c3a556b2fab52a0",
+    "case": "sims_v2_subset7_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "9bded4c3148f349b7620e3d7116d84748d3e478f3d8d394823a6f2f0dedf42ee"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_subset7_seed2026_valid.jsonl",
+    "sha256": "9fc6f7843358fb784d92987f8f109222230965d9953e95441dd230a177d92950",
+    "case": "sims_v2_subset7_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "9bded4c3148f349b7620e3d7116d84748d3e478f3d8d394823a6f2f0dedf42ee"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed13_train.jsonl",
+    "sha256": "97ba5f31a731e5dd6cc392a6ee4defc1c394528453a157d8a7323c39d97a619d",
+    "case": "sims_v2_uniform_interaction_seed13",
+    "split": "train",
+    "checkpoint_sha256": "b006b60b2b9f6b91f55be66cbbb2525dd7a4e69b55199c2c3ac7e9a1ce9a2bba"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed13_valid.jsonl",
+    "sha256": "897b1b838f713a0d5629c0d786e3b08a7781630d6dc6938390f1b9826a9d7222",
+    "case": "sims_v2_uniform_interaction_seed13",
+    "split": "valid",
+    "checkpoint_sha256": "b006b60b2b9f6b91f55be66cbbb2525dd7a4e69b55199c2c3ac7e9a1ce9a2bba"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed42_train.jsonl",
+    "sha256": "eacf37fa5c6c742c8e960752c4ece5db74b5de705b61ed205c0168afcf53b238",
+    "case": "sims_v2_uniform_interaction_seed42",
+    "split": "train",
+    "checkpoint_sha256": "0aa7ec05c359739cb0c950cc469ab7ea4f6f37ed9d764ac5685f7ffed30089f7"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed42_valid.jsonl",
+    "sha256": "cdc2b28919fa6ace406f56201a17d07d6c7bb71ffbc155e3fc01543ce62d8e50",
+    "case": "sims_v2_uniform_interaction_seed42",
+    "split": "valid",
+    "checkpoint_sha256": "0aa7ec05c359739cb0c950cc469ab7ea4f6f37ed9d764ac5685f7ffed30089f7"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed2026_train.jsonl",
+    "sha256": "34f8db4a3f903e4b45567858740292077c68bf8d08d1cd46d837f8b296e03ea9",
+    "case": "sims_v2_uniform_interaction_seed2026",
+    "split": "train",
+    "checkpoint_sha256": "1d62dff43a51eb5bb2d3aed3b2ce8059d8986aeac88653d620a3534100cf3fe8"
+  },
+  {
+    "path": "/ai/sjq/kd/project/reports/transferability_audit_202611/predictions/sims_v2_uniform_interaction_seed2026_valid.jsonl",
+    "sha256": "28148bc3922e69d2c4b6e3120551ee7b3262cf648cd850cf1df8d22c06311f28",
+    "case": "sims_v2_uniform_interaction_seed2026",
+    "split": "valid",
+    "checkpoint_sha256": "1d62dff43a51eb5bb2d3aed3b2ce8059d8986aeac88653d620a3534100cf3fe8"
+  }
+]
